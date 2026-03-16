@@ -1,0 +1,1251 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Ody Refine — Find contradictions in your team's docs</title>
+  <meta name="description" content="Open-source CLI that finds contradictions, stale commitments, and time bombs in your company's knowledge. No login. No API key. Your data never leaves your machine." />
+  <meta property="og:title" content="Ody Refine — Your docs contradict each other. Ody finds where." />
+  <meta property="og:description" content="Open-source CLI: 5 detectors, zero config, no data leaves your machine. npm install @useody/refine" />
+  <meta property="og:type" content="website" />
+
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
+
+  <style>
+    /* ────────────────────────────────────────────────────────
+       RESET & TOKENS
+    ──────────────────────────────────────────────────────── */
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --parchment:   #f6f1e8;
+      --parchment-2: #ede6d8;
+      --parchment-3: #e2d9c8;
+      --terra:       #bf5226;
+      --terra-dark:  #9e4120;
+      --terra-light: #d4683a;
+      --ink:         #1a1410;
+      --ink-2:       #3d2f26;
+      --ink-3:       #6b5b52;
+      --ink-4:       #9b8d87;
+      --white:       #ffffff;
+
+      --red:    #c0392b;
+      --amber:  #d68a2e;
+      --blue:   #3a7ecf;
+      --green:  #2d8653;
+
+      --font-body: 'Manrope', sans-serif;
+      --font-mono: 'JetBrains Mono', monospace;
+
+      --radius-sm:  6px;
+      --radius-md:  12px;
+      --radius-lg:  20px;
+      --radius-xl:  32px;
+
+      --shadow-sm: 0 1px 3px rgba(26,20,16,.08), 0 1px 2px rgba(26,20,16,.05);
+      --shadow-md: 0 4px 16px rgba(26,20,16,.10), 0 2px 6px rgba(26,20,16,.06);
+      --shadow-lg: 0 12px 40px rgba(26,20,16,.14), 0 4px 12px rgba(26,20,16,.08);
+      --shadow-xl: 0 24px 64px rgba(26,20,16,.18), 0 8px 20px rgba(26,20,16,.10);
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: var(--font-body);
+      background: var(--parchment);
+      color: var(--ink);
+      line-height: 1.6;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    /* ────────────────────────────────────────────────────────
+       LAYOUT UTILITIES
+    ──────────────────────────────────────────────────────── */
+    .container {
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 0 24px;
+    }
+
+    .sr-only {
+      position: absolute; width: 1px; height: 1px;
+      padding: 0; margin: -1px; overflow: hidden;
+      clip: rect(0,0,0,0); white-space: nowrap; border: 0;
+    }
+
+    /* ────────────────────────────────────────────────────────
+       NAV
+    ──────────────────────────────────────────────────────── */
+    nav {
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      background: rgba(246,241,232,.92);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+      border-bottom: 1px solid var(--parchment-3);
+    }
+
+    .nav-inner {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      height: 60px;
+    }
+
+    .logo {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      text-decoration: none;
+      color: var(--ink);
+    }
+
+    .logo-mark {
+      width: 32px;
+      height: 32px;
+      background: var(--terra);
+      border-radius: var(--radius-sm);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--white);
+      font-weight: 800;
+      font-size: 14px;
+      letter-spacing: -0.5px;
+    }
+
+    .logo-text {
+      font-size: 16px;
+      font-weight: 700;
+      color: var(--ink);
+    }
+
+    .logo-badge {
+      font-size: 10px;
+      font-weight: 600;
+      background: var(--parchment-3);
+      color: var(--ink-3);
+      padding: 2px 7px;
+      border-radius: 100px;
+      letter-spacing: 0.3px;
+    }
+
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .nav-link {
+      font-size: 14px;
+      font-weight: 500;
+      color: var(--ink-3);
+      text-decoration: none;
+      padding: 6px 12px;
+      border-radius: var(--radius-sm);
+      transition: color .15s, background .15s;
+    }
+    .nav-link:hover { color: var(--ink); background: var(--parchment-2); }
+
+    .nav-cta {
+      font-size: 13px;
+      font-weight: 600;
+      color: var(--white);
+      background: var(--terra);
+      text-decoration: none;
+      padding: 7px 16px;
+      border-radius: var(--radius-sm);
+      transition: background .15s, transform .1s;
+    }
+    .nav-cta:hover { background: var(--terra-dark); transform: translateY(-1px); }
+
+    /* ────────────────────────────────────────────────────────
+       HERO
+    ──────────────────────────────────────────────────────── */
+    .hero {
+      padding: 96px 0 80px;
+      text-align: center;
+    }
+
+    .hero-eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 7px;
+      font-size: 12px;
+      font-weight: 600;
+      letter-spacing: 0.8px;
+      text-transform: uppercase;
+      color: var(--terra);
+      background: rgba(191,82,38,.1);
+      border: 1px solid rgba(191,82,38,.2);
+      padding: 6px 14px;
+      border-radius: 100px;
+      margin-bottom: 28px;
+    }
+
+    .hero-eyebrow::before {
+      content: '';
+      display: inline-block;
+      width: 7px;
+      height: 7px;
+      background: var(--terra);
+      border-radius: 50%;
+    }
+
+    .hero-headline {
+      font-size: clamp(38px, 6vw, 72px);
+      font-weight: 800;
+      line-height: 1.1;
+      letter-spacing: -2px;
+      color: var(--ink);
+      margin-bottom: 24px;
+    }
+
+    .hero-headline em {
+      font-style: normal;
+      color: var(--terra);
+    }
+
+    .hero-sub {
+      font-size: clamp(17px, 2.2vw, 20px);
+      font-weight: 400;
+      color: var(--ink-3);
+      max-width: 580px;
+      margin: 0 auto 40px;
+      line-height: 1.65;
+    }
+
+    .hero-cta-group {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 12px;
+      flex-wrap: wrap;
+      margin-bottom: 56px;
+    }
+
+    .btn-primary {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: var(--terra);
+      color: var(--white);
+      font-family: var(--font-mono);
+      font-size: 14px;
+      font-weight: 500;
+      padding: 14px 24px;
+      border-radius: var(--radius-md);
+      text-decoration: none;
+      transition: background .15s, transform .1s, box-shadow .15s;
+      box-shadow: var(--shadow-md);
+    }
+    .btn-primary:hover {
+      background: var(--terra-dark);
+      transform: translateY(-2px);
+      box-shadow: var(--shadow-lg);
+    }
+
+    .btn-secondary {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: var(--white);
+      color: var(--ink-2);
+      font-size: 14px;
+      font-weight: 600;
+      padding: 14px 24px;
+      border-radius: var(--radius-md);
+      text-decoration: none;
+      border: 1.5px solid var(--parchment-3);
+      transition: background .15s, border-color .15s, transform .1s;
+    }
+    .btn-secondary:hover {
+      background: var(--parchment-2);
+      border-color: var(--ink-4);
+      transform: translateY(-2px);
+    }
+
+    .btn-icon {
+      width: 18px;
+      height: 18px;
+      flex-shrink: 0;
+    }
+
+    /* ────────────────────────────────────────────────────────
+       TERMINAL
+    ──────────────────────────────────────────────────────── */
+    .terminal-wrapper {
+      max-width: 820px;
+      margin: 0 auto;
+      border-radius: var(--radius-xl);
+      overflow: hidden;
+      box-shadow: var(--shadow-xl);
+      border: 1px solid rgba(26,20,16,.1);
+    }
+
+    .terminal-bar {
+      background: #2a1f1a;
+      padding: 14px 18px;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .terminal-dots {
+      display: flex;
+      gap: 7px;
+    }
+
+    .dot {
+      width: 12px;
+      height: 12px;
+      border-radius: 50%;
+    }
+    .dot-red    { background: #ff5f57; }
+    .dot-yellow { background: #febc2e; }
+    .dot-green  { background: #28c840; }
+
+    .terminal-title {
+      font-family: var(--font-mono);
+      font-size: 12px;
+      color: #7a6a62;
+      margin-left: 4px;
+    }
+
+    .terminal-body {
+      background: #1a1008;
+      padding: 28px 32px;
+      font-family: var(--font-mono);
+      font-size: 13.5px;
+      line-height: 1.8;
+      text-align: left;
+      overflow-x: auto;
+    }
+
+    .t-prompt   { color: #bf5226; }
+    .t-cmd      { color: #f6f1e8; }
+    .t-dim      { color: #5a4a40; }
+    .t-info     { color: #9b8d87; }
+    .t-ok       { color: #2d8653; }
+    .t-warn     { color: #d68a2e; }
+    .t-err      { color: #c0392b; }
+    .t-time     { color: #3a7ecf; }
+    .t-label    { color: #f6f1e8; font-weight: 500; }
+    .t-source   { color: #7a6a62; }
+    .t-score    { color: #bf5226; font-weight: 700; font-size: 15px; }
+    .t-blank    { display: block; height: 8px; }
+    .t-line     { display: block; }
+
+    /* ────────────────────────────────────────────────────────
+       TRUST BAR
+    ──────────────────────────────────────────────────────── */
+    .trust-bar {
+      padding: 28px 0;
+      border-top: 1px solid var(--parchment-3);
+      border-bottom: 1px solid var(--parchment-3);
+      margin-top: 64px;
+    }
+
+    .trust-bar-inner {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 48px;
+      flex-wrap: wrap;
+    }
+
+    .trust-item {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      font-size: 13px;
+      font-weight: 500;
+      color: var(--ink-3);
+    }
+
+    .trust-icon {
+      color: var(--terra);
+      font-size: 15px;
+    }
+
+    /* ────────────────────────────────────────────────────────
+       SECTION HEADERS
+    ──────────────────────────────────────────────────────── */
+    .section { padding: 96px 0; }
+    .section-alt { background: var(--parchment-2); }
+
+    .section-label {
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 1.2px;
+      text-transform: uppercase;
+      color: var(--terra);
+      margin-bottom: 14px;
+    }
+
+    .section-headline {
+      font-size: clamp(28px, 4vw, 44px);
+      font-weight: 800;
+      letter-spacing: -1.2px;
+      color: var(--ink);
+      line-height: 1.15;
+      margin-bottom: 16px;
+    }
+
+    .section-sub {
+      font-size: 17px;
+      color: var(--ink-3);
+      max-width: 520px;
+      line-height: 1.7;
+    }
+
+    /* ────────────────────────────────────────────────────────
+       PROBLEM SECTION
+    ──────────────────────────────────────────────────────── */
+    .problem-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 24px;
+      margin-top: 56px;
+    }
+
+    .problem-card {
+      background: var(--white);
+      border: 1.5px solid var(--parchment-3);
+      border-radius: var(--radius-lg);
+      padding: 28px;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .problem-card::before {
+      content: '';
+      position: absolute;
+      top: 0; left: 0; right: 0;
+      height: 3px;
+      background: var(--terra);
+      opacity: 0.5;
+    }
+
+    .problem-quote {
+      font-size: 16px;
+      font-weight: 500;
+      color: var(--ink-2);
+      line-height: 1.6;
+      font-style: italic;
+      margin-bottom: 16px;
+    }
+
+    .problem-source {
+      font-size: 13px;
+      color: var(--ink-4);
+      font-weight: 500;
+    }
+
+    /* ────────────────────────────────────────────────────────
+       DETECTORS
+    ──────────────────────────────────────────────────────── */
+    .detectors-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(330px, 1fr));
+      gap: 20px;
+      margin-top: 56px;
+    }
+
+    .detector-card {
+      background: var(--white);
+      border: 1.5px solid var(--parchment-3);
+      border-radius: var(--radius-lg);
+      padding: 28px;
+      transition: border-color .15s, box-shadow .15s, transform .15s;
+    }
+    .detector-card:hover {
+      border-color: var(--terra);
+      box-shadow: var(--shadow-md);
+      transform: translateY(-3px);
+    }
+
+    .detector-icon {
+      width: 44px;
+      height: 44px;
+      border-radius: var(--radius-sm);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 20px;
+      margin-bottom: 18px;
+    }
+
+    .icon-contradiction { background: rgba(192,57,43,.1); }
+    .icon-staleness     { background: rgba(214,138,46,.1); }
+    .icon-duplicate     { background: rgba(58,126,207,.1); }
+    .icon-undocumented  { background: rgba(45,134,83,.1); }
+    .icon-timebomb      { background: rgba(191,82,38,.1); }
+
+    .detector-name {
+      font-size: 17px;
+      font-weight: 700;
+      color: var(--ink);
+      margin-bottom: 8px;
+    }
+
+    .detector-desc {
+      font-size: 14px;
+      color: var(--ink-3);
+      line-height: 1.65;
+      margin-bottom: 18px;
+    }
+
+    .detector-example {
+      background: var(--parchment);
+      border: 1px solid var(--parchment-3);
+      border-radius: var(--radius-sm);
+      padding: 14px 16px;
+      font-size: 12.5px;
+      font-family: var(--font-mono);
+      color: var(--ink-3);
+      line-height: 1.7;
+    }
+
+    .example-label {
+      font-size: 10px;
+      font-weight: 700;
+      letter-spacing: 0.8px;
+      text-transform: uppercase;
+      color: var(--ink-4);
+      margin-bottom: 6px;
+    }
+
+    .example-finding {
+      color: var(--ink-2);
+    }
+
+    .example-source {
+      color: var(--ink-4);
+      font-size: 11px;
+    }
+
+    /* ────────────────────────────────────────────────────────
+       HOW IT WORKS
+    ──────────────────────────────────────────────────────── */
+    .steps {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 32px;
+      margin-top: 56px;
+    }
+
+    .step {
+      text-align: center;
+      padding: 8px;
+    }
+
+    .step-num {
+      width: 52px;
+      height: 52px;
+      border-radius: 50%;
+      background: var(--terra);
+      color: var(--white);
+      font-size: 20px;
+      font-weight: 800;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin: 0 auto 20px;
+    }
+
+    .step-title {
+      font-size: 18px;
+      font-weight: 700;
+      color: var(--ink);
+      margin-bottom: 10px;
+    }
+
+    .step-desc {
+      font-size: 14.5px;
+      color: var(--ink-3);
+      line-height: 1.7;
+    }
+
+    .step-code {
+      display: inline-block;
+      background: var(--parchment-2);
+      border: 1px solid var(--parchment-3);
+      border-radius: var(--radius-sm);
+      font-family: var(--font-mono);
+      font-size: 12px;
+      padding: 4px 9px;
+      color: var(--terra);
+      margin-top: 8px;
+    }
+
+    /* ────────────────────────────────────────────────────────
+       BENEFITS
+    ──────────────────────────────────────────────────────── */
+    .benefits-layout {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 64px;
+      align-items: center;
+      margin-top: 56px;
+    }
+
+    @media (max-width: 768px) {
+      .benefits-layout { grid-template-columns: 1fr; gap: 40px; }
+    }
+
+    .benefit-list { list-style: none; display: flex; flex-direction: column; gap: 24px; }
+
+    .benefit-item {
+      display: flex;
+      gap: 16px;
+      align-items: flex-start;
+    }
+
+    .benefit-check {
+      width: 28px;
+      height: 28px;
+      border-radius: 50%;
+      background: rgba(191,82,38,.1);
+      border: 2px solid rgba(191,82,38,.2);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+      color: var(--terra);
+      font-size: 13px;
+      margin-top: 2px;
+    }
+
+    .benefit-title {
+      font-size: 16px;
+      font-weight: 700;
+      color: var(--ink);
+      margin-bottom: 4px;
+    }
+
+    .benefit-desc {
+      font-size: 14px;
+      color: var(--ink-3);
+      line-height: 1.65;
+    }
+
+    /* mini terminal for benefits side */
+    .mini-terminal {
+      border-radius: var(--radius-lg);
+      overflow: hidden;
+      box-shadow: var(--shadow-xl);
+      border: 1px solid rgba(26,20,16,.1);
+    }
+
+    .mini-terminal-bar {
+      background: #2a1f1a;
+      padding: 12px 16px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .mini-terminal-body {
+      background: #1a1008;
+      padding: 22px 24px;
+      font-family: var(--font-mono);
+      font-size: 12.5px;
+      line-height: 1.8;
+    }
+
+    /* ────────────────────────────────────────────────────────
+       EMAIL CAPTURE / CTA
+    ──────────────────────────────────────────────────────── */
+    .capture-section {
+      background: var(--ink);
+      color: var(--parchment);
+      padding: 96px 0;
+    }
+
+    .capture-inner { text-align: center; max-width: 600px; margin: 0 auto; }
+
+    .capture-headline {
+      font-size: clamp(28px, 4vw, 44px);
+      font-weight: 800;
+      letter-spacing: -1.2px;
+      line-height: 1.15;
+      color: var(--parchment);
+      margin-bottom: 16px;
+    }
+
+    .capture-sub {
+      font-size: 17px;
+      color: var(--ink-4);
+      line-height: 1.7;
+      margin-bottom: 40px;
+    }
+
+    .capture-form {
+      display: flex;
+      gap: 8px;
+      max-width: 480px;
+      margin: 0 auto 20px;
+      flex-wrap: wrap;
+    }
+
+    .capture-input {
+      flex: 1;
+      min-width: 220px;
+      background: rgba(246,241,232,.08);
+      border: 1.5px solid rgba(246,241,232,.15);
+      border-radius: var(--radius-md);
+      color: var(--parchment);
+      font-family: var(--font-body);
+      font-size: 15px;
+      padding: 13px 18px;
+      outline: none;
+      transition: border-color .15s;
+    }
+    .capture-input::placeholder { color: rgba(246,241,232,.35); }
+    .capture-input:focus { border-color: var(--terra-light); }
+
+    .capture-btn {
+      background: var(--terra);
+      color: var(--white);
+      border: none;
+      border-radius: var(--radius-md);
+      font-family: var(--font-body);
+      font-size: 15px;
+      font-weight: 600;
+      padding: 13px 24px;
+      cursor: pointer;
+      transition: background .15s, transform .1s;
+      white-space: nowrap;
+    }
+    .capture-btn:hover { background: var(--terra-light); transform: translateY(-1px); }
+
+    .capture-note {
+      font-size: 13px;
+      color: rgba(246,241,232,.4);
+    }
+
+    .capture-or {
+      font-size: 15px;
+      color: var(--ink-4);
+      margin: 32px 0;
+    }
+
+    .install-block {
+      display: inline-flex;
+      align-items: center;
+      gap: 14px;
+      background: rgba(246,241,232,.06);
+      border: 1.5px solid rgba(246,241,232,.1);
+      border-radius: var(--radius-md);
+      padding: 14px 22px;
+      font-family: var(--font-mono);
+      font-size: 15px;
+      color: var(--parchment);
+      cursor: pointer;
+      transition: background .15s;
+    }
+    .install-block:hover { background: rgba(246,241,232,.1); }
+
+    .copy-badge {
+      font-size: 11px;
+      font-weight: 600;
+      background: rgba(191,82,38,.3);
+      color: var(--terra-light);
+      padding: 3px 8px;
+      border-radius: 4px;
+    }
+
+    /* ────────────────────────────────────────────────────────
+       FOOTER
+    ──────────────────────────────────────────────────────── */
+    footer {
+      background: var(--ink);
+      border-top: 1px solid rgba(246,241,232,.06);
+      padding: 40px 0;
+    }
+
+    .footer-inner {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 20px;
+    }
+
+    .footer-logo {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      text-decoration: none;
+    }
+
+    .footer-text {
+      font-size: 14px;
+      color: rgba(246,241,232,.4);
+      line-height: 1.6;
+    }
+
+    .footer-links {
+      display: flex;
+      gap: 24px;
+    }
+
+    .footer-link {
+      font-size: 14px;
+      color: rgba(246,241,232,.5);
+      text-decoration: none;
+      transition: color .15s;
+    }
+    .footer-link:hover { color: rgba(246,241,232,.9); }
+
+    /* ────────────────────────────────────────────────────────
+       RESPONSIVE
+    ──────────────────────────────────────────────────────── */
+    @media (max-width: 600px) {
+      .hero { padding: 64px 0 48px; }
+      .terminal-body { padding: 20px 18px; font-size: 11.5px; }
+      .trust-bar-inner { gap: 24px; }
+      .detectors-grid { grid-template-columns: 1fr; }
+      .steps { grid-template-columns: 1fr; }
+      nav .nav-links a:not(.nav-cta) { display: none; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- ──────────────────────────────────────────────────
+       NAV
+  ────────────────────────────────────────────────── -->
+  <nav>
+    <div class="container nav-inner">
+      <a href="#" class="logo">
+        <div class="logo-mark">O</div>
+        <span class="logo-text">Ody Refine</span>
+        <span class="logo-badge">Apache 2.0</span>
+      </a>
+      <div class="nav-links">
+        <a href="#detectors" class="nav-link">Detectors</a>
+        <a href="#how-it-works" class="nav-link">How it works</a>
+        <a href="https://github.com/useody/refine" class="nav-link">Docs</a>
+        <a href="https://github.com/useody/refine" class="nav-cta">
+          ★ Star on GitHub
+        </a>
+      </div>
+    </div>
+  </nav>
+
+  <!-- ──────────────────────────────────────────────────
+       HERO
+  ────────────────────────────────────────────────── -->
+  <section class="hero">
+    <div class="container">
+      <div class="hero-eyebrow">Open Source · Apache 2.0</div>
+
+      <h1 class="hero-headline">
+        Your docs contradict<br>each other.<br>
+        <em>Ody finds where.</em>
+      </h1>
+
+      <p class="hero-sub">
+        An open-source CLI that scans your team's knowledge for contradictions,
+        stale commitments, and time bombs. No login. No API key. Your data
+        never leaves your machine.
+      </p>
+
+      <div class="hero-cta-group">
+        <a href="#install" class="btn-primary">
+          <svg class="btn-icon" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M8 9l3 3-3 3m5 0h3M5 20h14a2 2 0 002-2V6a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"/>
+          </svg>
+          npx ody-refine ./docs/
+        </a>
+        <a href="https://github.com/useody/refine" class="btn-secondary">
+          <svg class="btn-icon" fill="currentColor" viewBox="0 0 24 24">
+            <path d="M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.531 1.032 1.531 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0112 6.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.202 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.019 10.019 0 0022 12.017C22 6.484 17.522 2 12 2z"/>
+          </svg>
+          View on GitHub
+        </a>
+      </div>
+
+      <!-- Terminal -->
+      <div class="terminal-wrapper">
+        <div class="terminal-bar">
+          <div class="terminal-dots">
+            <span class="dot dot-red"></span>
+            <span class="dot dot-yellow"></span>
+            <span class="dot dot-green"></span>
+          </div>
+          <span class="terminal-title">ody-refine — bash</span>
+        </div>
+        <div class="terminal-body">
+          <div class="t-line"><span class="t-prompt">$</span> <span class="t-cmd">npx ody-refine ./docs/</span></div>
+          <span class="t-blank"></span>
+          <div class="t-line"><span class="t-ok">  ✔  Ingested 6 files · 47 knowledge nodes · 12 edges · 840ms</span></div>
+          <span class="t-blank"></span>
+          <div class="t-line"><span class="t-dim">━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━</span></div>
+          <div class="t-line"> <span class="t-label">ody refine</span><span class="t-dim">  ·  6 files  ·  840ms</span></div>
+          <div class="t-line"><span class="t-dim">━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━</span></div>
+          <span class="t-blank"></span>
+          <div class="t-line">  <span class="t-warn">██████░░░░</span>  <span class="t-score">67/100</span>  <span class="t-warn">Needs attention</span></div>
+          <span class="t-blank"></span>
+          <div class="t-line">  <span class="t-err">2 critical</span>  <span class="t-dim">·</span>  <span class="t-warn">3 warnings</span>  <span class="t-dim">·</span>  <span class="t-info">1 info</span></div>
+          <span class="t-blank"></span>
+          <div class="t-line"><span class="t-dim">────────────────────────────────────────────────────</span></div>
+          <div class="t-line"><span class="t-err"> CRITICAL (2)</span></div>
+          <div class="t-line"><span class="t-dim">────────────────────────────────────────────────────</span></div>
+          <div class="t-line">  <span class="t-err">✖</span> <span class="t-dim">[contradiction]</span> <span class="t-label">GPU alloc: 256/job (api-ref.md) vs 64/job (infra-guide.md)</span></div>
+          <div class="t-line">  <span class="t-err">✖</span> <span class="t-dim">[timebomb]</span>     <span class="t-label">SLA renewal — deadline in 14 days, no renewal doc found</span></div>
+          <span class="t-blank"></span>
+          <div class="t-line"><span class="t-dim">────────────────────────────────────────────────────</span></div>
+          <div class="t-line"><span class="t-warn"> WARNINGS (3)</span></div>
+          <div class="t-line"><span class="t-dim">────────────────────────────────────────────────────</span></div>
+          <div class="t-line">  <span class="t-warn">⚠</span> <span class="t-dim">[staleness]</span>   <span class="t-info">Weekly arch review — no evidence for 4 months</span></div>
+          <div class="t-line">  <span class="t-warn">⚠</span> <span class="t-dim">[duplicate]</span>   <span class="t-info">Onboarding check-in: 30d (new-hire.md) vs 60d (hr.md)</span></div>
+          <div class="t-line">  <span class="t-warn">⚠</span> <span class="t-dim">[staleness]</span>   <span class="t-info">Q3 migration deadline — past due, no status update</span></div>
+          <span class="t-blank"></span>
+          <div class="t-line"><span class="t-dim">────────────────────────────────────────────────────</span></div>
+          <div class="t-line"><span class="t-label"> What to do next</span></div>
+          <div class="t-line"><span class="t-dim">────────────────────────────────────────────────────</span></div>
+          <div class="t-line">  <span class="t-dim">1.</span> <span class="t-info">Open report    </span><span class="t-ok">open ./ody-report.html</span></div>
+          <div class="t-line">  <span class="t-dim">2.</span> <span class="t-info">Resolve issues </span><span class="t-ok">ody-refine resolve</span></div>
+          <div class="t-line">  <span class="t-dim">3.</span> <span class="t-info">Re-scan        </span><span class="t-ok">ody-refine ingest .</span></div>
+          <span class="t-blank"></span>
+          <div class="t-line"><span class="t-dim">━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━</span></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Trust bar -->
+    <div class="trust-bar" style="margin-top: 64px;">
+      <div class="container">
+        <div class="trust-bar-inner">
+          <div class="trust-item">
+            <span class="trust-icon">⚡</span>
+            No login required
+          </div>
+          <div class="trust-item">
+            <span class="trust-icon">🔒</span>
+            Data never leaves your machine
+          </div>
+          <div class="trust-item">
+            <span class="trust-icon">📦</span>
+            Zero config to start
+          </div>
+          <div class="trust-item">
+            <span class="trust-icon">🔬</span>
+            Fully auditable — Apache 2.0
+          </div>
+          <div class="trust-item">
+            <span class="trust-icon">🤖</span>
+            No LLM required
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ──────────────────────────────────────────────────
+       PROBLEM
+  ────────────────────────────────────────────────── -->
+  <section class="section section-alt" id="problem">
+    <div class="container">
+      <div class="section-label">The Problem</div>
+      <h2 class="section-headline">
+        73% of your docs are outdated.<br>You just don't know which 73%.
+      </h2>
+      <p class="section-sub">
+        Knowledge breaks silently. A Slack thread overrides a doc nobody updates.
+        A process changes but the runbook doesn't. A committed SLA expires without a renewal.
+        Nobody notices until it causes a problem.
+      </p>
+
+      <div class="problem-grid">
+        <div class="problem-card">
+          <p class="problem-quote">"I tried to do this manually last quarter. It took two days and I only covered 30% of the docs."</p>
+          <p class="problem-source">— Head of Ops, 40-person SaaS</p>
+        </div>
+        <div class="problem-card">
+          <p class="problem-quote">"We have three different answers to the same question depending on which page a new hire lands on."</p>
+          <p class="problem-source">— VP Engineering, YC-backed startup</p>
+        </div>
+        <div class="problem-card">
+          <p class="problem-quote">"I didn't know that Slack thread had contradicted our official policy until a customer noticed it."</p>
+          <p class="problem-source">— Chief of Staff, 25-person fintech</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ──────────────────────────────────────────────────
+       DETECTORS
+  ────────────────────────────────────────────────── -->
+  <section class="section" id="detectors">
+    <div class="container">
+      <div class="section-label">Five Detectors</div>
+      <h2 class="section-headline">Pure functions. No LLM required.</h2>
+      <p class="section-sub">
+        Each detector is a pure function you can read, test, and fork.
+        They build a semantic claim graph and walk it — no embedding magic, no black boxes.
+      </p>
+
+      <div class="detectors-grid">
+
+        <!-- Contradiction -->
+        <div class="detector-card">
+          <div class="detector-icon icon-contradiction">✗</div>
+          <div class="detector-name">Contradiction</div>
+          <p class="detector-desc">
+            Two sources make incompatible assertions about the same concept. Detects semantic disagreement even when different words are used — "max throughput" vs "rate limit cap" are the same claim.
+          </p>
+          <div class="detector-example">
+            <div class="example-label">Real finding</div>
+            <div class="example-finding">api-reference.md:44 → "GPU allocation: 256 per job"</div>
+            <div class="example-finding">infra-guide.md:18  → "GPU allocation: 64 per job"</div>
+            <div class="example-source" style="margin-top:6px; color: #c0392b;">CONFLICT — incompatible values</div>
+          </div>
+        </div>
+
+        <!-- Staleness -->
+        <div class="detector-card">
+          <div class="detector-icon icon-staleness">⚠</div>
+          <div class="detector-name">Staleness</div>
+          <p class="detector-desc">
+            Commitments and processes that haven't been updated. Finds "weekly sync" mentioned in a doc that has zero evidence of execution in 4 months, "Q3 migration" that's now Q4.
+          </p>
+          <div class="detector-example">
+            <div class="example-label">Real finding</div>
+            <div class="example-finding">PROCESS.md → "Weekly architecture review"</div>
+            <div class="example-finding">Last evidence: 4 months ago (Slack #eng)</div>
+            <div class="example-source" style="margin-top:6px; color: #d68a2e;">STALE — process may be abandoned</div>
+          </div>
+        </div>
+
+        <!-- Duplicate Drift -->
+        <div class="detector-card">
+          <div class="detector-icon icon-duplicate">⊘</div>
+          <div class="detector-name">Duplicate with Drift</div>
+          <p class="detector-desc">
+            The same knowledge documented in two or more places that have diverged over time. Detects when copies start saying different things — a silent source of confusion.
+          </p>
+          <div class="detector-example">
+            <div class="example-label">Real finding</div>
+            <div class="example-finding">onboarding/new-hire.md → "30-day check-in with manager"</div>
+            <div class="example-finding">hr/process.md          → "60-day check-in with manager"</div>
+            <div class="example-source" style="margin-top:6px; color: #3a7ecf;">DRIFT — copies have diverged</div>
+          </div>
+        </div>
+
+        <!-- Undocumented Decision -->
+        <div class="detector-card">
+          <div class="detector-icon icon-undocumented">ℹ</div>
+          <div class="detector-name">Undocumented Decision</div>
+          <p class="detector-desc">
+            Something decided in a conversation but never written down. Finds the Slack thread where engineering agreed to deprecate an endpoint that's still described as active in every doc.
+          </p>
+          <div class="detector-example">
+            <div class="example-label">Real finding</div>
+            <div class="example-finding">#eng Nov 12 → "we're deprecating v1 API end of year"</div>
+            <div class="example-finding">api-reference.md → v1 still documented as active</div>
+            <div class="example-source" style="margin-top:6px; color: #2d8653;">UNDOCUMENTED — decision not written down</div>
+          </div>
+        </div>
+
+        <!-- Time Bomb -->
+        <div class="detector-card">
+          <div class="detector-icon icon-timebomb">⏰</div>
+          <div class="detector-name">Time Bomb</div>
+          <p class="detector-desc">
+            A deadline, SLA, or commitment approaching expiry with no renewal or resolution doc. The customer contract that expires in 14 days. The SSL cert with no rotation runbook.
+          </p>
+          <div class="detector-example">
+            <div class="example-label">Real finding</div>
+            <div class="example-finding">contracts/acme.md → SLA renewal due in 14 days</div>
+            <div class="example-finding">No renewal doc or ticket found in any source</div>
+            <div class="example-source" style="margin-top:6px; color: #bf5226;">EXPIRY — commitment unaddressed</div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ──────────────────────────────────────────────────
+       HOW IT WORKS
+  ────────────────────────────────────────────────── -->
+  <section class="section section-alt" id="how-it-works">
+    <div class="container">
+      <div class="section-label">How it works</div>
+      <h2 class="section-headline">Three commands.<br>Instant clarity.</h2>
+
+      <div class="steps">
+        <div class="step">
+          <div class="step-num">1</div>
+          <div class="step-title">Point at your docs</div>
+          <p class="step-desc">
+            Any folder of markdown, a Notion export, a Confluence export,
+            or exported Slack JSON. Mix and match.
+          </p>
+          <span class="step-code">npx ody-refine ./docs/</span>
+        </div>
+        <div class="step">
+          <div class="step-num">2</div>
+          <div class="step-title">Refine scans & detects</div>
+          <p class="step-desc">
+            Builds a semantic claim graph from your sources.
+            Five detectors walk the graph and surface issues ranked by severity.
+          </p>
+          <span class="step-code">~2 min for 1,000 files</span>
+        </div>
+        <div class="step">
+          <div class="step-num">3</div>
+          <div class="step-title">Read the report</div>
+          <p class="step-desc">
+            An HTML report with every finding, source citations, confidence score,
+            and suggested resolution. Export to JSON for CI integration.
+          </p>
+          <span class="step-code">./ody-report.html</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ──────────────────────────────────────────────────
+       BENEFITS
+  ────────────────────────────────────────────────── -->
+  <section class="section" id="benefits">
+    <div class="container">
+      <div class="benefits-layout">
+        <div>
+          <div class="section-label">Why Refine</div>
+          <h2 class="section-headline" style="max-width: 420px;">The tool your team's been running manually.</h2>
+          <ul class="benefit-list" style="margin-top: 32px;">
+            <li class="benefit-item">
+              <div class="benefit-check">✓</div>
+              <div>
+                <div class="benefit-title">Zero-trust entry point</div>
+                <p class="benefit-desc">Runs entirely on your machine. Every line of code is auditable. No account, no API key, no data ever sent anywhere.</p>
+              </div>
+            </li>
+            <li class="benefit-item">
+              <div class="benefit-check">✓</div>
+              <div>
+                <div class="benefit-title">Graph-walk, not keyword match</div>
+                <p class="benefit-desc">Builds a semantic claim graph and walks it. "Max throughput" and "rate limiting cap" resolve to the same claim — different words, same conflict.</p>
+              </div>
+            </li>
+            <li class="benefit-item">
+              <div class="benefit-check">✓</div>
+              <div>
+                <div class="benefit-title">Works with what you have</div>
+                <p class="benefit-desc">Markdown folders, Notion exports, Confluence exports, Slack JSON — no integration setup, no OAuth flow. Just point and run.</p>
+              </div>
+            </li>
+          </ul>
+        </div>
+
+        <!-- Mini terminal -->
+        <div class="mini-terminal">
+          <div class="mini-terminal-bar">
+            <div class="terminal-dots">
+              <span class="dot dot-red"></span>
+              <span class="dot dot-yellow"></span>
+              <span class="dot dot-green"></span>
+            </div>
+            <span class="terminal-title">ody-report.html — findings</span>
+          </div>
+          <div class="mini-terminal-body">
+            <div class="t-line"><span class="t-dim">━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━</span></div>
+            <div class="t-line"> <span class="t-label">ody refine</span><span class="t-dim">  ·  6 files  ·  840ms</span></div>
+            <div class="t-line"><span class="t-dim">━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━</span></div>
+            <span class="t-blank"></span>
+            <div class="t-line">  <span class="t-warn">██████░░░░</span>  <span class="t-score">67/100</span>  <span class="t-warn">Needs attention</span></div>
+            <span class="t-blank"></span>
+            <div class="t-line"><span class="t-dim">────────────────────────────────────────────</span></div>
+            <div class="t-line"><span class="t-err"> CRITICAL (2)</span></div>
+            <div class="t-line"><span class="t-dim">────────────────────────────────────────────</span></div>
+            <div class="t-line">  <span class="t-err">✖</span> <span class="t-dim">[contradiction]</span> <span class="t-label">GPU allocation mismatch</span></div>
+            <div class="t-line">  <span class="t-err">✖</span> <span class="t-dim">[timebomb]</span>     <span class="t-label">SLA deadline in 14 days</span></div>
+            <span class="t-blank"></span>
+            <div class="t-line"><span class="t-dim">────────────────────────────────────────────</span></div>
+            <div class="t-line"><span class="t-warn"> WARNINGS (3)</span></div>
+            <div class="t-line"><span class="t-dim">────────────────────────────────────────────</span></div>
+            <div class="t-line">  <span class="t-warn">⚠</span> <span class="t-dim">[staleness]</span>  <span class="t-info">Weekly arch review · 4mo</span></div>
+            <div class="t-line">  <span class="t-warn">⚠</span> <span class="t-dim">[duplicate]</span>  <span class="t-info">Onboarding check-in · 30d vs 60d</span></div>
+            <div class="t-line">  <span class="t-warn">⚠</span> <span class="t-dim">[staleness]</span>  <span class="t-info">Q3 migration · past due</span></div>
+            <span class="t-blank"></span>
+            <div class="t-line"><span class="t-score">Score: 67/100 · Needs attention</span></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ──────────────────────────────────────────────────
+       CAPTURE / INSTALL CTA
+  ────────────────────────────────────────────────── -->
+  <section class="capture-section" id="install">
+    <div class="container">
+      <div class="capture-inner">
+        <h2 class="capture-headline">See what's broken in your docs.</h2>
+        <p class="capture-sub">
+          Get early access updates — first to know when Ody Forge launches
+          (the managed service that builds on top of Refine).
+        </p>
+
+        <!-- Email form (Formspree) — TODO: replace YOUR_FORM_ID with actual ID from formspree.io -->
+        <form class="capture-form" action="https://formspree.io/f/YOUR_FORM_ID" method="POST">
+          <input
+            class="capture-input"
+            type="email"
+            name="email"
+            placeholder="you@company.com"
+            required
+          />
+          <button class="capture-btn" type="submit">Get early access</button>
+        </form>
+        <p class="capture-note">No spam. Unsubscribe anytime.</p>
+
+        <p class="capture-or">— or install right now —</p>
+
+        <div class="install-block" onclick="navigator.clipboard.writeText('npx ody-refine ./docs/'); this.querySelector('.copy-badge').textContent = 'Copied!'">
+          <span>$ npx ody-refine ./docs/</span>
+          <span class="copy-badge">Copy</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ──────────────────────────────────────────────────
+       FOOTER
+  ────────────────────────────────────────────────── -->
+  <footer>
+    <div class="container">
+      <div class="footer-inner">
+        <div>
+          <div class="footer-logo">
+            <div class="logo-mark" style="width:28px;height:28px;font-size:12px;">O</div>
+            <span style="font-size:15px;font-weight:700;color:rgba(246,241,232,.8);margin-left:9px;">Ody Refine</span>
+          </div>
+          <p class="footer-text" style="margin-top:8px;">
+            Built by <a href="https://twitter.com/ufukkaraca" class="footer-link">Ufuk Karaca</a> ·
+            Rodyr Inc. · Apache 2.0
+          </p>
+        </div>
+        <div class="footer-links">
+          <a href="https://github.com/useody/refine" class="footer-link">GitHub</a>
+          <a href="https://github.com/useody/refine/blob/main/README.md" class="footer-link">Docs</a>
+          <a href="https://github.com/useody/refine/blob/main/LICENSE" class="footer-link">License</a>
+          <a href="mailto:ufuk@useody.com" class="footer-link">Contact</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+</body>
+</html>
