@@ -31,7 +31,30 @@ const MONTH_MAP: Record<string, number> = {
 
 const QUARTER_END_MONTH = [2, 5, 8, 11]; // Q1=Mar, Q2=Jun, Q3=Sep, Q4=Dec
 
-const COMPLETION_RE = /\b(complet\w+|done|shipped|resolved|closed|merged|finished|delivered)\b/i;
+const COMPLETION_RE = /\b(completed|was\sdone|shipped|resolved|closed|merged|finished|delivered|launched|migrated)\b/i;
+
+/** Check if a match position follows a document metadata label (Last updated, Date, etc.). */
+function isMetadataDate(text: string, index: number): boolean {
+  const before = text.slice(Math.max(0, index - 50), index).replace(/\*+/g, '');
+  return /(?:last\s+updated|last\s+modified|updated|date|version)\s*:\s*$/i.test(before.trimEnd());
+}
+
+/** Check if the sentence containing index already signals a completed past event. */
+function sentenceIsCompleted(text: string, index: number): boolean {
+  let start = index;
+  while (start > 0 && !/[.!?\n]/.test(text[start - 1]!)) start--;
+  let end = index;
+  while (end < text.length && !/[.!?\n]/.test(text[end]!)) end++;
+  const sent = text.slice(start, end);
+  return COMPLETION_RE.test(sent);
+}
+
+/** Check if the match is inside a markdown table cell (line starts with |). */
+function isInTableCell(text: string, index: number): boolean {
+  let lineStart = index;
+  while (lineStart > 0 && text[lineStart - 1] !== '\n') lineStart--;
+  return text.slice(lineStart, index).trimStart().startsWith('|');
+}
 
 function topicWords(text: string): Set<string> {
   return new Set(
@@ -77,6 +100,8 @@ function extractDeadlines(text: string, now: Date): ParsedDeadline[] {
 
   const qp = new RegExp(QUARTER_PATTERN.source, QUARTER_PATTERN.flags);
   while ((match = qp.exec(text)) !== null) {
+    if (isInTableCell(text, match.index!)) continue;
+    if (sentenceIsCompleted(text, match.index!)) continue;
     const q = parseInt(match[1]!, 10);
     const year = parseInt(match[2]!, 10);
     const endMonth = QUARTER_END_MONTH[q - 1]!;
@@ -86,6 +111,9 @@ function extractDeadlines(text: string, now: Date): ParsedDeadline[] {
 
   const ymp = new RegExp(YYYY_MM_PATTERN.source, YYYY_MM_PATTERN.flags);
   while ((match = ymp.exec(text)) !== null) {
+    if (isInTableCell(text, match.index!)) continue;
+    if (isMetadataDate(text, match.index!)) continue;
+    if (sentenceIsCompleted(text, match.index!)) continue;
     const year = parseInt(match[1]!, 10);
     const month = parseInt(match[2]!, 10) - 1;
     const endDate = new Date(year, month + 1, 0, 23, 59, 59);
@@ -178,14 +206,9 @@ const detectTimeBombs: DetectorFn = async (
 
     if (!llm) {
       const deadlines = extractDeadlines(text, now);
-      if (deadlines.length === 0) {
-        detections.push({
-          type: 'time_bomb', severity: 'info', nodeIds: [node.id],
-          description: 'Contains date keywords but no parseable deadline.',
-          suggestedAction: 'Review manually for expired deadlines.',
-        });
-        continue;
-      }
+      // Heuristic mode: skip the "date keywords but no parseable deadline" catch-all —
+      // without LLM context it is too broad to be actionable.
+      if (deadlines.length === 0) continue;
       const nodeDocType = (node.metadata?.['docType'] as string) ?? undefined;
       for (const dl of deadlines) {
         const det = classifyDeadline(dl, now, node.id, nowLabel, nodeDocType);

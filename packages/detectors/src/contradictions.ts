@@ -243,6 +243,11 @@ function detectNumberContradiction(
   a: KnowledgeNode, b: KnowledgeNode, out: Detection[],
 ): void {
   if (!areSameTopic(a, b)) return;
+  // Heuristic path: skip intra-document pairs — different sections in the same file
+  // regularly use different numbers for unrelated purposes, producing false positives.
+  const srcA = a.content.source?.sourceId ?? '';
+  const srcB = b.content.source?.sourceId ?? '';
+  if (srcA && srcB && srcA === srcB) return;
   const textA = getNodeText(a);
   const textB = getNodeText(b);
   if (shareExactSentence(textA, textB)) return;
@@ -303,6 +308,10 @@ function detectBooleanContradiction(
   a: KnowledgeNode, b: KnowledgeNode, out: Detection[],
 ): void {
   if (!areSameTopic(a, b)) return;
+  // Heuristic path: skip intra-document pairs to avoid policy-vs-procedure false positives.
+  const srcA = a.content.source?.sourceId ?? '';
+  const srcB = b.content.source?.sourceId ?? '';
+  if (srcA && srcB && srcA === srcB) return;
   const textA = getNodeText(a);
   const textB = getNodeText(b);
   if (shareExactSentence(textA, textB)) return;
