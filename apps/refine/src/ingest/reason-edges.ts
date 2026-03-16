@@ -81,10 +81,18 @@ export function detectNumberContradiction(
       if (na.value === nb.value) continue;
       const ctxA = na.context.toLowerCase();
       const ctxB = nb.context.toLowerCase();
+      // Exclude generic time/quantity words from context matching
+      const GENERIC = new Set([
+        'the', 'and', 'for', 'are', 'with', 'per', 'our',
+        'day', 'days', 'hour', 'hours', 'month', 'months',
+        'year', 'years', 'week', 'weeks', 'minute', 'minutes',
+        'within', 'first', 'must', 'all', 'your', 'from',
+        'requires', 'manager', 'approval', 'team',
+      ]);
       const sharedWords = ctxA.split(/\s+/).filter(
-        (w) => w.length >= 3 && ctxB.includes(w),
+        (w) => w.length >= 3 && !GENERIC.has(w) && ctxB.includes(w),
       );
-      if (sharedWords.length >= 2) {
+      if (sharedWords.length >= 3) {
         return {
           contradicts: true,
           reason: `Conflicting numbers: ${na.value} vs ${nb.value} ` +
