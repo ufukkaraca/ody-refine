@@ -179,6 +179,10 @@ export async function runFullPipeline(
     const totalNodes = result.stats.reduce(
       (s, st) => Math.max(s, st.nodeCount), 0,
     );
+    // Save detections to DB for report command
+    const { saveDetections } = await import('./detect/detection-store.js');
+    saveDetections(db as never, finalDetections);
+
     const html = generateHtmlReport(finalDetections, {
       nodeCount: totalNodes,
       durationMs: totalDuration,
