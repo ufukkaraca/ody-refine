@@ -90,6 +90,11 @@ function extractHeadline(d: Detection): string {
   const meta = d.metadata ?? {};
   const topic = typeof meta['topic'] === 'string' ? meta['topic'] : null;
   if (d.type === 'contradiction' && topic) return `Docs disagree on ${topic}`;
+  if (d.type === 'contradiction') {
+    // For number contradictions: "500 vs 1000 rate limits"
+    const numMatch = d.description.match(/(\d[\d,.]*)\s+vs\s+(\d[\d,.]*)/);
+    if (numMatch) return `Number mismatch: ${numMatch[1]} vs ${numMatch[2]}`;
+  }
   if (d.type === 'duplicate') return 'Same topic documented differently';
   if (d.type === 'time_bomb') {
     const m = d.description.match(/["'](\d{4}-\d{2}(?:-\d{2})?|Q[1-4]\s*\d{4})['"]/);
