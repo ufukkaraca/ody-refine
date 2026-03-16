@@ -218,7 +218,9 @@ Exit code 0 = pass, 1 = fail. Designed for GitHub Actions, GitLab CI, etc.
         // Deduplicate detections (edges + heuristics may flag the same pair)
         const seen = new Set<string>();
         const deduped = result.detections.filter((d) => {
-          const key = `${d.type}:${d.description.slice(0, 100)}`;
+          // Use sorted nodeIds as key (order-independent)
+          const ids = [...d.nodeIds].sort().join(',');
+          const key = `${d.type}:${ids}`;
           if (seen.has(key)) return false;
           seen.add(key);
           return true;
