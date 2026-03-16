@@ -19,6 +19,13 @@ export function createScanCommand(): Command {
     .option('--max-pages <n>', 'Maximum pages to crawl', '50')
     .option('--max-depth <n>', 'Maximum crawl depth', '2')
     .option('--no-report', 'Skip HTML report generation')
+    .addHelpText('after', `
+Examples:
+  $ ody-refine scan https://docs.example.com               Scan public docs
+  $ ody-refine scan https://docs.example.com --max-pages 20 Limit crawl size
+
+Requires an embedding provider (Ollama running or OPENAI_API_KEY set).
+`)
     .action(async (
       url: string,
       opts: {

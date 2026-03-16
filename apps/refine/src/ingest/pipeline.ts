@@ -19,6 +19,7 @@ import { chunkMarkdown, chunkPdf } from './chunker.js';
 import { extractFacts } from './extract-facts.js';
 import { hashFile } from './hasher.js';
 import { reasonEdgesHeuristic, reasonEdgesWithLlm } from './reason-edges.js';
+import { classifyDocTypeHeuristic } from './classify-doc-type.js';
 import type { Chunk } from './chunker.js';
 
 /** Options for the ingestion pipeline. */
@@ -154,12 +155,16 @@ async function embedAndStore(
 
       let facts: string[] | undefined;
       let entities: { name: string; type: string }[] | undefined;
+      let docType: string | undefined;
 
       if (llm) {
         onProgress?.({ phase: 'extract', file: filePath, current: fileIdx + 1, total: totalFiles });
         const extracted = await extractFacts(chunk.text, llm);
         facts = extracted.facts.length > 0 ? extracted.facts : undefined;
         entities = extracted.entities.length > 0 ? extracted.entities : undefined;
+        docType = extracted.docType;
+      } else {
+        docType = classifyDocTypeHeuristic(chunk.metadata.heading ?? basename(filePath), chunk.text);
       }
 
       const now = new Date();
@@ -177,7 +182,7 @@ async function embedAndStore(
         embeddingModel: embeddingProvider.getModelId(),
         embeddingDim: embeddingProvider.getDimension(),
         confidence: 1.0,
-        metadata: { charOffset: chunk.metadata.charOffset, pageNumber: chunk.metadata.pageNumber },
+        metadata: { charOffset: chunk.metadata.charOffset, pageNumber: chunk.metadata.pageNumber, docType },
         createdAt: now,
         updatedAt: now,
       };

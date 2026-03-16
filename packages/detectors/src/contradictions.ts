@@ -17,17 +17,15 @@ import { detectClaimContradictions } from './claim-comparison.js';
 const NUMBER_UNIT_PATTERN =
   /\$?(\d[\d,]*(?:\.\d+)?)\s*\+?\s*(?:per\s+)?(requests?|min|minutes?|hour|hours?|day|days?|month|months?|week|weeks?|\/\w+|calls?|users?|people|persons?|employees?|members?|%|percent|gpus?|nodes?|cores?|GBs?|instances?|seconds?|tokens?)/gi;
 
+// Only high-signal boolean pairs — common words like required/optional/enabled/disabled
+// produce too many false positives on real docs. Those are handled by LLM when available.
 const BOOLEAN_PAIRS: [RegExp, RegExp, string, string][] = [
   [/\bremote[- ]first\b/i, /\b(?:in[- ]office|office[- ](?:first|required|days?)|monday|tuesday|wednesday|thursday|friday)\b/i,
     'remote-first', 'office requirement'],
-  [/\brequired\b/i, /\boptional\b/i, 'required', 'optional'],
-  [/\bmandatory\b/i, /\bnot\s+required\b/i, 'mandatory', 'not required'],
   [/\bdeprecated\b/i, /\bcurrent(?:ly)?\s+(?:supported|active|used)\b/i,
     'deprecated', 'current'],
-  [/\benabled?\b/i, /\bdisabled?\b/i, 'enabled', 'disabled'],
   [/\bunder\s+a\s+minute\b/i, /\ba\s+few\s+minutes\b/i,
     'under a minute', 'a few minutes'],
-  [/\bfree\b/i, /\bpaid\b/i, 'free', 'paid'],
 ];
 
 const STOPWORDS = new Set([
@@ -131,7 +129,7 @@ function buildHighFreqEntities(nodes: KnowledgeNode[]): Set<string> {
       freq.set(name, (freq.get(name) ?? 0) + 1);
     }
   }
-  const threshold = nodes.length * 0.5;
+  const threshold = nodes.length * 0.3;
   const result = new Set<string>();
   for (const [name, count] of freq) {
     if (count > threshold) result.add(name);
@@ -173,6 +171,8 @@ function detectHeuristicContradictions(
   seen: Set<string>,
 ): void {
   const highFreqEntities = buildHighFreqEntities(nodes);
+  const MAX_FACT_INFO = 10;
+  let factInfoCount = 0;
 
   for (let i = 0; i < nodes.length; i++) {
     for (let j = i + 1; j < nodes.length; j++) {
@@ -182,7 +182,10 @@ function detectHeuristicContradictions(
       if (seen.has(key)) continue;
 
       const pairDets: Detection[] = [];
-      detectFactContradiction(a, b, pairDets, highFreqEntities);
+      if (factInfoCount < MAX_FACT_INFO) {
+        detectFactContradiction(a, b, pairDets, highFreqEntities);
+        if (pairDets.some((d) => d.severity === 'info')) factInfoCount++;
+      }
       if (pairDets.length === 0) detectNumberContradiction(a, b, pairDets);
       if (pairDets.length === 0) detectBooleanContradiction(a, b, pairDets);
       if (pairDets.length > 0) {
@@ -206,7 +209,7 @@ function detectFactContradiction(
   const entB = new Set((b.content.entities ?? []).map((e) => e.name.toLowerCase()));
   const shared = [...entA].filter((e) => entB.has(e) && !highFreqEntities.has(e));
   const meaningful = shared.filter((e) => e.length > 3);
-  if (meaningful.length < 2) return;
+  if (meaningful.length < 3) return;
 
   const setA = new Set(factsA.map((f) => f.toLowerCase()));
   const setB = new Set(factsB.map((f) => f.toLowerCase()));
@@ -243,8 +246,14 @@ function detectNumberContradiction(
   const textA = getNodeText(a);
   const textB = getNodeText(b);
   if (shareExactSentence(textA, textB)) return;
-  const numsA = extractNumbers(textA);
-  const numsB = extractNumbers(textB);
+  // Filter colloquial uses: "100% sure", "not 100% certain"
+  const COLLOQUIAL_RE = /\b(sure|certain|confident|probably|maybe)\b/i;
+  const numsA = extractNumbers(textA).filter(
+    (n) => !COLLOQUIAL_RE.test(extractSentence(textA, n.index)),
+  );
+  const numsB = extractNumbers(textB).filter(
+    (n) => !COLLOQUIAL_RE.test(extractSentence(textB, n.index)),
+  );
   if (numsA.length === 0 || numsB.length === 0) return;
 
   for (const na of numsA) {
@@ -273,10 +282,14 @@ function detectNumberContradiction(
   }
 }
 
+/** Words near enabled/disabled or required/optional that indicate a spec, not a policy. */
+const CONFIG_CONTEXT = /\b(toggle|setting|flag|config|checkbox|option|parameter|property|attribute|button|switch|mode|state|default|value|field|prerequisite|dependency|component|install|version|package|library|sdk|module)\b/i;
+
 /** Detect boolean/opposing concept contradictions from raw content. */
 function detectBooleanContradiction(
   a: KnowledgeNode, b: KnowledgeNode, out: Detection[],
 ): void {
+  if (!areSameTopic(a, b)) return;
   const textA = getNodeText(a);
   const textB = getNodeText(b);
   if (shareExactSentence(textA, textB)) return;
@@ -286,6 +299,14 @@ function detectBooleanContradiction(
     const mBB = pB.exec(textB);
     const mAB = (!mAA || !mBB) ? pB.exec(textA) : null;
     const mBA = mAB ? pA.exec(textB) : null;
+
+    // Skip if either context looks like a config/spec setting (not a policy)
+    const skipLabels = new Set(['enabled', 'disabled', 'required', 'optional', 'mandatory', 'not required']);
+    if (skipLabels.has(lA) || skipLabels.has(lB)) {
+      const ctxA = mAA ? extractSentence(textA, mAA.index) : mAB ? extractSentence(textA, mAB.index) : '';
+      const ctxB = mBB ? extractSentence(textB, mBB.index) : mBA ? extractSentence(textB, mBA.index) : '';
+      if (CONFIG_CONTEXT.test(ctxA) || CONFIG_CONTEXT.test(ctxB)) continue;
+    }
 
     const match = mAA && mBB
       ? { m1: mAA, m2: mBB, la: lA, lb: lB }
@@ -330,7 +351,14 @@ const detectContradictions: DetectorFn = async (
   }
 
   // 3. Heuristic fallback (always runs for pairs not yet covered)
+  const beforeHeuristic = detections.length;
   detectHeuristicContradictions(nodes, detections, seenPairs);
+
+  // Cap heuristic output — more than 50 heuristic findings is noise, not signal
+  const MAX_HEURISTIC = 50;
+  if (detections.length - beforeHeuristic > MAX_HEURISTIC) {
+    detections.splice(beforeHeuristic + MAX_HEURISTIC);
+  }
 
   return detections;
 };

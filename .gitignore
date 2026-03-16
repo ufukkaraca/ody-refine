@@ -35,6 +35,25 @@ coverage/
 *.sqlite
 *.db
 
+# SSL certificates (local dev)
+*.pem
+certificates/
+
+# Backups
+*.bak
+
+# macOS App (frozen)
+_frozen/macos/Ody/.build/
+
+# Claude internal files
+.claude/codex-auth-fix-brief.md
+.claude/deck-visuals/
+
+# Tool configs
+.agents/skills/
+.gstack/
+skills-lock.json
+
 # Ody Refine local data
 .ody-refine/
 *.db-journal

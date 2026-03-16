@@ -49,13 +49,14 @@ export function groupByType(detections: Detection[]): Map<string, Detection[]> {
 /** Render the executive summary section. */
 export function renderExecutiveSummary(
   detections: Detection[],
-  stats?: { nodeCount: number; durationMs: number },
+  stats?: { nodeCount: number; durationMs: number; docTypeCounts?: Record<string, number> },
 ): string {
   if (detections.length === 0) return '';
   const critical = detections.filter((d) => d.severity === 'critical').length;
   const warnings = detections.filter((d) => d.severity === 'warning').length;
   const types = new Set(detections.map((d) => d.type));
-  const nodeText = stats ? `${String(stats.nodeCount)} documents` : 'your knowledge base';
+  const nodeCount = stats?.nodeCount ?? null;
+  const nodeText = nodeCount !== null ? `${String(nodeCount)} documents` : 'your knowledge base';
 
   let text = `We analyzed ${nodeText} and found <strong>${String(detections.length)} `;
   text += `issue${detections.length !== 1 ? 's' : ''}</strong>`;
@@ -68,9 +69,23 @@ export function renderExecutiveSummary(
   if (warnings > 0) parts.push(`${String(warnings)} warning${warnings !== 1 ? 's' : ''}`);
   if (parts.length > 0) text += ` This includes ${parts.join(' and ')}.`;
 
+  let compositionText = '';
+  if (stats?.docTypeCounts && nodeCount !== null) {
+    const entries = Object.entries(stats.docTypeCounts)
+      .sort((a, b) => b[1] - a[1])
+      .slice(0, 5)
+      .map(([type, count]) => `${String(count)} ${type}`)
+      .join(', ');
+    if (entries) compositionText = ` Corpus: ${String(nodeCount)} documents — ${entries}.`;
+  }
+
+  const compositionHtml = compositionText
+    ? `\n  <p class="corpus-composition">${escapeHtml(compositionText.trim())}</p>`
+    : '';
+
   return `<div class="exec-summary">
   <div class="section-label">Executive Summary</div>
-  <p>${text}</p>
+  <p>${text}</p>${compositionHtml}
 </div>`;
 }
 
@@ -143,7 +158,7 @@ export function renderShareSnippet(
   const detail = contradictions > 0
     ? `${String(contradictions)} contradiction${contradictions !== 1 ? 's' : ''} found.`
     : `${String(total)} issue${total !== 1 ? 's' : ''} found.`;
-  const snippet = `Our docs scored ${String(score)}/100 on Ody Refine. ${detail} Full report: [attached]`;
+  const snippet = `Our docs scored ${String(score)}/100 on Ody Refine. ${detail} Try it: npx ody-refine ./docs/`;
   return `<div class="share-snippet">
   <div class="section-label">Share This Report</div>
   <div class="share-text">${escapeHtml(snippet)}</div>
@@ -151,7 +166,10 @@ export function renderShareSnippet(
 }
 
 /** Render the issue count annotation below the score ring. */
-export function renderScoreAnnotation(detections: Detection[]): string {
+export function renderScoreAnnotation(
+  detections: Detection[],
+  stats?: { nodeCount: number; durationMs: number; docTypeCounts?: Record<string, number> },
+): string {
   const warnings = detections.filter((d) => d.severity === 'warning').length;
   const criticals = detections.filter((d) => d.severity === 'critical').length;
   const total = warnings + criticals;
@@ -159,7 +177,16 @@ export function renderScoreAnnotation(detections: Detection[]): string {
   const parts: string[] = [];
   if (criticals > 0) parts.push(`<span class="score-critical">${String(criticals)} critical</span>`);
   if (warnings > 0) parts.push(`<span class="score-warning">${String(warnings)} warning${warnings !== 1 ? 's' : ''}</span>`);
-  return `<div class="score-annotation">${String(total)} issue${total !== 1 ? 's' : ''} need attention: ${parts.join(', ')}</div>`;
+  let compositionNote = '';
+  if (stats?.docTypeCounts && stats.nodeCount) {
+    const entries = Object.entries(stats.docTypeCounts)
+      .sort((a, b) => b[1] - a[1])
+      .slice(0, 4)
+      .map(([type, count]) => `${String(count)} ${type}`)
+      .join(', ');
+    if (entries) compositionNote = ` &mdash; ${String(stats.nodeCount)} docs: ${escapeHtml(entries)}`;
+  }
+  return `<div class="score-annotation">${String(total)} issue${total !== 1 ? 's' : ''} need attention: ${parts.join(', ')}${compositionNote}</div>`;
 }
 
 /** Render the "What To Do Next" section. */

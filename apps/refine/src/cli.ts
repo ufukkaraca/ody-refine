@@ -39,8 +39,16 @@ function createProgram(): Command {
 
   program
     .name('ody-refine')
-    .description('Ody Refine — local-first knowledge integrity CLI')
-    .version('0.1.0');
+    .description('Find contradictions, staleness, and drift in your docs — locally.')
+    .version('0.1.0')
+    .addHelpText('after', `
+Getting started:
+  $ ody-refine ./docs/                 Scan a directory (ingest + detect + report)
+  $ ody-refine ingest . --no-llm       Fast heuristic scan (no Ollama needed)
+  $ ody-refine report                  Regenerate the HTML report
+
+Docs: https://github.com/rodyr/ody-platform
+`);
 
   program.addCommand(createIngestCommand());
   program.addCommand(createDetectCommand());

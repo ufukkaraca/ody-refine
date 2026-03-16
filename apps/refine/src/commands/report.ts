@@ -15,6 +15,15 @@ export function createReportCommand(): Command {
     .option('--config <path>', 'Path to config file')
     .option('-o, --output <path>', 'Output file path', 'report.html')
     .option('--no-open', 'Do not open the report in the browser')
+    .addHelpText('after', `
+Examples:
+  $ ody-refine report                          Open report in browser
+  $ ody-refine report -o audit.html            Save to a specific file
+  $ ody-refine report --no-open                Generate without opening
+
+Requires a prior 'ody-refine ingest' run. The report is self-contained
+HTML — share it as-is via email or Slack.
+`)
     .action(async (opts: { config?: string; output: string; open: boolean }) => {
       const spinner = createSpinner('Generating report...');
       spinner.start();

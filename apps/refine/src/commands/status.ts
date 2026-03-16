@@ -13,6 +13,10 @@ export function createStatusCommand(): Command {
   return new Command('status')
     .description('Show knowledge graph database status')
     .option('--config <path>', 'Path to config file')
+    .addHelpText('after', `
+Examples:
+  $ ody-refine status                  Show node/edge counts and DB path
+`)
     .action(async (opts: { config?: string }) => {
       const config = loadConfig(opts.config);
       const dbPath = resolve(config.dataDir, 'refine.db');
@@ -35,7 +39,10 @@ export function createStatusCommand(): Command {
         const nodeCount = await nodeRepo.count();
         const allEdges = await edgeRepo.findAll();
 
-        printStatus({ nodes: nodeCount, edges: allEdges.length, resolutions: 0 });
+        printStatus(
+          { nodes: nodeCount, edges: allEdges.length, resolutions: 0 },
+          dbPath,
+        );
       } catch (error: unknown) {
         const msg = error instanceof Error ? error.message : String(error);
         process.stderr.write(`Status check failed: ${msg}\n`);

@@ -20,6 +20,15 @@ export function createExportCommand(): Command {
       'nodes',
     )
     .option('--min-confidence <n>', 'Minimum confidence threshold', '0')
+    .addHelpText('after', `
+Examples:
+  $ ody-refine export                            Export all nodes as JSONL
+  $ ody-refine export -o data.jsonl              Save to a specific file
+  $ ody-refine export --format sft               Export for fine-tuning (SFT)
+  $ ody-refine export --min-confidence 0.8       High-confidence nodes only
+
+Requires a prior 'ody-refine ingest' run.
+`)
     .action(
       async (opts: {
         config?: string;

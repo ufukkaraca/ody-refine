@@ -16,7 +16,15 @@ function getConfigPath(): string {
 /** Create the config command with get/set subcommands. */
 export function createConfigCommand(): Command {
   const cmd = new Command('config')
-    .description('Get or set configuration values');
+    .description('Get or set configuration values')
+    .addHelpText('after', `
+Examples:
+  $ ody-refine config show                       Show all settings
+  $ ody-refine config get embedding.provider      Get a specific value
+  $ ody-refine config set llm.model llama3.2      Set a value
+
+Config file: ~/.config/ody-refine/config.toml
+`);
 
   cmd.addCommand(
     new Command('get')

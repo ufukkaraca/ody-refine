@@ -169,6 +169,15 @@ export function getReportStyles(): string {
       padding: 2px 10px; border-radius: var(--radius-sm);
       font-weight: 500;
     }
+    .doc-type-badge {
+      font-size: 0.6rem; font-weight: 600;
+      padding: 1px 6px; border-radius: 3px;
+      background: var(--bg-input); color: var(--text-muted);
+      text-transform: uppercase; letter-spacing: 0.05em;
+    }
+    .corpus-composition {
+      font-size: 0.8rem; color: var(--text-muted); margin-top: 0.4rem;
+    }
     .detection .nodes { display: flex; flex-wrap: wrap; gap: 0.35rem; margin-top: 0.5rem; }
     .detection .action {
       margin-top: 0.6rem; padding: 0.5rem 0.75rem;

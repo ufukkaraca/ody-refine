@@ -14,6 +14,13 @@ export function createResolveCommand(): Command {
     .description('Interactively resolve detected issues (TUI)')
     .option('--config <path>', 'Path to config file')
     .option('--auto', 'Auto-resolve high-confidence issues')
+    .addHelpText('after', `
+Examples:
+  $ ody-refine resolve                 Interactive TUI for each issue
+  $ ody-refine resolve --auto          Auto-resolve high-confidence issues
+
+Requires a prior 'ody-refine ingest' run.
+`)
     .action(async (opts: { config?: string; auto?: boolean }) => {
       const spinner = createSpinner('Loading detections...');
       spinner.start();

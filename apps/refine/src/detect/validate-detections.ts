@@ -51,7 +51,7 @@ function buildPrompt(
   const sourceA = nodeA.content.source?.sourceId ?? nodeA.id;
   const sourceB = nodeB.content.source?.sourceId ?? nodeB.id;
 
-  return `Two documentation sections may contradict each other.
+  return `You are a senior technical writer reviewing documentation for REAL contradictions.
 
 Section A: "${nodeA.title}" (file: ${sourceA})
 "${excerptA}"
@@ -61,14 +61,23 @@ Section B: "${nodeB.title}" (file: ${sourceB})
 
 Flagged as: ${d.description}
 
-Is this a REAL contradiction that would confuse a reader?
-Rules:
-- Two sections describing the same thing differently is NOT a contradiction
-- Different numbers for DIFFERENT things is NOT a contradiction
-- A real contradiction = conflicting instructions about the SAME topic
+Is this a REAL contradiction? Apply these rules STRICTLY:
 
-Reply JSON only:
-{"isReal":boolean,"explanation":"why this is/isn't a contradiction","impact":"what happens if not fixed","confidence":"high|medium|low"}`;
+NOT a contradiction (answer isReal: false):
+- Two pages describing DIFFERENT features or topics (e.g., one about pricing, one about architecture)
+- Two pages that give COMPLEMENTARY information about the same thing (e.g., overview vs details)
+- Different sections of the SAME document covering different aspects
+- Two pages using different WORDING to say the same thing
+- Numbers referring to DIFFERENT resources (CPU cores vs GPU memory)
+
+IS a contradiction (answer isReal: true):
+- Two pages state INCOMPATIBLE FACTS about the SAME specific thing
+- A number/limit/price is different for the SAME resource across docs
+- A policy/process is described with OPPOSING rules in different docs
+- One page says something is available, another says it's not
+
+Reply JSON only. Be CONSERVATIVE — when in doubt, answer false.
+{"isReal":boolean,"explanation":"one sentence why","impact":"what goes wrong if not fixed","confidence":"high|medium|low"}`;
 }
 
 /** Call LLM with a 5-second timeout using Promise.race. */
@@ -168,7 +177,22 @@ export async function validateDetections(
   const batchSize = options?.batchSize ?? 5;
   const timeoutMs = options?.timeoutMs ?? 5000;
 
-  const toValidate = detections.slice(0, maxValidations);
+  // Pre-filter: skip obvious non-contradictions before burning LLM calls
+  const preFiltered = detections.filter((d) => {
+    // Skip same-document comparisons (different sections, not contradictions)
+    if (d.nodeIds.length >= 2) {
+      const nA = nodeMap.get(d.nodeIds[0]!);
+      const nB = nodeMap.get(d.nodeIds[1]!);
+      if (nA && nB) {
+        const srcA = nA.content.source?.sourceId ?? '';
+        const srcB = nB.content.source?.sourceId ?? '';
+        if (srcA && srcB && srcA === srcB) return false;
+      }
+    }
+    return true;
+  });
+
+  const toValidate = preFiltered.slice(0, maxValidations);
   const remainder: ValidatedDetection[] = detections
     .slice(maxValidations)
     .map((d) => ({

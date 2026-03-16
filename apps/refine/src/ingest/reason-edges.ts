@@ -21,21 +21,16 @@ const MAX_LLM_PAIRS = 30;
 /** Concurrent LLM calls per batch. */
 const LLM_BATCH_CONCURRENCY = 5;
 
-/** Opposing concept pairs for negation detection. */
+// Only high-signal opposing pairs. Common words (yes/no, enabled/disabled,
+// required/optional) produce massive false positives on real docs.
+// Only very specific opposing pairs. Bare words like "remote/office" match
+// project names and random contexts. Require multi-word phrases.
+// Multi-word phrases only. Single words like "remote" match project names.
+// "remote-first" is specific enough to indicate a work policy.
 const OPPOSING_PAIRS: [string, string][] = [
-  ['remote', 'office'],
   ['remote-first', 'office'],
-  ['required', 'optional'],
-  ['mandatory', 'voluntary'],
-  ['allow', 'prohibit'],
-  ['allowed', 'prohibited'],
-  ['yes', 'no'],
-  ['always', 'never'],
-  ['unlimited', 'limited'],
-  ['free', 'paid'],
-  ['enabled', 'disabled'],
-  ['approve', 'reject'],
-  ['include', 'exclude'],
+  ['remote first', 'office'],
+  ['deprecated', 'current'],
 ];
 
 /** Extract numeric values with context from text. */
@@ -76,8 +71,13 @@ export function detectNumberContradiction(
   const numsA = extractNumbers(textA);
   const numsB = extractNumbers(textB);
 
-  for (const na of numsA) {
-    for (const nb of numsB) {
+  // Filter out colloquial uses: "100% sure", "not 100% certain"
+  const COLLOQUIAL = /\b(sure|certain|confident|probably|maybe|likely|unlikely)\b/i;
+  const cleanA = numsA.filter((n) => !COLLOQUIAL.test(n.context));
+  const cleanB = numsB.filter((n) => !COLLOQUIAL.test(n.context));
+
+  for (const na of cleanA) {
+    for (const nb of cleanB) {
       if (na.value === nb.value) continue;
       const ctxA = na.context.toLowerCase();
       const ctxB = nb.context.toLowerCase();
@@ -163,6 +163,14 @@ export function detectTemporalSupersession(
   const datesB = extractDates(textB);
 
   if (datesA.length === 0 || datesB.length === 0) {
+    return { supersedes: false, newerId: '', olderId: '', reason: '' };
+  }
+
+  // Only supersede if nodes are about the SAME topic (title word overlap)
+  const wordsA = new Set(a.title.toLowerCase().split(/\W+/).filter((w) => w.length > 3));
+  const wordsB = new Set(b.title.toLowerCase().split(/\W+/).filter((w) => w.length > 3));
+  const sharedTitle = [...wordsA].filter((w) => wordsB.has(w)).length;
+  if (sharedTitle === 0) {
     return { supersedes: false, newerId: '', olderId: '', reason: '' };
   }
 

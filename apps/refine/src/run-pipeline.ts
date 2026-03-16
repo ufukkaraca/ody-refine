@@ -31,7 +31,7 @@ export async function runFullPipeline(
   options: PipelineOptions,
 ): Promise<void> {
   const startTime = Date.now();
-  const spinner = createSpinner('Loading configuration...');
+  const spinner = createSpinner('Initializing...');
   spinner.start();
 
   const config = loadConfig(options.configPath);
@@ -44,14 +44,14 @@ export async function runFullPipeline(
 
   try {
     // Step 1: Detect embedding provider
-    spinner.text = 'Detecting embedding provider...';
+    spinner.text = 'Setting up embedding provider...';
     const embeddingProvider = await detectEmbeddingProvider(config);
 
     if (!embeddingProvider) {
       spinner.fail(
-        'No embedding provider available.\n' +
-        '  → Is Ollama running? (ollama serve)\n' +
-        '  → Or set OPENAI_API_KEY / COHERE_API_KEY.',
+        'No embedding provider found.\n' +
+        '  → Install Ollama (https://ollama.com) and run: ollama serve\n' +
+        '  → Or set OPENAI_API_KEY for cloud embeddings.',
       );
       process.exit(1);
     }
@@ -60,7 +60,7 @@ export async function runFullPipeline(
     const llm = options.noLlm ? undefined : await detectLlmProvider(config);
 
     // Step 2: Init SQLite DB
-    spinner.text = 'Initializing database...';
+    spinner.text = 'Preparing database...';
     const core = await import('@useody/platform-core');
     mkdirSync(config.dataDir, { recursive: true });
     const dbPath = resolve(config.dataDir, 'refine.db');
@@ -76,7 +76,7 @@ export async function runFullPipeline(
     const ingestLog = new SQLiteIngestLog(db);
 
     // Step 4: Run ingestion
-    spinner.text = `Ingesting files from ${absDir}...`;
+    spinner.text = `Scanning ${absDir}...`;
     const { ingestDirectory } = await import('./ingest/pipeline.js');
 
     const summary = await ingestDirectory({
@@ -99,7 +99,8 @@ export async function runFullPipeline(
 
     if (summary.filesDiscovered === 0) {
       process.stdout.write(
-        '\n  ⚠ No .md or .pdf files found. Check the directory path.\n\n',
+        '\n  No markdown or PDF files found in that directory.\n' +
+        '  Try pointing at a folder with .md files.\n\n',
       );
       process.exit(0);
     }

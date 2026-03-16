@@ -25,14 +25,17 @@ import {
   getTypeLabel,
 } from './html-sections.js';
 
-/** Compute a simple health score from detections. */
+/** Compute health score. Diminishing returns on warnings/info. */
 function computeScore(detections: Detection[]): number {
   if (detections.length === 0) return 100;
-  const penalty = detections.reduce((sum, d) => {
-    if (d.severity === 'critical') return sum + 15;
-    if (d.severity === 'warning') return sum + 5;
-    return sum + 1;
-  }, 0);
+  const criticals = detections.filter((d) => d.severity === 'critical').length;
+  const warnings = detections.filter((d) => d.severity === 'warning').length;
+  // Criticals: 10 points each (max 50)
+  // Warnings: diminishing — first 5 at 3pts, rest at 1pt (max 25)
+  // Info: ignored in score (they're informational, not actionable)
+  const critPenalty = Math.min(50, criticals * 10);
+  const warnPenalty = Math.min(25, Math.min(warnings, 5) * 3 + Math.max(0, warnings - 5));
+  const penalty = critPenalty + warnPenalty;
   return Math.max(0, 100 - penalty);
 }
 
@@ -131,9 +134,12 @@ function renderDetection(d: Detection): string {
   const indicator = renderConfidenceIndicator(d);
   const impact = d.metadata?.['impact'];
 
-  const files = nodeArr.length > 0
+  const docType = typeof d.metadata?.['docType'] === 'string' ? d.metadata['docType'] : null;
+  const docTypeBadge = docType ? ` <span class="doc-type-badge">${escapeHtml(docType)}</span>` : '';
+  const filePaths = nodeArr.length > 0
     ? nodeArr.map((n) => `<span class="file-path" title="${escapeHtml(n.source ?? n.id)}">${escapeHtml(nodeLabel(n))}</span>`).join(' ')
     : d.nodeIds.map((id) => `<span class="file-path">${escapeHtml(id.slice(0, 8))}</span>`).join(' ');
+  const files = filePaths + docTypeBadge;
 
   let claimsHtml = '';
   if (claims) {
@@ -196,7 +202,7 @@ function renderEmpty(): string {
 }
 
 /** Render optional stats line. */
-function renderStats(stats?: { nodeCount: number; durationMs: number }): string {
+function renderStats(stats?: { nodeCount: number; durationMs: number; docTypeCounts?: Record<string, number> }): string {
   if (!stats) return '';
   const seconds = (stats.durationMs / 1000).toFixed(1);
   return `<div class="stats">${String(stats.nodeCount)} nodes analyzed in ${seconds}s</div>`;
@@ -208,7 +214,7 @@ function renderStats(stats?: { nodeCount: number; durationMs: number }): string 
  */
 export function generateHtmlReport(
   detections: Detection[],
-  stats?: { nodeCount: number; durationMs: number },
+  stats?: { nodeCount: number; durationMs: number; docTypeCounts?: Record<string, number> },
 ): string {
   const score = computeScore(detections);
   const counts = countByType(detections);
@@ -237,7 +243,7 @@ export function generateHtmlReport(
 <body>
 ${renderHeader()}
 ${renderScore(score)}
-${renderScoreAnnotation(detections)}
+${renderScoreAnnotation(detections, stats)}
 ${renderShareSnippet(score, counts)}
 ${renderStats(stats)}
 ${body}

@@ -191,10 +191,11 @@ describe('detectContradictions', () => {
         title: 'Auth Service Docs',
         content: {
           summary: 'auth service config',
-          facts: ['auth service requires OAuth2', 'token lifetime is 24 hours'],
+          facts: ['auth service requires OAuth2', 'token lifetime is 24 hours', 'session policy enforced'],
           entities: [
             { name: 'auth service', type: 'system' },
             { name: 'token lifetime', type: 'config' },
+            { name: 'session policy', type: 'config' },
           ],
         },
       });
@@ -202,10 +203,11 @@ describe('detectContradictions', () => {
         title: 'Security Guide',
         content: {
           summary: 'security config',
-          facts: ['auth service requires SAML', 'token lifetime is 1 hour'],
+          facts: ['auth service requires SAML', 'token lifetime is 1 hour', 'session policy optional'],
           entities: [
             { name: 'auth service', type: 'system' },
             { name: 'token lifetime', type: 'config' },
+            { name: 'session policy', type: 'config' },
           ],
         },
       });
@@ -355,7 +357,7 @@ describe('detectContradictions', () => {
       expect(results[0]!.description).toContain('office');
     });
 
-    it('detects required vs optional', async () => {
+    it('does not flag required/optional heuristically (too noisy)', async () => {
       const a = makeNode({
         title: 'Code Review Policy A',
         content: { summary: 'Code review is required', raw: 'Code review is required' },
@@ -366,12 +368,10 @@ describe('detectContradictions', () => {
       });
 
       const results = await detectContradictions([a, b], []);
-      expect(results).toHaveLength(1);
-      expect(results[0]!.description).toContain('required');
-      expect(results[0]!.description).toContain('optional');
+      expect(results).toHaveLength(0);
     });
 
-    it('detects mandatory vs not required', async () => {
+    it('does not flag mandatory/not-required heuristically (too noisy)', async () => {
       const a = makeNode({
         title: 'Policy A',
         content: { summary: 'test', raw: 'Training is mandatory for all staff' },
@@ -382,8 +382,7 @@ describe('detectContradictions', () => {
       });
 
       const results = await detectContradictions([a, b], []);
-      expect(results).toHaveLength(1);
-      expect(results[0]!.description).toContain('mandatory');
+      expect(results).toHaveLength(0);
     });
 
     it('detects deprecated vs current', async () => {

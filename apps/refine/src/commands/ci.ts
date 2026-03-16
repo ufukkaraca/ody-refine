@@ -144,6 +144,16 @@ export function createCiCommand(): Command {
     .option('-o, --output <path>', 'Write JSON report to file')
     .option('--format <format>', 'Output format: json | markdown', 'json')
     .option('--config <path>', 'Path to config file')
+    .addHelpText('after', `
+Examples:
+  $ ody-refine ci ./docs/                        Run with defaults (score >= 70)
+  $ ody-refine ci ./docs/ --min-health 80        Stricter threshold
+  $ ody-refine ci . --fail-on-regression         Fail if score dropped
+  $ ody-refine ci . --format markdown            PR comment format
+  $ ody-refine ci . -o report.json               Save JSON report to file
+
+Exit code 0 = pass, 1 = fail. Designed for GitHub Actions, GitLab CI, etc.
+`)
     .action(async (directory: string, opts: CiOptions) => {
       const minHealth = parseInt(opts.minHealth, 10);
       if (isNaN(minHealth) || minHealth < 0 || minHealth > 100) {

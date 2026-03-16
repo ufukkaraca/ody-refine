@@ -31,6 +31,26 @@ const MONTH_MAP: Record<string, number> = {
 
 const QUARTER_END_MONTH = [2, 5, 8, 11]; // Q1=Mar, Q2=Jun, Q3=Sep, Q4=Dec
 
+const COMPLETION_RE = /\b(complet\w+|done|shipped|resolved|closed|merged|finished|delivered)\b/i;
+
+function topicWords(text: string): Set<string> {
+  return new Set(
+    text.toLowerCase().replace(/[^\w\s]/g, ' ').split(/\s+/).filter((w) => w.length >= 5),
+  );
+}
+
+function findCompletionNode(nodeId: string, nodeText: string, nodes: KnowledgeNode[]): string | undefined {
+  const topics = topicWords(nodeText);
+  for (const n of nodes) {
+    if (n.id === nodeId) continue;
+    const t = `${n.title} ${(n.content.facts ?? []).join(' ')} ${n.content.summary} ${n.content.raw ?? ''}`;
+    if (!COMPLETION_RE.test(t)) continue;
+    const shared = [...topicWords(t)].filter((w) => topics.has(w));
+    if (shared.length >= 2) return n.title;
+  }
+  return undefined;
+}
+
 interface ParsedDeadline {
   label: string;
   endDate: Date;
@@ -84,19 +104,26 @@ function classifyDeadline(
   now: Date,
   nodeId: string,
   _nowLabel: string,
+  docType?: string,
 ): Detection | null {
   const diff = deadline.endDate.getTime() - now.getTime();
   const thirtyDays = 30 * 24 * 60 * 60 * 1000;
+  const isMeetingNote = docType === 'meeting_notes' || docType === 'changelog';
 
   if (diff < 0) {
     const msPerMonth = 30 * 24 * 60 * 60 * 1000;
     const monthsAgo = Math.round(-diff / msPerMonth);
     const agoStr = monthsAgo <= 0 ? 'recently' : `${monthsAgo} month${monthsAgo === 1 ? '' : 's'} ago`;
+    // Meeting notes: demote to info — the task was likely completed elsewhere
+    const severity = isMeetingNote ? 'info' as const : 'warning' as const;
+    const noteCtx = isMeetingNote ? ' (mentioned in meeting notes — verify if completed)' : '';
     return {
-      type: 'time_bomb', severity: 'warning', nodeIds: [nodeId],
-      description: `Deadline "${deadline.label}" has passed (${agoStr}).`,
-      suggestedAction: `Deadline "${deadline.label}" has passed. Update or remove.`,
-      metadata: { deadline: deadline.label, expired: true, monthsAgo },
+      type: 'time_bomb', severity, nodeIds: [nodeId],
+      description: `Deadline "${deadline.label}" has passed (${agoStr}).${noteCtx}`,
+      suggestedAction: isMeetingNote
+        ? `This deadline was mentioned in meeting notes. Check if it was completed in your task tracker.`
+        : `Deadline "${deadline.label}" has passed. Update or remove.`,
+      metadata: { deadline: deadline.label, expired: true, monthsAgo, docType },
     };
   }
   if (diff <= thirtyDays) {
@@ -104,14 +131,14 @@ function classifyDeadline(
       type: 'time_bomb', severity: 'warning', nodeIds: [nodeId],
       description: `Deadline approaching: "${deadline.label}".`,
       suggestedAction: `Deadline "${deadline.label}" approaching. Verify status.`,
-      metadata: { deadline: deadline.label, expired: false },
+      metadata: { deadline: deadline.label, expired: false, docType },
     };
   }
   return {
     type: 'time_bomb', severity: 'info', nodeIds: [nodeId],
     description: `Future deadline: "${deadline.label}".`,
     suggestedAction: `Deadline "${deadline.label}" is upcoming. Track it.`,
-    metadata: { deadline: deadline.label, expired: false },
+    metadata: { deadline: deadline.label, expired: false, docType },
   };
 }
 
@@ -145,8 +172,9 @@ const detectTimeBombs: DetectorFn = async (
         });
         continue;
       }
+      const nodeDocType = (node.metadata?.['docType'] as string) ?? undefined;
       for (const dl of deadlines) {
-        const det = classifyDeadline(dl, now, node.id, nowLabel);
+        const det = classifyDeadline(dl, now, node.id, nowLabel, nodeDocType);
         if (det) detections.push(det);
       }
       continue;
@@ -196,7 +224,21 @@ const detectTimeBombs: DetectorFn = async (
     }
   }
 
-  return detections;
+  return detections.map((det) => {
+    if (det.metadata?.expired !== true) return det;
+    const nodeId = det.nodeIds[0];
+    if (!nodeId) return det;
+    const node = nodes.find((n) => n.id === nodeId);
+    if (!node) return det;
+    const nodeText = `${node.title} ${(node.content.facts ?? []).join(' ')} ${node.content.summary}`;
+    const completionTitle = findCompletionNode(nodeId, nodeText, nodes);
+    if (!completionTitle) return det;
+    return {
+      ...det,
+      severity: 'info' as const,
+      description: `Deadline passed but may have been completed — see '${completionTitle}'`,
+    };
+  });
 };
 
 detectTimeBombs.preFilter = {

@@ -10,6 +10,7 @@ import type { Detection } from '@useody/platform-core';
 const W = 56;
 const SEP = chalk.dim('─'.repeat(W));
 const HEAVY = chalk.dim('━'.repeat(W));
+const MAX_DESC = 72;
 
 /** Options for printDetectionSummary. */
 export interface SummaryOptions {
@@ -45,13 +46,13 @@ function scoreBar(score: number): string {
 function scoreLabel(score: number): string {
   const label = score >= 80 ? 'Healthy'
     : score >= 60 ? 'Needs attention'
-    : score >= 40 ? 'Poor'
-    : 'Critical issues';
+    : score >= 40 ? 'At risk'
+    : 'Critical';
   const colorFn = score >= 80 ? chalk.green
     : score >= 60 ? chalk.yellow
     : score >= 40 ? chalk.hex('#FFA500')
     : chalk.red;
-  return colorFn(`${score} / 100  ${label}`);
+  return colorFn(`${score}/100 ${label}`);
 }
 
 /** Format milliseconds as a compact human-readable duration. */
@@ -65,18 +66,28 @@ function line(text = ''): void {
   process.stdout.write(text + '\n');
 }
 
+/** Truncate a detection description for terminal display. */
+function truncateDesc(desc: string): string {
+  // Strip parenthetical context blocks that make output too wide
+  const stripped = desc.replace(/\s*\(context:.*$/, '');
+  if (stripped.length <= MAX_DESC) return stripped;
+  return stripped.slice(0, MAX_DESC - 1) + '…';
+}
+
 /**
  * Print a summary of an ingestion run to the terminal.
  */
 export function printIngestSummary(summary: IngestSummary): void {
   line();
-  line(chalk.bold('Ingestion'));
+  line(chalk.bold(' Ingestion'));
   line(SEP);
-  line(`  Files discovered:  ${chalk.cyan(String(summary.filesDiscovered))}`);
-  line(`  Processed:         ${chalk.green(String(summary.filesProcessed))}`);
-  line(`  Skipped (cached):  ${chalk.dim(String(summary.filesSkipped))}`);
-  line(`  Nodes stored:      ${chalk.green(String(summary.nodesStored))}`);
-  line(`  Relationships:     ${chalk.green(String(summary.edgesCreated))}`);
+  line(`  Files scanned     ${chalk.cyan(String(summary.filesDiscovered))}`);
+  line(`  Processed         ${chalk.green(String(summary.filesProcessed))}`);
+  if (summary.filesSkipped > 0) {
+    line(`  Cached            ${chalk.dim(String(summary.filesSkipped))}`);
+  }
+  line(`  Knowledge nodes   ${chalk.green(String(summary.nodesStored))}`);
+  line(`  Relationships     ${chalk.green(String(summary.edgesCreated))}`);
   line();
 }
 
@@ -95,38 +106,38 @@ export function printDetectionSummary(
   const score = healthScore(detections);
 
   // Header banner
-  const parts: string[] = [chalk.bold('ody-refine')];
+  const parts: string[] = [chalk.bold('ody refine')];
   if (fileCount != null) parts.push(`${fileCount} file${fileCount === 1 ? '' : 's'}`);
   if (durationMs != null) parts.push(fmtMs(durationMs));
   line();
   line(HEAVY);
-  line(` ${parts.join('  ·  ')}`);
+  line(` ${parts.join(chalk.dim('  ·  '))}`);
   line(HEAVY);
 
-  // Health score
+  // Health score — centered and prominent
   line();
-  line(` Health Score   ${scoreLabel(score)}  ${scoreBar(score)}`);
+  line(`  ${scoreBar(score)}  ${scoreLabel(score)}`);
   line();
 
   // Totals line
   const totals: string[] = [];
   if (critical.length > 0) totals.push(chalk.red(`${critical.length} critical`));
   if (warnings.length > 0) totals.push(chalk.yellow(`${warnings.length} warning${warnings.length !== 1 ? 's' : ''}`));
-  if (info.length > 0) totals.push(chalk.blue(`${info.length} info`));
+  if (info.length > 0) totals.push(chalk.dim(`${info.length} info`));
   if (totals.length === 0) totals.push(chalk.green('No issues found'));
-  line(` ${totals.join('  ·  ')}`);
+  line(`  ${totals.join(chalk.dim('  ·  '))}`);
 
   // Critical block
   if (critical.length > 0) {
     line();
     line(SEP);
-    line(chalk.red.bold(` CRITICAL  ${critical.length}`));
+    line(chalk.red.bold(` CRITICAL`) + chalk.red(` (${critical.length})`));
     line(SEP);
     for (const d of critical.slice(0, maxPerSeverity)) {
-      line(`  ${chalk.red('✖')} ${chalk.dim(`[${d.type}]`)} ${d.description}`);
+      line(`  ${chalk.red('✖')} ${chalk.dim(`[${d.type}]`)} ${truncateDesc(d.description)}`);
     }
     if (critical.length > maxPerSeverity) {
-      line(chalk.dim(`  … and ${critical.length - maxPerSeverity} more critical`));
+      line(chalk.dim(`  … and ${critical.length - maxPerSeverity} more`));
     }
   }
 
@@ -134,13 +145,13 @@ export function printDetectionSummary(
   if (warnings.length > 0) {
     line();
     line(SEP);
-    line(chalk.yellow.bold(` WARNINGS  ${warnings.length}`));
+    line(chalk.yellow.bold(` WARNINGS`) + chalk.yellow(` (${warnings.length})`));
     line(SEP);
     for (const d of warnings.slice(0, maxPerSeverity)) {
-      line(`  ${chalk.yellow('⚠')} ${chalk.dim(`[${d.type}]`)} ${d.description}`);
+      line(`  ${chalk.yellow('⚠')} ${chalk.dim(`[${d.type}]`)} ${truncateDesc(d.description)}`);
     }
     if (warnings.length > maxPerSeverity) {
-      line(chalk.dim(`  … and ${warnings.length - maxPerSeverity} more warnings`));
+      line(chalk.dim(`  … and ${warnings.length - maxPerSeverity} more`));
     }
   }
 
@@ -148,10 +159,10 @@ export function printDetectionSummary(
   if (info.length > 0) {
     line();
     line(SEP);
-    line(chalk.blue.bold(` INFO  ${info.length}`));
+    line(chalk.blue.bold(` INFO`) + chalk.blue(` (${info.length})`));
     line(SEP);
     for (const d of info.slice(0, maxPerSeverity)) {
-      line(`  ${chalk.blue('ℹ')} ${chalk.dim(`[${d.type}]`)} ${d.description}`);
+      line(`  ${chalk.blue('ℹ')} ${chalk.dim(`[${d.type}]`)} ${truncateDesc(d.description)}`);
     }
     if (info.length > maxPerSeverity) {
       line(chalk.dim(`  … and ${info.length - maxPerSeverity} more`));
@@ -162,22 +173,22 @@ export function printDetectionSummary(
   if (detections.length === 0) {
     line();
     line(SEP);
-    line(chalk.green('  ✔  No issues found — your docs look great!'));
+    line(chalk.green('  ✔  No issues found — your docs look great.'));
   }
 
   // Next steps
   line();
   line(SEP);
-  line(chalk.bold(' Next steps'));
+  line(chalk.bold(' What to do next'));
   line(SEP);
   if (reportPath) {
-    line(`  1. View report:    ${chalk.cyan(`open ${reportPath}`)}`);
-    line(`  2. Fix issues:     ${chalk.cyan('ody-refine resolve')}`);
-    line(`  3. Re-scan:        ${chalk.cyan('ody-refine ingest .')}`);
+    line(`  ${chalk.dim('1.')} Open report    ${chalk.cyan(`open ${reportPath}`)}`);
+    line(`  ${chalk.dim('2.')} Resolve issues ${chalk.cyan('ody-refine resolve')}`);
+    line(`  ${chalk.dim('3.')} Re-scan        ${chalk.cyan('ody-refine ingest .')}`);
   } else {
-    line(`  1. Fix issues:     ${chalk.cyan('ody-refine resolve')}`);
-    line(`  2. View report:    ${chalk.cyan('ody-refine report')}`);
-    line(`  3. Re-scan:        ${chalk.cyan('ody-refine ingest .')}`);
+    line(`  ${chalk.dim('1.')} Generate report ${chalk.cyan('ody-refine report')}`);
+    line(`  ${chalk.dim('2.')} Resolve issues  ${chalk.cyan('ody-refine resolve')}`);
+    line(`  ${chalk.dim('3.')} Re-scan         ${chalk.cyan('ody-refine ingest .')}`);
   }
   line();
   line(HEAVY);
@@ -187,17 +198,30 @@ export function printDetectionSummary(
 /**
  * Print database status stats to the terminal.
  */
-export function printStatus(stats: { nodes: number; edges: number; resolutions: number }): void {
+export function printStatus(
+  stats: { nodes: number; edges: number; resolutions: number },
+  dbPath?: string,
+): void {
   line();
-  line(chalk.bold('Database Status'));
+  line(chalk.bold(' Knowledge Graph'));
   line(SEP);
-  line(`  Knowledge nodes:  ${chalk.cyan(String(stats.nodes))}`);
-  line(`  Edges:            ${chalk.cyan(String(stats.edges))}`);
-  line(`  Resolutions:      ${chalk.cyan(String(stats.resolutions))}`);
+  line(`  Nodes          ${chalk.cyan(String(stats.nodes))}`);
+  line(`  Relationships  ${chalk.cyan(String(stats.edges))}`);
+  if (stats.resolutions > 0) {
+    line(`  Resolved       ${chalk.green(String(stats.resolutions))}`);
+  }
+  if (dbPath) {
+    line();
+    line(chalk.dim(`  Database: ${dbPath}`));
+  }
   line();
+  if (stats.nodes === 0) {
+    line(chalk.dim('  Run ody-refine ingest <directory> to get started.'));
+    line();
+  }
 }
 
 /** Create an ora spinner with a message. */
 export function createSpinner(message: string): ReturnType<typeof ora> {
-  return ora(message);
+  return ora({ text: message, spinner: 'dots' });
 }
