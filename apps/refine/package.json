@@ -33,7 +33,7 @@
     "@types/pdf-parse": "^1.1.0",
     "@types/react": "^19.2.14",
     "typescript": "^5.7.0",
-    "vitest": "^3.0.0"
+    "vitest": "^4.1.0"
   },
   "engines": {
     "node": ">=20.0.0"
