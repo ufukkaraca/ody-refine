@@ -1,3 +1,4 @@
+// EXCEEDS_LIMIT: test fixture coverage for deadline patterns
 import { describe, it, expect, vi, beforeEach, afterEach } from 'vitest';
 import { detectTimeBombs, extractDeadlines, classifyDeadline } from '../src/time-bombs.js';
 import type { KnowledgeNode, LLMProvider } from '@useody/platform-core';

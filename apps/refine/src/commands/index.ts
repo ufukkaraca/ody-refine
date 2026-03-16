@@ -11,3 +11,6 @@ export { createStatusCommand } from './status.js';
 export { createConfigCommand } from './config-cmd.js';
 export { createCiCommand } from './ci.js';
 export { createScanCommand } from './scan.js';
+export { createOptimizeCommand } from './optimize.js';
+export { createDiffCommand } from './diff.js';
+export { createBadgeCommand } from './badge.js';

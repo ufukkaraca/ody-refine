@@ -1,3 +1,4 @@
+// EXCEEDS_LIMIT: heuristic + LLM edge reasoning with extensive filtering
 /**
  * Edge reasoning — creates relationship edges between similar knowledge nodes.
  * Runs AFTER nodes are embedded and stored. Uses heuristic or LLM classification.

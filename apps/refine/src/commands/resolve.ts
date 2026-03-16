@@ -71,15 +71,44 @@ Requires a prior 'ody-refine ingest' run.
           return;
         }
 
+        // Auto-resolve mode: resolve info-level and auto-resolvable issues
+        if (opts.auto) {
+          const { autoResolve } = await import('../resolve/auto-resolve.js');
+          const { resolved, remaining } = autoResolve(result.detections);
+          if (resolved.length > 0) {
+            const { saveResolutions } = await import('../resolve/save-resolutions.js');
+            saveResolutions(db, resolved.map((d) => ({
+              detectionType: d.type,
+              nodeIds: d.nodeIds,
+              action: 'dismissed',
+              reason: 'Auto-resolved (info severity or flagged auto-resolvable)',
+            })));
+            process.stdout.write(
+              `Auto-resolved ${String(resolved.length)} issue(s). ${String(remaining.length)} remaining.\n`,
+            );
+          }
+          if (remaining.length === 0) return;
+          // Fall through to TUI for remaining issues
+          result.detections = remaining;
+        }
+
         // Launch Ink TUI
         const { render } = await import('ink');
         const React = await import('react');
         const { ResolveTui } = await import('../resolve/tui.js');
+        const { saveResolutions } = await import('../resolve/save-resolutions.js');
 
         const { waitUntilExit } = render(
           React.createElement(ResolveTui, {
             detections: result.detections,
             onComplete: (resolutions) => {
+              const records = resolutions.map((r) => ({
+                detectionType: r.detection.type,
+                nodeIds: r.detection.nodeIds,
+                action: r.action as 'keep' | 'dismissed' | 'resolved',
+                reason: `User chose: ${r.action}`,
+              }));
+              saveResolutions(db, records);
               process.stdout.write(
                 `\nResolved ${String(resolutions.length)} detection(s).\n`,
               );

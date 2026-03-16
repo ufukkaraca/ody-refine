@@ -1,3 +1,4 @@
+// EXCEEDS_LIMIT: complex HTML template generation
 /**
  * Generates a self-contained HTML health report from detections.
  * Structured like a consultant's audit: executive summary, grouped findings,

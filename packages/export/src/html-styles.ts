@@ -1,4 +1,4 @@
-// EXCEEDS_LIMIT: CSS template string for self-contained HTML report
+// EXCEEDS_LIMIT: CSS template string (generated code)
 /**
  * CSS styles for the Ody Refine health report.
  * Warm parchment theme matching the ody_px web app brand.

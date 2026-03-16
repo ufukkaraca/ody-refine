@@ -15,11 +15,15 @@ import {
   createConfigCommand,
   createCiCommand,
   createScanCommand,
+  createOptimizeCommand,
+  createDiffCommand,
+  createBadgeCommand,
 } from './commands/index.js';
 
 /** Known subcommand names — used to detect the default command case. */
 const SUBCOMMANDS = new Set([
-  'ingest', 'detect', 'resolve', 'export', 'report', 'status', 'config', 'ci', 'scan', 'help',
+  'ingest', 'detect', 'resolve', 'export', 'report', 'status', 'config',
+  'ci', 'scan', 'optimize', 'diff', 'badge', 'help',
 ]);
 
 /**
@@ -59,6 +63,9 @@ Docs: https://github.com/rodyr/ody-platform
   program.addCommand(createConfigCommand());
   program.addCommand(createCiCommand());
   program.addCommand(createScanCommand());
+  program.addCommand(createOptimizeCommand());
+  program.addCommand(createDiffCommand());
+  program.addCommand(createBadgeCommand());
 
   return program;
 }

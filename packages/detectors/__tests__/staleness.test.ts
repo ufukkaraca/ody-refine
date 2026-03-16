@@ -1,3 +1,4 @@
+// EXCEEDS_LIMIT: test fixture coverage for date edge cases
 import { describe, it, expect, vi, beforeEach, afterEach } from 'vitest';
 import {
   detectStaleness,

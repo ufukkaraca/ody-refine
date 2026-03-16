@@ -1,6 +1,7 @@
 {
   "name": "ody-refine",
   "version": "0.1.0",
+  "description": "Find contradictions, staleness, and drift in your documentation — locally, in seconds",
   "type": "module",
   "bin": {
     "ody-refine": "dist/cli.js"
@@ -44,5 +45,17 @@
     "url": "https://github.com/ufukkaraca/ody-platform.git",
     "directory": "apps/refine"
   },
+  "homepage": "https://github.com/ufukkaraca/ody-platform#readme",
+  "keywords": [
+    "documentation",
+    "knowledge",
+    "contradictions",
+    "staleness",
+    "lint",
+    "cli",
+    "integrity",
+    "audit",
+    "quality"
+  ],
   "files": ["dist", "README.md", "LICENSE"]
 }

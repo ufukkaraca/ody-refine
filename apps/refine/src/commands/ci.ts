@@ -1,3 +1,4 @@
+// EXCEEDS_LIMIT: CI report formatting with markdown generation
 /**
  * CI command — runs pipeline and outputs machine-readable results.
  * No spinners, no browser. Designed for GitHub Actions and CI pipelines.

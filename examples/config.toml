@@ -1,0 +1,28 @@
+# Example ody-refine configuration
+# Place at ~/.config/ody-refine/config.toml or pass --config <path>
+
+# Where to store the local SQLite database
+# dataDir = ".ody-refine"
+
+# Embedding provider: "transformers" (default, zero-config), "ollama", "openai", "cohere"
+[embedding]
+provider = "transformers"
+# model = "all-MiniLM-L6-v2"        # transformers.js default
+# model = "nomic-embed-text"         # Ollama model
+
+# LLM provider (optional — improves detection quality)
+# [llm]
+# provider = "openrouter"
+# model = "google/gemini-2.0-flash-lite-001"
+
+# Alternative: use local Ollama
+# [llm]
+# provider = "ollama"
+# model = "llama3.2"
+# baseUrl = "http://localhost:11434"
+
+# Detection thresholds (advanced)
+# [detectors]
+# contradictionSimilarity = 0.65    # min embedding similarity for contradiction pairs
+# stalenessDays = 180               # days before a doc is considered stale
+# duplicateThreshold = 0.92         # embedding similarity for duplicate detection

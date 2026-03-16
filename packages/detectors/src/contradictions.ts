@@ -1,4 +1,4 @@
-// EXCEEDS_LIMIT: Heuristic detectors with multiple pattern-matching passes
+// EXCEEDS_LIMIT: multi-strategy detector with heuristic + LLM paths
 /**
  * Contradiction detector.
  * Finds knowledge nodes that contradict each other via edges, LLM claim

@@ -132,8 +132,17 @@ export async function runFullPipeline(
 
     spinner.succeed('Detection complete');
 
+    // Step 5a: Apply .ody-refine-ignore rules
+    const { loadIgnoreRules, applyIgnoreRules } = await import('./ignore.js');
+    const ignoreRules = loadIgnoreRules(absDir);
+    const afterIgnore = applyIgnoreRules(result.detections, ignoreRules);
+    if (afterIgnore.length < result.detections.length) {
+      const suppressed = result.detections.length - afterIgnore.length;
+      spinner.info?.(`Suppressed ${String(suppressed)} detection(s) via .ody-refine-ignore`);
+    }
+
     // Step 5b: LLM validation pass — filter false positives
-    let finalDetections = result.detections;
+    let finalDetections = afterIgnore;
     if (llm && !options.noValidate && result.detections.length > 0) {
       const { validateDetections } = await import('./detect/validate-detections.js');
       const total = result.detections.length;

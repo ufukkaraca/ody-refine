@@ -1,3 +1,4 @@
+// EXCEEDS_LIMIT: comprehensive test fixture coverage
 import { describe, it, expect, vi } from 'vitest';
 import { detectContradictions } from '../src/contradictions.js';
 import type { KnowledgeNode, KnowledgeEdge, LLMProvider } from '@useody/platform-core';
