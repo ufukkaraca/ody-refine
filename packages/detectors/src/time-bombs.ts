@@ -31,7 +31,7 @@ const MONTH_MAP: Record<string, number> = {
 
 const QUARTER_END_MONTH = [2, 5, 8, 11]; // Q1=Mar, Q2=Jun, Q3=Sep, Q4=Dec
 
-const COMPLETION_RE = /\b(completed|was\sdone|shipped|resolved|closed|merged|finished|delivered|launched|migrated)\b/i;
+const COMPLETION_RE = /\b(completed|was\s+done|shipped|resolved|closed|merged|finished|delivered|launched|migrated|moved\s+from)\b/i;
 
 /** Check if a match position follows a document metadata label (Last updated, Date, etc.). */
 function isMetadataDate(text: string, index: number): boolean {
@@ -276,7 +276,7 @@ const detectTimeBombs: DetectorFn = async (
         severity: bestSev,
         nodeIds: merged,
         description: merged.length > 1
-          ? `${existing.description} (${String(merged.length)} documents)`
+          ? `${existing.description.replace(/\s*\(\d+ documents?\)$/g, '')} (${String(merged.length)} documents)`
           : existing.description,
       });
     } else {
