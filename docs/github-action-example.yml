@@ -1,0 +1,34 @@
+# Example: Run Ody Refine on every pull request to check docs health.
+#
+# Copy this file to .github/workflows/knowledge-health.yml in your repo.
+# Make sure your docs directory exists (default: ./docs).
+#
+# For the published action, use: useody/refine-action@v1
+# For local development, use a relative path as shown below.
+
+name: Knowledge Health
+on:
+  pull_request:
+    paths:
+      - 'docs/**'
+      - '*.md'
+
+jobs:
+  refine:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      # Option A: Use the published action
+      - uses: useody/refine-action@v1
+        with:
+          directory: ./docs
+          min-health: '70'
+          fail-on-regression: 'true'
+
+      # Option B: Use from this repo (for development)
+      # - uses: ./.github/actions/refine
+      #   with:
+      #     directory: ./docs
+      #     min-health: '70'
+      #     fail-on-regression: 'true'
