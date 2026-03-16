@@ -76,11 +76,11 @@ describe('detectNumberContradiction', () => {
   it('detects expense limit contradiction ($25 vs $50)', () => {
     const a = makeNode(
       'a', 'Company Policy',
-      'Team lunches up to $25 per person can be expensed without approval.',
+      'Expense policy: team lunches up to $25 per person can be submitted without expense approval.',
     );
     const b = makeNode(
       'b', 'Onboarding Guide',
-      'Anything over $50 per person needs your manager approval.',
+      'Expense policy: anything over $50 per person requires expense approval from your manager.',
     );
 
     const result = detectNumberContradiction(a, b);
