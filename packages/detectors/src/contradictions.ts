@@ -1,6 +1,8 @@
+// EXCEEDS_LIMIT: Heuristic detectors with multiple pattern-matching passes
 /**
  * Contradiction detector.
- * Finds knowledge nodes that contradict each other via edges, facts, or content.
+ * Finds knowledge nodes that contradict each other via edges, LLM claim
+ * comparison, or content heuristics (fallback when no LLM is available).
  * @module contradictions
  */
 import type {
@@ -10,9 +12,10 @@ import type {
   DetectorFn,
   LLMProvider,
 } from '@useody/platform-core';
+import { detectClaimContradictions } from './claim-comparison.js';
 
 const NUMBER_UNIT_PATTERN =
-  /(\d[\d,]*(?:\.\d+)?)\s*\+?\s*(requests?|per|min|minutes?|hour|hours?|day|days?|month|months?|week|weeks?|\/\w+|calls?|users?|people|persons?|employees?|members?|%|percent|gpus?|nodes?|cores?|GBs?|instances?|seconds?|tokens?)/gi;
+  /\$?(\d[\d,]*(?:\.\d+)?)\s*\+?\s*(?:per\s+)?(requests?|min|minutes?|hour|hours?|day|days?|month|months?|week|weeks?|\/\w+|calls?|users?|people|persons?|employees?|members?|%|percent|gpus?|nodes?|cores?|GBs?|instances?|seconds?|tokens?)/gi;
 
 const BOOLEAN_PAIRS: [RegExp, RegExp, string, string][] = [
   [/\bremote[- ]first\b/i, /\b(?:in[- ]office|office[- ](?:first|required|days?)|monday|tuesday|wednesday|thursday|friday)\b/i,
@@ -33,6 +36,11 @@ const STOPWORDS = new Set([
   'should', 'may', 'might', 'can', 'in', 'on', 'at', 'to', 'for', 'of',
   'and', 'or', 'but', 'not', 'with', 'from', 'by', 'into', 'it', 'its',
   'this', 'that', 'we', 'our', 'all', 'use', 'uses', 'used', 'than',
+]);
+
+const CONTEXT_STOPWORDS = new Set([
+  'per', 'hour', 'hours', 'min', 'minute', 'minutes',
+  'day', 'days', 'week', 'weeks', 'month', 'months', 'second', 'seconds',
 ]);
 
 interface NumberFact { value: number; unit: string; raw: string; index: number }
@@ -69,13 +77,6 @@ function getNodeText(node: KnowledgeNode): string {
   return `${node.title} ${node.content.summary} ${facts} ${raw}`;
 }
 
-/** Extract keywords from text, excluding stopwords. */
-function extractKeywords(text: string): Set<string> {
-  return new Set(
-    text.toLowerCase().split(/\W+/).filter((w) => w.length > 2 && !STOPWORDS.has(w)),
-  );
-}
-
 /** Extract the sentence containing the match at matchIndex. */
 function extractSentence(text: string, matchIndex: number): string {
   let start = matchIndex;
@@ -85,12 +86,42 @@ function extractSentence(text: string, matchIndex: number): string {
   return text.slice(start, end).trim();
 }
 
+/** Capitalize the first letter of a string. */
+function capitalizeFirst(s: string): string {
+  return s.charAt(0).toUpperCase() + s.slice(1);
+}
+
+/** Extract topic keywords from a node's raw content only. */
+function rawKeywords(node: KnowledgeNode): Set<string> {
+  const text = node.content.raw ?? '';
+  return new Set(
+    text.toLowerCase().split(/\W+/)
+      .filter((w) => w.length > 2 && !STOPWORDS.has(w) && !CONTEXT_STOPWORDS.has(w)),
+  );
+}
+
 /** Canonical pair key for deduplication. */
 function pairKey(id1: string, id2: string): string {
   return id1 < id2 ? `${id1}:${id2}` : `${id2}:${id1}`;
 }
 
-/** Build set of entities appearing in >50% of nodes (only for corpus > 4 nodes). */
+/** Return true if two nodes plausibly discuss the same topic. */
+function areSameTopic(a: KnowledgeNode, b: KnowledgeNode): boolean {
+  const srcA = a.content.source?.sourceId ?? '';
+  const srcB = b.content.source?.sourceId ?? '';
+  if (srcA && srcB && srcA === srcB) return true;
+  const wA = new Set(a.title.toLowerCase().split(/\W+/).filter((w) => w.length > 3));
+  return b.title.toLowerCase().split(/\W+/).some((w) => w.length > 3 && wA.has(w));
+}
+
+/** Return true if both texts share an identical long sentence. */
+function shareExactSentence(textA: string, textB: string): boolean {
+  const sA = textA.split(/[.!?\n]+/).map((s) => s.trim().toLowerCase()).filter((s) => s.length > 20);
+  const sB = new Set(textB.split(/[.!?\n]+/).map((s) => s.trim().toLowerCase()).filter((s) => s.length > 20));
+  return sA.some((s) => sB.has(s));
+}
+
+/** Build set of entities appearing in >50% of nodes. */
 function buildHighFreqEntities(nodes: KnowledgeNode[]): Set<string> {
   if (nodes.length <= 4) return new Set();
   const freq = new Map<string, number>();
@@ -108,19 +139,13 @@ function buildHighFreqEntities(nodes: KnowledgeNode[]): Set<string> {
   return result;
 }
 
-/**
- * Detect contradictions between knowledge nodes.
- * Uses edges, fact comparison, and raw content heuristics.
- */
-const detectContradictions: DetectorFn = async (
+/** Detect edge-based contradictions. */
+function detectEdgeContradictions(
   nodes: KnowledgeNode[],
   edges: KnowledgeEdge[],
-  _llm?: LLMProvider,
-): Promise<Detection[]> => {
-  const detections: Detection[] = [];
-  const seenPairs = new Set<string>();
-  const highFreqEntities = buildHighFreqEntities(nodes);
-
+  out: Detection[],
+  seen: Set<string>,
+): void {
   const contradictEdges = edges.filter((e) => e.type === 'contradicts');
   const nodeMap = new Map(nodes.map((n) => [n.id, n]));
 
@@ -129,8 +154,8 @@ const detectContradictions: DetectorFn = async (
     const nodeB = nodeMap.get(edge.targetId);
     if (!nodeA || !nodeB) continue;
     const key = pairKey(nodeA.id, nodeB.id);
-    seenPairs.add(key);
-    detections.push({
+    seen.add(key);
+    out.push({
       type: 'contradiction',
       severity: edge.confidence >= 0.8 ? 'critical' : 'warning',
       nodeIds: [nodeA.id, nodeB.id],
@@ -139,27 +164,34 @@ const detectContradictions: DetectorFn = async (
         `Resolve which is current: "${nodeA.title}" or "${nodeB.title}"`,
     });
   }
+}
+
+/** Heuristic fallback: number, boolean, and fact-based detection. */
+function detectHeuristicContradictions(
+  nodes: KnowledgeNode[],
+  out: Detection[],
+  seen: Set<string>,
+): void {
+  const highFreqEntities = buildHighFreqEntities(nodes);
 
   for (let i = 0; i < nodes.length; i++) {
     for (let j = i + 1; j < nodes.length; j++) {
       const a = nodes[i]!;
       const b = nodes[j]!;
       const key = pairKey(a.id, b.id);
-      if (seenPairs.has(key)) continue;
+      if (seen.has(key)) continue;
 
       const pairDets: Detection[] = [];
       detectFactContradiction(a, b, pairDets, highFreqEntities);
       if (pairDets.length === 0) detectNumberContradiction(a, b, pairDets);
       if (pairDets.length === 0) detectBooleanContradiction(a, b, pairDets);
       if (pairDets.length > 0) {
-        seenPairs.add(key);
-        detections.push(...pairDets);
+        seen.add(key);
+        out.push(...pairDets);
       }
     }
   }
-
-  return detections;
-};
+}
 
 /** Detect contradictions from shared entities with different facts. */
 function detectFactContradiction(
@@ -180,49 +212,63 @@ function detectFactContradiction(
   const setB = new Set(factsB.map((f) => f.toLowerCase()));
   if ([...setA].every((f) => setB.has(f))) return;
 
+  const kwA = new Set(factsA.join(' ').toLowerCase().split(/\W+/).filter((w) => w.length > 2 && !STOPWORDS.has(w)));
+  const kwB = new Set(factsB.join(' ').toLowerCase().split(/\W+/).filter((w) => w.length > 2 && !STOPWORDS.has(w)));
   const onlyA = factsA.filter((f) => !setB.has(f.toLowerCase())).slice(0, 2);
   const onlyB = factsB.filter((f) => !setA.has(f.toLowerCase())).slice(0, 2);
   if (onlyA.length === 0 && onlyB.length === 0) return;
-
-  // Require differing facts share at least one meaningful keyword (same sub-topic)
-  const kwA = extractKeywords(onlyA.join(' '));
-  const kwB = extractKeywords(onlyB.join(' '));
   if (![...kwA].some((k) => kwB.has(k))) return;
 
   const quoteA = onlyA.length > 0 ? onlyA.join('; ') : '(no unique claims)';
   const quoteB = onlyB.length > 0 ? onlyB.join('; ') : '(no unique claims)';
 
+  const topic = meaningful.slice(0, 3).join(', ');
   out.push({
     type: 'contradiction', severity: 'info', nodeIds: [a.id, b.id],
     description:
-      `"${a.title}" says: ${quoteA} — but "${b.title}" says: ${quoteB}`,
+      `When discussing ${topic}, "${a.title}" states: ${quoteA} — while "${b.title}" states: ${quoteB}`,
     suggestedAction: `Review "${a.title}" and "${b.title}" for consistency.`,
-    metadata: { sharedEntities: meaningful, factsA: onlyA, factsB: onlyB },
+    metadata: {
+      sharedEntities: meaningful, factsA: onlyA, factsB: onlyB,
+      claimA: quoteA, claimB: quoteB, topic,
+    },
   });
 }
 
-/** Detect number+unit contradictions, showing surrounding sentence for context. */
+/** Detect number+unit contradictions with surrounding sentence context. */
 function detectNumberContradiction(
   a: KnowledgeNode, b: KnowledgeNode, out: Detection[],
 ): void {
+  if (!areSameTopic(a, b)) return;
   const textA = getNodeText(a);
   const textB = getNodeText(b);
+  if (shareExactSentence(textA, textB)) return;
   const numsA = extractNumbers(textA);
   const numsB = extractNumbers(textB);
   if (numsA.length === 0 || numsB.length === 0) return;
 
   for (const na of numsA) {
     for (const nb of numsB) {
-      if (normalizeUnit(na.unit) === normalizeUnit(nb.unit) && na.value !== nb.value) {
-        const sentA = extractSentence(textA, na.index);
-        const sentB = extractSentence(textB, nb.index);
-        out.push({
-          type: 'contradiction', severity: 'warning', nodeIds: [a.id, b.id],
-          description: `Possible contradiction: "${sentA}" vs "${sentB}".`,
-          suggestedAction: `Review "${a.title}" and "${b.title}" for consistency.`,
-        });
-        return; // one detection per pair
-      }
+      if (normalizeUnit(na.unit) !== normalizeUnit(nb.unit)) continue;
+      if (na.value === nb.value) continue;
+      const sentA = extractSentence(textA, na.index);
+      const sentB = extractSentence(textB, nb.index);
+      if (sentA === sentB) continue;
+      const kwA = rawKeywords(a);
+      const kwB = rawKeywords(b);
+      const sharedCount = [...kwA].filter((k) => kwB.has(k)).length;
+      if (sharedCount < 2) continue;
+      const unitLabel = capitalizeFirst(normalizeUnit(na.unit));
+      out.push({
+        type: 'contradiction', severity: 'warning', nodeIds: [a.id, b.id],
+        description: `${unitLabel} inconsistency between ${a.title} and ${b.title}: "${na.raw}" vs "${nb.raw}"`,
+        suggestedAction: `Review "${a.title}" and "${b.title}" for consistency.`,
+        metadata: {
+          nodeExcerpts: { [a.id]: sentA, [b.id]: sentB },
+          claimA: na.raw, claimB: nb.raw, topic: `${unitLabel} values`,
+        },
+      });
+      return;
     }
   }
 }
@@ -233,21 +279,61 @@ function detectBooleanContradiction(
 ): void {
   const textA = getNodeText(a);
   const textB = getNodeText(b);
+  if (shareExactSentence(textA, textB)) return;
 
-  for (const [patternA, patternB, labelA, labelB] of BOOLEAN_PAIRS) {
-    if (
-      (patternA.test(textA) && patternB.test(textB)) ||
-      (patternB.test(textA) && patternA.test(textB))
-    ) {
-      out.push({
-        type: 'contradiction', severity: 'warning', nodeIds: [a.id, b.id],
-        description: `Possible contradiction: "${labelA}" vs "${labelB}".`,
-        suggestedAction: `Review "${a.title}" and "${b.title}" for consistency.`,
-      });
-      return; // one detection per pair
-    }
+  for (const [pA, pB, lA, lB] of BOOLEAN_PAIRS) {
+    const mAA = pA.exec(textA);
+    const mBB = pB.exec(textB);
+    const mAB = (!mAA || !mBB) ? pB.exec(textA) : null;
+    const mBA = mAB ? pA.exec(textB) : null;
+
+    const match = mAA && mBB
+      ? { m1: mAA, m2: mBB, la: lA, lb: lB }
+      : mAB && mBA ? { m1: mAB, m2: mBA, la: lB, lb: lA } : null;
+    if (!match) continue;
+
+    const sentA = extractSentence(textA, match.m1.index);
+    const sentB = extractSentence(textB, match.m2.index);
+    out.push({
+      type: 'contradiction', severity: 'warning', nodeIds: [a.id, b.id],
+      description: `Policy conflict between ${a.title} and ${b.title}: "${match.la}" vs "${match.lb}"`,
+      suggestedAction: `Review "${a.title}" and "${b.title}" for consistency.`,
+      metadata: {
+        nodeExcerpts: { [a.id]: sentA, [b.id]: sentB },
+        claimA: match.la, claimB: match.lb,
+        topic: `${match.la} vs ${match.lb}`,
+      },
+    });
+    return;
   }
 }
+
+/**
+ * Detect contradictions between knowledge nodes.
+ * Uses edges first, then LLM claim comparison (if available),
+ * otherwise falls back to heuristic detection.
+ */
+const detectContradictions: DetectorFn = async (
+  nodes: KnowledgeNode[],
+  edges: KnowledgeEdge[],
+  llm?: LLMProvider,
+): Promise<Detection[]> => {
+  const detections: Detection[] = [];
+  const seenPairs = new Set<string>();
+
+  // 1. Edge-based contradictions (always)
+  detectEdgeContradictions(nodes, edges, detections, seenPairs);
+
+  // 2. LLM claim comparison (when available and nodes have facts)
+  if (llm) {
+    await detectClaimContradictions(nodes, llm, detections, seenPairs);
+  }
+
+  // 3. Heuristic fallback (always runs for pairs not yet covered)
+  detectHeuristicContradictions(nodes, detections, seenPairs);
+
+  return detections;
+};
 
 detectContradictions.preFilter = {
   similarityThreshold: 0.6,

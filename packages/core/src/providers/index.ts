@@ -17,3 +17,5 @@ export {
 export type { TransformersEmbeddingConfig } from './transformers-embedding.js';
 export { MlxLLMProvider, isMlxAvailable } from './mlx-llm.js';
 export type { MlxLLMConfig } from './mlx-llm.js';
+export { OpenRouterLLMProvider } from './openrouter-llm.js';
+export type { OpenRouterLLMConfig } from './openrouter-llm.js';

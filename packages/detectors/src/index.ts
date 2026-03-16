@@ -1,6 +1,6 @@
 /**
- * @useody/detectors — pure function detectors for knowledge graph analysis.
- * @module @useody/detectors
+ * @ody/detectors — pure function detectors for knowledge graph analysis.
+ * @module @ody/detectors
  */
 export { detectContradictions } from './contradictions.js';
 export { detectDuplicates } from './duplicates.js';

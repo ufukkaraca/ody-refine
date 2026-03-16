@@ -41,10 +41,12 @@ export class OllamaLLMProvider implements LLMProvider {
       },
     };
 
+    // Hard timeout so abandoned fetch calls don't hold the process open
     const res = await fetch(`${this.baseUrl}/api/chat`, {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify(body),
+      signal: AbortSignal.timeout(60_000),
     });
 
     if (!res.ok) {

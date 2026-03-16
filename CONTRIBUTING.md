@@ -25,10 +25,10 @@ pnpm verify        # All of the above
 
 ```bash
 # Run tests for just the detectors package
-pnpm --filter @useody/detectors test
+pnpm --filter @ody/detectors test
 
 # Build just core
-pnpm --filter @useody/platform-core build
+pnpm --filter @ody/platform-core build
 ```
 
 ## Code style
@@ -47,9 +47,9 @@ pnpm --filter @useody/platform-core build
 
 ```
 packages/
-  core/         @useody/platform-core  — types, SQLite, vector search, providers
-  detectors/    @useody/detectors      — 5 pure-function detectors
-  export/       @useody/export         — HTML report, JSONL export
+  core/         @ody/platform-core  — types, SQLite, vector search, providers
+  detectors/    @ody/detectors      — 5 pure-function detectors
+  export/       @ody/export         — HTML report, JSONL export
 apps/
   refine/       ody-refine          — CLI application
 ```
@@ -59,7 +59,7 @@ apps/
 Detectors are pure functions: `(nodes, edges, llm?) -> Detection[]`. They have no side effects and no I/O.
 
 ```typescript
-import type { DetectorFn } from '@useody/platform-core';
+import type { DetectorFn } from '@ody/platform-core';
 
 const detectMyIssue: DetectorFn = async (nodes, edges, llm) => {
   const detections: Detection[] = [];

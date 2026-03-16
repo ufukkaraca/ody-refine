@@ -21,17 +21,19 @@ export function createDetectCommand(): Command {
     .description('Run detectors to find issues in the knowledge graph')
     .option('--config <path>', 'Path to config file')
     .option('--type <type>', `Run only a specific detector (${DETECTOR_TYPES.join(', ')})`)
+    .option('--no-llm', 'Skip LLM entirely (heuristic mode — fast, no Ollama needed)')
     .option('--no-validate', 'Skip the LLM validation pass that filters false positives')
     .addHelpText('after', `
 Examples:
   $ ody-refine detect                            Run all 5 detectors
+  $ ody-refine detect --no-llm                   Fast heuristic-only scan (no Ollama needed)
   $ ody-refine detect --type contradiction       Contradictions only
   $ ody-refine detect --type time_bomb           Expired/approaching deadlines
   $ ody-refine detect --no-validate              Skip LLM validation (faster)
 
 Requires a prior 'ody-refine ingest' run.
 `)
-    .action(async (opts: { config?: string; type?: string; validate?: boolean }) => {
+    .action(async (opts: { config?: string; type?: string; llm?: boolean; validate?: boolean }) => {
       const spinner = createSpinner('Loading knowledge graph...');
       spinner.start();
 
@@ -59,8 +61,9 @@ Requires a prior 'ody-refine ingest' run.
         const edgeRepo = new core.SQLiteEdgeRepository(db);
         const vecIndex = new core.SqliteVecIndex(db, dim);
 
-        spinner.text = 'Detecting LLM provider...';
-        const llm = await detectLlmProvider(config);
+        const noLlm = opts.llm === false;
+        spinner.text = noLlm ? 'Running in heuristic mode (--no-llm)...' : 'Detecting LLM provider...';
+        const llm = noLlm ? undefined : await detectLlmProvider(config);
 
         const detectorMap: Record<string, DetectorFn> = {
           contradiction: detectorsMod.detectContradictions,
@@ -140,10 +143,12 @@ Requires a prior 'ody-refine ingest' run.
         }
 
         printDetectionSummary(finalDetections);
+        // Force exit — lingering Ollama HTTP connections keep Node alive
+        process.exit(0);
       } catch (error: unknown) {
         const msg = error instanceof Error ? error.message : String(error);
         spinner.fail(`Detection failed: ${msg}`);
-        process.exitCode = 1;
+        process.exit(1);
       }
     });
 }

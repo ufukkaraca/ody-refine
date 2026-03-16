@@ -133,7 +133,15 @@ export async function detectLlmProvider(
   try {
     const mod = await import('@useody/platform-core');
 
-    // 1. Try MLX first (fastest on Apple Silicon)
+    // 1. Explicit env var takes priority (user chose this)
+    const orKey = process.env['OPENROUTER_API_KEY'];
+    if (orKey && 'OpenRouterLLMProvider' in mod) {
+      const orModel = process.env['OPENROUTER_MODEL']
+        ?? 'google/gemini-2.0-flash-lite-001';
+      return new mod.OpenRouterLLMProvider({ apiKey: orKey, model: orModel });
+    }
+
+    // 2. Try MLX (fastest on Apple Silicon)
     if ('isMlxAvailable' in mod) {
       const mlxReady = await (mod.isMlxAvailable as () => Promise<boolean>)();
       if (mlxReady && 'MlxLLMProvider' in mod) {
@@ -141,7 +149,7 @@ export async function detectLlmProvider(
       }
     }
 
-    // 2. Fall back to Ollama
+    // 3. Try Ollama
     const ollama = await detectOllama(config.ollama.baseUrl);
     if (ollama.available) {
       const llmModel = ollama.models.find(

@@ -1,6 +1,6 @@
-import { describe, it, expect } from 'vitest';
+import { describe, it, expect, vi } from 'vitest';
 import { detectContradictions } from '../src/contradictions.js';
-import type { KnowledgeNode, KnowledgeEdge } from '@useody/platform-core';
+import type { KnowledgeNode, KnowledgeEdge, LLMProvider } from '@useody/platform-core';
 
 function makeNode(overrides: Partial<KnowledgeNode> = {}): KnowledgeNode {
   return {
@@ -29,6 +29,14 @@ function makeEdge(
     confidence: 0.9,
     createdAt: new Date(),
     ...overrides,
+  };
+}
+
+function makeMockLlm(response: string): LLMProvider {
+  return {
+    complete: vi.fn().mockResolvedValue(response),
+    stream: vi.fn(),
+    getModelId: vi.fn().mockReturnValue('test-model'),
   };
 }
 
@@ -72,8 +80,113 @@ describe('detectContradictions', () => {
     });
   });
 
-  describe('fact-based heuristic', () => {
-    it('detects shared specific entities with different facts about same sub-topic', async () => {
+  describe('LLM claim comparison', () => {
+    it('detects contradictions via LLM when facts exist', async () => {
+      const a = makeNode({
+        title: 'pricing-overview.md',
+        content: {
+          summary: 'pricing overview',
+          facts: ['Sandbox API costs $0.05 per core/hour'],
+        },
+      });
+      const b = makeNode({
+        title: 'pricing-update.md',
+        content: {
+          summary: 'pricing update',
+          facts: ['Sandbox API costs $3 per hour'],
+        },
+      });
+
+      const llm = makeMockLlm(JSON.stringify({
+        isContradiction: true,
+        topic: 'Sandbox API pricing',
+        claimA: '$0.05 per core/hour',
+        claimB: '$3 per hour',
+        severity: 'critical',
+        explanation: 'Same API with conflicting hourly rates',
+      }));
+
+      const results = await detectContradictions([a, b], [], llm);
+      expect(results).toHaveLength(1);
+      expect(results[0]!.severity).toBe('critical');
+      expect(results[0]!.description).toContain('Sandbox API pricing');
+      expect(results[0]!.description).toContain('$0.05 per core/hour');
+      expect(results[0]!.description).toContain('$3 per hour');
+      expect(results[0]!.description).toContain('pricing-overview.md');
+      expect(results[0]!.description).toContain('pricing-update.md');
+    });
+
+    it('does not flag when LLM says no contradiction', async () => {
+      const a = makeNode({
+        title: 'compute-pricing.md',
+        content: {
+          summary: 'compute pricing',
+          facts: ['vCPU costs $0.05 per core/hour'],
+        },
+      });
+      const b = makeNode({
+        title: 'storage-pricing.md',
+        content: {
+          summary: 'storage pricing',
+          facts: ['Disk costs $0.01 per GB/hour'],
+        },
+      });
+
+      const llm = makeMockLlm(JSON.stringify({
+        isContradiction: false,
+        topic: 'pricing',
+        claimA: 'vCPU costs $0.05/core/hour',
+        claimB: 'Disk costs $0.01/GB/hour',
+        severity: 'warning',
+        explanation: 'Different resources with different pricing',
+      }));
+
+      const results = await detectContradictions([a, b], [], llm);
+      expect(results).toHaveLength(0);
+    });
+
+    it('skips LLM path for nodes without facts', async () => {
+      const a = makeNode({
+        title: 'Doc A',
+        content: { summary: 'no facts here' },
+      });
+      const b = makeNode({
+        title: 'Doc B',
+        content: { summary: 'no facts here either' },
+      });
+
+      const llm = makeMockLlm('should not be called');
+
+      const results = await detectContradictions([a, b], [], llm);
+      expect(results).toHaveLength(0);
+      expect(llm.complete).not.toHaveBeenCalled();
+    });
+
+    it('handles LLM timeout gracefully', async () => {
+      const a = makeNode({
+        title: 'Doc A',
+        content: { summary: 'test', facts: ['Fact A'] },
+      });
+      const b = makeNode({
+        title: 'Doc B',
+        content: { summary: 'test', facts: ['Fact B'] },
+      });
+
+      const llm: LLMProvider = {
+        complete: vi.fn().mockRejectedValue(new Error('timeout')),
+        stream: vi.fn(),
+        getModelId: vi.fn().mockReturnValue('test'),
+      };
+
+      // Should not throw, completeWithTimeout catches errors
+      const results = await detectContradictions([a, b], [], llm);
+      // No results since LLM failed (returns empty string)
+      expect(results).toHaveLength(0);
+    });
+  });
+
+  describe('heuristic fallback (no LLM)', () => {
+    it('detects shared entities with different facts', async () => {
       const a = makeNode({
         title: 'Auth Service Docs',
         content: {
@@ -97,35 +210,6 @@ describe('detectContradictions', () => {
         },
       });
 
-      const results = await detectContradictions([a, b], []);
-      expect(results.some((r) => r.severity === 'info')).toBe(true);
-    });
-
-    it('does not flag when differing facts share no keywords (unrelated sub-topics)', async () => {
-      const a = makeNode({
-        title: 'Node A',
-        content: {
-          summary: 'test',
-          facts: ['auth service uses OAuth2', 'deploy pipeline uses GitHub Actions'],
-          entities: [
-            { name: 'auth service', type: 'system' },
-            { name: 'deploy pipeline', type: 'system' },
-          ],
-        },
-      });
-      const b = makeNode({
-        title: 'Node B',
-        content: {
-          summary: 'test',
-          facts: ['auth service uses SAML', 'monitoring uses Datadog'],
-          entities: [
-            { name: 'auth service', type: 'system' },
-            { name: 'deploy pipeline', type: 'system' },
-          ],
-        },
-      });
-
-      // Only 'auth service requires' facts share keywords — should still detect
       const results = await detectContradictions([a, b], []);
       expect(results.some((r) => r.severity === 'info')).toBe(true);
     });
@@ -204,6 +288,50 @@ describe('detectContradictions', () => {
       const results = await detectContradictions([a, b], []);
       expect(results).toHaveLength(0);
     });
+
+    it('does not flag different prices for different resources', async () => {
+      const a = makeNode({
+        title: 'vCPU cores',
+        content: { summary: 'compute resource', raw: 'vCPU costs $0.05 per core/hour' },
+      });
+      const b = makeNode({
+        title: 'Disk quota',
+        content: { summary: 'storage resource', raw: 'Disk costs $0.01 per GB/hour' },
+      });
+
+      const results = await detectContradictions([a, b], []);
+      expect(results).toHaveLength(0);
+    });
+
+    it('does not flag when same sentence appears in both nodes', async () => {
+      const sentence = 'The service processes 1000 requests per minute';
+      const a = makeNode({
+        title: 'Onboarding guide',
+        content: { summary: 'test', raw: sentence },
+      });
+      const b = makeNode({
+        title: 'API reference',
+        content: { summary: 'test', raw: sentence },
+      });
+
+      const results = await detectContradictions([a, b], []);
+      expect(results).toHaveLength(0);
+    });
+
+    it('still flags same resource with genuinely different numbers', async () => {
+      const a = makeNode({
+        title: 'Pricing v1',
+        content: { summary: 'test', raw: 'Compute costs $0.05 per core/hour' },
+      });
+      const b = makeNode({
+        title: 'Pricing v2',
+        content: { summary: 'test', raw: 'Compute costs $0.10 per core/hour' },
+      });
+
+      const results = await detectContradictions([a, b], []);
+      expect(results).toHaveLength(1);
+      expect(results[0]!.severity).toBe('warning');
+    });
   });
 
   describe('boolean contradiction detection', () => {
@@ -229,11 +357,11 @@ describe('detectContradictions', () => {
 
     it('detects required vs optional', async () => {
       const a = makeNode({
-        title: 'Doc A',
+        title: 'Code Review Policy A',
         content: { summary: 'Code review is required', raw: 'Code review is required' },
       });
       const b = makeNode({
-        title: 'Doc B',
+        title: 'Code Review Policy B',
         content: { summary: 'Code review is optional', raw: 'Code review is optional' },
       });
 
@@ -260,11 +388,11 @@ describe('detectContradictions', () => {
 
     it('detects deprecated vs current', async () => {
       const a = makeNode({
-        title: 'API docs',
+        title: 'API endpoint docs',
         content: { summary: 'test', raw: 'This endpoint is deprecated' },
       });
       const b = makeNode({
-        title: 'Integration guide',
+        title: 'API endpoint guide',
         content: { summary: 'test', raw: 'This endpoint is currently supported' },
       });
 
@@ -289,18 +417,16 @@ describe('detectContradictions', () => {
   });
 
   describe('deduplication', () => {
-    it('does not produce duplicate detection when edge and heuristic both match', async () => {
+    it('does not produce duplicate when edge and heuristic both match', async () => {
       const a = makeNode({ title: 'Work policy', content: { summary: 'We are remote-first', raw: 'We are remote-first' } });
       const b = makeNode({ title: 'Office policy', content: { summary: 'In office Monday', raw: 'Everyone in office Monday' } });
       const edge = makeEdge({ sourceId: a.id, targetId: b.id, confidence: 0.9 });
 
       const results = await detectContradictions([a, b], [edge]);
-      // Edge fires first; heuristic should skip the same pair
       expect(results).toHaveLength(1);
     });
 
     it('produces at most one detection per node pair from heuristics', async () => {
-      // Both number and boolean patterns match — should only get 1 detection
       const a = makeNode({
         title: 'Policy A',
         content: { summary: 'remote-first, 100 users', raw: 'We are remote-first with 100 users' },

@@ -1,6 +1,6 @@
 /**
- * @useody/platform-core — shared types, SQLite implementations, loader, and providers.
- * @module @useody/platform-core
+ * @ody/platform-core — shared types, SQLite implementations, loader, and providers.
+ * @module @ody/platform-core
  */
 
 export * from './types.js';

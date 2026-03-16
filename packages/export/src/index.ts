@@ -1,6 +1,6 @@
 /**
- * @useody/export — JSONL export and HTML health report generation.
- * @module @useody/export
+ * @ody/export — JSONL export and HTML health report generation.
+ * @module @ody/export
  */
 
 export { exportNodesToJsonl, exportPreferencePairsToJsonl } from './jsonl.js';

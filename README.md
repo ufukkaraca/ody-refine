@@ -210,9 +210,9 @@ Fail the build when contradictions land in your docs -- the same way ESLint fail
 ```
 ody-platform/
 ├── packages/
-│   ├── core/           @useody/platform-core  — types, SQLite, vector search, providers
-│   ├── detectors/      @useody/detectors      — 5 pure-function detectors
-│   └── export/         @useody/export         — HTML report, JSONL export
+│   ├── core/           @ody/platform-core  — types, SQLite, vector search, providers
+│   ├── detectors/      @ody/detectors      — 5 pure-function detectors
+│   └── export/         @ody/export         — HTML report, JSONL export
 ├── apps/
 │   └── refine/         ody-refine          — CLI application
 └── .ody-refine/        (created at runtime — SQLite DB + reports)
@@ -221,7 +221,7 @@ ody-platform/
 Detectors are pure functions with zero side effects: `(nodes, edges, llm?) -> Detection[]`. Build your own:
 
 ```typescript
-import type { DetectorFn } from '@useody/platform-core';
+import type { DetectorFn } from '@ody/platform-core';
 
 const detectCustomIssue: DetectorFn = async (nodes, edges, llm) => {
   // Your detection logic here

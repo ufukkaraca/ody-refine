@@ -225,13 +225,12 @@ export function createCiCommand(): Command {
           writeFileSync(resolve(opts.output), output, 'utf-8');
         }
 
-        if (!report.pass) {
-          process.exitCode = 1;
-        }
+        // Force exit — lingering provider connections keep Node alive
+        process.exit(report.pass ? 0 : 1);
       } catch (error: unknown) {
         const msg = error instanceof Error ? error.message : String(error);
         process.stderr.write(`CI pipeline failed: ${msg}\n`);
-        process.exitCode = 1;
+        process.exit(1);
       }
     });
 }

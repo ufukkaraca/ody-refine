@@ -5,7 +5,7 @@
  */
 
 import type { Detection } from '@useody/platform-core';
-import { escapeHtml } from './html-template.js';
+import { escapeHtml, renderMarkdownInline } from './html-template.js';
 
 /** Human-readable labels for detection types. */
 const TYPE_LABELS: Record<string, string> = {
@@ -120,7 +120,7 @@ export function renderTopUrgent(detections: Detection[]): string {
       return `<div class="urgent-item ${d.severity}">
     <span class="urgent-num">${String(i + 1)}</span>
     <div class="urgent-body">
-      <div class="urgent-desc">${escapeHtml(d.description)}</div>
+      <div class="urgent-desc">${renderMarkdownInline(d.description)}</div>
       <div class="urgent-files">${files}</div>
     </div>
   </div>`;
@@ -130,6 +130,36 @@ export function renderTopUrgent(detections: Detection[]): string {
   <div class="section-label">Most Urgent</div>
 ${items}
 </div>`;
+}
+
+/** Render a copyable share snippet for Slack/email forwarding. */
+export function renderShareSnippet(
+  score: number,
+  counts: Record<string, number>,
+): string {
+  const total = Object.values(counts).reduce((a, b) => a + b, 0);
+  if (total === 0) return '';
+  const contradictions = counts['contradiction'] ?? 0;
+  const detail = contradictions > 0
+    ? `${String(contradictions)} contradiction${contradictions !== 1 ? 's' : ''} found.`
+    : `${String(total)} issue${total !== 1 ? 's' : ''} found.`;
+  const snippet = `Our docs scored ${String(score)}/100 on Ody Refine. ${detail} Full report: [attached]`;
+  return `<div class="share-snippet">
+  <div class="section-label">Share This Report</div>
+  <div class="share-text">${escapeHtml(snippet)}</div>
+</div>`;
+}
+
+/** Render the issue count annotation below the score ring. */
+export function renderScoreAnnotation(detections: Detection[]): string {
+  const warnings = detections.filter((d) => d.severity === 'warning').length;
+  const criticals = detections.filter((d) => d.severity === 'critical').length;
+  const total = warnings + criticals;
+  if (total === 0) return '';
+  const parts: string[] = [];
+  if (criticals > 0) parts.push(`<span class="score-critical">${String(criticals)} critical</span>`);
+  if (warnings > 0) parts.push(`<span class="score-warning">${String(warnings)} warning${warnings !== 1 ? 's' : ''}</span>`);
+  return `<div class="score-annotation">${String(total)} issue${total !== 1 ? 's' : ''} need attention: ${parts.join(', ')}</div>`;
 }
 
 /** Render the "What To Do Next" section. */

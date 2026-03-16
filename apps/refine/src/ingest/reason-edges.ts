@@ -42,10 +42,10 @@ const OPPOSING_PAIRS: [string, string][] = [
 export function extractNumbers(text: string): { value: number; context: string }[] {
   const results: { value: number; context: string }[] = [];
   const patterns = [
-    /(\d[\d,]*)\s*(requests?|per|\/|calls?|days?|hours?|minutes?|min|sec|seconds?)/gi,
+    /\$?(\d[\d,]*(?:\.\d+)?)\s*(?:per\s+)?(requests?|calls?|days?|hours?|minutes?|min|sec|seconds?|gpus?|cores?|GBs?|nodes?|instances?|tokens?)/gi,
     /\$(\d[\d,]*(?:\.\d+)?)/g,
     /(\d[\d,]*(?:\.\d+)?)%/g,
-    /(\d[\d,]*)\s+(?:per\s+)?(minute|hour|day|month|year|week)/gi,
+    /(\d[\d,]*(?:\.\d+)?)\s+(?:per\s+)?(minute|hour|day|month|year|week)/gi,
   ];
 
   for (const pattern of patterns) {
@@ -54,8 +54,10 @@ export function extractNumbers(text: string): { value: number; context: string }
       const raw = match[1] ?? match[0];
       const value = Number(raw.replace(/,/g, ''));
       if (!Number.isNaN(value) && value > 0) {
-        const start = Math.max(0, match.index - 30);
-        const end = Math.min(text.length, match.index + match[0].length + 30);
+        let start = match.index;
+        while (start > 0 && !/[.!?\n]/.test(text[start - 1]!)) start--;
+        let end = match.index + match[0].length;
+        while (end < text.length && !/[.!?\n]/.test(text[end]!)) end++;
         results.push({ value, context: text.slice(start, end).trim() });
       }
     }

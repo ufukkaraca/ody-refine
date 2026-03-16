@@ -9,7 +9,7 @@ import type {
   LLMProvider,
 } from '@useody/platform-core';
 
-const DEFAULT_TIMEOUT_MS = 3_000;
+const DEFAULT_TIMEOUT_MS = 15_000;
 
 /** Call LLM with a timeout. Returns empty string on failure. */
 export async function completeWithTimeout(

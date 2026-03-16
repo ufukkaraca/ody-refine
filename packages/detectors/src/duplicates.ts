@@ -42,9 +42,11 @@ const detectDuplicates: DetectorFn = async (
   if (!llm) return detections;
 
   const seen = new Set<string>();
+  let llmCalls = 0;
+  const MAX_LLM_CALLS = 20;
 
-  for (let i = 0; i < nodes.length; i++) {
-    for (let j = i + 1; j < nodes.length; j++) {
+  for (let i = 0; i < nodes.length && llmCalls < MAX_LLM_CALLS; i++) {
+    for (let j = i + 1; j < nodes.length && llmCalls < MAX_LLM_CALLS; j++) {
       const a = nodes[i]!;
       const b = nodes[j]!;
 
@@ -68,6 +70,7 @@ const detectDuplicates: DetectorFn = async (
       const overlap = sharedTokens(tokensA, tokensB);
       if (overlap.length < MIN_SHARED_TOKENS) continue;
 
+      llmCalls++;
       const response = await completeWithTimeout(
         llm,
         [

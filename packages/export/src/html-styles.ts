@@ -113,9 +113,12 @@ export function getReportStyles(): string {
       border-radius: var(--radius-md); padding: 1rem 1.25rem;
       border-left: 3px solid var(--text-muted); box-shadow: var(--shadow-sm);
     }
-    .detection.critical { border-left-color: var(--sev-critical); background: var(--sev-critical-bg); }
-    .detection.warning { border-left-color: var(--sev-warning); background: var(--sev-warning-bg); }
-    .detection.info { border-left-color: var(--sev-info); background: var(--sev-info-bg); }
+    .detection.critical { border-left: 4px solid var(--sev-critical); background: var(--sev-critical-bg); }
+    .detection.warning { border-left: 4px solid var(--sev-warning); background: rgba(184, 134, 11, 0.10); }
+    .detection.info {
+      border-left: 2px solid var(--border-hover);
+      background: rgba(92, 79, 66, 0.03); color: var(--text-secondary);
+    }
     .detection-header {
       display: flex; align-items: center; gap: 0.5rem; margin-bottom: 0.4rem;
     }
@@ -132,6 +135,31 @@ export function getReportStyles(): string {
       color: var(--text-secondary); text-transform: capitalize;
     }
     .detection .desc { font-size: 0.85rem; line-height: 1.6; }
+    .headline { font-weight: 600; font-size: 0.9rem; color: var(--text-primary); }
+    .detection-files { margin: 0.4rem 0; display: flex; flex-wrap: wrap; gap: 0.35rem; }
+    .claims-grid {
+      display: grid; grid-template-columns: 1fr auto 1fr;
+      gap: 0.5rem; align-items: stretch; margin: 0.6rem 0;
+    }
+    .claim {
+      padding: 0.6rem 0.75rem; border-radius: var(--radius-sm);
+      background: var(--bg-input); font-size: 0.82rem;
+    }
+    .claim-a { border-left: 3px solid var(--sev-warning); }
+    .claim-b { border-left: 3px solid var(--sev-info); }
+    .claim-source { font-size: 0.7rem; font-weight: 600; color: var(--accent-text); margin-bottom: 0.25rem; }
+    .claim-source a { color: var(--accent-text); text-decoration: underline; }
+    .claim-text { color: var(--text-primary); font-style: italic; }
+    .claim-vs {
+      display: flex; align-items: center; font-weight: 700;
+      font-size: 0.75rem; color: var(--text-muted); padding: 0 0.25rem;
+    }
+    .impact {
+      font-size: 0.8rem; color: var(--text-secondary);
+      margin-top: 0.4rem; padding-left: 0.5rem;
+      border-left: 2px solid var(--accent-text);
+      font-style: italic;
+    }
     .detection .nodes {
       display: flex; flex-wrap: wrap; gap: 0.35rem; margin-top: 0.5rem;
     }
@@ -286,12 +314,47 @@ export function getReportStyles(): string {
     .confidence-indicator.confirmed { color: var(--sev-critical); background: var(--sev-critical-bg); }
     .confidence-indicator.likely { color: var(--sev-warning); background: var(--sev-warning-bg); }
     .confidence-indicator.review { color: var(--text-muted); background: var(--bg-input); }
-    @media (max-width: 600px) {
+    .score-annotation {
+      text-align: center; font-size: 0.85rem; color: var(--text-secondary);
+      margin-top: 0.4rem; margin-bottom: 0.5rem;
+    }
+    .score-critical { color: var(--sev-critical); font-weight: 700; }
+    .score-warning { color: var(--sev-warning); font-weight: 700; }
+    .share-snippet {
+      background: var(--bg-card); border: 1px solid var(--border-default);
+      border-radius: var(--radius-lg); padding: 1rem 1.5rem;
+      margin-bottom: 1.5rem; box-shadow: var(--shadow-sm);
+    }
+    .share-text {
+      font-size: 0.85rem; color: var(--text-secondary); line-height: 1.6;
+      padding: 0.5rem 0.75rem; background: var(--bg-input);
+      border-radius: var(--radius-sm); cursor: text; user-select: all;
+    }
+    .info-toggle {
+      font-size: 0.8rem; color: var(--accent-text); cursor: pointer;
+      padding: 0.5rem 0; font-weight: 600;
+    }
+    .footer-cta {
+      font-size: 0.8rem; font-weight: 600; color: var(--text-secondary);
+      margin-bottom: 0.35rem;
+    }
+    .footer-cta code {
+      font-family: var(--font-mono); font-size: 0.75rem;
+      background: var(--bg-input); padding: 1px 6px; border-radius: 3px;
+    }
+    .footer-links {
+      font-size: 0.7rem; color: var(--text-muted); margin-bottom: 0.35rem;
+    }
+    .footer-links a { color: var(--accent-text); text-decoration: underline; }
+    .footer-gen { font-size: 0.7rem; color: var(--text-muted); }
+    @media (max-width: 640px) {
       body { padding: 1.25rem 0.75rem; }
       .summary-type { width: 80px; font-size: 0.7rem; }
       .detection { padding: 0.75rem 1rem; }
       .report-header h1 { font-size: 1.4rem; }
       .type-header { font-size: 1rem; }
+      .claims-grid { grid-template-columns: 1fr; }
+      .claim-vs { text-align: center; padding: 0.25rem 0; }
     }
   `;
 }

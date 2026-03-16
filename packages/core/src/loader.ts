@@ -56,7 +56,9 @@ export async function runDetection(
   const allDetections: Detection[] = [];
   const allStats: DetectorStats[] = [];
 
-  for (const detector of detectors) {
+  const total = detectors.length;
+  for (let i = 0; i < total; i++) {
+    const detector = detectors[i]!;
     const name = detector.name || 'unknown';
     onProgress?.(name, 'started');
     const start = Date.now();
@@ -87,12 +89,14 @@ export async function runDetection(
     for (const node of candidateNodes) nodeMap.set(node.id, node);
 
     const detections = rawDetections.map((det) => {
+      const nodeExcerpts = det.metadata?.['nodeExcerpts'] as Record<string, string> | undefined;
       const nodes = det.nodeIds
         .map((id) => {
           const node = nodeMap.get(id);
           if (!node) return null;
-          const raw = node.content.raw ?? node.content.summary ?? '';
-          const excerpt = raw.length > 150 ? raw.slice(0, 150) + '...' : raw;
+          const matched = nodeExcerpts?.[id];
+          const fallbackText = node.content.summary || node.content.raw || '';
+          const excerpt = matched ?? cleanExcerpt(fallbackText);
           return {
             id,
             title: node.title,
@@ -116,6 +120,22 @@ export async function runDetection(
   }
 
   return { detections: allDetections, stats: allStats };
+}
+
+/** Trim text to a clean sentence boundary, collapsing whitespace first. */
+function cleanExcerpt(text: string, maxLen = 250): string {
+  const clean = text.replace(/\s+/g, ' ').trim();
+  if (clean.length <= maxLen) return clean;
+  const truncated = clean.slice(0, maxLen);
+  const lastSent = Math.max(
+    truncated.lastIndexOf('. '),
+    truncated.lastIndexOf('! '),
+    truncated.lastIndexOf('? '),
+  );
+  if (lastSent > 30) return clean.slice(0, lastSent + 1).trim();
+  const lastSpace = truncated.lastIndexOf(' ');
+  if (lastSpace > 30) return clean.slice(0, lastSpace) + '…';
+  return truncated + '…';
 }
 
 async function collectCandidateIds(
