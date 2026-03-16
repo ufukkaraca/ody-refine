@@ -261,13 +261,16 @@ function detectNumberContradiction(
   );
   if (numsA.length === 0 || numsB.length === 0) return;
 
-  // Skip generic units that are too ambiguous without LLM context
+  // Skip generic units and HTTP status codes
   const SKIP_UNITS = new Set(['percent', '%']);
+  const HTTP_STATUS_RE = /\b(status|response|http|code|error)\b/i;
   // Time units need extra context matching (90 days rotation vs 60 days expiry are different)
   const TIME_UNITS = new Set(['day', 'hour', 'minute', 'week', 'month', 'second']);
 
   for (const na of numsA) {
     if (SKIP_UNITS.has(normalizeUnit(na.unit))) continue;
+    // Skip HTTP status codes (200, 404, 500, etc.)
+    if (na.value >= 100 && na.value <= 599 && HTTP_STATUS_RE.test(extractSentence(textA, na.index))) continue;
     for (const nb of numsB) {
       if (normalizeUnit(na.unit) !== normalizeUnit(nb.unit)) continue;
       if (na.value === nb.value) continue;

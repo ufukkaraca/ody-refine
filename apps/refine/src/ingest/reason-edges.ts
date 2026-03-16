@@ -73,10 +73,13 @@ export function detectNumberContradiction(
   const numsA = extractNumbers(textA);
   const numsB = extractNumbers(textB);
 
-  // Filter out colloquial uses: "100% sure", "not 100% certain"
+  // Filter out colloquial uses and HTTP status codes
   const COLLOQUIAL = /\b(sure|certain|confident|probably|maybe|likely|unlikely)\b/i;
-  const cleanA = numsA.filter((n) => !COLLOQUIAL.test(n.context));
-  const cleanB = numsB.filter((n) => !COLLOQUIAL.test(n.context));
+  const HTTP_STATUS = /\b(status|response|http|code|error)\b/i;
+  const isHttpCode = (n: { value: number; context: string }): boolean =>
+    n.value >= 100 && n.value <= 599 && HTTP_STATUS.test(n.context);
+  const cleanA = numsA.filter((n) => !COLLOQUIAL.test(n.context) && !isHttpCode(n));
+  const cleanB = numsB.filter((n) => !COLLOQUIAL.test(n.context) && !isHttpCode(n));
 
   for (const na of cleanA) {
     for (const nb of cleanB) {
