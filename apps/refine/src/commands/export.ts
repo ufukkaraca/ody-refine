@@ -16,7 +16,7 @@ export function createExportCommand(): Command {
     .option('-o, --output <path>', 'Output file path', 'export.jsonl')
     .option(
       '--format <type>',
-      'Export format: nodes (default), pairs, trl, sft',
+      'Export format: nodes, pairs, trl, sft, tickets, tickets-json',
       'nodes',
     )
     .option('--min-confidence <n>', 'Minimum confidence threshold', '0')
@@ -65,6 +65,27 @@ Requires a prior 'ody-refine ingest' run.
           spinner.text = `Exporting from ${dbPath}...`;
 
           let content = '';
+
+          // Ticket export formats use cached detections
+          if (opts.format === 'tickets' || opts.format === 'tickets-json') {
+            const { loadDetections } = await import('../detect/detection-store.js');
+            const cached = loadDetections(db as never);
+            if (!cached || cached.length === 0) {
+              spinner.fail('No cached detections. Run ingest first.');
+              process.exit(1);
+            }
+            const { generateTickets, ticketsToMarkdown, ticketsToJson } = exportPkg;
+            const tickets = generateTickets(cached);
+            content = opts.format === 'tickets'
+              ? ticketsToMarkdown(tickets)
+              : ticketsToJson(tickets);
+            const ext = opts.format === 'tickets' ? '.md' : '.json';
+            const ticketPath = outPath.replace(/\.\w+$/, ext);
+            writeFileSync(ticketPath, content, 'utf-8');
+            spinner.succeed(`Exported ${String(tickets.length)} tickets to ${ticketPath}`);
+            process.exit(0);
+          }
+
           if (opts.format === 'pairs') {
             content = exportPkg.exportPreferencePairsToJsonl([]);
           } else if (opts.format === 'trl') {

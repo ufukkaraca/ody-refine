@@ -7,6 +7,8 @@ export { exportNodesToJsonl, exportPreferencePairsToJsonl } from './jsonl.js';
 export { exportTrlDpoToJsonl, exportSftToJsonl } from './trl-adapter.js';
 export type { TrlDpoRecord, TrlSftRecord, SftExportOptions } from './trl-adapter.js';
 export { generateHtmlReport } from './html-report.js';
+export { generateTickets, ticketsToMarkdown, ticketsToJson } from './tickets.js';
+export type { Ticket } from './tickets.js';
 export {
   getReportCss,
   renderHeader,
