@@ -256,7 +256,11 @@ function detectNumberContradiction(
   );
   if (numsA.length === 0 || numsB.length === 0) return;
 
+  // Skip generic units that are too ambiguous without LLM context
+  const SKIP_UNITS = new Set(['percent', '%']);
+
   for (const na of numsA) {
+    if (SKIP_UNITS.has(normalizeUnit(na.unit))) continue;
     for (const nb of numsB) {
       if (normalizeUnit(na.unit) !== normalizeUnit(nb.unit)) continue;
       if (na.value === nb.value) continue;
