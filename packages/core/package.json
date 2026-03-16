@@ -19,7 +19,7 @@
     "clean": "rm -rf dist"
   },
   "dependencies": {
-    "better-sqlite3": "^11.8.0",
+    "better-sqlite3": "^12.8.0",
     "sqlite-vec": "^0.1.6"
   },
   "optionalDependencies": {
