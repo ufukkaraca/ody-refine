@@ -84,13 +84,19 @@ const detectStaleness: DetectorFn = async (
 
     if (olderLastModified >= edgeCreated) continue;
 
+    const olderFile = older.content.source?.sourceId?.split('/').pop() ?? older.title;
+    const newerFile = newer.content.source?.sourceId?.split('/').pop() ?? newer.title;
     detections.push({
       type: 'staleness',
       severity: 'warning',
       nodeIds: [older.id, newer.id],
-      description: edge.reason,
-      suggestedAction:
-        `Update "${older.title}" to reflect newer: "${newer.title}"`,
+      description: `"${older.title}" may be outdated — a newer version exists in "${newer.title}".`,
+      suggestedAction: `Review ${olderFile} and update it to match ${newerFile}, or mark it as superseded.`,
+      metadata: {
+        claimA: `Older: ${older.title} (${olderFile})`,
+        claimB: `Newer: ${newer.title} (${newerFile})`,
+        topic: 'version drift',
+      },
     });
   }
 
@@ -109,12 +115,14 @@ const detectStaleness: DetectorFn = async (
     for (const ref of refs) {
       const age = now.getTime() - ref.date.getTime();
       if (age > SIX_MONTHS_MS) {
+        const monthsOld = Math.round(age / (30 * 24 * 60 * 60 * 1000));
+        const nodeFile = node.content.source?.sourceId?.split('/').pop() ?? node.title;
         detections.push({
           type: 'staleness',
           severity: 'info',
           nodeIds: [node.id],
-          description: `"${ref.label}" — may be stale.`,
-          suggestedAction: `Review "${node.title}" for outdated information.`,
+          description: `"${node.title}" references "${ref.label}" (${monthsOld} months ago) — content may be outdated.`,
+          suggestedAction: `Review ${nodeFile} and verify the information is still current.`,
         });
         break; // one detection per node
       }

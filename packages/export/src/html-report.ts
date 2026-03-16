@@ -92,10 +92,25 @@ function extractHeadline(d: Detection): string {
   if (d.type === 'contradiction' && topic) return `Docs disagree on ${topic}`;
   if (d.type === 'duplicate') return 'Same topic documented differently';
   if (d.type === 'time_bomb') {
-    const m = d.description.match(/(\d{4}-\d{2}-\d{2})/);
-    return m ? `Expired deadline: ${m[1]}` : 'Time-sensitive content';
+    const m = d.description.match(/["'](\d{4}-\d{2}(?:-\d{2})?|Q[1-4]\s*\d{4})['"]/);
+    if (m) {
+      const expired = d.description.includes('passed');
+      return expired ? `Expired deadline: ${m[1]}` : `Upcoming deadline: ${m[1]}`;
+    }
+    const deadlineMeta = d.metadata?.['deadline'];
+    if (typeof deadlineMeta === 'string') {
+      return d.description.includes('passed')
+        ? `Expired: ${deadlineMeta}`
+        : `Deadline: ${deadlineMeta}`;
+    }
+    return 'Date-dependent content';
   }
-  if (d.type === 'staleness') return 'Potentially outdated content';
+  if (d.type === 'staleness') {
+    // Extract the quoted title from description: "X" may be outdated
+    const titleMatch = d.description.match(/^"([^"]+)"/);
+    if (titleMatch) return `May be outdated: ${titleMatch[1]!.slice(0, 40)}`;
+    return 'Potentially outdated content';
+  }
   const desc = d.description;
   const colonIdx = desc.indexOf(':');
   if (colonIdx > 0 && colonIdx < 60) return desc.slice(0, colonIdx);

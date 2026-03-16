@@ -206,7 +206,7 @@ describe('detectStaleness', () => {
       expect(results[0]!.type).toBe('staleness');
       expect(results[0]!.severity).toBe('info');
       expect(results[0]!.description).toContain('Last updated: January 2025');
-      expect(results[0]!.description).toContain('may be stale');
+      expect(results[0]!.description).toContain('may be outdated');
     });
 
     it('detects "as of" older than 6 months', async () => {

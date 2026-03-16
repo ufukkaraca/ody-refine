@@ -238,9 +238,33 @@ const detectTimeBombs: DetectorFn = async (
     }
   }
 
-  // Cap total time bomb detections — more than 30 is noise
-  const MAX_TIME_BOMBS = 30;
-  const capped = detections.slice(0, MAX_TIME_BOMBS);
+  // Deduplicate: group by deadline label, merge nodeIds
+  const byDeadline = new Map<string, Detection>();
+  for (const det of detections) {
+    const key = (det.metadata?.['deadline'] as string) ?? det.description;
+    const existing = byDeadline.get(key);
+    if (existing) {
+      // Merge nodeIds, keep highest severity
+      const merged = [...new Set([...existing.nodeIds, ...det.nodeIds])];
+      const sevOrder = { critical: 0, warning: 1, info: 2 };
+      const bestSev = sevOrder[det.severity] < sevOrder[existing.severity] ? det.severity : existing.severity;
+      byDeadline.set(key, {
+        ...existing,
+        severity: bestSev,
+        nodeIds: merged,
+        description: merged.length > 1
+          ? `${existing.description} (${String(merged.length)} documents)`
+          : existing.description,
+      });
+    } else {
+      byDeadline.set(key, det);
+    }
+  }
+  const deduped = [...byDeadline.values()];
+
+  // Cap total
+  const MAX_TIME_BOMBS = 20;
+  const capped = deduped.slice(0, MAX_TIME_BOMBS);
 
   return capped.map((det) => {
     if (det.metadata?.expired !== true) return det;
