@@ -56,4 +56,7 @@ skills-lock.json
 
 # Ody Refine local data
 .ody-refine/
+.ody-autoresearch/
 *.db-journal
+*.db-shm
+*.db-wal

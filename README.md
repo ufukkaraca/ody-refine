@@ -115,6 +115,8 @@ ody-refine export               # Export data as JSONL
 ody-refine status               # Show database stats
 ody-refine ci ./docs/           # CI mode: JSON output, exit codes
 ody-refine scan <url>           # Crawl and scan public docs
+ody-refine diff                 # Compare current vs previous scan
+ody-refine badge                # Generate SVG health badge
 ody-refine config show          # Show configuration
 ```
 
@@ -249,5 +251,5 @@ pnpm verify
 <p align="center">
   <strong>Ody</strong> — Self-Trained Intelligence for Every Team
   <br>
-  <a href="https://useody.com">useody.com</a> · Built by <a href="https://github.com/rodyr">Rodyr</a> in Berlin & San Francisco
+  <a href="https://useody.com">useody.com</a> · Built by <a href="https://github.com/ufukkaraca">Ufuk Karaca</a> in Berlin & San Francisco
 </p>

@@ -51,7 +51,7 @@ Getting started:
   $ ody-refine ingest . --no-llm       Fast heuristic scan (no Ollama needed)
   $ ody-refine report                  Regenerate the HTML report
 
-Docs: https://github.com/rodyr/ody-platform
+Docs: https://github.com/ufukkaraca/ody-platform
 `);
 
   program.addCommand(createIngestCommand());
