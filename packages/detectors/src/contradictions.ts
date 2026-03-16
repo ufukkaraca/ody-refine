@@ -258,6 +258,8 @@ function detectNumberContradiction(
 
   // Skip generic units that are too ambiguous without LLM context
   const SKIP_UNITS = new Set(['percent', '%']);
+  // Time units need extra context matching (90 days rotation vs 60 days expiry are different)
+  const TIME_UNITS = new Set(['day', 'hour', 'minute', 'week', 'month', 'second']);
 
   for (const na of numsA) {
     if (SKIP_UNITS.has(normalizeUnit(na.unit))) continue;
@@ -267,6 +269,13 @@ function detectNumberContradiction(
       const sentA = extractSentence(textA, na.index);
       const sentB = extractSentence(textB, nb.index);
       if (sentA === sentB) continue;
+      // Time units: require sentences to share a specific noun (not just "days")
+      if (TIME_UNITS.has(normalizeUnit(na.unit))) {
+        const sentKwA = new Set(sentA.toLowerCase().split(/\W+/).filter((w) => w.length >= 4 && !STOPWORDS.has(w)));
+        const sentKwB = new Set(sentB.toLowerCase().split(/\W+/).filter((w) => w.length >= 4 && !STOPWORDS.has(w)));
+        const sentShared = [...sentKwA].filter((w) => sentKwB.has(w));
+        if (sentShared.length < 2) continue; // Different topics using same time unit
+      }
       const kwA = rawKeywords(a);
       const kwB = rawKeywords(b);
       const sharedCount = [...kwA].filter((k) => kwB.has(k)).length;
