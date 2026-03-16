@@ -215,11 +215,20 @@ Exit code 0 = pass, 1 = fail. Designed for GitHub Actions, GitLab CI, etc.
           ],
         });
 
+        // Deduplicate detections (edges + heuristics may flag the same pair)
+        const seen = new Set<string>();
+        const deduped = result.detections.filter((d) => {
+          const key = `${d.type}:${d.description.slice(0, 100)}`;
+          if (seen.has(key)) return false;
+          seen.add(key);
+          return true;
+        });
+
         // Score + compare
-        const score = computeCiScore(result.detections);
+        const score = computeCiScore(deduped);
         const previous = loadPreviousScore(config.dataDir);
         const report = buildCiReport(
-          score, previous, result.detections, minHealth, opts.failOnRegression,
+          score, previous, deduped, minHealth, opts.failOnRegression,
         );
 
         saveScore(config.dataDir, score);
