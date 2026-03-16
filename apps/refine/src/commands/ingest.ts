@@ -35,12 +35,24 @@ then point --notion-export at the exported directory.
     }) => {
       let targetDir = directory;
 
-      // Handle Confluence export
+      // Handle Confluence export (directory or ZIP file)
       if (opts.confluenceExport) {
+        let confluencePath = opts.confluenceExport;
+
+        // If it's a ZIP file, extract first
+        if (confluencePath.endsWith('.zip')) {
+          const { execSync } = await import('node:child_process');
+          const tmpExtract = join('.ody-refine', 'confluence-extract');
+          mkdirSync(tmpExtract, { recursive: true });
+          process.stdout.write('  Extracting ZIP archive...\n');
+          execSync(`unzip -o -j "${confluencePath}" "*.html" -d "${tmpExtract}"`, { stdio: 'pipe' });
+          confluencePath = tmpExtract;
+        }
+
         const { extractConfluencePages } = await import(
           '../ingest/confluence-import.js'
         );
-        const pages = extractConfluencePages(opts.confluenceExport);
+        const pages = extractConfluencePages(confluencePath);
         if (pages.length === 0) {
           process.stderr.write(
             'No pages found in Confluence export. Check the path.\n',
