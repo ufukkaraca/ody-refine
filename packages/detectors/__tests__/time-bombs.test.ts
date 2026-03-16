@@ -247,12 +247,12 @@ describe('detectTimeBombs', () => {
       expect(results[0]!.severity).toBe('info');
     });
 
-    it('falls back to info for date keywords with no parseable date', async () => {
+    it('emits nothing in heuristic mode for date keywords with no parseable date', async () => {
+      // The heuristic "contains date keywords but no parseable deadline" catch-all was removed
+      // because it is too broad without LLM context (produces noisy info-level detections).
       const node = makeNode('Some deadline', [], 'the deadline is soon');
       const results = await detectTimeBombs([node], []);
-      expect(results).toHaveLength(1);
-      expect(results[0]!.severity).toBe('info');
-      expect(results[0]!.description).toContain('no parseable deadline');
+      expect(results).toHaveLength(0);
     });
 
     it('extracts dates from raw content', async () => {
