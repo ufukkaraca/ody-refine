@@ -1,5 +1,6 @@
 {
   "name": "@useody/detectors",
+  "description": "Five pure-function detectors for contradictions, duplicates, staleness, undocumented topics, and time bombs",
   "version": "0.1.0",
   "type": "module",
   "main": "dist/index.js",

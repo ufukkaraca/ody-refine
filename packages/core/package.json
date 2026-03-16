@@ -1,5 +1,6 @@
 {
   "name": "@useody/platform-core",
+  "description": "Knowledge graph types, SQLite storage, vector search, and provider interfaces for Ody Platform",
   "version": "0.1.0",
   "type": "module",
   "main": "dist/index.js",

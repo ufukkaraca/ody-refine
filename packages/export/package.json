@@ -1,5 +1,6 @@
 {
   "name": "@useody/export",
+  "description": "Export adapters for HTML reports, JSONL, tickets, and TRL training data",
   "version": "0.1.0",
   "type": "module",
   "main": "dist/index.js",
