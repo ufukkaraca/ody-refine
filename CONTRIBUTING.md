@@ -10,7 +10,7 @@ Thanks for your interest in contributing. This guide covers everything you need.
 ## Setup
 
 ```bash
-git clone https://github.com/rodyr/ody-platform.git
+git clone https://github.com/ufukkaraca/ody-platform.git
 cd ody-platform
 pnpm install
 pnpm verify    # lint + typecheck + test — should all pass
@@ -94,7 +94,7 @@ export { detectMyIssue };
 
 ## Issues
 
-Open a [GitHub issue](https://github.com/rodyr/ody-platform/issues). Include:
+Open a [GitHub issue](https://github.com/ufukkaraca/ody-platform/issues). Include:
 - What you expected vs. what happened
 - Steps to reproduce
 - Environment (OS, Node version, ody-refine version)

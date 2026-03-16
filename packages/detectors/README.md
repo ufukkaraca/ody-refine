@@ -39,4 +39,4 @@ detectMyIssue.preFilter = { similarityThreshold: 0.6, topK: 10 };
 - **Optional LLM** — Every detector works in heuristic mode (no LLM) with lower accuracy
 - **Pre-filters** — Each detector declares similarity thresholds to avoid brute-force comparison
 
-Part of [ody-platform](https://github.com/rodyr/ody-platform). See the root [README](../../README.md) for setup.
+Part of [ody-platform](https://github.com/ufukkaraca/ody-platform). See the root [README](../../README.md) for setup.

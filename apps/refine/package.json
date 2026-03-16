@@ -41,7 +41,7 @@
   "license": "Apache-2.0",
   "repository": {
     "type": "git",
-    "url": "https://github.com/rodyr/ody-platform.git",
+    "url": "https://github.com/ufukkaraca/ody-platform.git",
     "directory": "apps/refine"
   },
   "files": ["dist", "README.md", "LICENSE"]

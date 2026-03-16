@@ -33,4 +33,4 @@ const jsonl = exportNodesToJsonl(nodes, { format: 'jsonl' });
 - Share-ready snippet for Slack/email
 - Fully self-contained — no external CSS/JS dependencies
 
-Part of [ody-platform](https://github.com/rodyr/ody-platform). See the root [README](../../README.md) for setup.
+Part of [ody-platform](https://github.com/ufukkaraca/ody-platform). See the root [README](../../README.md) for setup.

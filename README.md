@@ -6,7 +6,7 @@
 </p>
 
 <p align="center">
-  <a href="https://github.com/rodyr/ody-platform/actions"><img src="https://img.shields.io/github/actions/workflow/status/rodyr/ody-platform/ci.yml?branch=main&style=flat-square" alt="CI"></a>
+  <a href="https://github.com/ufukkaraca/ody-platform/actions"><img src="https://img.shields.io/github/actions/workflow/status/ufukkaraca/ody-platform/ci.yml?branch=main&style=flat-square" alt="CI"></a>
   <a href="https://www.npmjs.com/package/ody-refine"><img src="https://img.shields.io/npm/v/ody-refine?style=flat-square&color=blue" alt="npm"></a>
   <a href="./LICENSE"><img src="https://img.shields.io/badge/license-Apache%202.0-blue?style=flat-square" alt="License"></a>
   <a href="https://nodejs.org"><img src="https://img.shields.io/badge/node-%3E%3D20-green?style=flat-square" alt="Node"></a>
@@ -234,7 +234,7 @@ Ody Refine is the open-source foundation of [Ody](https://useody.com):
 See [CONTRIBUTING.md](./CONTRIBUTING.md). Quick version:
 
 ```bash
-git clone https://github.com/rodyr/ody-platform.git
+git clone https://github.com/ufukkaraca/ody-platform.git
 cd ody-platform
 pnpm install
 pnpm verify
