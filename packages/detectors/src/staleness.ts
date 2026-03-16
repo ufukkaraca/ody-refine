@@ -129,7 +129,28 @@ const detectStaleness: DetectorFn = async (
     }
   }
 
-  return detections;
+  // Deduplicate: group edge-based detections by older node
+  const byOlder = new Map<string, Detection>();
+  const dateDetections: Detection[] = [];
+  for (const det of detections) {
+    if (det.type === 'staleness' && det.severity === 'warning' && det.nodeIds.length >= 2) {
+      const key = det.nodeIds[0]!;
+      const existing = byOlder.get(key);
+      if (existing) {
+        const merged = [...new Set([...existing.nodeIds, ...det.nodeIds])];
+        byOlder.set(key, {
+          ...existing,
+          nodeIds: merged,
+          description: `${existing.description.split('.')[0]}. (${String(merged.length - 1)} newer versions found)`,
+        });
+      } else {
+        byOlder.set(key, det);
+      }
+    } else {
+      dateDetections.push(det);
+    }
+  }
+  return [...byOlder.values(), ...dateDetections];
 };
 
 detectStaleness.preFilter = {

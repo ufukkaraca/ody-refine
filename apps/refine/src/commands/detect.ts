@@ -142,8 +142,11 @@ Requires a prior 'ody-refine ingest' run.
             }));
         }
 
+        // Save to cache for report command
+        const { saveDetections } = await import('../detect/detection-store.js');
+        saveDetections(db as never, finalDetections);
+
         printDetectionSummary(finalDetections);
-        // Force exit — lingering Ollama HTTP connections keep Node alive
         process.exit(0);
       } catch (error: unknown) {
         const msg = error instanceof Error ? error.message : String(error);
