@@ -18,6 +18,8 @@ const MIN_SIMILARITY = 0.15;
 const TOP_K_SIMILAR = 10;
 /** Maximum number of LLM calls during edge reasoning to bound cost. */
 const MAX_LLM_PAIRS = 30;
+/** Maximum total edges to create — prevents explosion on large corpora. */
+const MAX_EDGES = 50;
 /** Concurrent LLM calls per batch. */
 const LLM_BATCH_CONCURRENCY = 5;
 
@@ -246,12 +248,14 @@ export async function reasonEdgesHeuristic(
       const other = nodes.find((n) => n.id === result.id);
       if (!other) continue;
 
+      if (count >= MAX_EDGES) break;
       const edge = classifyPairHeuristic(node, other);
       if (edge) {
         await edgeRepo.upsert(edge);
         count++;
       }
     }
+    if (count >= MAX_EDGES) break;
   }
 
   return count;
