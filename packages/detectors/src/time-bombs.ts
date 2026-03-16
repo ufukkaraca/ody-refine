@@ -39,14 +39,28 @@ function topicWords(text: string): Set<string> {
   );
 }
 
+/** Common words that appear in most docs — not useful for topic matching. */
+const COMMON_WORDS = new Set([
+  'incari', 'services', 'project', 'porsche', 'classic',
+  'document', 'created', 'space', 'pages', 'https',
+  'about', 'which', 'their', 'there', 'these', 'those',
+  'would', 'could', 'should', 'other', 'after', 'before',
+]);
+
 function findCompletionNode(nodeId: string, nodeText: string, nodes: KnowledgeNode[]): string | undefined {
-  const topics = topicWords(nodeText);
+  const topics = new Set(
+    [...topicWords(nodeText)].filter((w) => !COMMON_WORDS.has(w)),
+  );
+  if (topics.size < 2) return undefined;
   for (const n of nodes) {
     if (n.id === nodeId) continue;
-    const t = `${n.title} ${(n.content.facts ?? []).join(' ')} ${n.content.summary} ${n.content.raw ?? ''}`;
+    const t = `${n.title} ${(n.content.facts ?? []).join(' ')} ${n.content.summary}`;
     if (!COMPLETION_RE.test(t)) continue;
-    const shared = [...topicWords(t)].filter((w) => topics.has(w));
-    if (shared.length >= 2) return n.title;
+    const otherTopics = new Set(
+      [...topicWords(t)].filter((w) => !COMMON_WORDS.has(w)),
+    );
+    const shared = [...otherTopics].filter((w) => topics.has(w));
+    if (shared.length >= 3) return n.title;
   }
   return undefined;
 }
@@ -224,7 +238,11 @@ const detectTimeBombs: DetectorFn = async (
     }
   }
 
-  return detections.map((det) => {
+  // Cap total time bomb detections — more than 30 is noise
+  const MAX_TIME_BOMBS = 30;
+  const capped = detections.slice(0, MAX_TIME_BOMBS);
+
+  return capped.map((det) => {
     if (det.metadata?.expired !== true) return det;
     const nodeId = det.nodeIds[0];
     if (!nodeId) return det;
