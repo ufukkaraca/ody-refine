@@ -1,0 +1,606 @@
+{
+  "corpus": "contractnli-benchmark-v1",
+  "description": "60 NDA premise-hypothesis pairs from ContractNLI (EMNLP 2021) for external benchmark validation. 30 contradictions + 30 entailment hard negatives.",
+  "pairs": [
+    {
+      "id": "contractnli-contradiction-01",
+      "category": "contractnli",
+      "hasContradiction": true,
+      "docA": "contractnli-premise-01",
+      "docB": "contractnli-hypothesis-01",
+      "expectedFinding": {
+        "type": "contradiction",
+        "minSeverity": "high",
+        "description": "NDA premise contradicts hypothesis: Confidential Information shall only include technical information."
+      }
+    },
+    {
+      "id": "contractnli-contradiction-02",
+      "category": "contractnli",
+      "hasContradiction": true,
+      "docA": "contractnli-premise-02",
+      "docB": "contractnli-hypothesis-02",
+      "expectedFinding": {
+        "type": "contradiction",
+        "minSeverity": "high",
+        "description": "NDA premise contradicts hypothesis: Receiving Party shall not use any Confidential Information for any purpose other"
+      }
+    },
+    {
+      "id": "contractnli-contradiction-03",
+      "category": "contractnli",
+      "hasContradiction": true,
+      "docA": "contractnli-premise-03",
+      "docB": "contractnli-hypothesis-03",
+      "expectedFinding": {
+        "type": "contradiction",
+        "minSeverity": "high",
+        "description": "NDA premise contradicts hypothesis: Receiving Party may retain some Confidential Information even after the return o"
+      }
+    },
+    {
+      "id": "contractnli-contradiction-04",
+      "category": "contractnli",
+      "hasContradiction": true,
+      "docA": "contractnli-premise-04",
+      "docB": "contractnli-hypothesis-04",
+      "expectedFinding": {
+        "type": "contradiction",
+        "minSeverity": "high",
+        "description": "NDA premise contradicts hypothesis: All Confidential Information shall be expressly identified by the Disclosing Par"
+      }
+    },
+    {
+      "id": "contractnli-contradiction-05",
+      "category": "contractnli",
+      "hasContradiction": true,
+      "docA": "contractnli-premise-05",
+      "docB": "contractnli-hypothesis-05",
+      "expectedFinding": {
+        "type": "contradiction",
+        "minSeverity": "high",
+        "description": "NDA premise contradicts hypothesis: Confidential Information shall only include technical information."
+      }
+    },
+    {
+      "id": "contractnli-contradiction-06",
+      "category": "contractnli",
+      "hasContradiction": true,
+      "docA": "contractnli-premise-06",
+      "docB": "contractnli-hypothesis-06",
+      "expectedFinding": {
+        "type": "contradiction",
+        "minSeverity": "high",
+        "description": "NDA premise contradicts hypothesis: All Confidential Information shall be expressly identified by the Disclosing Par"
+      }
+    },
+    {
+      "id": "contractnli-contradiction-07",
+      "category": "contractnli",
+      "hasContradiction": true,
+      "docA": "contractnli-premise-07",
+      "docB": "contractnli-hypothesis-07",
+      "expectedFinding": {
+        "type": "contradiction",
+        "minSeverity": "high",
+        "description": "NDA premise contradicts hypothesis: Receiving Party may share some Confidential Information with some third-parties "
+      }
+    },
+    {
+      "id": "contractnli-contradiction-08",
+      "category": "contractnli",
+      "hasContradiction": true,
+      "docA": "contractnli-premise-08",
+      "docB": "contractnli-hypothesis-08",
+      "expectedFinding": {
+        "type": "contradiction",
+        "minSeverity": "high",
+        "description": "NDA premise contradicts hypothesis: Receiving Party may create a copy of some Confidential Information in some circu"
+      }
+    },
+    {
+      "id": "contractnli-contradiction-09",
+      "category": "contractnli",
+      "hasContradiction": true,
+      "docA": "contractnli-premise-09",
+      "docB": "contractnli-hypothesis-09",
+      "expectedFinding": {
+        "type": "contradiction",
+        "minSeverity": "high",
+        "description": "NDA premise contradicts hypothesis: Confidential Information shall only include technical information."
+      }
+    },
+    {
+      "id": "contractnli-contradiction-10",
+      "category": "contractnli",
+      "hasContradiction": true,
+      "docA": "contractnli-premise-10",
+      "docB": "contractnli-hypothesis-10",
+      "expectedFinding": {
+        "type": "contradiction",
+        "minSeverity": "high",
+        "description": "NDA premise contradicts hypothesis: Confidential Information shall only include technical information."
+      }
+    },
+    {
+      "id": "contractnli-contradiction-11",
+      "category": "contractnli",
+      "hasContradiction": true,
+      "docA": "contractnli-premise-11",
+      "docB": "contractnli-hypothesis-11",
+      "expectedFinding": {
+        "type": "contradiction",
+        "minSeverity": "high",
+        "description": "NDA premise contradicts hypothesis: Confidential Information shall only include technical information."
+      }
+    },
+    {
+      "id": "contractnli-contradiction-12",
+      "category": "contractnli",
+      "hasContradiction": true,
+      "docA": "contractnli-premise-12",
+      "docB": "contractnli-hypothesis-12",
+      "expectedFinding": {
+        "type": "contradiction",
+        "minSeverity": "high",
+        "description": "NDA premise contradicts hypothesis: Confidential Information shall only include technical information."
+      }
+    },
+    {
+      "id": "contractnli-contradiction-13",
+      "category": "contractnli",
+      "hasContradiction": true,
+      "docA": "contractnli-premise-13",
+      "docB": "contractnli-hypothesis-13",
+      "expectedFinding": {
+        "type": "contradiction",
+        "minSeverity": "high",
+        "description": "NDA premise contradicts hypothesis: All Confidential Information shall be expressly identified by the Disclosing Par"
+      }
+    },
+    {
+      "id": "contractnli-contradiction-14",
+      "category": "contractnli",
+      "hasContradiction": true,
+      "docA": "contractnli-premise-14",
+      "docB": "contractnli-hypothesis-14",
+      "expectedFinding": {
+        "type": "contradiction",
+        "minSeverity": "high",
+        "description": "NDA premise contradicts hypothesis: Confidential Information shall only include technical information."
+      }
+    },
+    {
+      "id": "contractnli-contradiction-15",
+      "category": "contractnli",
+      "hasContradiction": true,
+      "docA": "contractnli-premise-15",
+      "docB": "contractnli-hypothesis-15",
+      "expectedFinding": {
+        "type": "contradiction",
+        "minSeverity": "high",
+        "description": "NDA premise contradicts hypothesis: Receiving Party shall not use any Confidential Information for any purpose other"
+      }
+    },
+    {
+      "id": "contractnli-contradiction-16",
+      "category": "contractnli",
+      "hasContradiction": true,
+      "docA": "contractnli-premise-16",
+      "docB": "contractnli-hypothesis-16",
+      "expectedFinding": {
+        "type": "contradiction",
+        "minSeverity": "high",
+        "description": "NDA premise contradicts hypothesis: Confidential Information shall only include technical information."
+      }
+    },
+    {
+      "id": "contractnli-contradiction-17",
+      "category": "contractnli",
+      "hasContradiction": true,
+      "docA": "contractnli-premise-17",
+      "docB": "contractnli-hypothesis-17",
+      "expectedFinding": {
+        "type": "contradiction",
+        "minSeverity": "high",
+        "description": "NDA premise contradicts hypothesis: All Confidential Information shall be expressly identified by the Disclosing Par"
+      }
+    },
+    {
+      "id": "contractnli-contradiction-18",
+      "category": "contractnli",
+      "hasContradiction": true,
+      "docA": "contractnli-premise-18",
+      "docB": "contractnli-hypothesis-18",
+      "expectedFinding": {
+        "type": "contradiction",
+        "minSeverity": "high",
+        "description": "NDA premise contradicts hypothesis: Receiving Party may create a copy of some Confidential Information in some circu"
+      }
+    },
+    {
+      "id": "contractnli-contradiction-19",
+      "category": "contractnli",
+      "hasContradiction": true,
+      "docA": "contractnli-premise-19",
+      "docB": "contractnli-hypothesis-19",
+      "expectedFinding": {
+        "type": "contradiction",
+        "minSeverity": "high",
+        "description": "NDA premise contradicts hypothesis: Receiving Party may retain some Confidential Information even after the return o"
+      }
+    },
+    {
+      "id": "contractnli-contradiction-20",
+      "category": "contractnli",
+      "hasContradiction": true,
+      "docA": "contractnli-premise-20",
+      "docB": "contractnli-hypothesis-20",
+      "expectedFinding": {
+        "type": "contradiction",
+        "minSeverity": "high",
+        "description": "NDA premise contradicts hypothesis: All Confidential Information shall be expressly identified by the Disclosing Par"
+      }
+    },
+    {
+      "id": "contractnli-contradiction-21",
+      "category": "contractnli",
+      "hasContradiction": true,
+      "docA": "contractnli-premise-21",
+      "docB": "contractnli-hypothesis-21",
+      "expectedFinding": {
+        "type": "contradiction",
+        "minSeverity": "high",
+        "description": "NDA premise contradicts hypothesis: Receiving Party may share some Confidential Information with some third-parties "
+      }
+    },
+    {
+      "id": "contractnli-contradiction-22",
+      "category": "contractnli",
+      "hasContradiction": true,
+      "docA": "contractnli-premise-22",
+      "docB": "contractnli-hypothesis-22",
+      "expectedFinding": {
+        "type": "contradiction",
+        "minSeverity": "high",
+        "description": "NDA premise contradicts hypothesis: Receiving Party may share some Confidential Information with some third-parties "
+      }
+    },
+    {
+      "id": "contractnli-contradiction-23",
+      "category": "contractnli",
+      "hasContradiction": true,
+      "docA": "contractnli-premise-23",
+      "docB": "contractnli-hypothesis-23",
+      "expectedFinding": {
+        "type": "contradiction",
+        "minSeverity": "high",
+        "description": "NDA premise contradicts hypothesis: Confidential Information shall only include technical information."
+      }
+    },
+    {
+      "id": "contractnli-contradiction-24",
+      "category": "contractnli",
+      "hasContradiction": true,
+      "docA": "contractnli-premise-24",
+      "docB": "contractnli-hypothesis-24",
+      "expectedFinding": {
+        "type": "contradiction",
+        "minSeverity": "high",
+        "description": "NDA premise contradicts hypothesis: Receiving Party may create a copy of some Confidential Information in some circu"
+      }
+    },
+    {
+      "id": "contractnli-contradiction-25",
+      "category": "contractnli",
+      "hasContradiction": true,
+      "docA": "contractnli-premise-25",
+      "docB": "contractnli-hypothesis-25",
+      "expectedFinding": {
+        "type": "contradiction",
+        "minSeverity": "high",
+        "description": "NDA premise contradicts hypothesis: Confidential Information shall only include technical information."
+      }
+    },
+    {
+      "id": "contractnli-contradiction-26",
+      "category": "contractnli",
+      "hasContradiction": true,
+      "docA": "contractnli-premise-26",
+      "docB": "contractnli-hypothesis-26",
+      "expectedFinding": {
+        "type": "contradiction",
+        "minSeverity": "high",
+        "description": "NDA premise contradicts hypothesis: Receiving Party may share some Confidential Information with some third-parties "
+      }
+    },
+    {
+      "id": "contractnli-contradiction-27",
+      "category": "contractnli",
+      "hasContradiction": true,
+      "docA": "contractnli-premise-27",
+      "docB": "contractnli-hypothesis-27",
+      "expectedFinding": {
+        "type": "contradiction",
+        "minSeverity": "high",
+        "description": "NDA premise contradicts hypothesis: Receiving Party may share some Confidential Information with some third-parties "
+      }
+    },
+    {
+      "id": "contractnli-contradiction-28",
+      "category": "contractnli",
+      "hasContradiction": true,
+      "docA": "contractnli-premise-28",
+      "docB": "contractnli-hypothesis-28",
+      "expectedFinding": {
+        "type": "contradiction",
+        "minSeverity": "high",
+        "description": "NDA premise contradicts hypothesis: Confidential Information may include verbally conveyed information."
+      }
+    },
+    {
+      "id": "contractnli-contradiction-29",
+      "category": "contractnli",
+      "hasContradiction": true,
+      "docA": "contractnli-premise-29",
+      "docB": "contractnli-hypothesis-29",
+      "expectedFinding": {
+        "type": "contradiction",
+        "minSeverity": "high",
+        "description": "NDA premise contradicts hypothesis: Confidential Information shall only include technical information."
+      }
+    },
+    {
+      "id": "contractnli-contradiction-30",
+      "category": "contractnli",
+      "hasContradiction": true,
+      "docA": "contractnli-premise-30",
+      "docB": "contractnli-hypothesis-30",
+      "expectedFinding": {
+        "type": "contradiction",
+        "minSeverity": "high",
+        "description": "NDA premise contradicts hypothesis: Receiving Party may share some Confidential Information with some third-parties "
+      }
+    },
+    {
+      "id": "contractnli-entailment-01",
+      "category": "contractnli",
+      "hasContradiction": false,
+      "docA": "contractnli-ent-premise-01",
+      "docB": "contractnli-ent-hypothesis-01",
+      "expectedFinding": null
+    },
+    {
+      "id": "contractnli-entailment-02",
+      "category": "contractnli",
+      "hasContradiction": false,
+      "docA": "contractnli-ent-premise-02",
+      "docB": "contractnli-ent-hypothesis-02",
+      "expectedFinding": null
+    },
+    {
+      "id": "contractnli-entailment-03",
+      "category": "contractnli",
+      "hasContradiction": false,
+      "docA": "contractnli-ent-premise-03",
+      "docB": "contractnli-ent-hypothesis-03",
+      "expectedFinding": null
+    },
+    {
+      "id": "contractnli-entailment-04",
+      "category": "contractnli",
+      "hasContradiction": false,
+      "docA": "contractnli-ent-premise-04",
+      "docB": "contractnli-ent-hypothesis-04",
+      "expectedFinding": null
+    },
+    {
+      "id": "contractnli-entailment-05",
+      "category": "contractnli",
+      "hasContradiction": false,
+      "docA": "contractnli-ent-premise-05",
+      "docB": "contractnli-ent-hypothesis-05",
+      "expectedFinding": null
+    },
+    {
+      "id": "contractnli-entailment-06",
+      "category": "contractnli",
+      "hasContradiction": false,
+      "docA": "contractnli-ent-premise-06",
+      "docB": "contractnli-ent-hypothesis-06",
+      "expectedFinding": null
+    },
+    {
+      "id": "contractnli-entailment-07",
+      "category": "contractnli",
+      "hasContradiction": false,
+      "docA": "contractnli-ent-premise-07",
+      "docB": "contractnli-ent-hypothesis-07",
+      "expectedFinding": null
+    },
+    {
+      "id": "contractnli-entailment-08",
+      "category": "contractnli",
+      "hasContradiction": false,
+      "docA": "contractnli-ent-premise-08",
+      "docB": "contractnli-ent-hypothesis-08",
+      "expectedFinding": null
+    },
+    {
+      "id": "contractnli-entailment-09",
+      "category": "contractnli",
+      "hasContradiction": false,
+      "docA": "contractnli-ent-premise-09",
+      "docB": "contractnli-ent-hypothesis-09",
+      "expectedFinding": null
+    },
+    {
+      "id": "contractnli-entailment-10",
+      "category": "contractnli",
+      "hasContradiction": false,
+      "docA": "contractnli-ent-premise-10",
+      "docB": "contractnli-ent-hypothesis-10",
+      "expectedFinding": null
+    },
+    {
+      "id": "contractnli-entailment-11",
+      "category": "contractnli",
+      "hasContradiction": false,
+      "docA": "contractnli-ent-premise-11",
+      "docB": "contractnli-ent-hypothesis-11",
+      "expectedFinding": null
+    },
+    {
+      "id": "contractnli-entailment-12",
+      "category": "contractnli",
+      "hasContradiction": false,
+      "docA": "contractnli-ent-premise-12",
+      "docB": "contractnli-ent-hypothesis-12",
+      "expectedFinding": null
+    },
+    {
+      "id": "contractnli-entailment-13",
+      "category": "contractnli",
+      "hasContradiction": false,
+      "docA": "contractnli-ent-premise-13",
+      "docB": "contractnli-ent-hypothesis-13",
+      "expectedFinding": null
+    },
+    {
+      "id": "contractnli-entailment-14",
+      "category": "contractnli",
+      "hasContradiction": false,
+      "docA": "contractnli-ent-premise-14",
+      "docB": "contractnli-ent-hypothesis-14",
+      "expectedFinding": null
+    },
+    {
+      "id": "contractnli-entailment-15",
+      "category": "contractnli",
+      "hasContradiction": false,
+      "docA": "contractnli-ent-premise-15",
+      "docB": "contractnli-ent-hypothesis-15",
+      "expectedFinding": null
+    },
+    {
+      "id": "contractnli-entailment-16",
+      "category": "contractnli",
+      "hasContradiction": false,
+      "docA": "contractnli-ent-premise-16",
+      "docB": "contractnli-ent-hypothesis-16",
+      "expectedFinding": null
+    },
+    {
+      "id": "contractnli-entailment-17",
+      "category": "contractnli",
+      "hasContradiction": false,
+      "docA": "contractnli-ent-premise-17",
+      "docB": "contractnli-ent-hypothesis-17",
+      "expectedFinding": null
+    },
+    {
+      "id": "contractnli-entailment-18",
+      "category": "contractnli",
+      "hasContradiction": false,
+      "docA": "contractnli-ent-premise-18",
+      "docB": "contractnli-ent-hypothesis-18",
+      "expectedFinding": null
+    },
+    {
+      "id": "contractnli-entailment-19",
+      "category": "contractnli",
+      "hasContradiction": false,
+      "docA": "contractnli-ent-premise-19",
+      "docB": "contractnli-ent-hypothesis-19",
+      "expectedFinding": null
+    },
+    {
+      "id": "contractnli-entailment-20",
+      "category": "contractnli",
+      "hasContradiction": false,
+      "docA": "contractnli-ent-premise-20",
+      "docB": "contractnli-ent-hypothesis-20",
+      "expectedFinding": null
+    },
+    {
+      "id": "contractnli-entailment-21",
+      "category": "contractnli",
+      "hasContradiction": false,
+      "docA": "contractnli-ent-premise-21",
+      "docB": "contractnli-ent-hypothesis-21",
+      "expectedFinding": null
+    },
+    {
+      "id": "contractnli-entailment-22",
+      "category": "contractnli",
+      "hasContradiction": false,
+      "docA": "contractnli-ent-premise-22",
+      "docB": "contractnli-ent-hypothesis-22",
+      "expectedFinding": null
+    },
+    {
+      "id": "contractnli-entailment-23",
+      "category": "contractnli",
+      "hasContradiction": false,
+      "docA": "contractnli-ent-premise-23",
+      "docB": "contractnli-ent-hypothesis-23",
+      "expectedFinding": null
+    },
+    {
+      "id": "contractnli-entailment-24",
+      "category": "contractnli",
+      "hasContradiction": false,
+      "docA": "contractnli-ent-premise-24",
+      "docB": "contractnli-ent-hypothesis-24",
+      "expectedFinding": null
+    },
+    {
+      "id": "contractnli-entailment-25",
+      "category": "contractnli",
+      "hasContradiction": false,
+      "docA": "contractnli-ent-premise-25",
+      "docB": "contractnli-ent-hypothesis-25",
+      "expectedFinding": null
+    },
+    {
+      "id": "contractnli-entailment-26",
+      "category": "contractnli",
+      "hasContradiction": false,
+      "docA": "contractnli-ent-premise-26",
+      "docB": "contractnli-ent-hypothesis-26",
+      "expectedFinding": null
+    },
+    {
+      "id": "contractnli-entailment-27",
+      "category": "contractnli",
+      "hasContradiction": false,
+      "docA": "contractnli-ent-premise-27",
+      "docB": "contractnli-ent-hypothesis-27",
+      "expectedFinding": null
+    },
+    {
+      "id": "contractnli-entailment-28",
+      "category": "contractnli",
+      "hasContradiction": false,
+      "docA": "contractnli-ent-premise-28",
+      "docB": "contractnli-ent-hypothesis-28",
+      "expectedFinding": null
+    },
+    {
+      "id": "contractnli-entailment-29",
+      "category": "contractnli",
+      "hasContradiction": false,
+      "docA": "contractnli-ent-premise-29",
+      "docB": "contractnli-ent-hypothesis-29",
+      "expectedFinding": null
+    },
+    {
+      "id": "contractnli-entailment-30",
+      "category": "contractnli",
+      "hasContradiction": false,
+      "docA": "contractnli-ent-premise-30",
+      "docB": "contractnli-ent-hypothesis-30",
+      "expectedFinding": null
+    }
+  ]
+}

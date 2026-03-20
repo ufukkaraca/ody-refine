@@ -1,0 +1,4244 @@
+[
+  {
+    "id": "quarterly-revenue-report",
+    "pairId": "numerical-revenue-conflict-01",
+    "title": "Q4 2025 Revenue Report",
+    "content": {
+      "summary": "Quarterly revenue performance and breakdown for Q4 2025.",
+      "facts": [
+        "Q4 revenue came in at $4.2M, up 15% from Q3",
+        "Enterprise segment contributed $2.8M",
+        "SMB segment contributed $1.4M"
+      ],
+      "entities": [
+        {
+          "name": "Finance",
+          "type": "org"
+        }
+      ],
+      "raw": "# Q4 2025 Revenue Report\n\nQ4 revenue came in at $4.2M, up 15% from Q3. Enterprise segment contributed $2.8M while SMB contributed $1.4M. This exceeds our internal target of $3.9M for the quarter."
+    },
+    "confidence": 0.9
+  },
+  {
+    "id": "investor-update-q4",
+    "pairId": "numerical-revenue-conflict-01",
+    "title": "Investor Update - Q4 2025",
+    "content": {
+      "summary": "Quarterly investor communication with financial highlights.",
+      "facts": [
+        "Q4 revenue reached $3.8M",
+        "Year-over-year growth of 22%",
+        "Targeting $5M for Q1 2026"
+      ],
+      "entities": [
+        {
+          "name": "Finance",
+          "type": "org"
+        }
+      ],
+      "raw": "# Investor Update - Q4 2025\n\nQ4 revenue reached $3.8M, representing 22% year-over-year growth. We are targeting $5M for Q1 2026 based on current pipeline. Cash runway extends through Q3 2026."
+    },
+    "confidence": 0.95
+  },
+  {
+    "id": "engineering-capacity",
+    "pairId": "numerical-headcount-conflict-01",
+    "title": "Engineering Team Capacity",
+    "content": {
+      "summary": "Current engineering headcount and allocation across teams.",
+      "facts": [
+        "Engineering team has 12 engineers across 3 squads",
+        "Each squad has a tech lead and 3 individual contributors",
+        "Current sprint velocity is 45 story points per sprint"
+      ],
+      "entities": [
+        {
+          "name": "Engineering Team",
+          "type": "team"
+        }
+      ],
+      "raw": "# Engineering Capacity\n\nWe currently have 12 engineers across 3 squads. Each squad has a tech lead and 3 individual contributors. Current sprint velocity is 45 story points per sprint."
+    },
+    "confidence": 0.9
+  },
+  {
+    "id": "hiring-plan-q1",
+    "pairId": "numerical-headcount-conflict-01",
+    "title": "Hiring Plan Q1 2026",
+    "content": {
+      "summary": "Headcount planning for engineering department.",
+      "facts": [
+        "Engineering team currently has 8 engineers total",
+        "Plan to hire 4 more engineers by end of Q2",
+        "Budget approved for 2 senior and 2 mid-level roles"
+      ],
+      "entities": [
+        {
+          "name": "Engineering Team",
+          "type": "team"
+        }
+      ],
+      "raw": "# Hiring Plan\n\nEngineering team currently has 8 engineers total. We plan to hire 4 more engineers by end of Q2. Budget has been approved for 2 senior and 2 mid-level roles."
+    },
+    "confidence": 0.85
+  },
+  {
+    "id": "api-sla-doc",
+    "pairId": "numerical-sla-conflict-01",
+    "title": "API Service Level Agreement",
+    "content": {
+      "summary": "Customer-facing SLA commitments for the platform API.",
+      "facts": [
+        "API availability target is 99.99% uptime per month",
+        "Response time P99 must be under 200ms",
+        "Planned maintenance windows excluded from SLA calculation"
+      ],
+      "entities": [
+        {
+          "name": "Platform API",
+          "type": "service"
+        }
+      ],
+      "raw": "# API SLA\n\nOur API availability target is 99.99% uptime per month. Response time P99 must be under 200ms. Planned maintenance windows are excluded from the SLA calculation."
+    },
+    "confidence": 0.95
+  },
+  {
+    "id": "ops-runbook-doc",
+    "pairId": "numerical-sla-conflict-01",
+    "title": "Operations Runbook",
+    "content": {
+      "summary": "Operational procedures and targets for the platform.",
+      "facts": [
+        "Target uptime for the API is 99.9% monthly",
+        "Alert threshold set at 5 minutes of downtime",
+        "Escalation to VP of Engineering after 30 minutes"
+      ],
+      "entities": [
+        {
+          "name": "Platform API",
+          "type": "service"
+        }
+      ],
+      "raw": "# Operations Runbook\n\nTarget uptime for the API is 99.9% monthly. Alert threshold is set at 5 minutes of downtime. Escalation to VP of Engineering after 30 minutes of continuous outage."
+    },
+    "confidence": 0.9
+  },
+  {
+    "id": "sales-proposal-enterprise",
+    "pairId": "numerical-rate-limit-conflict-01",
+    "title": "Sales Proposal - Enterprise Tier",
+    "content": {
+      "summary": "Technical specifications promised in enterprise sales proposal.",
+      "facts": [
+        "API rate limit: 10000 requests per minute for enterprise tier",
+        "99.99% uptime guarantee",
+        "Dedicated infrastructure with isolated tenancy"
+      ],
+      "entities": [
+        {
+          "name": "Enterprise API",
+          "type": "service"
+        }
+      ],
+      "raw": "# Enterprise Tier Proposal\n\nAPI rate limit is 10000 requests per minute for enterprise tier customers. We guarantee 99.99% uptime. Dedicated infrastructure with fully isolated tenancy is included."
+    },
+    "confidence": 0.9
+  },
+  {
+    "id": "engineering-constraints-api",
+    "pairId": "numerical-rate-limit-conflict-01",
+    "title": "Engineering Constraints - API Infrastructure",
+    "content": {
+      "summary": "Current technical limitations of the API infrastructure.",
+      "facts": [
+        "Maximum API rate limit is 1000 requests per minute per tenant",
+        "Infrastructure cannot support per-tenant isolation yet",
+        "Rate limit increase requires architecture redesign"
+      ],
+      "entities": [
+        {
+          "name": "Enterprise API",
+          "type": "service"
+        }
+      ],
+      "raw": "# Engineering Constraints\n\nMaximum API rate limit is 1000 requests per minute per tenant. Our infrastructure cannot support per-tenant isolation yet. Any rate limit increase would require a significant architecture redesign."
+    },
+    "confidence": 0.95
+  },
+  {
+    "id": "marketing-budget-2026",
+    "pairId": "numerical-budget-conflict-01",
+    "title": "Marketing Budget Request 2026",
+    "content": {
+      "summary": "Proposed marketing spend for 2026 fiscal year.",
+      "facts": [
+        "Requested marketing budget is $2.5M for 2026",
+        "Includes $1M for events and conferences",
+        "Digital advertising budget of $800K"
+      ],
+      "entities": [
+        {
+          "name": "Marketing",
+          "type": "org"
+        }
+      ],
+      "raw": "# Marketing Budget Request 2026\n\nWe are requesting a marketing budget of $2.5M for 2026. This includes $1M allocated to events and conferences and $800K for digital advertising campaigns."
+    },
+    "confidence": 0.9
+  },
+  {
+    "id": "finance-approved-budgets",
+    "pairId": "numerical-budget-conflict-01",
+    "title": "Finance - Approved Department Budgets",
+    "content": {
+      "summary": "Final approved budgets for all departments in 2026.",
+      "facts": [
+        "Marketing department approved budget is $1.8M",
+        "Engineering approved budget is $4.2M",
+        "All department budgets are final as of January 15"
+      ],
+      "entities": [
+        {
+          "name": "Finance",
+          "type": "org"
+        }
+      ],
+      "raw": "# Approved Department Budgets 2026\n\nMarketing department approved budget is $1.8M for 2026. Engineering approved budget is $4.2M. All department budgets are final as of January 15 and reflect board-approved numbers."
+    },
+    "confidence": 0.95
+  },
+  {
+    "id": "performance-requirements",
+    "pairId": "numerical-latency-conflict-01",
+    "title": "Performance Requirements Document",
+    "content": {
+      "summary": "System performance targets and benchmarks.",
+      "facts": [
+        "P99 latency target for all API endpoints is 100ms",
+        "Database queries must complete within 50ms",
+        "Page load time target is under 2 seconds"
+      ],
+      "entities": [
+        {
+          "name": "Platform",
+          "type": "product"
+        }
+      ],
+      "raw": "# Performance Requirements\n\nP99 latency target for all API endpoints is 100ms. Database queries must complete within 50ms at P99. Page load time target is under 2 seconds for all pages."
+    },
+    "confidence": 0.9
+  },
+  {
+    "id": "architecture-review-doc",
+    "pairId": "numerical-latency-conflict-01",
+    "title": "Architecture Review - Current System",
+    "content": {
+      "summary": "Technical review of current system architecture and constraints.",
+      "facts": [
+        "Current P99 latency is 250ms for most API endpoints",
+        "Database connection pooling limits throughput",
+        "Realistic latency target is 250ms given current architecture"
+      ],
+      "entities": [
+        {
+          "name": "Platform",
+          "type": "product"
+        }
+      ],
+      "raw": "# Architecture Review\n\nCurrent P99 latency is 250ms for most API endpoints. Database connection pooling limits throughput during peak hours. A realistic latency target is 250ms given the current architecture constraints."
+    },
+    "confidence": 0.85
+  },
+  {
+    "id": "pricing-page-copy",
+    "pairId": "numerical-storage-conflict-01",
+    "title": "Pricing Page - Website Copy",
+    "content": {
+      "summary": "Public pricing page content for the product website.",
+      "facts": [
+        "Free tier includes 10GB of storage",
+        "Pro tier includes 100GB of storage",
+        "Enterprise tier has unlimited storage"
+      ],
+      "entities": [
+        {
+          "name": "Product",
+          "type": "product"
+        }
+      ],
+      "raw": "# Pricing\n\nFree tier includes 10GB of storage for documents and files. Pro tier includes 100GB of storage. Enterprise tier provides unlimited storage with custom retention policies."
+    },
+    "confidence": 0.9
+  },
+  {
+    "id": "product-spec-storage",
+    "pairId": "numerical-storage-conflict-01",
+    "title": "Product Spec - Storage Limits",
+    "content": {
+      "summary": "Technical specification for storage limits per tier.",
+      "facts": [
+        "Free tier storage limit is 5GB",
+        "Pro tier storage limit is 50GB",
+        "Storage limits enforced at the application layer"
+      ],
+      "entities": [
+        {
+          "name": "Product",
+          "type": "product"
+        }
+      ],
+      "raw": "# Storage Limits Spec\n\nFree tier storage limit is 5GB. Pro tier storage limit is 50GB. Storage limits are enforced at the application layer with soft warnings at 80% usage."
+    },
+    "confidence": 0.95
+  },
+  {
+    "id": "data-retention-policy",
+    "pairId": "numerical-retention-conflict-01",
+    "title": "Data Retention Policy",
+    "content": {
+      "summary": "Corporate policy on data retention and deletion schedules.",
+      "facts": [
+        "Application logs retained for 90 days",
+        "User data retained for duration of account plus 30 days",
+        "Automated deletion runs weekly on Sundays"
+      ],
+      "entities": [
+        {
+          "name": "Data Governance",
+          "type": "policy"
+        }
+      ],
+      "raw": "# Data Retention Policy\n\nApplication logs are retained for 90 days. User data is retained for the duration of the account plus 30 days after deletion. Automated deletion runs weekly on Sundays."
+    },
+    "confidence": 0.9
+  },
+  {
+    "id": "compliance-handbook",
+    "pairId": "numerical-retention-conflict-01",
+    "title": "Compliance Handbook - Data Requirements",
+    "content": {
+      "summary": "Regulatory compliance requirements for data handling.",
+      "facts": [
+        "All system logs must be retained for 365 days minimum",
+        "Financial transaction logs retained for 7 years",
+        "Compliance audit requires log access for the past 12 months"
+      ],
+      "entities": [
+        {
+          "name": "Compliance",
+          "type": "policy"
+        }
+      ],
+      "raw": "# Compliance Handbook\n\nAll system logs must be retained for 365 days minimum per regulatory requirements. Financial transaction logs must be retained for 7 years. Compliance audits require log access for the past 12 months."
+    },
+    "confidence": 0.95
+  },
+  {
+    "id": "partner-program-terms",
+    "pairId": "numerical-discount-conflict-01",
+    "title": "Partner Program Terms",
+    "content": {
+      "summary": "Official terms and discount structure for channel partners.",
+      "facts": [
+        "Certified partners receive 20% discount on all plans",
+        "Volume discount of additional 5% for 50+ seats",
+        "Partner discount cannot be combined with promotional offers"
+      ],
+      "entities": [
+        {
+          "name": "Partner Program",
+          "type": "program"
+        }
+      ],
+      "raw": "# Partner Program Terms\n\nCertified partners receive a 20% discount on all plans for their referred customers. Volume discount of additional 5% applies for deals of 50+ seats. Partner discount cannot be combined with promotional offers."
+    },
+    "confidence": 0.9
+  },
+  {
+    "id": "sales-playbook",
+    "pairId": "numerical-discount-conflict-01",
+    "title": "Sales Playbook - Partner Deals",
+    "content": {
+      "summary": "Internal guide for handling partner-referred deals.",
+      "facts": [
+        "Apply 30% partner discount to all partner-referred deals",
+        "Partner deals close 2x faster than direct",
+        "Always offer partner discount before any other promotion"
+      ],
+      "entities": [
+        {
+          "name": "Sales",
+          "type": "org"
+        }
+      ],
+      "raw": "# Sales Playbook - Partner Deals\n\nApply 30% partner discount to all partner-referred deals. Partner deals close 2x faster than direct sales. Always offer the partner discount before any other promotional discount."
+    },
+    "confidence": 0.85
+  },
+  {
+    "id": "event-venue-booking",
+    "pairId": "numerical-capacity-conflict-01",
+    "title": "Annual Conference - Venue Booking",
+    "content": {
+      "summary": "Venue booking confirmation for the annual company conference.",
+      "facts": [
+        "Venue booked for 200 people capacity",
+        "Includes main hall and 3 breakout rooms",
+        "Catering confirmed for 200 attendees"
+      ],
+      "entities": [
+        {
+          "name": "Company Conference",
+          "type": "event"
+        }
+      ],
+      "raw": "# Venue Booking Confirmation\n\nVenue booked with capacity for 200 people. Includes main hall and 3 breakout rooms. Catering has been confirmed for 200 attendees including dietary accommodations."
+    },
+    "confidence": 0.9
+  },
+  {
+    "id": "event-planning-doc",
+    "pairId": "numerical-capacity-conflict-01",
+    "title": "Annual Conference - Planning Document",
+    "content": {
+      "summary": "Logistics and planning details for the annual conference.",
+      "facts": [
+        "Expected attendance is 150 people",
+        "Budget allocated for 150 attendees",
+        "RSVP deadline is two weeks before event"
+      ],
+      "entities": [
+        {
+          "name": "Company Conference",
+          "type": "event"
+        }
+      ],
+      "raw": "# Conference Planning\n\nExpected attendance is 150 people based on last year's turnout. Budget has been allocated for 150 attendees. RSVP deadline is two weeks before the event date."
+    },
+    "confidence": 0.9
+  },
+  {
+    "id": "customer-contract-support",
+    "pairId": "numerical-response-time-conflict-01",
+    "title": "Customer Contract - Support SLA",
+    "content": {
+      "summary": "Support commitments in the standard customer contract.",
+      "facts": [
+        "Support response time: 1 hour for P0 issues",
+        "Dedicated account manager assigned",
+        "Quarterly business reviews included"
+      ],
+      "entities": [
+        {
+          "name": "Support SLA",
+          "type": "commitment"
+        }
+      ],
+      "raw": "# Customer Contract - Support\n\nSupport response time is 1 hour for P0 issues. A dedicated account manager is assigned to each enterprise account. Quarterly business reviews are included."
+    },
+    "confidence": 0.95
+  },
+  {
+    "id": "internal-support-capacity",
+    "pairId": "numerical-response-time-conflict-01",
+    "title": "Internal Support Capacity",
+    "content": {
+      "summary": "Current support team capacity and response targets.",
+      "facts": [
+        "Current support response time target is 4 hours for P0",
+        "Team of 3 support engineers covering all accounts",
+        "No dedicated account managers available until Q3 hiring"
+      ],
+      "entities": [
+        {
+          "name": "Support Team",
+          "type": "team"
+        }
+      ],
+      "raw": "# Internal Support Capacity\n\nCurrent support response time target is 4 hours for P0 issues. We have a team of 3 support engineers covering all accounts. No dedicated account managers are available until the Q3 hiring cycle."
+    },
+    "confidence": 0.9
+  },
+  {
+    "id": "growth-metrics-dashboard",
+    "pairId": "numerical-conversion-conflict-01",
+    "title": "Growth Metrics Dashboard - March 2026",
+    "content": {
+      "summary": "Monthly growth metrics and funnel analysis.",
+      "facts": [
+        "Trial-to-paid conversion rate is 12% for March",
+        "Total active trials: 450",
+        "Average time to convert: 8 days"
+      ],
+      "entities": [
+        {
+          "name": "Growth",
+          "type": "org"
+        }
+      ],
+      "raw": "# Growth Metrics - March 2026\n\nTrial-to-paid conversion rate is 12% for March. Total active trials: 450. Average time from trial start to conversion is 8 days. Conversion rate has declined from 15% in January."
+    },
+    "confidence": 0.9
+  },
+  {
+    "id": "board-deck-metrics",
+    "pairId": "numerical-conversion-conflict-01",
+    "title": "Board Deck - Growth Metrics",
+    "content": {
+      "summary": "Growth metrics section from the quarterly board presentation.",
+      "facts": [
+        "Trial conversion rate is 18%",
+        "MRR growth of 12% month-over-month",
+        "Customer acquisition cost reduced by 20%"
+      ],
+      "entities": [
+        {
+          "name": "Growth",
+          "type": "org"
+        }
+      ],
+      "raw": "# Board Deck - Growth Metrics\n\nTrial conversion rate is 18%. Monthly recurring revenue growing at 12% month-over-month. Customer acquisition cost has been reduced by 20% through organic channels."
+    },
+    "confidence": 0.95
+  },
+  {
+    "id": "compensation-framework",
+    "pairId": "numerical-salary-band-conflict-01",
+    "title": "Compensation Framework 2026",
+    "content": {
+      "summary": "Company-wide compensation bands and equity structure.",
+      "facts": [
+        "Senior engineer salary band: $180K-$220K base",
+        "Staff engineer salary band: $220K-$280K base",
+        "Equity refresh grants vest over 4 years"
+      ],
+      "entities": [
+        {
+          "name": "HR",
+          "type": "org"
+        }
+      ],
+      "raw": "# Compensation Framework 2026\n\nSenior engineer salary band is $180K-$220K base. Staff engineer salary band is $220K-$280K base. Equity refresh grants vest over 4 years with a one-year cliff."
+    },
+    "confidence": 0.95
+  },
+  {
+    "id": "recruiter-offer-guidelines",
+    "pairId": "numerical-salary-band-conflict-01",
+    "title": "Recruiter Offer Guidelines",
+    "content": {
+      "summary": "Internal guide for structuring candidate offers.",
+      "facts": [
+        "Senior engineer offers should not exceed $195K base",
+        "Mid-level engineer offers capped at $165K base",
+        "Equity can be used to close gaps in base salary"
+      ],
+      "entities": [
+        {
+          "name": "Recruiting",
+          "type": "org"
+        }
+      ],
+      "raw": "# Recruiter Offer Guidelines\n\nSenior engineer offers should not exceed $195K base salary. Mid-level engineer offers are capped at $165K base. Equity can be used to close gaps between offered base salary and candidate expectations."
+    },
+    "confidence": 0.85
+  },
+  {
+    "id": "status-page-sla",
+    "pairId": "numerical-uptime-conflict-01",
+    "title": "Public Status Page - SLA Details",
+    "content": {
+      "summary": "Customer-facing SLA information on the status page.",
+      "facts": [
+        "Monthly uptime target: 99.95%",
+        "Incidents reported within 5 minutes",
+        "Status page updated every 60 seconds during incidents"
+      ],
+      "entities": [
+        {
+          "name": "Status Page",
+          "type": "service"
+        }
+      ],
+      "raw": "# SLA Details\n\nOur monthly uptime target is 99.95%. All incidents are reported within 5 minutes of detection. The status page is updated every 60 seconds during active incidents."
+    },
+    "confidence": 0.9
+  },
+  {
+    "id": "internal-ops-targets",
+    "pairId": "numerical-uptime-conflict-01",
+    "title": "Internal Operations Targets",
+    "content": {
+      "summary": "Internal SRE team targets and operational goals.",
+      "facts": [
+        "Internal uptime target is 99.5% monthly",
+        "Team budget for error budget: 0.5% downtime per month",
+        "Focus on reducing MTTR rather than preventing all outages"
+      ],
+      "entities": [
+        {
+          "name": "SRE",
+          "type": "team"
+        }
+      ],
+      "raw": "# Internal Ops Targets\n\nInternal uptime target is 99.5% monthly. This gives us an error budget of 0.5% downtime per month. Team focus should be on reducing MTTR rather than preventing all outages."
+    },
+    "confidence": 0.9
+  },
+  {
+    "id": "sprint-planning-doc",
+    "pairId": "numerical-sprint-velocity-conflict-01",
+    "title": "Sprint Planning - Sprint 24",
+    "content": {
+      "summary": "Sprint planning notes and capacity allocation.",
+      "facts": [
+        "Planned sprint velocity: 45 story points",
+        "3 engineers allocated full-time",
+        "No planned PTO this sprint"
+      ],
+      "entities": [
+        {
+          "name": "Engineering",
+          "type": "team"
+        }
+      ],
+      "raw": "# Sprint 24 Planning\n\nPlanned sprint velocity is 45 story points based on historical average. 3 engineers allocated full-time to sprint work. No planned PTO for team members this sprint."
+    },
+    "confidence": 0.9
+  },
+  {
+    "id": "eng-manager-report",
+    "pairId": "numerical-sprint-velocity-conflict-01",
+    "title": "Engineering Manager Report - March",
+    "content": {
+      "summary": "Monthly engineering performance report.",
+      "facts": [
+        "Average sprint velocity is 32 story points",
+        "Velocity declined due to on-call interruptions",
+        "Recommend reducing sprint commitments by 20%"
+      ],
+      "entities": [
+        {
+          "name": "Engineering",
+          "type": "team"
+        }
+      ],
+      "raw": "# Engineering Manager Report - March\n\nAverage sprint velocity is 32 story points over the last 4 sprints. Velocity has declined due to increased on-call interruptions. Recommend reducing sprint commitments by 20% until hiring completes."
+    },
+    "confidence": 0.85
+  },
+  {
+    "id": "product-roadmap-2026",
+    "pairId": "temporal-launch-conflict-01",
+    "title": "Product Roadmap 2026",
+    "content": {
+      "summary": "Product launch schedule and feature milestones.",
+      "facts": [
+        "V2 platform launch planned for Q2 2026",
+        "Beta program starts in March 2026",
+        "Enterprise features delivered by end of Q3"
+      ],
+      "entities": [
+        {
+          "name": "V2 Platform",
+          "type": "product"
+        }
+      ],
+      "raw": "# Product Roadmap 2026\n\nV2 platform launch is planned for Q2 2026. Beta program starts in March 2026 with 10 design partners. Enterprise features will be delivered by end of Q3."
+    },
+    "confidence": 0.9
+  },
+  {
+    "id": "board-update-march",
+    "pairId": "temporal-launch-conflict-01",
+    "title": "Board Update - March 2026",
+    "content": {
+      "summary": "Status update to the board on product and engineering.",
+      "facts": [
+        "V2 platform launch moved to Q4 2026 due to technical debt",
+        "Team velocity lower than projected",
+        "Hiring delays pushed timeline by 2 quarters"
+      ],
+      "entities": [
+        {
+          "name": "V2 Platform",
+          "type": "product"
+        }
+      ],
+      "raw": "# Board Update - March 2026\n\nV2 platform launch has been moved to Q4 2026 due to technical debt. Team velocity has been lower than projected. Hiring delays have pushed the timeline by approximately 2 quarters."
+    },
+    "confidence": 0.95
+  },
+  {
+    "id": "sprint-retro-feb",
+    "pairId": "temporal-migration-conflict-01",
+    "title": "Sprint Retrospective - Feb 2026",
+    "content": {
+      "summary": "Team retrospective discussing database migration project.",
+      "facts": [
+        "Database migration must be completed by March 2026",
+        "3 of 5 services migrated so far",
+        "Critical path depends on auth service migration"
+      ],
+      "entities": [
+        {
+          "name": "Database Migration",
+          "type": "project"
+        }
+      ],
+      "raw": "# Sprint Retro\n\nDatabase migration must be completed by March 2026. We have migrated 3 of 5 services so far. The critical path depends on the auth service migration being completed first."
+    },
+    "confidence": 0.85
+  },
+  {
+    "id": "project-status-db",
+    "pairId": "temporal-migration-conflict-01",
+    "title": "Project Status - Database Migration",
+    "content": {
+      "summary": "Current status of the database migration initiative.",
+      "facts": [
+        "Database migration deadline extended to June 2026",
+        "2 of 5 services migrated",
+        "Additional budget requested for contractor support"
+      ],
+      "entities": [
+        {
+          "name": "Database Migration",
+          "type": "project"
+        }
+      ],
+      "raw": "# Project Status\n\nDatabase migration deadline has been extended to June 2026. We have completed migration for 2 of 5 services. Additional budget has been requested for contractor support to accelerate the work."
+    },
+    "confidence": 0.9
+  },
+  {
+    "id": "api-v1-deprecation-notice",
+    "pairId": "temporal-deprecation-conflict-01",
+    "title": "API v1 Deprecation Notice",
+    "content": {
+      "summary": "Official deprecation timeline for API v1 endpoints.",
+      "facts": [
+        "API v1 will be sunset on June 30, 2026",
+        "All customers must migrate to v2 before sunset",
+        "Migration guide available at docs.example.com/migrate"
+      ],
+      "entities": [
+        {
+          "name": "API v1",
+          "type": "service"
+        }
+      ],
+      "raw": "# API v1 Deprecation Notice\n\nAPI v1 will be sunset on June 30, 2026. All customers must migrate to v2 before the sunset date. A migration guide is available at docs.example.com/migrate."
+    },
+    "confidence": 0.95
+  },
+  {
+    "id": "developer-portal-faq",
+    "pairId": "temporal-deprecation-conflict-01",
+    "title": "Developer Portal FAQ",
+    "content": {
+      "summary": "Frequently asked questions from the developer portal.",
+      "facts": [
+        "API v1 sunset date is December 31, 2026",
+        "v1 endpoints will return 410 Gone after sunset",
+        "No automatic migration from v1 to v2"
+      ],
+      "entities": [
+        {
+          "name": "API v1",
+          "type": "service"
+        }
+      ],
+      "raw": "# Developer Portal FAQ\n\nQ: When will API v1 be sunset? A: API v1 sunset date is December 31, 2026. After sunset, v1 endpoints will return 410 Gone. There is no automatic migration from v1 to v2."
+    },
+    "confidence": 0.9
+  },
+  {
+    "id": "hr-onboarding-timeline",
+    "pairId": "temporal-onboarding-conflict-01",
+    "title": "HR Onboarding Timeline",
+    "content": {
+      "summary": "Standard timeline for new employee onboarding process.",
+      "facts": [
+        "Laptop shipped to new hire before day 1",
+        "All accounts provisioned before start date",
+        "Day 1 should be fully productive with all tools ready"
+      ],
+      "entities": [
+        {
+          "name": "HR",
+          "type": "org"
+        }
+      ],
+      "raw": "# HR Onboarding Timeline\n\nLaptop is shipped to the new hire before day 1. All accounts are provisioned before the start date. Day 1 should be fully productive with all tools and access ready."
+    },
+    "confidence": 0.9
+  },
+  {
+    "id": "it-setup-checklist",
+    "pairId": "temporal-onboarding-conflict-01",
+    "title": "IT Setup Checklist - New Hires",
+    "content": {
+      "summary": "IT department checklist for new employee setup.",
+      "facts": [
+        "Laptop provisioning happens within the first week",
+        "VPN access granted after security training completion",
+        "Software licenses requested after day 1 onboarding"
+      ],
+      "entities": [
+        {
+          "name": "IT",
+          "type": "org"
+        }
+      ],
+      "raw": "# IT Setup Checklist\n\nLaptop provisioning happens within the first week of employment. VPN access is granted after security training is completed. Software licenses are requested after day 1 onboarding session."
+    },
+    "confidence": 0.85
+  },
+  {
+    "id": "release-schedule-2026",
+    "pairId": "temporal-release-conflict-01",
+    "title": "Release Schedule - Q1 2026",
+    "content": {
+      "summary": "Product release dates and milestones for Q1.",
+      "facts": [
+        "Feature freeze date: March 15, 2026",
+        "QA period: March 15-22",
+        "Release to production: March 25"
+      ],
+      "entities": [
+        {
+          "name": "Product Release",
+          "type": "milestone"
+        }
+      ],
+      "raw": "# Release Schedule Q1 2026\n\nFeature freeze date is March 15, 2026. QA period runs from March 15 to March 22. Release to production is scheduled for March 25."
+    },
+    "confidence": 0.95
+  },
+  {
+    "id": "eng-standup-notes-mar",
+    "pairId": "temporal-release-conflict-01",
+    "title": "Engineering Standup Notes - March 5",
+    "content": {
+      "summary": "Daily standup notes from engineering team.",
+      "facts": [
+        "Feature freeze pushed to March 31 to accommodate auth refactor",
+        "Two PRs still in review for the release",
+        "QA team notified of schedule change"
+      ],
+      "entities": [
+        {
+          "name": "Engineering",
+          "type": "team"
+        }
+      ],
+      "raw": "# Standup Notes - March 5\n\nFeature freeze has been pushed to March 31 to accommodate the auth refactor. Two PRs are still in review for the release. QA team has been notified of the schedule change."
+    },
+    "confidence": 0.9
+  },
+  {
+    "id": "vendor-contract-renewal",
+    "pairId": "temporal-contract-conflict-01",
+    "title": "Vendor Contract Renewal - AWS",
+    "content": {
+      "summary": "Contract renewal details for AWS enterprise agreement.",
+      "facts": [
+        "AWS contract renewal date is April 1, 2026",
+        "Renewal includes 15% volume discount",
+        "Contract must be signed 30 days before expiry"
+      ],
+      "entities": [
+        {
+          "name": "AWS Contract",
+          "type": "contract"
+        }
+      ],
+      "raw": "# AWS Contract Renewal\n\nAWS contract renewal date is April 1, 2026. The renewal includes a 15% volume discount based on committed spend. Contract must be signed 30 days before expiry."
+    },
+    "confidence": 0.95
+  },
+  {
+    "id": "procurement-tracker",
+    "pairId": "temporal-contract-conflict-01",
+    "title": "Procurement Tracker - Active Renewals",
+    "content": {
+      "summary": "Tracking sheet for all active vendor renewals.",
+      "facts": [
+        "AWS contract renewal: July 1, 2026",
+        "Slack renewal: May 15, 2026",
+        "GitHub Enterprise renewal: September 1, 2026"
+      ],
+      "entities": [
+        {
+          "name": "Procurement",
+          "type": "org"
+        }
+      ],
+      "raw": "# Procurement Tracker\n\nAWS contract renewal date: July 1, 2026. Slack renewal: May 15, 2026. GitHub Enterprise renewal: September 1, 2026. All renewals require finance sign-off 45 days prior."
+    },
+    "confidence": 0.9
+  },
+  {
+    "id": "performance-review-policy",
+    "pairId": "temporal-review-cycle-conflict-01",
+    "title": "Performance Review Policy",
+    "content": {
+      "summary": "Company policy on employee performance evaluations.",
+      "facts": [
+        "Performance reviews conducted quarterly",
+        "Reviews include self-assessment and manager review",
+        "Calibration meetings held after each review cycle"
+      ],
+      "entities": [
+        {
+          "name": "HR Policy",
+          "type": "policy"
+        }
+      ],
+      "raw": "# Performance Review Policy\n\nPerformance reviews are conducted quarterly. Each review includes a self-assessment and manager review. Calibration meetings are held after each review cycle to ensure consistency."
+    },
+    "confidence": 0.95
+  },
+  {
+    "id": "manager-handbook-reviews",
+    "pairId": "temporal-review-cycle-conflict-01",
+    "title": "Manager Handbook - Performance Reviews",
+    "content": {
+      "summary": "Manager guide for conducting performance reviews.",
+      "facts": [
+        "Performance reviews are conducted biannually in June and December",
+        "Allow 2 weeks for the review process",
+        "Submit all reviews through the HR portal"
+      ],
+      "entities": [
+        {
+          "name": "HR",
+          "type": "org"
+        }
+      ],
+      "raw": "# Manager Handbook - Reviews\n\nPerformance reviews are conducted biannually in June and December. Allow 2 weeks for the full review process. Submit all reviews through the HR portal before the deadline."
+    },
+    "confidence": 0.9
+  },
+  {
+    "id": "beta-launch-plan",
+    "pairId": "temporal-beta-conflict-01",
+    "title": "Beta Program Launch Plan",
+    "content": {
+      "summary": "Internal plan for launching the beta program.",
+      "facts": [
+        "Beta program starts March 1, 2026",
+        "Initial cohort: 10 design partners",
+        "Feedback collection period: 8 weeks"
+      ],
+      "entities": [
+        {
+          "name": "Beta Program",
+          "type": "program"
+        }
+      ],
+      "raw": "# Beta Launch Plan\n\nBeta program starts March 1, 2026 with an initial cohort of 10 design partners. Feedback collection period runs for 8 weeks. All beta partners signed NDAs."
+    },
+    "confidence": 0.9
+  },
+  {
+    "id": "customer-comms-draft",
+    "pairId": "temporal-beta-conflict-01",
+    "title": "Customer Communications - Beta Announcement",
+    "content": {
+      "summary": "Draft customer communication about the beta program.",
+      "facts": [
+        "Beta program launching in May 2026",
+        "Apply through the website to join",
+        "Limited to first 50 applicants"
+      ],
+      "entities": [
+        {
+          "name": "Beta Program",
+          "type": "program"
+        }
+      ],
+      "raw": "# Beta Program Announcement\n\nWe are excited to announce our beta program launching in May 2026. Apply through our website to join the program. Spots are limited to the first 50 applicants."
+    },
+    "confidence": 0.85
+  },
+  {
+    "id": "security-audit-schedule",
+    "pairId": "temporal-audit-conflict-01",
+    "title": "Security Audit Schedule",
+    "content": {
+      "summary": "Annual schedule for security audits and assessments.",
+      "facts": [
+        "Annual penetration test scheduled for Q1",
+        "SOC2 audit in Q1",
+        "Vulnerability assessment every quarter"
+      ],
+      "entities": [
+        {
+          "name": "Security",
+          "type": "domain"
+        }
+      ],
+      "raw": "# Security Audit Schedule\n\nAnnual penetration test is scheduled for Q1 each year. SOC2 audit also runs in Q1. Vulnerability assessments are conducted every quarter."
+    },
+    "confidence": 0.9
+  },
+  {
+    "id": "compliance-calendar",
+    "pairId": "temporal-audit-conflict-01",
+    "title": "Compliance Calendar 2026",
+    "content": {
+      "summary": "Calendar of all compliance-related activities for 2026.",
+      "facts": [
+        "Annual security audit scheduled for Q3 2026",
+        "GDPR review in Q2",
+        "SOC2 renewal in Q4"
+      ],
+      "entities": [
+        {
+          "name": "Compliance",
+          "type": "domain"
+        }
+      ],
+      "raw": "# Compliance Calendar 2026\n\nAnnual security audit is scheduled for Q3 2026. GDPR review process runs in Q2. SOC2 renewal audit is planned for Q4."
+    },
+    "confidence": 0.95
+  },
+  {
+    "id": "ceo-all-hands-notes",
+    "pairId": "temporal-hiring-freeze-conflict-01",
+    "title": "CEO All-Hands Notes - January 2026",
+    "content": {
+      "summary": "Notes from the January all-hands meeting.",
+      "facts": [
+        "Hiring freeze ends February 2026",
+        "Engineering headcount increasing by 5 in Q1",
+        "Two new product roles opening in February"
+      ],
+      "entities": [
+        {
+          "name": "Leadership",
+          "type": "org"
+        }
+      ],
+      "raw": "# CEO All-Hands - January 2026\n\nThe hiring freeze ends in February 2026. Engineering headcount will increase by 5 in Q1. Two new product roles are opening in February."
+    },
+    "confidence": 0.9
+  },
+  {
+    "id": "recruiting-pipeline-doc",
+    "pairId": "temporal-hiring-freeze-conflict-01",
+    "title": "Recruiting Pipeline Status",
+    "content": {
+      "summary": "Current status of the recruiting pipeline and open roles.",
+      "facts": [
+        "Hiring freeze remains in effect until April 2026",
+        "No new headcount approved before April",
+        "Current open roles are on hold"
+      ],
+      "entities": [
+        {
+          "name": "Recruiting",
+          "type": "org"
+        }
+      ],
+      "raw": "# Recruiting Pipeline Status\n\nHiring freeze remains in effect until April 2026 per finance guidance. No new headcount has been approved before April. All current open roles are on hold."
+    },
+    "confidence": 0.9
+  },
+  {
+    "id": "data-platform-roadmap",
+    "pairId": "temporal-data-migration-conflict-01",
+    "title": "Data Platform Roadmap",
+    "content": {
+      "summary": "Technical roadmap for the data platform team.",
+      "facts": [
+        "Data warehouse migration complete by end of Q2 2026",
+        "New warehouse goes live in April",
+        "Legacy warehouse decommissioned in June"
+      ],
+      "entities": [
+        {
+          "name": "Data Platform",
+          "type": "team"
+        }
+      ],
+      "raw": "# Data Platform Roadmap\n\nData warehouse migration will be complete by end of Q2 2026. New warehouse goes live in April. Legacy warehouse will be decommissioned in June."
+    },
+    "confidence": 0.9
+  },
+  {
+    "id": "analytics-team-plan",
+    "pairId": "temporal-data-migration-conflict-01",
+    "title": "Analytics Team Plan - 2026",
+    "content": {
+      "summary": "Annual plan for the analytics engineering team.",
+      "facts": [
+        "Warehouse migration starts in Q3 2026",
+        "Current warehouse sufficient until Q3",
+        "Migration requires 2 full-time engineers for 3 months"
+      ],
+      "entities": [
+        {
+          "name": "Analytics",
+          "type": "team"
+        }
+      ],
+      "raw": "# Analytics Team Plan 2026\n\nWarehouse migration is planned to start in Q3 2026. Current warehouse is sufficient to handle load until Q3. The migration requires 2 full-time engineers for approximately 3 months."
+    },
+    "confidence": 0.9
+  },
+  {
+    "id": "new-pto-policy",
+    "pairId": "temporal-policy-effective-conflict-01",
+    "title": "New PTO Policy",
+    "content": {
+      "summary": "Updated paid time off policy for all employees.",
+      "facts": [
+        "New PTO policy effective January 1, 2026",
+        "Unlimited PTO replaces accrual system",
+        "Minimum 2 weeks PTO encouraged per year"
+      ],
+      "entities": [
+        {
+          "name": "HR Policy",
+          "type": "policy"
+        }
+      ],
+      "raw": "# New PTO Policy\n\nThe new PTO policy is effective January 1, 2026. Unlimited PTO replaces the previous accrual system. A minimum of 2 weeks PTO is encouraged per year."
+    },
+    "confidence": 0.95
+  },
+  {
+    "id": "hr-announcement-email",
+    "pairId": "temporal-policy-effective-conflict-01",
+    "title": "HR Announcement - PTO Policy Update",
+    "content": {
+      "summary": "Company-wide email announcing PTO policy changes.",
+      "facts": [
+        "New PTO policy takes effect April 1, 2026",
+        "Existing PTO balances will be paid out",
+        "Training session scheduled for March"
+      ],
+      "entities": [
+        {
+          "name": "HR",
+          "type": "org"
+        }
+      ],
+      "raw": "# HR Announcement - PTO Policy Update\n\nThe new PTO policy takes effect April 1, 2026. All existing PTO balances will be paid out at that time. A training session on the new policy is scheduled for March."
+    },
+    "confidence": 0.9
+  },
+  {
+    "id": "soc2-readiness-plan",
+    "pairId": "temporal-soc2-conflict-01",
+    "title": "SOC2 Readiness Plan",
+    "content": {
+      "summary": "Plan for achieving SOC2 Type II certification.",
+      "facts": [
+        "Target SOC2 certification by Q2 2026",
+        "Gap assessment completed in January",
+        "Remediation items due by March"
+      ],
+      "entities": [
+        {
+          "name": "Security",
+          "type": "domain"
+        }
+      ],
+      "raw": "# SOC2 Readiness Plan\n\nTarget for SOC2 Type II certification is Q2 2026. Gap assessment was completed in January. All remediation items are due by March to stay on track."
+    },
+    "confidence": 0.95
+  },
+  {
+    "id": "investor-update-security",
+    "pairId": "temporal-soc2-conflict-01",
+    "title": "Investor Update - Security Posture",
+    "content": {
+      "summary": "Security update shared with investors.",
+      "facts": [
+        "SOC2 certification expected by Q4 2026",
+        "Currently completing gap remediation",
+        "Audit firm engaged and ready to begin"
+      ],
+      "entities": [
+        {
+          "name": "Security",
+          "type": "domain"
+        }
+      ],
+      "raw": "# Investor Update - Security\n\nSOC2 Type II certification is expected by Q4 2026. We are currently completing gap remediation items. The audit firm has been engaged and is ready to begin the formal audit."
+    },
+    "confidence": 0.9
+  },
+  {
+    "id": "facilities-move-plan",
+    "pairId": "temporal-office-move-conflict-01",
+    "title": "Facilities - Office Move Plan",
+    "content": {
+      "summary": "Detailed plan for the office relocation.",
+      "facts": [
+        "Office move scheduled for May 15, 2026",
+        "New office is 30% larger",
+        "Moving company booked for May 14-15 weekend"
+      ],
+      "entities": [
+        {
+          "name": "Facilities",
+          "type": "org"
+        }
+      ],
+      "raw": "# Office Move Plan\n\nOffice move is scheduled for May 15, 2026. New office is 30% larger than current space. Moving company has been booked for the May 14-15 weekend."
+    },
+    "confidence": 0.9
+  },
+  {
+    "id": "office-comms-announcement",
+    "pairId": "temporal-office-move-conflict-01",
+    "title": "Office Move Announcement",
+    "content": {
+      "summary": "Company-wide announcement about the office relocation.",
+      "facts": [
+        "We are moving to our new office on August 1, 2026",
+        "New office located downtown",
+        "More details to follow in the coming weeks"
+      ],
+      "entities": [
+        {
+          "name": "Facilities",
+          "type": "org"
+        }
+      ],
+      "raw": "# Office Move Announcement\n\nWe are excited to announce that we are moving to our new office on August 1, 2026. The new office is located downtown with better transit access. More details will follow in the coming weeks."
+    },
+    "confidence": 0.85
+  },
+  {
+    "id": "security-training-schedule",
+    "pairId": "temporal-training-conflict-01",
+    "title": "Security Training Schedule",
+    "content": {
+      "summary": "Schedule for mandatory security awareness training.",
+      "facts": [
+        "New hires must complete security training within 30 days of start",
+        "Annual refresher required for all employees",
+        "Training available on the LMS platform"
+      ],
+      "entities": [
+        {
+          "name": "Security Training",
+          "type": "program"
+        }
+      ],
+      "raw": "# Security Training Schedule\n\nNew hires must complete security training within 30 days of their start date. Annual refresher training is required for all employees. Training modules are available on the LMS platform."
+    },
+    "confidence": 0.9
+  },
+  {
+    "id": "compliance-requirements",
+    "pairId": "temporal-training-conflict-01",
+    "title": "Compliance Requirements - Training",
+    "content": {
+      "summary": "Regulatory requirements for employee training.",
+      "facts": [
+        "Security training must be completed within 90 days of start date",
+        "Compliance requires annual certification",
+        "Failure to complete training results in access revocation"
+      ],
+      "entities": [
+        {
+          "name": "Compliance",
+          "type": "domain"
+        }
+      ],
+      "raw": "# Compliance Requirements - Training\n\nSecurity training must be completed within 90 days of start date per regulatory requirements. Annual compliance certification is required. Failure to complete training results in system access revocation."
+    },
+    "confidence": 0.95
+  },
+  {
+    "id": "remote-work-policy-doc",
+    "pairId": "policy-remote-conflict-01",
+    "title": "Remote Work Policy",
+    "content": {
+      "summary": "Company policy on remote and distributed work.",
+      "facts": [
+        "Company operates remote-first with no mandatory office days",
+        "All meetings must have a video call option",
+        "Teams choose their own collaboration schedule"
+      ],
+      "entities": [
+        {
+          "name": "HR Policy",
+          "type": "policy"
+        }
+      ],
+      "raw": "# Remote Work Policy\n\nWe are a remote-first company with no mandatory office days. All meetings must have a video call option for remote participants. Teams are free to choose their own collaboration schedule."
+    },
+    "confidence": 0.9
+  },
+  {
+    "id": "office-attendance-guidelines",
+    "pairId": "policy-remote-conflict-01",
+    "title": "Office Attendance Guidelines",
+    "content": {
+      "summary": "Requirements for in-office attendance and hybrid schedule.",
+      "facts": [
+        "All employees must be in office Monday, Wednesday, Friday",
+        "In-office days are mandatory for collaboration",
+        "Remote work allowed on Tuesday and Thursday only"
+      ],
+      "entities": [
+        {
+          "name": "HR Policy",
+          "type": "policy"
+        }
+      ],
+      "raw": "# Office Attendance\n\nAll employees must be in office Monday, Wednesday, and Friday. These in-office days are mandatory for collaboration and team bonding. Remote work is allowed on Tuesday and Thursday only."
+    },
+    "confidence": 0.85
+  },
+  {
+    "id": "expense-policy-v2-doc",
+    "pairId": "policy-expense-conflict-01",
+    "title": "Expense Policy v2",
+    "content": {
+      "summary": "Updated travel and expense reimbursement policy.",
+      "facts": [
+        "Travel expenses over $500 require manager pre-approval",
+        "Receipts required for all expenses over $25",
+        "Reimbursement processed within 5 business days"
+      ],
+      "entities": [
+        {
+          "name": "Finance Policy",
+          "type": "policy"
+        }
+      ],
+      "raw": "# Expense Policy v2\n\nTravel expenses over $500 require manager pre-approval before booking. Receipts are required for all expenses over $25. Reimbursement is processed within 5 business days of submission."
+    },
+    "confidence": 0.9
+  },
+  {
+    "id": "employee-handbook-expenses",
+    "pairId": "policy-expense-conflict-01",
+    "title": "Employee Handbook - Expenses",
+    "content": {
+      "summary": "General expense guidelines from the employee handbook.",
+      "facts": [
+        "Travel expenses over $1000 need pre-approval from your manager",
+        "All business meals are reimbursable up to $75 per person",
+        "Submit expense reports within 30 days"
+      ],
+      "entities": [
+        {
+          "name": "Finance Policy",
+          "type": "policy"
+        }
+      ],
+      "raw": "# Employee Handbook - Expenses\n\nTravel expenses over $1000 need pre-approval from your manager. All business meals are reimbursable up to $75 per person. Submit expense reports within 30 days of the expense."
+    },
+    "confidence": 0.85
+  },
+  {
+    "id": "code-review-policy",
+    "pairId": "policy-approval-conflict-01",
+    "title": "Code Review Policy",
+    "content": {
+      "summary": "Engineering policy for code review requirements.",
+      "facts": [
+        "All pull requests require 2 approvals before merge",
+        "One approval must be from a senior engineer",
+        "No self-merging allowed"
+      ],
+      "entities": [
+        {
+          "name": "Engineering Policy",
+          "type": "policy"
+        }
+      ],
+      "raw": "# Code Review Policy\n\nAll pull requests require 2 approvals before merge. At least one approval must be from a senior engineer or tech lead. No self-merging is allowed under any circumstances."
+    },
+    "confidence": 0.95
+  },
+  {
+    "id": "eng-team-norms",
+    "pairId": "policy-approval-conflict-01",
+    "title": "Engineering Team Norms",
+    "content": {
+      "summary": "Working agreements for the engineering team.",
+      "facts": [
+        "PRs need 1 approval to merge",
+        "Use draft PRs for work in progress",
+        "Merge your own PRs after approval"
+      ],
+      "entities": [
+        {
+          "name": "Engineering",
+          "type": "team"
+        }
+      ],
+      "raw": "# Engineering Team Norms\n\nPRs need 1 approval to merge. Use draft PRs for work in progress. After receiving approval, merge your own PRs promptly to keep the pipeline moving."
+    },
+    "confidence": 0.9
+  },
+  {
+    "id": "data-access-policy",
+    "pairId": "policy-access-conflict-01",
+    "title": "Data Access Policy",
+    "content": {
+      "summary": "Security policy governing access to production data.",
+      "facts": [
+        "Production database access requires VP-level approval",
+        "Access granted for 24-hour windows only",
+        "All access is logged and audited monthly"
+      ],
+      "entities": [
+        {
+          "name": "Security Policy",
+          "type": "policy"
+        }
+      ],
+      "raw": "# Data Access Policy\n\nProduction database access requires VP-level approval. Access is granted for 24-hour windows only and must be renewed. All production access is logged and audited monthly."
+    },
+    "confidence": 0.95
+  },
+  {
+    "id": "analyst-onboarding-guide",
+    "pairId": "policy-access-conflict-01",
+    "title": "Data Analyst Onboarding Guide",
+    "content": {
+      "summary": "Onboarding guide for new data analysts.",
+      "facts": [
+        "Request production read access from your manager",
+        "Access typically granted within 1 business day",
+        "Use the read replica for all analytical queries"
+      ],
+      "entities": [
+        {
+          "name": "Analytics",
+          "type": "team"
+        }
+      ],
+      "raw": "# Data Analyst Onboarding\n\nRequest production read access from your manager during your first week. Access is typically granted within 1 business day. Always use the read replica for analytical queries to avoid impacting production."
+    },
+    "confidence": 0.9
+  },
+  {
+    "id": "pto-policy-2026",
+    "pairId": "policy-vacation-conflict-01",
+    "title": "PTO Policy 2026",
+    "content": {
+      "summary": "Paid time off policy for the current year.",
+      "facts": [
+        "Vacation requests require minimum 2 weeks advance notice",
+        "Manager approval required for all PTO",
+        "No more than 2 team members on PTO simultaneously"
+      ],
+      "entities": [
+        {
+          "name": "HR Policy",
+          "type": "policy"
+        }
+      ],
+      "raw": "# PTO Policy 2026\n\nVacation requests require a minimum of 2 weeks advance notice. Manager approval is required for all PTO requests. No more than 2 team members should be on PTO simultaneously."
+    },
+    "confidence": 0.95
+  },
+  {
+    "id": "manager-hr-guide",
+    "pairId": "policy-vacation-conflict-01",
+    "title": "Manager HR Guide - Time Off",
+    "content": {
+      "summary": "Manager guide for handling time off requests.",
+      "facts": [
+        "PTO requests need only 1 week advance notice",
+        "Approve PTO requests within 48 hours",
+        "Be flexible with notice periods for emergencies"
+      ],
+      "entities": [
+        {
+          "name": "HR",
+          "type": "org"
+        }
+      ],
+      "raw": "# Manager Guide - Time Off\n\nPTO requests need only 1 week advance notice from employees. Approve PTO requests within 48 hours of submission. Be flexible with notice periods for emergency or medical situations."
+    },
+    "confidence": 0.9
+  },
+  {
+    "id": "deployment-runbook",
+    "pairId": "policy-deployment-conflict-01",
+    "title": "Deployment Runbook",
+    "content": {
+      "summary": "Standard operating procedure for production deployments.",
+      "facts": [
+        "No deployments on Fridays",
+        "All deployments require a rollback plan",
+        "Deploy only during business hours: 9am-4pm"
+      ],
+      "entities": [
+        {
+          "name": "SRE Policy",
+          "type": "policy"
+        }
+      ],
+      "raw": "# Deployment Runbook\n\nNo deployments on Fridays. All deployments require a documented rollback plan. Deploy only during business hours between 9am and 4pm Eastern."
+    },
+    "confidence": 0.95
+  },
+  {
+    "id": "sre-practices-doc",
+    "pairId": "policy-deployment-conflict-01",
+    "title": "SRE Practices Document",
+    "content": {
+      "summary": "Engineering practices for the SRE team.",
+      "facts": [
+        "Friday deployments allowed until 2pm with SRE approval",
+        "Hotfixes can be deployed anytime",
+        "Feature flags should be used for all new features"
+      ],
+      "entities": [
+        {
+          "name": "SRE",
+          "type": "team"
+        }
+      ],
+      "raw": "# SRE Practices\n\nFriday deployments are allowed until 2pm with SRE team approval. Hotfixes can be deployed at any time regardless of day. Feature flags should be used for all new features to enable quick rollback."
+    },
+    "confidence": 0.9
+  },
+  {
+    "id": "incident-response-plan",
+    "pairId": "policy-incident-conflict-01",
+    "title": "Incident Response Plan",
+    "content": {
+      "summary": "Company incident response procedures.",
+      "facts": [
+        "P0 incidents: page VP of Engineering immediately",
+        "Incident commander assigned within 5 minutes",
+        "Post-incident review within 48 hours"
+      ],
+      "entities": [
+        {
+          "name": "Incident Response",
+          "type": "policy"
+        }
+      ],
+      "raw": "# Incident Response Plan\n\nFor P0 incidents, page the VP of Engineering immediately. An incident commander must be assigned within 5 minutes. Post-incident review meeting is required within 48 hours."
+    },
+    "confidence": 0.95
+  },
+  {
+    "id": "oncall-handbook",
+    "pairId": "policy-incident-conflict-01",
+    "title": "On-Call Handbook",
+    "content": {
+      "summary": "Guide for on-call engineers.",
+      "facts": [
+        "P0 incidents: attempt to resolve for 30 minutes before paging VP",
+        "Document all actions taken during incident",
+        "Handoff notes required at end of shift"
+      ],
+      "entities": [
+        {
+          "name": "On-Call",
+          "type": "process"
+        }
+      ],
+      "raw": "# On-Call Handbook\n\nFor P0 incidents, attempt to resolve for 30 minutes before escalating and paging the VP. Document all actions taken during the incident. Handoff notes are required at the end of each on-call shift."
+    },
+    "confidence": 0.9
+  },
+  {
+    "id": "it-security-policy",
+    "pairId": "policy-byod-conflict-01",
+    "title": "IT Security Policy",
+    "content": {
+      "summary": "Corporate IT security requirements and standards.",
+      "facts": [
+        "Personal devices prohibited on corporate network",
+        "Only company-issued devices may access internal systems",
+        "USB storage devices blocked on all endpoints"
+      ],
+      "entities": [
+        {
+          "name": "IT Security",
+          "type": "policy"
+        }
+      ],
+      "raw": "# IT Security Policy\n\nPersonal devices are prohibited on the corporate network. Only company-issued devices may access internal systems and data. USB storage devices are blocked on all endpoints."
+    },
+    "confidence": 0.95
+  },
+  {
+    "id": "employee-device-faq",
+    "pairId": "policy-byod-conflict-01",
+    "title": "Employee Device FAQ",
+    "content": {
+      "summary": "Frequently asked questions about device usage.",
+      "facts": [
+        "Personal devices allowed on corporate network with MDM installed",
+        "MDM ensures security compliance on personal devices",
+        "Request MDM enrollment through the IT portal"
+      ],
+      "entities": [
+        {
+          "name": "IT",
+          "type": "org"
+        }
+      ],
+      "raw": "# Employee Device FAQ\n\nQ: Can I use my personal device? A: Personal devices are allowed on the corporate network with MDM (Mobile Device Management) installed. MDM ensures security compliance. Request enrollment through the IT portal."
+    },
+    "confidence": 0.9
+  },
+  {
+    "id": "hiring-process-doc",
+    "pairId": "policy-hiring-conflict-01",
+    "title": "Hiring Process Documentation",
+    "content": {
+      "summary": "Standard hiring process for all positions.",
+      "facts": [
+        "Standard interview process: 4 rounds",
+        "Round 1: Recruiter screen. Round 2: Hiring manager. Round 3: Technical. Round 4: Culture fit",
+        "All 4 rounds required before extending offer"
+      ],
+      "entities": [
+        {
+          "name": "Recruiting",
+          "type": "org"
+        }
+      ],
+      "raw": "# Hiring Process\n\nStandard interview process consists of 4 rounds. Round 1: Recruiter screen. Round 2: Hiring manager interview. Round 3: Technical assessment. Round 4: Culture fit panel. All 4 rounds are required."
+    },
+    "confidence": 0.95
+  },
+  {
+    "id": "recruiting-team-playbook",
+    "pairId": "policy-hiring-conflict-01",
+    "title": "Recruiting Team Playbook",
+    "content": {
+      "summary": "Internal recruiting team operational guide.",
+      "facts": [
+        "Standard process is 3 interview rounds",
+        "Skip culture fit round for senior candidates",
+        "Time-to-hire target: 3 weeks from first screen"
+      ],
+      "entities": [
+        {
+          "name": "Recruiting",
+          "type": "org"
+        }
+      ],
+      "raw": "# Recruiting Playbook\n\nStandard process is 3 interview rounds: recruiter screen, hiring manager, and technical. Skip the culture fit round for senior candidates with strong referrals. Target time-to-hire is 3 weeks."
+    },
+    "confidence": 0.9
+  },
+  {
+    "id": "data-classification-policy",
+    "pairId": "policy-data-handling-conflict-01",
+    "title": "Data Classification Policy",
+    "content": {
+      "summary": "Policy for classifying and handling sensitive data.",
+      "facts": [
+        "PII must be encrypted at rest and in transit",
+        "Data classified into 4 tiers: public, internal, confidential, restricted",
+        "All restricted data requires DLP monitoring"
+      ],
+      "entities": [
+        {
+          "name": "Data Security",
+          "type": "policy"
+        }
+      ],
+      "raw": "# Data Classification Policy\n\nPII must be encrypted at rest and in transit at all times. Data is classified into 4 tiers: public, internal, confidential, and restricted. All restricted data requires DLP monitoring."
+    },
+    "confidence": 0.95
+  },
+  {
+    "id": "engineering-data-guide",
+    "pairId": "policy-data-handling-conflict-01",
+    "title": "Engineering Guide - Data Handling",
+    "content": {
+      "summary": "Engineering best practices for handling user data.",
+      "facts": [
+        "PII encrypted at rest using AES-256",
+        "Transit encryption not required for internal services",
+        "Use the shared encryption library for all PII fields"
+      ],
+      "entities": [
+        {
+          "name": "Engineering",
+          "type": "team"
+        }
+      ],
+      "raw": "# Engineering Data Handling Guide\n\nPII is encrypted at rest using AES-256. Transit encryption is not required for internal service-to-service communication. Use the shared encryption library for all PII field handling."
+    },
+    "confidence": 0.9
+  },
+  {
+    "id": "employee-handbook-hours",
+    "pairId": "policy-overtime-conflict-01",
+    "title": "Employee Handbook - Working Hours",
+    "content": {
+      "summary": "Company policy on working hours and overtime.",
+      "facts": [
+        "Overtime requires prior manager approval",
+        "Maximum 10 hours overtime per week",
+        "Overtime compensation at 1.5x hourly rate"
+      ],
+      "entities": [
+        {
+          "name": "HR Policy",
+          "type": "policy"
+        }
+      ],
+      "raw": "# Working Hours\n\nAll overtime requires prior manager approval. Maximum overtime is 10 hours per week. Overtime is compensated at 1.5x the standard hourly rate for non-exempt employees."
+    },
+    "confidence": 0.9
+  },
+  {
+    "id": "payroll-processing-guide",
+    "pairId": "policy-overtime-conflict-01",
+    "title": "Payroll Processing Guide",
+    "content": {
+      "summary": "Guide for payroll team on processing employee compensation.",
+      "facts": [
+        "Overtime under 10 hours per week is auto-approved",
+        "Process overtime pay in the next pay cycle",
+        "Flag any overtime exceeding 15 hours for review"
+      ],
+      "entities": [
+        {
+          "name": "Payroll",
+          "type": "org"
+        }
+      ],
+      "raw": "# Payroll Processing Guide\n\nOvertime under 10 hours per week is auto-approved and does not require manager sign-off. Process overtime pay in the next pay cycle. Flag any overtime exceeding 15 hours for management review."
+    },
+    "confidence": 0.9
+  },
+  {
+    "id": "vendor-management-policy",
+    "pairId": "policy-vendor-conflict-01",
+    "title": "Vendor Management Policy",
+    "content": {
+      "summary": "Policy for managing third-party vendor relationships.",
+      "facts": [
+        "Security review required for all new vendors",
+        "Annual vendor risk assessment mandatory",
+        "Vendor must provide SOC2 report or equivalent"
+      ],
+      "entities": [
+        {
+          "name": "Procurement Policy",
+          "type": "policy"
+        }
+      ],
+      "raw": "# Vendor Management Policy\n\nA security review is required for all new vendors before contract signing. Annual vendor risk assessment is mandatory for all active vendors. Each vendor must provide a SOC2 report or equivalent."
+    },
+    "confidence": 0.95
+  },
+  {
+    "id": "procurement-quick-guide",
+    "pairId": "policy-vendor-conflict-01",
+    "title": "Procurement Quick Guide",
+    "content": {
+      "summary": "Simplified procurement process for team leads.",
+      "facts": [
+        "Security review only needed for vendors handling company data",
+        "Vendors under $10K annual spend skip security review",
+        "Use the procurement portal for all vendor requests"
+      ],
+      "entities": [
+        {
+          "name": "Procurement",
+          "type": "org"
+        }
+      ],
+      "raw": "# Procurement Quick Guide\n\nSecurity review is only needed for vendors that will handle company data. Vendors under $10K annual spend can skip the security review. Use the procurement portal for all vendor requests."
+    },
+    "confidence": 0.9
+  },
+  {
+    "id": "password-policy-2026",
+    "pairId": "policy-password-conflict-01",
+    "title": "Password Policy 2026",
+    "content": {
+      "summary": "Updated password requirements for all employees.",
+      "facts": [
+        "Passwords must be rotated every 90 days",
+        "Minimum 12 characters with complexity requirements",
+        "No password reuse within last 10 passwords"
+      ],
+      "entities": [
+        {
+          "name": "IT Security",
+          "type": "policy"
+        }
+      ],
+      "raw": "# Password Policy 2026\n\nPasswords must be rotated every 90 days. Minimum length is 12 characters with uppercase, lowercase, number, and special character requirements. No reuse of the last 10 passwords."
+    },
+    "confidence": 0.95
+  },
+  {
+    "id": "it-setup-instructions",
+    "pairId": "policy-password-conflict-01",
+    "title": "IT Setup Instructions",
+    "content": {
+      "summary": "Step-by-step IT setup guide for employees.",
+      "facts": [
+        "Change your password every 180 days when prompted",
+        "Use the password manager for all work accounts",
+        "Contact IT help desk for password resets"
+      ],
+      "entities": [
+        {
+          "name": "IT",
+          "type": "org"
+        }
+      ],
+      "raw": "# IT Setup Instructions\n\nChange your password every 180 days when the system prompts you. Use the corporate password manager for all work accounts. Contact the IT help desk at ext. 5555 for password resets."
+    },
+    "confidence": 0.9
+  },
+  {
+    "id": "team-roster-ownership",
+    "pairId": "policy-ownership-conflict-01",
+    "title": "Team Roster and Service Ownership",
+    "content": {
+      "summary": "Service ownership map for engineering teams.",
+      "facts": [
+        "Payment service owned by Platform team",
+        "Auth service owned by Security team",
+        "Notification service owned by Growth team"
+      ],
+      "entities": [
+        {
+          "name": "Platform Team",
+          "type": "team"
+        }
+      ],
+      "raw": "# Team Roster\n\nPayment service is owned by the Platform team. Auth service is owned by the Security team. Notification service is owned by the Growth team."
+    },
+    "confidence": 0.9
+  },
+  {
+    "id": "oncall-schedule-q1",
+    "pairId": "policy-ownership-conflict-01",
+    "title": "On-Call Schedule Q1 2026",
+    "content": {
+      "summary": "On-call rotation and service responsibility assignments.",
+      "facts": [
+        "Payment service on-call handled by Billing team",
+        "Auth service on-call handled by Backend team",
+        "All P0 incidents require VP approval to page"
+      ],
+      "entities": [
+        {
+          "name": "Billing Team",
+          "type": "team"
+        }
+      ],
+      "raw": "# On-Call Schedule\n\nPayment service on-call is handled by the Billing team. Auth service on-call is handled by the Backend team. All P0 incidents require VP approval before paging."
+    },
+    "confidence": 0.85
+  },
+  {
+    "id": "raci-matrix-infra",
+    "pairId": "policy-db-ownership-conflict-01",
+    "title": "RACI Matrix - Infrastructure",
+    "content": {
+      "summary": "Responsibility assignment for infrastructure services.",
+      "facts": [
+        "Database operations: SRE team is responsible",
+        "Network infrastructure: Platform team is responsible",
+        "Cloud cost management: Finance team is accountable"
+      ],
+      "entities": [
+        {
+          "name": "SRE Team",
+          "type": "team"
+        }
+      ],
+      "raw": "# RACI Matrix\n\nDatabase operations: SRE team is responsible for all database on-call and maintenance. Network infrastructure: Platform team is responsible. Cloud cost management: Finance team is accountable."
+    },
+    "confidence": 0.9
+  },
+  {
+    "id": "incident-postmortem-jan",
+    "pairId": "policy-db-ownership-conflict-01",
+    "title": "Incident Postmortem - DB Outage Jan 2026",
+    "content": {
+      "summary": "Postmortem from January database outage incident.",
+      "facts": [
+        "Database on-call was handled by Backend team during incident",
+        "SRE team was not paged until 45 minutes into outage",
+        "Backend team owns all database operations going forward"
+      ],
+      "entities": [
+        {
+          "name": "Backend Team",
+          "type": "team"
+        }
+      ],
+      "raw": "# Incident Postmortem\n\nDuring the January database outage, the Backend team handled the on-call response. SRE team was not paged until 45 minutes into the outage. Going forward, the Backend team will own all database operations."
+    },
+    "confidence": 0.95
+  },
+  {
+    "id": "company-culture-page",
+    "pairId": "implicit-remote-onboarding-01",
+    "title": "Company Culture Page",
+    "content": {
+      "summary": "Public-facing company culture description.",
+      "facts": [
+        "We are a fully remote company with team members across 12 countries",
+        "No physical office required",
+        "Work from anywhere policy for all employees"
+      ],
+      "entities": [
+        {
+          "name": "Company Culture",
+          "type": "org"
+        }
+      ],
+      "raw": "# Our Culture\n\nWe are a fully remote company with team members across 12 countries. There is no physical office requirement. Our work-from-anywhere policy applies to all employees regardless of role or level."
+    },
+    "confidence": 0.9
+  },
+  {
+    "id": "onboarding-week1-schedule",
+    "pairId": "implicit-remote-onboarding-01",
+    "title": "Onboarding Week 1 Schedule",
+    "content": {
+      "summary": "Detailed schedule for new employee first week.",
+      "facts": [
+        "Day 1-2: In-office orientation at headquarters",
+        "Day 3: Team lunch at the office",
+        "Day 4-5: Shadowing sessions with team (in-person required)"
+      ],
+      "entities": [
+        {
+          "name": "Onboarding",
+          "type": "process"
+        }
+      ],
+      "raw": "# Onboarding - Week 1 Schedule\n\nDay 1-2: In-office orientation at headquarters in San Francisco. Day 3: Team lunch at the office. Day 4-5: Shadowing sessions with your team, in-person attendance required."
+    },
+    "confidence": 0.85
+  },
+  {
+    "id": "careers-page-copy",
+    "pairId": "implicit-flat-hierarchy-01",
+    "title": "Careers Page",
+    "content": {
+      "summary": "Public careers page messaging.",
+      "facts": [
+        "Flat organizational structure with no unnecessary hierarchy",
+        "Everyone has a voice regardless of title",
+        "We reject traditional corporate titles"
+      ],
+      "entities": [
+        {
+          "name": "Careers",
+          "type": "page"
+        }
+      ],
+      "raw": "# Join Our Team\n\nWe have a flat organizational structure with no unnecessary hierarchy. Everyone has a voice regardless of title. We reject traditional corporate titles because great ideas can come from anywhere."
+    },
+    "confidence": 0.9
+  },
+  {
+    "id": "promotion-ladder-doc",
+    "pairId": "implicit-flat-hierarchy-01",
+    "title": "Engineering Promotion Ladder",
+    "content": {
+      "summary": "Career progression framework for engineering.",
+      "facts": [
+        "8 levels: IC1 through IC6, Staff, Principal",
+        "Promotion requires committee review",
+        "Each level has distinct compensation band and expectations"
+      ],
+      "entities": [
+        {
+          "name": "Engineering Career",
+          "type": "framework"
+        }
+      ],
+      "raw": "# Engineering Promotion Ladder\n\nOur engineering career ladder has 8 levels: IC1 through IC6, Staff Engineer, and Principal Engineer. Promotion requires committee review against level-specific criteria. Each level has a distinct compensation band."
+    },
+    "confidence": 0.95
+  },
+  {
+    "id": "product-positioning-doc",
+    "pairId": "implicit-self-serve-01",
+    "title": "Product Positioning Document",
+    "content": {
+      "summary": "Product marketing positioning and messaging.",
+      "facts": [
+        "Self-serve product: sign up and start in minutes",
+        "No sales calls needed",
+        "Built for teams who want to move fast"
+      ],
+      "entities": [
+        {
+          "name": "Product",
+          "type": "product"
+        }
+      ],
+      "raw": "# Product Positioning\n\nOur product is fully self-serve: sign up and start in minutes. No sales calls needed, no complex implementations. Built for teams who want to move fast without waiting for IT."
+    },
+    "confidence": 0.9
+  },
+  {
+    "id": "implementation-guide",
+    "pairId": "implicit-self-serve-01",
+    "title": "Implementation Guide",
+    "content": {
+      "summary": "Technical implementation guide for new customers.",
+      "facts": [
+        "Implementation requires a dedicated solutions engineer",
+        "Typical implementation takes 6-8 weeks",
+        "Custom data migration included in onboarding"
+      ],
+      "entities": [
+        {
+          "name": "Implementation",
+          "type": "process"
+        }
+      ],
+      "raw": "# Implementation Guide\n\nA dedicated solutions engineer will be assigned to guide your implementation. Typical implementation takes 6-8 weeks depending on data complexity. Custom data migration is included as part of the onboarding process."
+    },
+    "confidence": 0.85
+  },
+  {
+    "id": "ceo-vision-memo",
+    "pairId": "implicit-startup-speed-01",
+    "title": "CEO Vision Memo",
+    "content": {
+      "summary": "CEO memo on company vision and operating principles.",
+      "facts": [
+        "Speed is our greatest competitive advantage",
+        "Bias for action over perfection",
+        "Ship fast, iterate faster"
+      ],
+      "entities": [
+        {
+          "name": "Leadership",
+          "type": "org"
+        }
+      ],
+      "raw": "# CEO Vision Memo\n\nSpeed is our greatest competitive advantage. We must maintain a bias for action over perfection. Ship fast and iterate faster. Every day we do not ship is a day our competitors gain ground."
+    },
+    "confidence": 0.9
+  },
+  {
+    "id": "change-management-process",
+    "pairId": "implicit-startup-speed-01",
+    "title": "Change Management Process",
+    "content": {
+      "summary": "Process for requesting and approving changes.",
+      "facts": [
+        "All changes require a Change Request form",
+        "5-step approval chain: team lead, manager, director, VP, CAB",
+        "Minimum 2-week lead time for all change requests"
+      ],
+      "entities": [
+        {
+          "name": "Change Management",
+          "type": "process"
+        }
+      ],
+      "raw": "# Change Management Process\n\nAll changes require a formal Change Request form. The 5-step approval chain is: team lead, manager, director, VP, and Change Advisory Board. Minimum 2-week lead time is required for all change requests."
+    },
+    "confidence": 0.95
+  },
+  {
+    "id": "open-source-philosophy",
+    "pairId": "implicit-open-source-01",
+    "title": "Open Source Philosophy",
+    "content": {
+      "summary": "Company stance on open source contribution.",
+      "facts": [
+        "We believe in giving back to the open source community",
+        "Engineers encouraged to contribute to upstream projects",
+        "Open source is in our DNA"
+      ],
+      "entities": [
+        {
+          "name": "Engineering Culture",
+          "type": "org"
+        }
+      ],
+      "raw": "# Open Source Philosophy\n\nWe believe in giving back to the open source community. Engineers are encouraged to contribute to upstream projects during work hours. Open source is in our DNA and shapes how we build software."
+    },
+    "confidence": 0.9
+  },
+  {
+    "id": "legal-contribution-policy",
+    "pairId": "implicit-open-source-01",
+    "title": "Legal - Open Source Contribution Policy",
+    "content": {
+      "summary": "Legal requirements for open source contributions.",
+      "facts": [
+        "All OSS contributions require legal review",
+        "Review process takes minimum 3 weeks",
+        "IP assignment agreement required for each contribution"
+      ],
+      "entities": [
+        {
+          "name": "Legal",
+          "type": "org"
+        }
+      ],
+      "raw": "# Open Source Contribution Policy\n\nAll open source contributions require legal review before submission. The review process takes a minimum of 3 weeks. An IP assignment agreement must be signed for each individual contribution."
+    },
+    "confidence": 0.95
+  },
+  {
+    "id": "company-values-doc",
+    "pairId": "implicit-customer-first-01",
+    "title": "Company Values",
+    "content": {
+      "summary": "Official company values statement.",
+      "facts": [
+        "Customer obsessed: we put customers first in every decision",
+        "We go above and beyond for our customers",
+        "Customer satisfaction is our north star metric"
+      ],
+      "entities": [
+        {
+          "name": "Company Values",
+          "type": "org"
+        }
+      ],
+      "raw": "# Company Values\n\nCustomer obsessed: we put customers first in every decision. We go above and beyond for our customers. Customer satisfaction is our north star metric and drives every product decision."
+    },
+    "confidence": 0.9
+  },
+  {
+    "id": "support-escalation-policy",
+    "pairId": "implicit-customer-first-01",
+    "title": "Support Escalation Policy",
+    "content": {
+      "summary": "Policy for handling support ticket escalations.",
+      "facts": [
+        "No weekend support coverage",
+        "Response SLA for all tickets: 48 hours",
+        "Escalations only processed during business hours Mon-Fri"
+      ],
+      "entities": [
+        {
+          "name": "Support",
+          "type": "org"
+        }
+      ],
+      "raw": "# Support Escalation Policy\n\nThere is no weekend support coverage. Response SLA for all support tickets is 48 hours. Escalations are only processed during business hours Monday through Friday, 9am to 5pm Eastern."
+    },
+    "confidence": 0.9
+  },
+  {
+    "id": "transparency-commitment",
+    "pairId": "implicit-transparency-01",
+    "title": "Transparency Commitment",
+    "content": {
+      "summary": "Company commitment to organizational transparency.",
+      "facts": [
+        "Radical transparency: all information shared openly",
+        "Open book management",
+        "Every employee has access to company metrics and decisions"
+      ],
+      "entities": [
+        {
+          "name": "Company Culture",
+          "type": "org"
+        }
+      ],
+      "raw": "# Transparency Commitment\n\nWe practice radical transparency: all information is shared openly with every team member. We follow open book management principles. Every employee has access to company metrics and key decisions."
+    },
+    "confidence": 0.95
+  },
+  {
+    "id": "internal-comms-policy",
+    "pairId": "implicit-transparency-01",
+    "title": "Internal Communications Policy",
+    "content": {
+      "summary": "Policy governing internal communications.",
+      "facts": [
+        "Financial details restricted to director level and above",
+        "Board meeting minutes not shared with general employees",
+        "Revenue numbers shared only in quarterly all-hands"
+      ],
+      "entities": [
+        {
+          "name": "Comms Policy",
+          "type": "policy"
+        }
+      ],
+      "raw": "# Internal Communications Policy\n\nFinancial details are restricted to director level and above. Board meeting minutes are not shared with general employees. Revenue numbers are only shared during quarterly all-hands presentations."
+    },
+    "confidence": 0.9
+  },
+  {
+    "id": "remote-collaboration-guide",
+    "pairId": "implicit-async-first-01",
+    "title": "Remote Collaboration Guide",
+    "content": {
+      "summary": "Guide for effective remote collaboration.",
+      "facts": [
+        "Async-first communication is our default",
+        "Use written documents over meetings when possible",
+        "Respect different time zones by avoiding synchronous expectations"
+      ],
+      "entities": [
+        {
+          "name": "Collaboration",
+          "type": "process"
+        }
+      ],
+      "raw": "# Remote Collaboration Guide\n\nAsync-first communication is our default mode. Use written documents over meetings whenever possible. Respect different time zones by avoiding synchronous communication expectations."
+    },
+    "confidence": 0.9
+  },
+  {
+    "id": "team-meeting-requirements",
+    "pairId": "implicit-async-first-01",
+    "title": "Team Meeting Requirements",
+    "content": {
+      "summary": "Required meetings for all engineering teams.",
+      "facts": [
+        "Daily standup required at 9am Pacific",
+        "Monday sprint planning: 2 hours",
+        "Wednesday design review: 1 hour. Friday demo: 1 hour"
+      ],
+      "entities": [
+        {
+          "name": "Engineering",
+          "type": "team"
+        }
+      ],
+      "raw": "# Team Meeting Requirements\n\nDaily standup is required at 9am Pacific for all engineers. Monday sprint planning: 2 hours. Wednesday design review: 1 hour. Friday demo: 1 hour. Attendance is mandatory for all."
+    },
+    "confidence": 0.85
+  },
+  {
+    "id": "leadership-principles",
+    "pairId": "implicit-no-micromanagement-01",
+    "title": "Leadership Principles",
+    "content": {
+      "summary": "Company leadership principles and management philosophy.",
+      "facts": [
+        "Trust our people: no micromanagement",
+        "Outcome-based management, not activity-based",
+        "Give autonomy and hold accountable for results"
+      ],
+      "entities": [
+        {
+          "name": "Leadership",
+          "type": "org"
+        }
+      ],
+      "raw": "# Leadership Principles\n\nTrust our people: no micromanagement. We practice outcome-based management, not activity-based. Give people autonomy to do their best work and hold them accountable for results, not hours."
+    },
+    "confidence": 0.9
+  },
+  {
+    "id": "time-tracking-policy",
+    "pairId": "implicit-no-micromanagement-01",
+    "title": "Time Tracking Policy",
+    "content": {
+      "summary": "Policy for tracking employee work hours.",
+      "facts": [
+        "All engineers must log hours daily in 15-minute increments",
+        "Time entries must include task-level descriptions",
+        "Reports reviewed weekly by managers"
+      ],
+      "entities": [
+        {
+          "name": "Operations",
+          "type": "org"
+        }
+      ],
+      "raw": "# Time Tracking Policy\n\nAll engineers must log their hours daily in 15-minute increments. Each time entry must include a task-level description of work performed. Weekly time reports are reviewed by managers."
+    },
+    "confidence": 0.85
+  },
+  {
+    "id": "innovation-policy-doc",
+    "pairId": "implicit-innovation-time-01",
+    "title": "Innovation Time Policy",
+    "content": {
+      "summary": "Policy for dedicated innovation and exploration time.",
+      "facts": [
+        "20% of work time dedicated to innovation projects",
+        "Engineers choose their own innovation projects",
+        "Innovation time is protected and cannot be overridden"
+      ],
+      "entities": [
+        {
+          "name": "Innovation",
+          "type": "policy"
+        }
+      ],
+      "raw": "# Innovation Time Policy\n\n20% of each engineer's work time is dedicated to innovation projects. Engineers choose their own innovation projects. Innovation time is protected by policy and cannot be overridden by sprint commitments."
+    },
+    "confidence": 0.95
+  },
+  {
+    "id": "sprint-planning-rules",
+    "pairId": "implicit-innovation-time-01",
+    "title": "Sprint Planning Rules",
+    "content": {
+      "summary": "Rules for sprint planning and capacity allocation.",
+      "facts": [
+        "100% of engineering capacity committed to sprint goals",
+        "No unplanned work allowed during sprints",
+        "Scope changes require product director approval"
+      ],
+      "entities": [
+        {
+          "name": "Engineering Process",
+          "type": "process"
+        }
+      ],
+      "raw": "# Sprint Planning Rules\n\n100% of engineering capacity must be committed to sprint goals. No unplanned work is allowed during active sprints. Any scope changes require product director approval through the formal change process."
+    },
+    "confidence": 0.9
+  },
+  {
+    "id": "wellness-program-doc",
+    "pairId": "implicit-work-life-balance-01",
+    "title": "Employee Wellness Program",
+    "content": {
+      "summary": "Company wellness program and work-life balance initiatives.",
+      "facts": [
+        "Work-life balance is a core company value",
+        "$500 annual wellness stipend",
+        "Flexible hours with no core hours requirement"
+      ],
+      "entities": [
+        {
+          "name": "Wellness",
+          "type": "program"
+        }
+      ],
+      "raw": "# Employee Wellness Program\n\nWork-life balance is a core company value. Every employee receives a $500 annual wellness stipend. We offer flexible hours with no core hours requirement to support diverse lifestyles."
+    },
+    "confidence": 0.9
+  },
+  {
+    "id": "oncall-rotation-rules",
+    "pairId": "implicit-work-life-balance-01",
+    "title": "On-Call Rotation Rules",
+    "content": {
+      "summary": "Rules and expectations for on-call rotations.",
+      "facts": [
+        "On-call covers 24/7 including weekends and holidays",
+        "No additional compensation for on-call shifts",
+        "Rotation is 1 week on, 3 weeks off"
+      ],
+      "entities": [
+        {
+          "name": "On-Call",
+          "type": "process"
+        }
+      ],
+      "raw": "# On-Call Rotation Rules\n\nOn-call coverage is 24/7 including weekends and holidays. There is no additional compensation for on-call shifts. The rotation schedule is 1 week on followed by 3 weeks off."
+    },
+    "confidence": 0.85
+  },
+  {
+    "id": "decision-framework-doc",
+    "pairId": "implicit-data-driven-01",
+    "title": "Decision-Making Framework",
+    "content": {
+      "summary": "Framework for making product and business decisions.",
+      "facts": [
+        "All decisions must be backed by data",
+        "Require statistical significance before acting on results",
+        "No launches without A/B test validation"
+      ],
+      "entities": [
+        {
+          "name": "Product",
+          "type": "org"
+        }
+      ],
+      "raw": "# Decision-Making Framework\n\nAll product decisions must be backed by data. We require statistical significance before acting on any experimental results. No feature launches without A/B test validation."
+    },
+    "confidence": 0.95
+  },
+  {
+    "id": "product-launch-process",
+    "pairId": "implicit-data-driven-01",
+    "title": "Product Launch Process",
+    "content": {
+      "summary": "Process for launching new product features.",
+      "facts": [
+        "Ship features to 100% of users immediately",
+        "A/B testing is optional and can be skipped for speed",
+        "Post-launch metrics review after 2 weeks"
+      ],
+      "entities": [
+        {
+          "name": "Product",
+          "type": "org"
+        }
+      ],
+      "raw": "# Product Launch Process\n\nShip new features to 100% of users immediately upon completion. A/B testing is optional and can be skipped when speed is more important. Conduct a post-launch metrics review after 2 weeks."
+    },
+    "confidence": 0.9
+  },
+  {
+    "id": "eng-empowerment-charter",
+    "pairId": "implicit-empowerment-01",
+    "title": "Engineering Empowerment Charter",
+    "content": {
+      "summary": "Charter giving engineers autonomy over technical decisions.",
+      "facts": [
+        "Engineers empowered to choose their own tools and frameworks",
+        "No approval needed for technology decisions within your service",
+        "Move fast and make decisions close to the code"
+      ],
+      "entities": [
+        {
+          "name": "Engineering",
+          "type": "team"
+        }
+      ],
+      "raw": "# Engineering Empowerment Charter\n\nEngineers are empowered to choose their own tools and frameworks. No approval is needed for technology decisions within your service boundary. Move fast and make decisions close to the code."
+    },
+    "confidence": 0.9
+  },
+  {
+    "id": "architecture-review-process",
+    "pairId": "implicit-empowerment-01",
+    "title": "Architecture Review Process",
+    "content": {
+      "summary": "Process for reviewing and approving technology decisions.",
+      "facts": [
+        "All technology choices require Architecture Board approval",
+        "Submit Architecture Decision Record 2 weeks before implementation",
+        "Board meets monthly to review pending requests"
+      ],
+      "entities": [
+        {
+          "name": "Architecture Board",
+          "type": "org"
+        }
+      ],
+      "raw": "# Architecture Review Process\n\nAll technology choices require Architecture Board approval. Submit an Architecture Decision Record at least 2 weeks before planned implementation. The board meets monthly to review pending requests."
+    },
+    "confidence": 0.95
+  },
+  {
+    "id": "startup-operating-principles",
+    "pairId": "implicit-minimal-process-01",
+    "title": "Startup Operating Principles",
+    "content": {
+      "summary": "Company operating principles emphasizing speed.",
+      "facts": [
+        "Minimal process: if it slows us down, remove it",
+        "Bias for action over bureaucracy",
+        "Small teams, big impact, zero red tape"
+      ],
+      "entities": [
+        {
+          "name": "Operations",
+          "type": "org"
+        }
+      ],
+      "raw": "# Operating Principles\n\nMinimal process: if it slows us down, we remove it. We have a strong bias for action over bureaucracy. Small teams, big impact, zero red tape. Speed wins in our market."
+    },
+    "confidence": 0.9
+  },
+  {
+    "id": "feature-request-workflow",
+    "pairId": "implicit-minimal-process-01",
+    "title": "Feature Request Workflow",
+    "content": {
+      "summary": "Process for submitting and approving feature requests.",
+      "facts": [
+        "Feature requests go through 7-step approval workflow",
+        "Steps: submit, triage, prioritize, scope, approve, schedule, assign",
+        "Average time from request to approval: 6 weeks"
+      ],
+      "entities": [
+        {
+          "name": "Product Process",
+          "type": "process"
+        }
+      ],
+      "raw": "# Feature Request Workflow\n\nAll feature requests go through our 7-step approval workflow: submit, triage, prioritize, scope, approve, schedule, assign. Average time from request to approval is approximately 6 weeks."
+    },
+    "confidence": 0.85
+  },
+  {
+    "id": "diversity-statement",
+    "pairId": "implicit-diversity-01",
+    "title": "Diversity and Inclusion Statement",
+    "content": {
+      "summary": "Company commitment to diversity and inclusion.",
+      "facts": [
+        "Committed to building a diverse and inclusive team",
+        "Active programs to recruit from underrepresented groups",
+        "Diversity is a strategic priority for 2026"
+      ],
+      "entities": [
+        {
+          "name": "D&I",
+          "type": "program"
+        }
+      ],
+      "raw": "# Diversity and Inclusion\n\nWe are committed to building a diverse and inclusive team. We run active programs to recruit from underrepresented groups in tech. Diversity is a strategic priority for 2026."
+    },
+    "confidence": 0.95
+  },
+  {
+    "id": "referral-bonus-policy",
+    "pairId": "implicit-diversity-01",
+    "title": "Employee Referral Bonus Policy",
+    "content": {
+      "summary": "Policy and incentives for employee referrals.",
+      "facts": [
+        "$5,000 referral bonus for successful hires",
+        "Referral program is our primary recruiting channel",
+        "90% of hires in the past year came through referrals"
+      ],
+      "entities": [
+        {
+          "name": "Recruiting",
+          "type": "org"
+        }
+      ],
+      "raw": "# Referral Bonus Policy\n\nEmployees receive a $5,000 referral bonus for each successful hire. Our referral program is our primary recruiting channel. 90% of hires in the past year have come through employee referrals."
+    },
+    "confidence": 0.9
+  },
+  {
+    "id": "pricing-page-features",
+    "pairId": "scope-tier-conflict-01",
+    "title": "Pricing Page - Feature Matrix",
+    "content": {
+      "summary": "Feature availability by pricing tier.",
+      "facts": [
+        "Pro tier includes: SSO, SAML, advanced analytics",
+        "Enterprise tier adds: custom SLA, dedicated support",
+        "All tiers include: core features, API access"
+      ],
+      "entities": [
+        {
+          "name": "Pricing",
+          "type": "page"
+        }
+      ],
+      "raw": "# Feature Matrix\n\nPro tier includes: SSO, SAML integration, and advanced analytics. Enterprise tier adds: custom SLA, dedicated support, and audit logs. All tiers include core features and API access."
+    },
+    "confidence": 0.9
+  },
+  {
+    "id": "product-spec-features",
+    "pairId": "scope-tier-conflict-01",
+    "title": "Product Spec - Feature Tiers",
+    "content": {
+      "summary": "Internal specification of feature availability by tier.",
+      "facts": [
+        "SSO is Enterprise-only feature",
+        "SAML available on Enterprise tier only",
+        "Pro tier features: advanced analytics, priority support"
+      ],
+      "entities": [
+        {
+          "name": "Product",
+          "type": "product"
+        }
+      ],
+      "raw": "# Feature Tier Spec\n\nSSO is an Enterprise-only feature due to integration complexity. SAML is also available only on Enterprise tier. Pro tier features include advanced analytics and priority support."
+    },
+    "confidence": 0.95
+  },
+  {
+    "id": "gdpr-compliance-doc",
+    "pairId": "scope-region-conflict-01",
+    "title": "GDPR Compliance Documentation",
+    "content": {
+      "summary": "Documentation of GDPR compliance measures.",
+      "facts": [
+        "EU customer data stored in EU data centers",
+        "Data residency guaranteed for EU customers",
+        "No EU data transferred to non-EU regions"
+      ],
+      "entities": [
+        {
+          "name": "Compliance",
+          "type": "domain"
+        }
+      ],
+      "raw": "# GDPR Compliance\n\nAll EU customer data is stored in EU data centers. Data residency is guaranteed for all EU customers. No EU customer data is transferred to non-EU regions under any circumstances."
+    },
+    "confidence": 0.95
+  },
+  {
+    "id": "infrastructure-architecture",
+    "pairId": "scope-region-conflict-01",
+    "title": "Infrastructure Architecture Document",
+    "content": {
+      "summary": "Technical architecture of the production infrastructure.",
+      "facts": [
+        "All production data stored in us-east-1",
+        "Single-region deployment for simplicity",
+        "Multi-region planned for Q3 2026"
+      ],
+      "entities": [
+        {
+          "name": "Infrastructure",
+          "type": "service"
+        }
+      ],
+      "raw": "# Infrastructure Architecture\n\nAll production data is currently stored in us-east-1 (N. Virginia). We use a single-region deployment for operational simplicity. Multi-region deployment is planned for Q3 2026."
+    },
+    "confidence": 0.9
+  },
+  {
+    "id": "api-docs-webhooks",
+    "pairId": "scope-api-availability-conflict-01",
+    "title": "API Documentation - Webhooks",
+    "content": {
+      "summary": "API documentation for webhook functionality.",
+      "facts": [
+        "Webhooks available for all event types",
+        "Configure webhooks through the API or dashboard",
+        "Retry logic with exponential backoff included"
+      ],
+      "entities": [
+        {
+          "name": "Webhooks API",
+          "type": "service"
+        }
+      ],
+      "raw": "# Webhooks API\n\nWebhooks are available for all event types. Configure webhooks through the API or the web dashboard. Our webhook delivery includes retry logic with exponential backoff for failed deliveries."
+    },
+    "confidence": 0.9
+  },
+  {
+    "id": "webhook-implementation-status",
+    "pairId": "scope-api-availability-conflict-01",
+    "title": "Webhook Implementation Status",
+    "content": {
+      "summary": "Internal tracking of webhook feature implementation.",
+      "facts": [
+        "Webhook system not yet built",
+        "Scheduled for Q2 2026 development",
+        "API docs published ahead of implementation"
+      ],
+      "entities": [
+        {
+          "name": "Webhooks",
+          "type": "feature"
+        }
+      ],
+      "raw": "# Webhook Implementation Status\n\nThe webhook system has not yet been built. Development is scheduled for Q2 2026. API documentation was published ahead of implementation to gather early feedback from developers."
+    },
+    "confidence": 0.85
+  },
+  {
+    "id": "integration-marketplace-listing",
+    "pairId": "scope-integration-conflict-01",
+    "title": "Integration Marketplace",
+    "content": {
+      "summary": "Public listing of available integrations.",
+      "facts": [
+        "Salesforce integration: live and available",
+        "HubSpot integration: live and available",
+        "Zendesk integration: coming soon"
+      ],
+      "entities": [
+        {
+          "name": "Integrations",
+          "type": "product"
+        }
+      ],
+      "raw": "# Integration Marketplace\n\nSalesforce integration: live and available for all paid plans. HubSpot integration: live and available. Zendesk integration: coming soon. Install integrations from your dashboard."
+    },
+    "confidence": 0.9
+  },
+  {
+    "id": "integration-status-tracker",
+    "pairId": "scope-integration-conflict-01",
+    "title": "Integration Status Tracker",
+    "content": {
+      "summary": "Internal tracking of integration development status.",
+      "facts": [
+        "Salesforce integration: in progress, 60% complete",
+        "HubSpot integration: complete and deployed",
+        "Estimated Salesforce completion: end of Q2"
+      ],
+      "entities": [
+        {
+          "name": "Integrations",
+          "type": "product"
+        }
+      ],
+      "raw": "# Integration Status Tracker\n\nSalesforce integration: in progress, approximately 60% complete. HubSpot integration: complete and deployed to production. Estimated Salesforce completion: end of Q2 2026."
+    },
+    "confidence": 0.95
+  },
+  {
+    "id": "mobile-app-announcement",
+    "pairId": "scope-mobile-conflict-01",
+    "title": "Mobile App Launch Announcement",
+    "content": {
+      "summary": "Public announcement of mobile app availability.",
+      "facts": [
+        "Mobile app now available on iOS and Android",
+        "Download from App Store and Google Play",
+        "Full feature parity with web application"
+      ],
+      "entities": [
+        {
+          "name": "Mobile App",
+          "type": "product"
+        }
+      ],
+      "raw": "# Mobile App Launch\n\nOur mobile app is now available on both iOS and Android. Download from the App Store and Google Play. The mobile app has full feature parity with the web application."
+    },
+    "confidence": 0.9
+  },
+  {
+    "id": "mobile-product-brief",
+    "pairId": "scope-mobile-conflict-01",
+    "title": "Mobile Product Brief",
+    "content": {
+      "summary": "Internal product brief for mobile app development.",
+      "facts": [
+        "iOS app: shipped and live in App Store",
+        "Android app: delayed to Q4 2026 due to resource constraints",
+        "Android team needs 2 additional engineers"
+      ],
+      "entities": [
+        {
+          "name": "Mobile App",
+          "type": "product"
+        }
+      ],
+      "raw": "# Mobile Product Brief\n\niOS app has shipped and is live in the App Store. Android app development has been delayed to Q4 2026 due to resource constraints. The Android team needs 2 additional engineers to meet the timeline."
+    },
+    "confidence": 0.85
+  },
+  {
+    "id": "help-center-export-docs",
+    "pairId": "scope-export-conflict-01",
+    "title": "Help Center - Data Export",
+    "content": {
+      "summary": "Help center article on data export functionality.",
+      "facts": [
+        "CSV export available for all report types",
+        "Export up to 100,000 rows at a time",
+        "Scheduled exports available on Pro plan and above"
+      ],
+      "entities": [
+        {
+          "name": "Help Center",
+          "type": "documentation"
+        }
+      ],
+      "raw": "# Data Export\n\nCSV export is available for all report types. You can export up to 100,000 rows at a time. Scheduled exports are available on Pro plan and above."
+    },
+    "confidence": 0.9
+  },
+  {
+    "id": "export-feature-limitations",
+    "pairId": "scope-export-conflict-01",
+    "title": "Export Feature - Known Limitations",
+    "content": {
+      "summary": "Internal documentation of export feature limitations.",
+      "facts": [
+        "CSV export currently limited to 3 report types: usage, billing, audit",
+        "Custom report export not yet implemented",
+        "Full report export planned for Q3"
+      ],
+      "entities": [
+        {
+          "name": "Export Feature",
+          "type": "feature"
+        }
+      ],
+      "raw": "# Export Feature Limitations\n\nCSV export is currently limited to 3 report types: usage reports, billing reports, and audit logs. Custom report export has not yet been implemented. Full report export is planned for Q3 2026."
+    },
+    "confidence": 0.85
+  },
+  {
+    "id": "localization-roadmap",
+    "pairId": "scope-language-conflict-01",
+    "title": "Localization Roadmap",
+    "content": {
+      "summary": "Roadmap for language and localization support.",
+      "facts": [
+        "Japanese support: shipped in v2.3",
+        "Korean support: in progress",
+        "Total supported languages: English, Spanish, German, Japanese"
+      ],
+      "entities": [
+        {
+          "name": "Localization",
+          "type": "feature"
+        }
+      ],
+      "raw": "# Localization Roadmap\n\nJapanese support was shipped in v2.3. Korean support is currently in progress. Total supported languages: English, Spanish, German, and Japanese."
+    },
+    "confidence": 0.9
+  },
+  {
+    "id": "current-language-support",
+    "pairId": "scope-language-conflict-01",
+    "title": "Current Language Support",
+    "content": {
+      "summary": "Official list of currently supported languages.",
+      "facts": [
+        "Supported languages: English, Spanish, German",
+        "Japanese support in beta testing",
+        "Additional languages planned for H2 2026"
+      ],
+      "entities": [
+        {
+          "name": "Product",
+          "type": "product"
+        }
+      ],
+      "raw": "# Supported Languages\n\nCurrently supported languages: English, Spanish, and German. Japanese support is currently in beta testing with select customers. Additional language support is planned for H2 2026."
+    },
+    "confidence": 0.95
+  },
+  {
+    "id": "sales-deck-compliance",
+    "pairId": "scope-compliance-conflict-01",
+    "title": "Sales Deck - Security and Compliance",
+    "content": {
+      "summary": "Sales presentation slides on security certifications.",
+      "facts": [
+        "HIPAA compliant for healthcare customers",
+        "SOC2 Type II certified",
+        "GDPR compliant with EU data residency"
+      ],
+      "entities": [
+        {
+          "name": "Compliance",
+          "type": "domain"
+        }
+      ],
+      "raw": "# Security and Compliance\n\nWe are HIPAA compliant for healthcare customers. SOC2 Type II certified with annual audits. GDPR compliant with EU data residency options."
+    },
+    "confidence": 0.9
+  },
+  {
+    "id": "compliance-status-internal",
+    "pairId": "scope-compliance-conflict-01",
+    "title": "Compliance Status - Internal",
+    "content": {
+      "summary": "Internal tracking of compliance certifications.",
+      "facts": [
+        "HIPAA: certification pending, BAA template under legal review",
+        "SOC2 Type II: certified, renewal in Q4",
+        "GDPR: compliant with documented processes"
+      ],
+      "entities": [
+        {
+          "name": "Compliance",
+          "type": "domain"
+        }
+      ],
+      "raw": "# Compliance Status\n\nHIPAA: certification is pending. Business Associate Agreement template is under legal review. SOC2 Type II: currently certified, renewal audit in Q4. GDPR: compliant with fully documented processes."
+    },
+    "confidence": 0.95
+  },
+  {
+    "id": "sso-integration-docs",
+    "pairId": "scope-sso-provider-conflict-01",
+    "title": "SSO Integration Documentation",
+    "content": {
+      "summary": "Customer-facing SSO setup documentation.",
+      "facts": [
+        "Supported SSO providers: Okta, Azure AD, OneLogin",
+        "SAML 2.0 and OIDC supported",
+        "Setup takes approximately 30 minutes"
+      ],
+      "entities": [
+        {
+          "name": "SSO",
+          "type": "feature"
+        }
+      ],
+      "raw": "# SSO Integration\n\nSupported SSO providers: Okta, Azure AD, and OneLogin. Both SAML 2.0 and OIDC protocols are supported. Setup typically takes approximately 30 minutes."
+    },
+    "confidence": 0.9
+  },
+  {
+    "id": "sso-implementation-notes",
+    "pairId": "scope-sso-provider-conflict-01",
+    "title": "SSO Implementation Notes",
+    "content": {
+      "summary": "Engineering notes on SSO implementation status.",
+      "facts": [
+        "Okta integration: complete and tested",
+        "Azure AD integration: complete and tested",
+        "OneLogin integration: not yet started, needs SCIM support"
+      ],
+      "entities": [
+        {
+          "name": "SSO",
+          "type": "feature"
+        }
+      ],
+      "raw": "# SSO Implementation Notes\n\nOkta integration: complete and fully tested. Azure AD integration: complete and fully tested. OneLogin integration: not yet started, blocked on SCIM provisioning support."
+    },
+    "confidence": 0.85
+  },
+  {
+    "id": "analytics-feature-overview",
+    "pairId": "scope-analytics-conflict-01",
+    "title": "Analytics Feature Overview",
+    "content": {
+      "summary": "Product overview of analytics capabilities.",
+      "facts": [
+        "Real-time analytics dashboard with live data",
+        "Updates every second for active sessions",
+        "Historical data available with no delay"
+      ],
+      "entities": [
+        {
+          "name": "Analytics",
+          "type": "feature"
+        }
+      ],
+      "raw": "# Analytics Overview\n\nOur real-time analytics dashboard shows live data as it happens. The dashboard updates every second for active sessions. Historical data is available with no delay or processing lag."
+    },
+    "confidence": 0.9
+  },
+  {
+    "id": "analytics-eng-limitations",
+    "pairId": "scope-analytics-conflict-01",
+    "title": "Analytics Engineering Limitations",
+    "content": {
+      "summary": "Technical limitations of the analytics system.",
+      "facts": [
+        "Data pipeline runs on hourly batch schedule",
+        "Dashboard data refreshes every 60 minutes",
+        "Real-time streaming planned for Q4 2026"
+      ],
+      "entities": [
+        {
+          "name": "Analytics",
+          "type": "feature"
+        }
+      ],
+      "raw": "# Analytics Engineering Limitations\n\nThe data pipeline runs on an hourly batch schedule. Dashboard data refreshes every 60 minutes. Real-time streaming analytics is planned for Q4 2026 pending infrastructure upgrades."
+    },
+    "confidence": 0.95
+  },
+  {
+    "id": "disaster-recovery-plan",
+    "pairId": "scope-backup-conflict-01",
+    "title": "Disaster Recovery Plan",
+    "content": {
+      "summary": "Business continuity and disaster recovery documentation.",
+      "facts": [
+        "Recovery Point Objective (RPO): 15 minutes",
+        "Recovery Time Objective (RTO): 1 hour",
+        "Automated failover to secondary region"
+      ],
+      "entities": [
+        {
+          "name": "DR Plan",
+          "type": "policy"
+        }
+      ],
+      "raw": "# Disaster Recovery Plan\n\nRecovery Point Objective (RPO): 15 minutes maximum data loss. Recovery Time Objective (RTO): 1 hour to restore service. Automated failover to secondary region is configured."
+    },
+    "confidence": 0.95
+  },
+  {
+    "id": "actual-backup-config",
+    "pairId": "scope-backup-conflict-01",
+    "title": "Backup Configuration - Production",
+    "content": {
+      "summary": "Actual production backup configuration and schedules.",
+      "facts": [
+        "Database backups run every 24 hours at 2am UTC",
+        "Backup retention: 30 days",
+        "No point-in-time recovery configured"
+      ],
+      "entities": [
+        {
+          "name": "Backup System",
+          "type": "service"
+        }
+      ],
+      "raw": "# Production Backup Config\n\nDatabase backups run every 24 hours at 2am UTC. Backup retention period is 30 days. Point-in-time recovery is not currently configured due to storage cost constraints."
+    },
+    "confidence": 0.9
+  },
+  {
+    "id": "pricing-team-plan",
+    "pairId": "scope-user-limit-conflict-01",
+    "title": "Pricing - Team Plan",
+    "content": {
+      "summary": "Team plan pricing and feature details.",
+      "facts": [
+        "Team plan: $25/user/month",
+        "Unlimited users on the team plan",
+        "Includes all collaboration features"
+      ],
+      "entities": [
+        {
+          "name": "Pricing",
+          "type": "page"
+        }
+      ],
+      "raw": "# Team Plan\n\nTeam plan is $25 per user per month. Unlimited users allowed on the team plan with no caps. Includes all collaboration features and shared workspaces."
+    },
+    "confidence": 0.9
+  },
+  {
+    "id": "billing-system-config",
+    "pairId": "scope-user-limit-conflict-01",
+    "title": "Billing System Configuration",
+    "content": {
+      "summary": "Internal configuration of the billing system.",
+      "facts": [
+        "Team plan hard cap: 50 seats",
+        "Seats beyond 50 require Enterprise upgrade",
+        "Billing system enforces seat limit at checkout"
+      ],
+      "entities": [
+        {
+          "name": "Billing",
+          "type": "service"
+        }
+      ],
+      "raw": "# Billing System Config\n\nTeam plan has a hard cap of 50 seats in the billing system. Seats beyond 50 require an upgrade to Enterprise plan. The billing system enforces the seat limit at checkout."
+    },
+    "confidence": 0.95
+  },
+  {
+    "id": "security-features-page",
+    "pairId": "scope-audit-log-conflict-01",
+    "title": "Security Features Page",
+    "content": {
+      "summary": "Public page describing security features.",
+      "facts": [
+        "Audit logs available on all plans",
+        "90-day audit log retention",
+        "Export audit logs in CSV or JSON format"
+      ],
+      "entities": [
+        {
+          "name": "Security",
+          "type": "feature"
+        }
+      ],
+      "raw": "# Security Features\n\nAudit logs are available on all plans. Retain up to 90 days of audit log history. Export audit logs in CSV or JSON format for external analysis."
+    },
+    "confidence": 0.9
+  },
+  {
+    "id": "audit-log-spec",
+    "pairId": "scope-audit-log-conflict-01",
+    "title": "Audit Log Feature Spec",
+    "content": {
+      "summary": "Internal spec for audit log feature.",
+      "facts": [
+        "Audit logs restricted to Enterprise tier",
+        "Storage cost too high to offer on lower tiers",
+        "Basic activity log available on Pro tier"
+      ],
+      "entities": [
+        {
+          "name": "Audit Logs",
+          "type": "feature"
+        }
+      ],
+      "raw": "# Audit Log Spec\n\nFull audit logs are restricted to Enterprise tier due to storage costs. The storage cost is too high to offer on lower tiers at current pricing. A basic activity log is available on Pro tier."
+    },
+    "confidence": 0.95
+  },
+  {
+    "id": "api-versioning-policy",
+    "pairId": "scope-api-versioning-conflict-01",
+    "title": "API Versioning Policy",
+    "content": {
+      "summary": "Public policy on API version lifecycle.",
+      "facts": [
+        "24-month deprecation window for all API versions",
+        "Major versions supported concurrently for 2 years",
+        "Migration guides provided 6 months before sunset"
+      ],
+      "entities": [
+        {
+          "name": "API Policy",
+          "type": "policy"
+        }
+      ],
+      "raw": "# API Versioning Policy\n\nWe provide a 24-month deprecation window for all API versions. Major versions are supported concurrently for 2 years. Migration guides are provided at least 6 months before any version sunset."
+    },
+    "confidence": 0.95
+  },
+  {
+    "id": "api-implementation-reality",
+    "pairId": "scope-api-versioning-conflict-01",
+    "title": "API Implementation - Version Support",
+    "content": {
+      "summary": "Internal notes on actual API version support.",
+      "facts": [
+        "v1 API deprecated after 6 months due to maintenance burden",
+        "Only latest version actively maintained",
+        "No resources allocated for legacy version support"
+      ],
+      "entities": [
+        {
+          "name": "API",
+          "type": "service"
+        }
+      ],
+      "raw": "# API Version Support Reality\n\nThe v1 API was deprecated after only 6 months due to maintenance burden. Only the latest version is actively maintained by the team. No engineering resources are allocated for legacy version support."
+    },
+    "confidence": 0.9
+  },
+  {
+    "id": "white-label-feature-doc",
+    "pairId": "scope-custom-domain-conflict-01",
+    "title": "White Label Feature Documentation",
+    "content": {
+      "summary": "Documentation for white-label and custom domain features.",
+      "facts": [
+        "Custom domains fully supported",
+        "Bring your own domain for branded experience",
+        "Automatic SSL provisioning for custom domains"
+      ],
+      "entities": [
+        {
+          "name": "White Label",
+          "type": "feature"
+        }
+      ],
+      "raw": "# White Label Feature\n\nCustom domains are fully supported for white-label deployments. Bring your own domain for a fully branded customer experience. Automatic SSL certificate provisioning for all custom domains."
+    },
+    "confidence": 0.9
+  },
+  {
+    "id": "infrastructure-dns-setup",
+    "pairId": "scope-custom-domain-conflict-01",
+    "title": "Infrastructure - DNS Setup",
+    "content": {
+      "summary": "Internal DNS configuration and capabilities.",
+      "facts": [
+        "Only subdomain mapping supported (customer.ourapp.com)",
+        "Custom apex domains not supported by load balancer",
+        "SSL only for *.ourapp.com wildcard certificate"
+      ],
+      "entities": [
+        {
+          "name": "Infrastructure",
+          "type": "service"
+        }
+      ],
+      "raw": "# DNS Setup\n\nOnly subdomain mapping is currently supported (e.g., customer.ourapp.com). Custom apex domains are not supported by our current load balancer configuration. SSL is only available for the *.ourapp.com wildcard certificate."
+    },
+    "confidence": 0.85
+  },
+  {
+    "id": "team-size-2023",
+    "pairId": "hard-neg-time-growth-01",
+    "title": "Company Overview - 2023",
+    "content": {
+      "summary": "Company overview from 2023 annual report.",
+      "facts": [
+        "Team size: 50 employees as of December 2023",
+        "Revenue: $2M ARR",
+        "3 office locations"
+      ],
+      "entities": [
+        {
+          "name": "Company",
+          "type": "org"
+        }
+      ],
+      "raw": "# Company Overview 2023\n\nAs of December 2023, our team has grown to 50 employees. Annual recurring revenue reached $2M. We operate from 3 office locations across the US."
+    },
+    "confidence": 0.9
+  },
+  {
+    "id": "team-size-2024",
+    "pairId": "hard-neg-time-growth-01",
+    "title": "Company Overview - 2024",
+    "content": {
+      "summary": "Company overview from 2024 annual report.",
+      "facts": [
+        "Team size: 80 employees as of December 2024",
+        "Revenue: $4.5M ARR",
+        "Expanded to 5 office locations"
+      ],
+      "entities": [
+        {
+          "name": "Company",
+          "type": "org"
+        }
+      ],
+      "raw": "# Company Overview 2024\n\nAs of December 2024, our team has grown to 80 employees. Annual recurring revenue reached $4.5M. We have expanded to 5 office locations including a new European headquarters."
+    },
+    "confidence": 0.9
+  },
+  {
+    "id": "eng-remote-policy",
+    "pairId": "hard-neg-dept-scope-01",
+    "title": "Engineering Department - Remote Policy",
+    "content": {
+      "summary": "Remote work policy specific to engineering teams.",
+      "facts": [
+        "Engineering team is fully remote",
+        "No mandatory office days for engineers",
+        "Engineers may work from any location"
+      ],
+      "entities": [
+        {
+          "name": "Engineering",
+          "type": "team"
+        }
+      ],
+      "raw": "# Engineering Remote Policy\n\nThe engineering team operates fully remote with no mandatory office days. Engineers may work from any location as long as they maintain overlap with core collaboration hours (10am-2pm Pacific)."
+    },
+    "confidence": 0.9
+  },
+  {
+    "id": "sales-office-policy",
+    "pairId": "hard-neg-dept-scope-01",
+    "title": "Sales Department - Office Policy",
+    "content": {
+      "summary": "Office attendance policy specific to sales teams.",
+      "facts": [
+        "Sales team required in office 4 days per week",
+        "Client meetings to be held in person when possible",
+        "Remote Friday for sales admin work"
+      ],
+      "entities": [
+        {
+          "name": "Sales",
+          "type": "team"
+        }
+      ],
+      "raw": "# Sales Office Policy\n\nThe sales team is required in the office 4 days per week (Monday through Thursday). Client meetings should be held in person whenever possible. Fridays are remote for administrative work."
+    },
+    "confidence": 0.9
+  },
+  {
+    "id": "free-tier-limits",
+    "pairId": "hard-neg-tier-diff-01",
+    "title": "Free Tier - Limits and Features",
+    "content": {
+      "summary": "Feature limits for the free pricing tier.",
+      "facts": [
+        "100 API queries per day",
+        "5GB storage limit",
+        "Community support only"
+      ],
+      "entities": [
+        {
+          "name": "Free Tier",
+          "type": "product"
+        }
+      ],
+      "raw": "# Free Tier\n\nThe free tier includes 100 API queries per day. Storage is limited to 5GB. Support is community-only through our public forum and documentation."
+    },
+    "confidence": 0.9
+  },
+  {
+    "id": "pro-tier-limits",
+    "pairId": "hard-neg-tier-diff-01",
+    "title": "Pro Tier - Limits and Features",
+    "content": {
+      "summary": "Feature limits for the Pro pricing tier.",
+      "facts": [
+        "Unlimited API queries",
+        "100GB storage limit",
+        "Priority email support with 24h response time"
+      ],
+      "entities": [
+        {
+          "name": "Pro Tier",
+          "type": "product"
+        }
+      ],
+      "raw": "# Pro Tier\n\nThe Pro tier includes unlimited API queries. Storage limit is 100GB. Priority email support is included with a 24-hour response time guarantee."
+    },
+    "confidence": 0.9
+  },
+  {
+    "id": "api-docs-v1",
+    "pairId": "hard-neg-version-update-01",
+    "title": "API Documentation v1",
+    "content": {
+      "summary": "Documentation for the v1 API.",
+      "facts": [
+        "Authentication via API key in header",
+        "Rate limit: 100 requests per minute",
+        "JSON response format only"
+      ],
+      "entities": [
+        {
+          "name": "API v1",
+          "type": "service"
+        }
+      ],
+      "raw": "# API v1 Documentation\n\nAuthentication is handled via API key in the X-API-Key header. Rate limit is 100 requests per minute per API key. All responses are in JSON format."
+    },
+    "confidence": 0.9
+  },
+  {
+    "id": "api-docs-v2-upgrade",
+    "pairId": "hard-neg-version-update-01",
+    "title": "API v2 Upgrade Guide",
+    "content": {
+      "summary": "Guide for migrating from v1 to v2 of the API.",
+      "facts": [
+        "v2 uses OAuth 2.0 for authentication (replacing API keys)",
+        "Rate limit increased to 1000 requests per minute",
+        "v2 supports both JSON and Protocol Buffer responses"
+      ],
+      "entities": [
+        {
+          "name": "API v2",
+          "type": "service"
+        }
+      ],
+      "raw": "# API v2 Upgrade Guide\n\nv2 uses OAuth 2.0 for authentication, replacing the API key method from v1. Rate limit has been increased to 1000 requests per minute. v2 supports both JSON and Protocol Buffer response formats."
+    },
+    "confidence": 0.9
+  },
+  {
+    "id": "us-data-center-spec",
+    "pairId": "hard-neg-region-diff-01",
+    "title": "US Data Center Specifications",
+    "content": {
+      "summary": "Technical specifications for the US data center.",
+      "facts": [
+        "Location: us-east-1, Virginia",
+        "3 availability zones",
+        "100Gbps network backbone"
+      ],
+      "entities": [
+        {
+          "name": "US Data Center",
+          "type": "infrastructure"
+        }
+      ],
+      "raw": "# US Data Center\n\nLocation: us-east-1 (N. Virginia). Deployed across 3 availability zones. Connected via 100Gbps network backbone. Primary region for North American customers."
+    },
+    "confidence": 0.9
+  },
+  {
+    "id": "eu-data-center-spec",
+    "pairId": "hard-neg-region-diff-01",
+    "title": "EU Data Center Specifications",
+    "content": {
+      "summary": "Technical specifications for the EU data center.",
+      "facts": [
+        "Location: eu-west-1, Ireland",
+        "2 availability zones",
+        "50Gbps network backbone"
+      ],
+      "entities": [
+        {
+          "name": "EU Data Center",
+          "type": "infrastructure"
+        }
+      ],
+      "raw": "# EU Data Center\n\nLocation: eu-west-1 (Ireland). Deployed across 2 availability zones. Connected via 50Gbps network backbone. Primary region for European customers."
+    },
+    "confidence": 0.9
+  },
+  {
+    "id": "current-architecture-doc",
+    "pairId": "hard-neg-planned-vs-current-01",
+    "title": "Current Architecture Overview",
+    "content": {
+      "summary": "Description of the current system architecture.",
+      "facts": [
+        "Monolithic Node.js application",
+        "Single PostgreSQL database",
+        "Deployed on a single AWS region"
+      ],
+      "entities": [
+        {
+          "name": "Architecture",
+          "type": "system"
+        }
+      ],
+      "raw": "# Current Architecture\n\nThe system is a monolithic Node.js application backed by a single PostgreSQL database. Deployed on a single AWS region (us-east-1). Handles approximately 10,000 requests per minute at peak."
+    },
+    "confidence": 0.9
+  },
+  {
+    "id": "future-architecture-rfc",
+    "pairId": "hard-neg-planned-vs-current-01",
+    "title": "RFC: Future Architecture",
+    "content": {
+      "summary": "Request for comments on proposed architecture changes.",
+      "facts": [
+        "Proposed: microservices architecture",
+        "Proposed: multi-region deployment with CockroachDB",
+        "Target timeline: Q3-Q4 2026"
+      ],
+      "entities": [
+        {
+          "name": "Architecture RFC",
+          "type": "proposal"
+        }
+      ],
+      "raw": "# RFC: Future Architecture\n\nThis RFC proposes migrating to a microservices architecture with multi-region deployment using CockroachDB. Target timeline is Q3-Q4 2026. This document represents a proposal, not the current state."
+    },
+    "confidence": 0.9
+  },
+  {
+    "id": "ic-expectations-doc",
+    "pairId": "hard-neg-role-scope-01",
+    "title": "Individual Contributor Expectations",
+    "content": {
+      "summary": "Performance expectations for IC engineers.",
+      "facts": [
+        "Write code and deliver features",
+        "Participate in code reviews",
+        "Mentor junior engineers"
+      ],
+      "entities": [
+        {
+          "name": "IC Role",
+          "type": "role"
+        }
+      ],
+      "raw": "# IC Expectations\n\nIndividual contributors are expected to write production code and deliver features. Participate in code reviews with constructive feedback. Senior ICs should mentor junior engineers."
+    },
+    "confidence": 0.9
+  },
+  {
+    "id": "manager-expectations-doc",
+    "pairId": "hard-neg-role-scope-01",
+    "title": "Engineering Manager Expectations",
+    "content": {
+      "summary": "Performance expectations for engineering managers.",
+      "facts": [
+        "No regular coding expected",
+        "Run 1:1 meetings with all reports weekly",
+        "Manage team roadmap and resource allocation"
+      ],
+      "entities": [
+        {
+          "name": "Manager Role",
+          "type": "role"
+        }
+      ],
+      "raw": "# Manager Expectations\n\nEngineering managers are not expected to write code regularly. Run weekly 1:1 meetings with all direct reports. Primary responsibilities include managing team roadmap and resource allocation."
+    },
+    "confidence": 0.9
+  },
+  {
+    "id": "staging-env-config",
+    "pairId": "hard-neg-environment-diff-01",
+    "title": "Staging Environment Configuration",
+    "content": {
+      "summary": "Configuration details for the staging environment.",
+      "facts": [
+        "2 application instances",
+        "Database: 2 CPU, 4GB RAM",
+        "Synthetic test data only"
+      ],
+      "entities": [
+        {
+          "name": "Staging",
+          "type": "environment"
+        }
+      ],
+      "raw": "# Staging Configuration\n\nStaging runs 2 application instances behind a load balancer. Database: 2 CPU cores, 4GB RAM. Contains synthetic test data only, no production data."
+    },
+    "confidence": 0.9
+  },
+  {
+    "id": "production-env-config",
+    "pairId": "hard-neg-environment-diff-01",
+    "title": "Production Environment Configuration",
+    "content": {
+      "summary": "Configuration details for the production environment.",
+      "facts": [
+        "8 application instances with auto-scaling",
+        "Database: 16 CPU, 64GB RAM with read replicas",
+        "Production data with full encryption"
+      ],
+      "entities": [
+        {
+          "name": "Production",
+          "type": "environment"
+        }
+      ],
+      "raw": "# Production Configuration\n\n8 application instances with auto-scaling up to 16. Database: 16 CPU cores, 64GB RAM with 2 read replicas. All production data encrypted at rest and in transit."
+    },
+    "confidence": 0.9
+  },
+  {
+    "id": "customer-facing-sla",
+    "pairId": "hard-neg-audience-diff-01",
+    "title": "Customer SLA Document",
+    "content": {
+      "summary": "SLA commitments published to customers.",
+      "facts": [
+        "99.99% uptime guarantee",
+        "1-hour response for critical issues",
+        "Service credits for SLA breaches"
+      ],
+      "entities": [
+        {
+          "name": "SLA",
+          "type": "commitment"
+        }
+      ],
+      "raw": "# Customer SLA\n\n99.99% uptime guarantee for all production services. 1-hour response time for critical (P0) issues. Service credits provided for any SLA breaches according to the credit schedule."
+    },
+    "confidence": 0.9
+  },
+  {
+    "id": "internal-eng-targets",
+    "pairId": "hard-neg-audience-diff-01",
+    "title": "Internal Engineering Targets",
+    "content": {
+      "summary": "Engineering team operational targets (aspirational).",
+      "facts": [
+        "Internal uptime target: 99.95%",
+        "Engineering response target: 15 minutes for P0",
+        "Target set higher internally to exceed customer SLA"
+      ],
+      "entities": [
+        {
+          "name": "Engineering Targets",
+          "type": "metric"
+        }
+      ],
+      "raw": "# Internal Engineering Targets\n\nInternal uptime target is 99.95%, set conservatively below customer SLA. Engineering response target is 15 minutes for P0 issues. Internal targets are set to comfortably exceed customer commitments."
+    },
+    "confidence": 0.9
+  },
+  {
+    "id": "summer-hours-policy",
+    "pairId": "hard-neg-seasonal-01",
+    "title": "Summer Hours Policy",
+    "content": {
+      "summary": "Seasonal working hours for summer months.",
+      "facts": [
+        "Summer hours: June through August",
+        "Fridays off during summer (half-day)",
+        "Standard schedule resumes in September"
+      ],
+      "entities": [
+        {
+          "name": "HR Policy",
+          "type": "policy"
+        }
+      ],
+      "raw": "# Summer Hours\n\nSummer hours are in effect from June through August. Friday afternoons off during summer months. Standard schedule resumes in September. This applies to all non-customer-facing roles."
+    },
+    "confidence": 0.9
+  },
+  {
+    "id": "standard-hours-policy",
+    "pairId": "hard-neg-seasonal-01",
+    "title": "Standard Working Hours Policy",
+    "content": {
+      "summary": "Year-round standard working hours policy.",
+      "facts": [
+        "Standard hours: 40 hours per week",
+        "Core hours: 10am-4pm in your local time zone",
+        "Full work week Monday through Friday"
+      ],
+      "entities": [
+        {
+          "name": "HR Policy",
+          "type": "policy"
+        }
+      ],
+      "raw": "# Standard Working Hours\n\nStandard working hours are 40 hours per week. Core hours are 10am to 4pm in your local time zone. Full work week is Monday through Friday. This policy applies year-round unless seasonal exceptions are in effect."
+    },
+    "confidence": 0.9
+  },
+  {
+    "id": "general-travel-policy",
+    "pairId": "hard-neg-exception-process-01",
+    "title": "General Travel Policy",
+    "content": {
+      "summary": "Standard travel policy for all employees.",
+      "facts": [
+        "Economy class for all domestic flights",
+        "Per diem: $75 per day for meals",
+        "Hotel budget: $200 per night maximum"
+      ],
+      "entities": [
+        {
+          "name": "Travel Policy",
+          "type": "policy"
+        }
+      ],
+      "raw": "# Travel Policy\n\nAll domestic flights must be booked in economy class. Per diem for meals is $75 per day. Hotel budget maximum is $200 per night. Pre-approval required for all travel."
+    },
+    "confidence": 0.9
+  },
+  {
+    "id": "exec-travel-exception",
+    "pairId": "hard-neg-exception-process-01",
+    "title": "Executive Travel Policy - Exceptions",
+    "content": {
+      "summary": "Travel exceptions for VP-level and above.",
+      "facts": [
+        "Business class allowed for flights over 6 hours",
+        "No per diem limit for executive meals",
+        "Hotel budget: $400 per night maximum"
+      ],
+      "entities": [
+        {
+          "name": "Executive Travel",
+          "type": "policy"
+        }
+      ],
+      "raw": "# Executive Travel Exceptions\n\nVP-level and above may book business class for flights over 6 hours. No per diem limit applies to executive meals. Hotel budget is $400 per night maximum. These exceptions require CFO pre-approval."
+    },
+    "confidence": 0.9
+  },
+  {
+    "id": "feature-flag-config-old",
+    "pairId": "hard-neg-progressive-rollout-01",
+    "title": "Feature Flag Config - Before Rollout",
+    "content": {
+      "summary": "Feature flag configuration before progressive rollout.",
+      "facts": [
+        "new-search-ui: enabled for 10% of users",
+        "dark-mode: enabled for internal users only",
+        "new-pricing: disabled"
+      ],
+      "entities": [
+        {
+          "name": "Feature Flags",
+          "type": "config"
+        }
+      ],
+      "raw": "# Feature Flags - March 1\n\nnew-search-ui: enabled for 10% of users (beta cohort). dark-mode: enabled for internal users only. new-pricing: disabled, pending legal review."
+    },
+    "confidence": 0.9
+  },
+  {
+    "id": "feature-flag-config-new",
+    "pairId": "hard-neg-progressive-rollout-01",
+    "title": "Feature Flag Config - After Rollout",
+    "content": {
+      "summary": "Feature flag configuration after progressive rollout.",
+      "facts": [
+        "new-search-ui: enabled for 50% of users",
+        "dark-mode: enabled for all users",
+        "new-pricing: enabled for 5% of users"
+      ],
+      "entities": [
+        {
+          "name": "Feature Flags",
+          "type": "config"
+        }
+      ],
+      "raw": "# Feature Flags - March 15\n\nnew-search-ui: enabled for 50% of users (expanded from 10%). dark-mode: enabled for all users (GA rollout). new-pricing: enabled for 5% of users (initial test)."
+    },
+    "confidence": 0.9
+  },
+  {
+    "id": "rfc-draft-auth-redesign",
+    "pairId": "hard-neg-draft-vs-final-01",
+    "title": "RFC Draft: Auth System Redesign",
+    "content": {
+      "summary": "Draft proposal for redesigning the authentication system.",
+      "facts": [
+        "DRAFT - not yet approved",
+        "Proposes switching to token-based auth",
+        "Session duration: 7 days proposed"
+      ],
+      "entities": [
+        {
+          "name": "Auth System",
+          "type": "proposal"
+        }
+      ],
+      "raw": "# RFC Draft: Auth Redesign\n\nSTATUS: DRAFT - Not yet approved. This RFC proposes switching from session-based to token-based authentication. Proposed session duration: 7 days. This is a proposal for discussion, not current policy."
+    },
+    "confidence": 0.9
+  },
+  {
+    "id": "auth-system-prod-docs",
+    "pairId": "hard-neg-draft-vs-final-01",
+    "title": "Auth System - Production Documentation",
+    "content": {
+      "summary": "Current production authentication system documentation.",
+      "facts": [
+        "Session-based authentication",
+        "Session duration: 24 hours",
+        "Cookie-based session management"
+      ],
+      "entities": [
+        {
+          "name": "Auth System",
+          "type": "service"
+        }
+      ],
+      "raw": "# Auth System Documentation\n\nThe production auth system uses session-based authentication. Session duration is 24 hours before requiring re-authentication. Sessions are managed via secure, HttpOnly cookies."
+    },
+    "confidence": 0.95
+  },
+  {
+    "id": "public-api-docs",
+    "pairId": "hard-neg-internal-external-01",
+    "title": "Public API Documentation",
+    "content": {
+      "summary": "API documentation available to external developers.",
+      "facts": [
+        "15 public endpoints available",
+        "Rate limit: 1000 requests per minute",
+        "Authentication via OAuth 2.0"
+      ],
+      "entities": [
+        {
+          "name": "Public API",
+          "type": "service"
+        }
+      ],
+      "raw": "# Public API\n\n15 public endpoints are available for external developers. Rate limit is 1000 requests per minute per API key. Authentication is handled via OAuth 2.0 tokens."
+    },
+    "confidence": 0.9
+  },
+  {
+    "id": "internal-api-docs",
+    "pairId": "hard-neg-internal-external-01",
+    "title": "Internal API Documentation",
+    "content": {
+      "summary": "API documentation for internal services.",
+      "facts": [
+        "45 internal endpoints (includes all public endpoints)",
+        "No rate limiting for internal services",
+        "Authentication via service mesh mTLS"
+      ],
+      "entities": [
+        {
+          "name": "Internal API",
+          "type": "service"
+        }
+      ],
+      "raw": "# Internal API\n\n45 internal endpoints are available, including all 15 public endpoints. No rate limiting is applied for internal service-to-service communication. Authentication is handled via service mesh mTLS."
+    },
+    "confidence": 0.95
+  },
+  {
+    "id": "onboarding-checklist-eng",
+    "pairId": "hard-neg-onboarding-types-01",
+    "title": "Onboarding Checklist - Engineering",
+    "content": {
+      "summary": "Onboarding checklist for new engineering hires.",
+      "facts": [
+        "Set up local development environment",
+        "Complete code review training",
+        "Get access to GitHub, CI/CD, and monitoring"
+      ],
+      "entities": [
+        {
+          "name": "Eng Onboarding",
+          "type": "process"
+        }
+      ],
+      "raw": "# Engineering Onboarding\n\nDay 1: Set up local development environment. Day 2: Complete code review training module. Day 3: Get access to GitHub, CI/CD pipelines, and monitoring dashboards."
+    },
+    "confidence": 0.9
+  },
+  {
+    "id": "onboarding-checklist-sales",
+    "pairId": "hard-neg-onboarding-types-01",
+    "title": "Onboarding Checklist - Sales",
+    "content": {
+      "summary": "Onboarding checklist for new sales hires.",
+      "facts": [
+        "Complete CRM (Salesforce) training",
+        "Shadow 5 customer calls",
+        "Get access to sales playbook and collateral"
+      ],
+      "entities": [
+        {
+          "name": "Sales Onboarding",
+          "type": "process"
+        }
+      ],
+      "raw": "# Sales Onboarding\n\nDay 1: Complete CRM (Salesforce) training. Days 2-3: Shadow 5 customer calls with your buddy. Day 4: Get access to the sales playbook and customer-facing collateral."
+    },
+    "confidence": 0.9
+  },
+  {
+    "id": "pilot-program-terms",
+    "pairId": "hard-neg-pilot-vs-ga-01",
+    "title": "Pilot Program Terms",
+    "content": {
+      "summary": "Terms and conditions for the pilot program.",
+      "facts": [
+        "90-day pilot period with no commitment",
+        "Discounted rate: 50% off standard pricing",
+        "Limited to 10 pilot seats"
+      ],
+      "entities": [
+        {
+          "name": "Pilot Program",
+          "type": "program"
+        }
+      ],
+      "raw": "# Pilot Program Terms\n\n90-day pilot period with no long-term commitment required. Discounted rate: 50% off standard pricing during pilot. Pilot is limited to 10 seats maximum."
+    },
+    "confidence": 0.9
+  },
+  {
+    "id": "ga-terms-of-service",
+    "pairId": "hard-neg-pilot-vs-ga-01",
+    "title": "General Availability Terms of Service",
+    "content": {
+      "summary": "Standard terms of service for GA customers.",
+      "facts": [
+        "Annual commitment required",
+        "Standard pricing applies",
+        "Minimum 25 seats for team plan"
+      ],
+      "entities": [
+        {
+          "name": "Terms of Service",
+          "type": "policy"
+        }
+      ],
+      "raw": "# Terms of Service\n\nAnnual commitment is required for all paid plans. Standard pricing applies as listed on the pricing page. Team plan requires a minimum of 25 seats."
+    },
+    "confidence": 0.9
+  },
+  {
+    "id": "ios-release-notes",
+    "pairId": "hard-neg-platform-diff-01",
+    "title": "iOS App - Release Notes v3.2",
+    "content": {
+      "summary": "Release notes for iOS app version 3.2.",
+      "facts": [
+        "Added Face ID support",
+        "Dark mode now available",
+        "Improved camera integration for document scanning"
+      ],
+      "entities": [
+        {
+          "name": "iOS App",
+          "type": "product"
+        }
+      ],
+      "raw": "# iOS Release Notes v3.2\n\nNew features: Face ID support for quick login. Dark mode is now available system-wide. Improved camera integration for document scanning with auto-crop."
+    },
+    "confidence": 0.9
+  },
+  {
+    "id": "android-release-notes",
+    "pairId": "hard-neg-platform-diff-01",
+    "title": "Android App - Release Notes v3.2",
+    "content": {
+      "summary": "Release notes for Android app version 3.2.",
+      "facts": [
+        "Added fingerprint authentication support",
+        "Material You dynamic theming",
+        "Improved file picker integration"
+      ],
+      "entities": [
+        {
+          "name": "Android App",
+          "type": "product"
+        }
+      ],
+      "raw": "# Android Release Notes v3.2\n\nNew features: Fingerprint authentication support for quick login. Material You dynamic theming support. Improved file picker integration for document uploads."
+    },
+    "confidence": 0.9
+  },
+  {
+    "id": "h1-budget-plan",
+    "pairId": "hard-neg-budget-periods-01",
+    "title": "H1 2026 Budget Plan",
+    "content": {
+      "summary": "Budget allocation for first half of 2026.",
+      "facts": [
+        "Total H1 budget: $3M",
+        "Engineering: $1.5M",
+        "Marketing: $800K"
+      ],
+      "entities": [
+        {
+          "name": "Finance",
+          "type": "org"
+        }
+      ],
+      "raw": "# H1 2026 Budget\n\nTotal H1 budget: $3M. Engineering: $1.5M (50% of total). Marketing: $800K. Remaining $700K split across ops, HR, and other departments."
+    },
+    "confidence": 0.9
+  },
+  {
+    "id": "h2-budget-plan",
+    "pairId": "hard-neg-budget-periods-01",
+    "title": "H2 2026 Budget Plan",
+    "content": {
+      "summary": "Budget allocation for second half of 2026.",
+      "facts": [
+        "Total H2 budget: $4M (increased after Series A)",
+        "Engineering: $2.2M",
+        "Marketing: $1M"
+      ],
+      "entities": [
+        {
+          "name": "Finance",
+          "type": "org"
+        }
+      ],
+      "raw": "# H2 2026 Budget\n\nTotal H2 budget: $4M, increased from $3M after Series A close. Engineering: $2.2M (expanded team). Marketing: $1M for product launch push. Remaining $800K for other departments."
+    },
+    "confidence": 0.9
+  },
+  {
+    "id": "frontend-tech-standards",
+    "pairId": "hard-neg-tech-stack-layers-01",
+    "title": "Frontend Technology Standards",
+    "content": {
+      "summary": "Technology standards for frontend development.",
+      "facts": [
+        "React 18 with TypeScript",
+        "Tailwind CSS for styling",
+        "Vite for build tooling"
+      ],
+      "entities": [
+        {
+          "name": "Frontend",
+          "type": "team"
+        }
+      ],
+      "raw": "# Frontend Tech Standards\n\nUse React 18 with TypeScript for all frontend applications. Tailwind CSS for styling, no CSS-in-JS libraries. Vite for build tooling, replacing Webpack."
+    },
+    "confidence": 0.9
+  },
+  {
+    "id": "backend-tech-standards",
+    "pairId": "hard-neg-tech-stack-layers-01",
+    "title": "Backend Technology Standards",
+    "content": {
+      "summary": "Technology standards for backend development.",
+      "facts": [
+        "Node.js 20 with TypeScript",
+        "PostgreSQL for primary data store",
+        "Express.js for HTTP services"
+      ],
+      "entities": [
+        {
+          "name": "Backend",
+          "type": "team"
+        }
+      ],
+      "raw": "# Backend Tech Standards\n\nUse Node.js 20 with TypeScript for all backend services. PostgreSQL for primary data storage. Express.js for HTTP services and API endpoints."
+    },
+    "confidence": 0.9
+  },
+  {
+    "id": "infra-team-oncall-process",
+    "pairId": "hard-neg-team-specific-process-01",
+    "title": "Infrastructure Team On-Call Process",
+    "content": {
+      "summary": "On-call process specific to the infrastructure team.",
+      "facts": [
+        "On-call rotation: 1 week, 24/7 coverage",
+        "Pager escalation after 10 minutes",
+        "Post-incident review required for all P0/P1"
+      ],
+      "entities": [
+        {
+          "name": "Infra Team",
+          "type": "team"
+        }
+      ],
+      "raw": "# Infra Team On-Call\n\nOn-call rotation is 1 week with 24/7 coverage. Pager auto-escalates after 10 minutes of no acknowledgment. Post-incident review is required for all P0 and P1 incidents."
+    },
+    "confidence": 0.9
+  },
+  {
+    "id": "product-team-oncall-process",
+    "pairId": "hard-neg-team-specific-process-01",
+    "title": "Product Team On-Call Process",
+    "content": {
+      "summary": "On-call process specific to the product engineering team.",
+      "facts": [
+        "On-call rotation: 2 weeks, business hours only",
+        "Escalation to infra team for after-hours issues",
+        "Post-incident review for P0 only"
+      ],
+      "entities": [
+        {
+          "name": "Product Team",
+          "type": "team"
+        }
+      ],
+      "raw": "# Product Team On-Call\n\nOn-call rotation is 2 weeks with business hours coverage only. After-hours issues are escalated to the infrastructure team. Post-incident reviews are required for P0 incidents only."
+    },
+    "confidence": 0.9
+  },
+  {
+    "id": "smb-pricing-doc",
+    "pairId": "hard-neg-customer-segment-01",
+    "title": "SMB Pricing and Packaging",
+    "content": {
+      "summary": "Pricing structure for small and medium businesses.",
+      "facts": [
+        "Starter plan: $10/user/month",
+        "Growth plan: $25/user/month",
+        "Self-serve signup, no sales call needed"
+      ],
+      "entities": [
+        {
+          "name": "SMB Pricing",
+          "type": "product"
+        }
+      ],
+      "raw": "# SMB Pricing\n\nStarter plan: $10 per user per month (up to 10 users). Growth plan: $25 per user per month (up to 50 users). Self-serve signup with no sales call needed."
+    },
+    "confidence": 0.9
+  },
+  {
+    "id": "enterprise-pricing-doc",
+    "pairId": "hard-neg-customer-segment-01",
+    "title": "Enterprise Pricing and Packaging",
+    "content": {
+      "summary": "Pricing structure for enterprise customers.",
+      "facts": [
+        "Enterprise plan: custom pricing starting at $50K/year",
+        "Minimum 100 seats",
+        "Dedicated account team and custom SLA"
+      ],
+      "entities": [
+        {
+          "name": "Enterprise Pricing",
+          "type": "product"
+        }
+      ],
+      "raw": "# Enterprise Pricing\n\nEnterprise plan: custom pricing starting at $50K per year. Minimum 100 seats required. Includes dedicated account team, custom SLA, and priority support."
+    },
+    "confidence": 0.9
+  },
+  {
+    "id": "deprecated-auth-flow",
+    "pairId": "hard-neg-deprecated-current-01",
+    "title": "Auth Flow - Deprecated (v1)",
+    "content": {
+      "summary": "Documentation for the deprecated v1 authentication flow.",
+      "facts": [
+        "DEPRECATED: This auth flow is no longer supported",
+        "Used basic API key authentication",
+        "Replaced by OAuth 2.0 flow in v2"
+      ],
+      "entities": [
+        {
+          "name": "Auth v1",
+          "type": "service"
+        }
+      ],
+      "raw": "# Auth Flow v1 (DEPRECATED)\n\nDEPRECATED: This authentication flow is no longer supported as of January 2026. It used basic API key authentication. This has been replaced by the OAuth 2.0 flow in v2."
+    },
+    "confidence": 0.9
+  },
+  {
+    "id": "current-auth-flow",
+    "pairId": "hard-neg-deprecated-current-01",
+    "title": "Auth Flow - Current (v2)",
+    "content": {
+      "summary": "Documentation for the current v2 authentication flow.",
+      "facts": [
+        "Current auth system uses OAuth 2.0",
+        "Supports PKCE flow for public clients",
+        "Token lifetime: 1 hour access, 30 day refresh"
+      ],
+      "entities": [
+        {
+          "name": "Auth v2",
+          "type": "service"
+        }
+      ],
+      "raw": "# Auth Flow v2 (Current)\n\nThe current authentication system uses OAuth 2.0. Supports PKCE flow for public clients. Access token lifetime is 1 hour; refresh token lifetime is 30 days."
+    },
+    "confidence": 0.95
+  },
+  {
+    "id": "us-employment-law-guide",
+    "pairId": "hard-neg-geo-compliance-01",
+    "title": "US Employment Law Guide",
+    "content": {
+      "summary": "Guide to US employment law compliance.",
+      "facts": [
+        "At-will employment in most US states",
+        "Minimum wage: federal $7.25/hr (state may be higher)",
+        "FMLA: 12 weeks unpaid leave for qualifying employees"
+      ],
+      "entities": [
+        {
+          "name": "US Employment",
+          "type": "compliance"
+        }
+      ],
+      "raw": "# US Employment Law\n\nMost US states follow at-will employment. Federal minimum wage is $7.25/hr, though many states mandate higher. FMLA provides 12 weeks of unpaid leave for qualifying employees."
+    },
+    "confidence": 0.9
+  },
+  {
+    "id": "de-employment-law-guide",
+    "pairId": "hard-neg-geo-compliance-01",
+    "title": "Germany Employment Law Guide",
+    "content": {
+      "summary": "Guide to German employment law compliance.",
+      "facts": [
+        "Strong worker protections with notice periods",
+        "Minimum wage: EUR 12.41/hr",
+        "Minimum 20 vacation days per year by law"
+      ],
+      "entities": [
+        {
+          "name": "DE Employment",
+          "type": "compliance"
+        }
+      ],
+      "raw": "# German Employment Law\n\nGermany has strong worker protections with mandatory notice periods. Minimum wage is EUR 12.41 per hour. Employees are entitled to a minimum of 20 vacation days per year by federal law."
+    },
+    "confidence": 0.9
+  },
+  {
+    "id": "project-alpha-requirements",
+    "pairId": "hard-neg-project-phase-01",
+    "title": "Project Alpha - Requirements",
+    "content": {
+      "summary": "Requirements document for Project Alpha.",
+      "facts": [
+        "Real-time notification system",
+        "WebSocket-based push notifications",
+        "Target: 10,000 concurrent connections"
+      ],
+      "entities": [
+        {
+          "name": "Project Alpha",
+          "type": "project"
+        }
+      ],
+      "raw": "# Project Alpha Requirements\n\nBuild a real-time notification system using WebSocket-based push notifications. Target capacity: 10,000 concurrent connections. Priority: high, due Q2 2026."
+    },
+    "confidence": 0.9
+  },
+  {
+    "id": "project-beta-requirements",
+    "pairId": "hard-neg-project-phase-01",
+    "title": "Project Beta - Requirements",
+    "content": {
+      "summary": "Requirements document for Project Beta.",
+      "facts": [
+        "Batch reporting pipeline",
+        "Process daily analytics data overnight",
+        "Target: 50M events per day"
+      ],
+      "entities": [
+        {
+          "name": "Project Beta",
+          "type": "project"
+        }
+      ],
+      "raw": "# Project Beta Requirements\n\nBuild a batch reporting pipeline to process daily analytics data overnight. Target throughput: 50M events per day. Priority: medium, due Q3 2026."
+    },
+    "confidence": 0.9
+  },
+  {
+    "id": "standup-format-guide",
+    "pairId": "hard-neg-meeting-types-01",
+    "title": "Standup Meeting Format Guide",
+    "content": {
+      "summary": "Guide for running effective standup meetings.",
+      "facts": [
+        "Timeboxed to 15 minutes",
+        "Three questions: done, doing, blocked",
+        "Standing format preferred"
+      ],
+      "entities": [
+        {
+          "name": "Standups",
+          "type": "process"
+        }
+      ],
+      "raw": "# Standup Format\n\nDaily standups are timeboxed to 15 minutes. Each person answers: what did you complete, what are you working on, any blockers? Standing format preferred to keep it brief."
+    },
+    "confidence": 0.9
+  },
+  {
+    "id": "retro-format-guide",
+    "pairId": "hard-neg-meeting-types-01",
+    "title": "Retrospective Format Guide",
+    "content": {
+      "summary": "Guide for running effective retrospective meetings.",
+      "facts": [
+        "Timeboxed to 60 minutes",
+        "Format: went well, improve, action items",
+        "Held at end of each sprint"
+      ],
+      "entities": [
+        {
+          "name": "Retrospectives",
+          "type": "process"
+        }
+      ],
+      "raw": "# Retrospective Format\n\nRetrospectives are timeboxed to 60 minutes. Format: what went well, what to improve, action items. Held at the end of each sprint. All team members should participate."
+    },
+    "confidence": 0.9
+  },
+  {
+    "id": "standard-deploy-process",
+    "pairId": "hard-neg-conditional-policy-01",
+    "title": "Standard Deployment Process",
+    "content": {
+      "summary": "Standard process for production deployments.",
+      "facts": [
+        "Requires 2 approvals before deploy",
+        "Deploy window: weekdays 9am-4pm",
+        "Full test suite must pass before deploy"
+      ],
+      "entities": [
+        {
+          "name": "Deployment",
+          "type": "process"
+        }
+      ],
+      "raw": "# Standard Deployment\n\nStandard deployments require 2 approvals before proceeding. Deploy window is weekdays between 9am and 4pm. Full test suite must pass in CI before deployment is allowed."
+    },
+    "confidence": 0.9
+  },
+  {
+    "id": "hotfix-deploy-process",
+    "pairId": "hard-neg-conditional-policy-01",
+    "title": "Hotfix Deployment Process",
+    "content": {
+      "summary": "Emergency hotfix deployment process.",
+      "facts": [
+        "Requires 1 approval (can be post-deploy)",
+        "Can be deployed at any time",
+        "Focused test suite (affected paths only)"
+      ],
+      "entities": [
+        {
+          "name": "Hotfix Deployment",
+          "type": "process"
+        }
+      ],
+      "raw": "# Hotfix Deployment\n\nHotfix deployments require 1 approval, which can be obtained post-deploy in emergencies. Hotfixes can be deployed at any time, including outside business hours. Only the focused test suite for affected code paths must pass."
+    },
+    "confidence": 0.9
+  }
+]

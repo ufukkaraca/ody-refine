@@ -1,0 +1,85 @@
+{
+  "corpus": "coverage-gap-detection-v1",
+  "description": "Documents and chat messages to detect undocumented topics and single-source tribal knowledge.",
+  "chatNodes": [
+    {
+      "id": "chat-01",
+      "title": "Kubernetes cluster scaling",
+      "content": {
+        "summary": "Discussion about K8s cluster auto-scaling configuration.",
+        "facts": ["Need to configure HPA for the API service", "Current max replicas is 10", "Memory threshold set at 80%"],
+        "source": { "sourceType": "slack", "sourceId": "slack-eng-123" }
+      }
+    },
+    {
+      "id": "chat-02",
+      "title": "Kubernetes scaling issues",
+      "content": {
+        "summary": "Follow-up on scaling problems in production.",
+        "facts": ["Pods not scaling fast enough during peak", "Need to tune readiness probes", "Consider vertical pod autoscaler"],
+        "source": { "sourceType": "slack", "sourceId": "slack-eng-124" }
+      }
+    },
+    {
+      "id": "chat-03",
+      "title": "K8s cluster capacity",
+      "content": {
+        "summary": "Discussion about cluster node pool sizing.",
+        "facts": ["Need more nodes in the default pool", "Spot instances for batch workloads", "Cost optimization needed"],
+        "source": { "sourceType": "slack", "sourceId": "slack-eng-125" }
+      }
+    },
+    {
+      "id": "chat-04",
+      "title": "Database backup procedures",
+      "content": {
+        "summary": "Team asking how to restore from backup.",
+        "facts": ["Daily snapshots taken at 2am UTC", "Retention is 30 days", "Point-in-time recovery available"],
+        "source": { "sourceType": "slack", "sourceId": "slack-ops-201" }
+      }
+    },
+    {
+      "id": "chat-05",
+      "title": "Database backup restore test",
+      "content": {
+        "summary": "Testing backup restore in staging.",
+        "facts": ["Restore took 45 minutes", "Some data loss from WAL gap", "Need automated restore tests"],
+        "source": { "sourceType": "slack", "sourceId": "slack-ops-202" }
+      }
+    },
+    {
+      "id": "chat-06",
+      "title": "DB backup question",
+      "content": {
+        "summary": "New engineer asking about backup process.",
+        "facts": ["How to trigger manual backup", "Where are snapshots stored", "Who has access"],
+        "source": { "sourceType": "slack", "sourceId": "slack-ops-203" }
+      }
+    }
+  ],
+  "docNodes": [
+    {
+      "id": "doc-01",
+      "title": "API Documentation",
+      "content": {
+        "summary": "API endpoint reference documentation.",
+        "facts": ["REST API with JSON responses", "OAuth2 authentication", "Rate limiting at 100 req/min"],
+        "source": { "sourceType": "notion", "sourceId": "notion-api-01" }
+      }
+    }
+  ],
+  "expectedGaps": [
+    {
+      "topic": "Kubernetes cluster scaling",
+      "chatMentions": 3,
+      "hasDoc": false,
+      "expectedDetection": true
+    },
+    {
+      "topic": "Database backup procedures",
+      "chatMentions": 3,
+      "hasDoc": false,
+      "expectedDetection": true
+    }
+  ]
+}

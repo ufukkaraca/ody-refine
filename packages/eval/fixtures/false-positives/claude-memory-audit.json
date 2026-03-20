@@ -1,0 +1,45 @@
+{
+  "corpus": "claude-code-memory-files",
+  "description": "11 consolidated Claude Code memory files. Heuristic detectors reported 3 findings — all false positives. Ground truth: 0 real issues.",
+  "source_dir": "~/.claude/projects/example/memory/",
+  "date": "2026-03-17",
+  "ground_truth": {
+    "contradictions": 0,
+    "staleness": 0,
+    "time_bombs": 0,
+    "total_real_issues": 0
+  },
+  "detector_output": {
+    "score": 92,
+    "findings": [
+      {
+        "id": "fp-1",
+        "type": "contradiction",
+        "severity": "critical",
+        "summary": "Conflicting numbers: 1 vs 8",
+        "ground_truth": "false_positive",
+        "reason": "Numbers appear in different contexts (e.g., pricing tiers vs product count). Not a contradiction."
+      },
+      {
+        "id": "fp-2",
+        "type": "staleness",
+        "severity": "warning",
+        "summary": "Industry Analysis Reports may be outdated",
+        "ground_truth": "false_positive",
+        "reason": "Content is current as of consolidation date. Detector flagged based on date heuristic, not actual staleness."
+      },
+      {
+        "id": "fp-3",
+        "type": "time_bomb",
+        "severity": "warning",
+        "summary": "Deadline approaching: 2026-03",
+        "ground_truth": "false_positive",
+        "reason": "Date reference is contextual (planning window), not a deadline that invalidates content."
+      }
+    ]
+  },
+  "eval_targets": {
+    "precision": "Detector should produce 0 findings on this corpus (100% precision target)",
+    "false_positive_rate": "Current: 3/3 = 100% FP rate. Target: 0%"
+  }
+}

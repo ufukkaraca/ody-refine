@@ -1,0 +1,13 @@
+{
+  "corpus": "examples/sample-docs",
+  "findings": [
+    { "type": "contradiction", "description": "Rate limit 1000 vs 500 requests per minute", "severity": "critical", "shouldFind": true },
+    { "type": "contradiction", "description": "PTO 20 vs 15 days", "severity": "critical", "shouldFind": true },
+    { "type": "contradiction", "description": "Remote-first vs office required", "severity": "critical", "shouldFind": true },
+    { "type": "contradiction", "description": "Expense limit $50 vs $25", "severity": "critical", "shouldFind": true },
+    { "type": "contradiction", "description": "Token expiry 24h vs 48h", "severity": "warning", "shouldFind": true },
+    { "type": "time_bomb", "description": "Q3 2025 deprecation deadline passed", "severity": "warning", "shouldFind": true },
+    { "type": "contradiction", "description": "30 days expense report vs 7 days security training (different policies)", "severity": "info", "shouldFind": false },
+    { "type": "contradiction", "description": "90 days key rotation vs 60 days token refresh (different things)", "severity": "info", "shouldFind": false }
+  ]
+}

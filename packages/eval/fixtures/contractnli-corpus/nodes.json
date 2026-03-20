@@ -1,0 +1,2766 @@
+[
+  {
+    "id": "contractnli-premise-01",
+    "pairId": "contractnli-contradiction-01",
+    "title": "NDA Clause (Contradiction Pair 1)",
+    "content": {
+      "summary": "For purposes of this Agreement, \"Confidential Information\" means any data or information that is proprietary to the Parties and not generally known to the public, whether in tangible or intangible for...",
+      "facts": [
+        "For purposes of this Agreement, \"Confidential Information\" means any data or information that is proprietary to the Parties and not generally known to the public, whether in tangible or intangible form, whenever and however disclosed, including but not limited to: a",
+        "the documents described in the Whereas clause above; b",
+        "Critical Infrastructure Information (CII) or Bulk Electric System Information (BCSI) or Security Sensitive Information (SSI) classified by JEA c"
+      ],
+      "entities": [
+        {
+          "name": "Confidential Information",
+          "type": "clause"
+        },
+        {
+          "name": "Disclosing Party",
+          "type": "legal"
+        }
+      ],
+      "raw": "For purposes of this Agreement, \"Confidential Information\" means any data or information that is proprietary to the Parties and not generally known to the public, whether in tangible or intangible form, whenever and however disclosed, including but not limited to: a. the documents described in the Whereas clause above; b. Critical Infrastructure Information (CII) or Bulk Electric System Information (BCSI) or Security Sensitive Information (SSI) classified by JEA c. Protected Health Information in both physical and electronic form (PHI and ePHI) d. Personal Identifiable Information (PII) e. any protected, non-public information concerning the design or operation of present or future critical infrastructure; f. any information that could be used to compromise or expose the vulnerability of the Parties Cyber systems, processes, programs data, communications, energy and operations systems or structures; g. any Copyright application code, source code, technical design (not released for open use), trade secret, scientific or technical information, invention, design, process, procedure, formula, improvement, technology or method;"
+    },
+    "confidence": 0.95
+  },
+  {
+    "id": "contractnli-hypothesis-01",
+    "pairId": "contractnli-contradiction-01",
+    "title": "NDA Hypothesis (Contradiction Pair 1)",
+    "content": {
+      "summary": "Confidential Information shall only include technical information.",
+      "facts": [
+        "Confidential Information shall only include technical information"
+      ],
+      "entities": [
+        {
+          "name": "Confidential Information",
+          "type": "clause"
+        }
+      ],
+      "raw": "Confidential Information shall only include technical information."
+    },
+    "confidence": 0.95
+  },
+  {
+    "id": "contractnli-premise-02",
+    "pairId": "contractnli-contradiction-02",
+    "title": "NDA Clause (Contradiction Pair 2)",
+    "content": {
+      "summary": "Further, either party shall be free to use for any purpose the residuals (defined below) resulting from access to or work with Confidential Information disclosed hereunder. ",
+      "facts": [
+        "Further, either party shall be free to use for any purpose the residuals (defined below) resulting from access to or work with Confidential Information disclosed hereunder"
+      ],
+      "entities": [
+        {
+          "name": "Confidential Information",
+          "type": "clause"
+        },
+        {
+          "name": "Disclosing Party",
+          "type": "legal"
+        }
+      ],
+      "raw": "Further, either party shall be free to use for any purpose the residuals (defined below) resulting from access to or work with Confidential Information disclosed hereunder. "
+    },
+    "confidence": 0.95
+  },
+  {
+    "id": "contractnli-hypothesis-02",
+    "pairId": "contractnli-contradiction-02",
+    "title": "NDA Hypothesis (Contradiction Pair 2)",
+    "content": {
+      "summary": "Receiving Party shall not use any Confidential Information for any purpose other than the purposes stated in Agreement.",
+      "facts": [
+        "Receiving Party shall not use any Confidential Information for any purpose other than the purposes stated in Agreement"
+      ],
+      "entities": [
+        {
+          "name": "Confidential Information",
+          "type": "clause"
+        },
+        {
+          "name": "Receiving Party",
+          "type": "legal"
+        }
+      ],
+      "raw": "Receiving Party shall not use any Confidential Information for any purpose other than the purposes stated in Agreement."
+    },
+    "confidence": 0.95
+  },
+  {
+    "id": "contractnli-premise-03",
+    "pairId": "contractnli-contradiction-03",
+    "title": "NDA Clause (Contradiction Pair 3)",
+    "content": {
+      "summary": "9. At the end of the contract the receiving party shall return the confidential information and any possibly extant copies after receipt of a written request, provided that this is technically feasibl...",
+      "facts": [
+        "At the end of the contract the receiving party shall return the confidential information and any possibly extant copies after receipt of a written request, provided that this is technically feasible and does not violate the retention obligations"
+      ],
+      "entities": [
+        {
+          "name": "Confidential Information",
+          "type": "clause"
+        },
+        {
+          "name": "Receiving Party",
+          "type": "legal"
+        }
+      ],
+      "raw": "9. At the end of the contract the receiving party shall return the confidential information and any possibly extant copies after receipt of a written request, provided that this is technically feasible and does not violate the retention obligations. "
+    },
+    "confidence": 0.95
+  },
+  {
+    "id": "contractnli-hypothesis-03",
+    "pairId": "contractnli-contradiction-03",
+    "title": "NDA Hypothesis (Contradiction Pair 3)",
+    "content": {
+      "summary": "Receiving Party may retain some Confidential Information even after the return or destruction of Confidential Information.",
+      "facts": [
+        "Receiving Party may retain some Confidential Information even after the return or destruction of Confidential Information"
+      ],
+      "entities": [
+        {
+          "name": "Confidential Information",
+          "type": "clause"
+        },
+        {
+          "name": "Receiving Party",
+          "type": "legal"
+        }
+      ],
+      "raw": "Receiving Party may retain some Confidential Information even after the return or destruction of Confidential Information."
+    },
+    "confidence": 0.95
+  },
+  {
+    "id": "contractnli-premise-04",
+    "pairId": "contractnli-contradiction-04",
+    "title": "NDA Clause (Contradiction Pair 4)",
+    "content": {
+      "summary": "For purposes of this Agreement, the term “Evaluation Material” shall mean any and all information provided to Investor by or on behalf of the Company in connection with the Transaction whether in writ...",
+      "facts": [
+        "For purposes of this Agreement, the term “Evaluation Material” shall mean any and all information provided to Investor by or on behalf of the Company in connection with the Transaction whether in writing, orally, visually, electronically or in machine readable form, through demonstration or in any other manner, and shall include, without limitation, any information regarding or relating to the Company’s operations, business opportunities, costs, finances, personnel, marketing and promotion plans, financial statements, financial information and business practices or policies, and any other business information of the Company or the terms or existence of this Agreement, the Company’s consideration of a possible Transaction or any discussions between the parties with respect thereto, transmitted by or on behalf of the Company to Investor in connection with the Transaction, whether prior to or after the execution and delivery of this Agreement and whether or not such information is marked “confidential”"
+      ],
+      "entities": [
+        {
+          "name": "Confidential Information",
+          "type": "clause"
+        }
+      ],
+      "raw": "For purposes of this Agreement, the term “Evaluation Material” shall mean any and all information provided to Investor by or on behalf of the Company in connection with the Transaction whether in writing, orally, visually, electronically or in machine readable form, through demonstration or in any other manner, and shall include, without limitation, any information regarding or relating to the Company’s operations, business opportunities, costs, finances, personnel, marketing and promotion plans, financial statements, financial information and business practices or policies, and any other business information of the Company or the terms or existence of this Agreement, the Company’s consideration of a possible Transaction or any discussions between the parties with respect thereto, transmitted by or on behalf of the Company to Investor in connection with the Transaction, whether prior to or after the execution and delivery of this Agreement and whether or not such information is marked “confidential”. "
+    },
+    "confidence": 0.95
+  },
+  {
+    "id": "contractnli-hypothesis-04",
+    "pairId": "contractnli-contradiction-04",
+    "title": "NDA Hypothesis (Contradiction Pair 4)",
+    "content": {
+      "summary": "All Confidential Information shall be expressly identified by the Disclosing Party.",
+      "facts": [
+        "All Confidential Information shall be expressly identified by the Disclosing Party"
+      ],
+      "entities": [
+        {
+          "name": "Confidential Information",
+          "type": "clause"
+        },
+        {
+          "name": "Disclosing Party",
+          "type": "legal"
+        }
+      ],
+      "raw": "All Confidential Information shall be expressly identified by the Disclosing Party."
+    },
+    "confidence": 0.95
+  },
+  {
+    "id": "contractnli-premise-05",
+    "pairId": "contractnli-contradiction-05",
+    "title": "NDA Clause (Contradiction Pair 5)",
+    "content": {
+      "summary": "1.1 “Invention”, the Pipeline Piranha Invention, Patent Pending #103573330A, shall mean all information relating to products, applications, systems, components, technologies and business topics.  Incl...",
+      "facts": [
+        "1 “Invention”, the Pipeline Piranha Invention, Patent Pending #103573330A, shall mean all information relating to products, applications, systems, components, technologies and business topics",
+        "Including but not limited to prototypes, drawings, data, trade secrets and intellectual property relating to the “Patent Pending” invention named Pipeline Piranha",
+        "2 “Confidential Information” shall mean all information provided by Disclosing Party with respect to the Invention regardless of whether it is written, oral, audio tapes, video tapes, computer discs, machines, prototypes, designs, specifications, articles of manufacture, drawings, human or machine readable documents"
+      ],
+      "entities": [
+        {
+          "name": "Confidential Information",
+          "type": "clause"
+        },
+        {
+          "name": "Receiving Party",
+          "type": "legal"
+        },
+        {
+          "name": "Disclosing Party",
+          "type": "legal"
+        }
+      ],
+      "raw": "1.1 “Invention”, the Pipeline Piranha Invention, Patent Pending #103573330A, shall mean all information relating to products, applications, systems, components, technologies and business topics.  Including but not limited to prototypes, drawings, data, trade secrets and intellectual property relating to the “Patent Pending” invention named Pipeline Piranha. 1.2 “Confidential Information” shall mean all information provided by Disclosing Party with respect to the Invention regardless of whether it is written, oral, audio tapes, video tapes, computer discs, machines, prototypes, designs, specifications, articles of manufacture, drawings, human or machine readable documents.  Confidential Information shall also include all information related to the Invention provided by Disclosing Party to Receiving Party prior to the signing of this agreement. "
+    },
+    "confidence": 0.95
+  },
+  {
+    "id": "contractnli-hypothesis-05",
+    "pairId": "contractnli-contradiction-05",
+    "title": "NDA Hypothesis (Contradiction Pair 5)",
+    "content": {
+      "summary": "Confidential Information shall only include technical information.",
+      "facts": [
+        "Confidential Information shall only include technical information"
+      ],
+      "entities": [
+        {
+          "name": "Confidential Information",
+          "type": "clause"
+        }
+      ],
+      "raw": "Confidential Information shall only include technical information."
+    },
+    "confidence": 0.95
+  },
+  {
+    "id": "contractnli-premise-06",
+    "pairId": "contractnli-contradiction-06",
+    "title": "NDA Clause (Contradiction Pair 6)",
+    "content": {
+      "summary": "1. Regardless of the form, format, or media on or in which the Confidential Information is provided and regardless of whether any such Confidential Information is marked as such, “Confidential Informa...",
+      "facts": [
+        "Regardless of the form, format, or media on or in which the Confidential Information is provided and regardless of whether any such Confidential Information is marked as such, “Confidential Information” means  (1) any and all information provided by or made available by the State to the Contractor in connection with the Contract and  (2) any and all personally identifiable information (PII) (including but not limited to personal information as defined in Md",
+        "Code, General Provisions §4-101(h) and Md",
+        "§ 10-1301(c)) and protected health information (PHI) as defined in 45 CFR 160"
+      ],
+      "entities": [
+        {
+          "name": "Confidential Information",
+          "type": "clause"
+        }
+      ],
+      "raw": "1. Regardless of the form, format, or media on or in which the Confidential Information is provided and regardless of whether any such Confidential Information is marked as such, “Confidential Information” means  (1) any and all information provided by or made available by the State to the Contractor in connection with the Contract and  (2) any and all personally identifiable information (PII) (including but not limited to personal information as defined in Md. Ann.  Code, General Provisions §4-101(h) and Md. Ann. Code, State Govt. § 10-1301(c)) and protected health information (PHI) as defined in 45 CFR 160.103 that is provided by a person or entity to the Contractor in connection with this Contract. "
+    },
+    "confidence": 0.95
+  },
+  {
+    "id": "contractnli-hypothesis-06",
+    "pairId": "contractnli-contradiction-06",
+    "title": "NDA Hypothesis (Contradiction Pair 6)",
+    "content": {
+      "summary": "All Confidential Information shall be expressly identified by the Disclosing Party.",
+      "facts": [
+        "All Confidential Information shall be expressly identified by the Disclosing Party"
+      ],
+      "entities": [
+        {
+          "name": "Confidential Information",
+          "type": "clause"
+        },
+        {
+          "name": "Disclosing Party",
+          "type": "legal"
+        }
+      ],
+      "raw": "All Confidential Information shall be expressly identified by the Disclosing Party."
+    },
+    "confidence": 0.95
+  },
+  {
+    "id": "contractnli-premise-07",
+    "pairId": "contractnli-contradiction-07",
+    "title": "NDA Clause (Contradiction Pair 7)",
+    "content": {
+      "summary": "Party One and Party  Two pledges and agrees that it shall keep totally confidential any and all of the said information and other such matters arising hereto, and shall not disclose to any other perso...",
+      "facts": [
+        "Party One and Party  Two pledges and agrees that it shall keep totally confidential any and all of the said information and other such matters arising hereto, and shall not disclose to any other person or persons, corporation, agent or consultant with whom it is or may be associated with, any such confidential information without express permission being given in writing by an authorized officer of other Party"
+      ],
+      "entities": [
+        {
+          "name": "Confidential Information",
+          "type": "clause"
+        },
+        {
+          "name": "Disclosing Party",
+          "type": "legal"
+        }
+      ],
+      "raw": "Party One and Party  Two pledges and agrees that it shall keep totally confidential any and all of the said information and other such matters arising hereto, and shall not disclose to any other person or persons, corporation, agent or consultant with whom it is or may be associated with, any such confidential information without express permission being given in writing by an authorized officer of other Party."
+    },
+    "confidence": 0.95
+  },
+  {
+    "id": "contractnli-hypothesis-07",
+    "pairId": "contractnli-contradiction-07",
+    "title": "NDA Hypothesis (Contradiction Pair 7)",
+    "content": {
+      "summary": "Receiving Party may share some Confidential Information with some third-parties (including consultants, agents and professional advisors).",
+      "facts": [
+        "Receiving Party may share some Confidential Information with some third-parties (including consultants, agents and professional advisors)"
+      ],
+      "entities": [
+        {
+          "name": "Confidential Information",
+          "type": "clause"
+        },
+        {
+          "name": "Receiving Party",
+          "type": "legal"
+        }
+      ],
+      "raw": "Receiving Party may share some Confidential Information with some third-parties (including consultants, agents and professional advisors)."
+    },
+    "confidence": 0.95
+  },
+  {
+    "id": "contractnli-premise-08",
+    "pairId": "contractnli-contradiction-08",
+    "title": "NDA Clause (Contradiction Pair 8)",
+    "content": {
+      "summary": "Receiving Party agrees not to use, divulge, reproduce or otherwise make available the Confidential Information other than for the purposes of the Project and to disclose it only to its officers, agent...",
+      "facts": [
+        "Receiving Party agrees not to use, divulge, reproduce or otherwise make available the Confidential Information other than for the purposes of the Project and to disclose it only to its officers, agents, employees, partners, and professional advisors as necessary, who shall also be bound to comply with this Agreement"
+      ],
+      "entities": [
+        {
+          "name": "Confidential Information",
+          "type": "clause"
+        },
+        {
+          "name": "Receiving Party",
+          "type": "legal"
+        },
+        {
+          "name": "Disclosing Party",
+          "type": "legal"
+        }
+      ],
+      "raw": "Receiving Party agrees not to use, divulge, reproduce or otherwise make available the Confidential Information other than for the purposes of the Project and to disclose it only to its officers, agents, employees, partners, and professional advisors as necessary, who shall also be bound to comply with this Agreement."
+    },
+    "confidence": 0.95
+  },
+  {
+    "id": "contractnli-hypothesis-08",
+    "pairId": "contractnli-contradiction-08",
+    "title": "NDA Hypothesis (Contradiction Pair 8)",
+    "content": {
+      "summary": "Receiving Party may create a copy of some Confidential Information in some circumstances.",
+      "facts": [
+        "Receiving Party may create a copy of some Confidential Information in some circumstances"
+      ],
+      "entities": [
+        {
+          "name": "Confidential Information",
+          "type": "clause"
+        },
+        {
+          "name": "Receiving Party",
+          "type": "legal"
+        }
+      ],
+      "raw": "Receiving Party may create a copy of some Confidential Information in some circumstances."
+    },
+    "confidence": 0.95
+  },
+  {
+    "id": "contractnli-premise-09",
+    "pairId": "contractnli-contradiction-09",
+    "title": "NDA Clause (Contradiction Pair 9)",
+    "content": {
+      "summary": "1. The confidential, proprietary and trade secret information of the Disclosing Party (hereinafter \"Confidential Information\") provided hereunder is any and all information, in whatever form (includin...",
+      "facts": [
+        "The confidential, proprietary and trade secret information of the Disclosing Party (hereinafter \"Confidential Information\") provided hereunder is any and all information, in whatever form (including electronic data) that will be disclosed to facilitate the potential transaction of business (related to the provision of SAP Services to HRM) between the Parties, including, but not limited to, portions or parts of the November 1, 2012 Agreement (including any schedules or appendices) between the Province of Nova Scotia and IBM, each Party's disclosure of intellectual property, techniques, sketches, drawings, models, inventions, know-how, processes, apparatus, equipment, algorithms, software programs, software source documents, and formulae related to the current, future and proposed products, documents and services, research, experimental work, development, design details and specifications, engineering, financial information, procurement requirements, purchasing, manufacturing, licensing, sales or service customer lists, business forecasts, sales and merchandizing, and marketing plans and information",
+        "For purposes of this Agreement confidential, proprietary and trade secret information of the Province’s SAP Service Provider or any other Province’s Service Provider, any parent company, subsidiary or affiliate of the Disclosing party shall be considered Confidential Information of the Disclosing Party for purposes of this Agreement"
+      ],
+      "entities": [
+        {
+          "name": "Confidential Information",
+          "type": "clause"
+        },
+        {
+          "name": "Disclosing Party",
+          "type": "legal"
+        }
+      ],
+      "raw": "1. The confidential, proprietary and trade secret information of the Disclosing Party (hereinafter \"Confidential Information\") provided hereunder is any and all information, in whatever form (including electronic data) that will be disclosed to facilitate the potential transaction of business (related to the provision of SAP Services to HRM) between the Parties, including, but not limited to, portions or parts of the November 1, 2012 Agreement (including any schedules or appendices) between the Province of Nova Scotia and IBM, each Party's disclosure of intellectual property, techniques, sketches, drawings, models, inventions, know-how, processes, apparatus, equipment, algorithms, software programs, software source documents, and formulae related to the current, future and proposed products, documents and services, research, experimental work, development, design details and specifications, engineering, financial information, procurement requirements, purchasing, manufacturing, licensing, sales or service customer lists, business forecasts, sales and merchandizing, and marketing plans and information.  For purposes of this Agreement confidential, proprietary and trade secret information of the Province’s SAP Service Provider or any other Province’s Service Provider, any parent company, subsidiary or affiliate of the Disclosing party shall be considered Confidential Information of the Disclosing Party for purposes of this Agreement."
+    },
+    "confidence": 0.95
+  },
+  {
+    "id": "contractnli-hypothesis-09",
+    "pairId": "contractnli-contradiction-09",
+    "title": "NDA Hypothesis (Contradiction Pair 9)",
+    "content": {
+      "summary": "Confidential Information shall only include technical information.",
+      "facts": [
+        "Confidential Information shall only include technical information"
+      ],
+      "entities": [
+        {
+          "name": "Confidential Information",
+          "type": "clause"
+        }
+      ],
+      "raw": "Confidential Information shall only include technical information."
+    },
+    "confidence": 0.95
+  },
+  {
+    "id": "contractnli-premise-10",
+    "pairId": "contractnli-contradiction-10",
+    "title": "NDA Clause (Contradiction Pair 10)",
+    "content": {
+      "summary": "“Confidential Information” means any information disclosed to the Contractor by the CAO or the House, including, but not limited to:  (a) security practices, operational information, business plans, c...",
+      "facts": [
+        "“Confidential Information” means any information disclosed to the Contractor by the CAO or the House, including, but not limited to:  (a) security practices, operational information, business plans, customer data, customer lists, customer names, designs, documents, drawings, engineering information, hardware configuration information, processes, products, product plans, research, services, specifications, software, source code and trade secrets; and"
+      ],
+      "entities": [
+        {
+          "name": "Confidential Information",
+          "type": "clause"
+        },
+        {
+          "name": "Disclosing Party",
+          "type": "legal"
+        }
+      ],
+      "raw": "“Confidential Information” means any information disclosed to the Contractor by the CAO or the House, including, but not limited to:  (a) security practices, operational information, business plans, customer data, customer lists, customer names, designs, documents, drawings, engineering information, hardware configuration information, processes, products, product plans, research, services, specifications, software, source code and trade secrets; and "
+    },
+    "confidence": 0.95
+  },
+  {
+    "id": "contractnli-hypothesis-10",
+    "pairId": "contractnli-contradiction-10",
+    "title": "NDA Hypothesis (Contradiction Pair 10)",
+    "content": {
+      "summary": "Confidential Information shall only include technical information.",
+      "facts": [
+        "Confidential Information shall only include technical information"
+      ],
+      "entities": [
+        {
+          "name": "Confidential Information",
+          "type": "clause"
+        }
+      ],
+      "raw": "Confidential Information shall only include technical information."
+    },
+    "confidence": 0.95
+  },
+  {
+    "id": "contractnli-premise-11",
+    "pairId": "contractnli-contradiction-11",
+    "title": "NDA Clause (Contradiction Pair 11)",
+    "content": {
+      "summary": "1. After execution of this agreement and upon receipt of List, Raphael Industries Ltd. (\"Raphael\") will grand ListFusion limited rights (as stated below) to use the furnished names, addresses, telepho...",
+      "facts": [
+        "After execution of this agreement and upon receipt of List, Raphael Industries Ltd",
+        "(\"Raphael\") will grand ListFusion limited rights (as stated below) to use the furnished names, addresses, telephone numbers and associated information (collectively known as the \"List\")"
+      ],
+      "entities": [
+        {
+          "name": "NDA",
+          "type": "legal"
+        }
+      ],
+      "raw": "1. After execution of this agreement and upon receipt of List, Raphael Industries Ltd. (\"Raphael\") will grand ListFusion limited rights (as stated below) to use the furnished names, addresses, telephone numbers and associated information (collectively known as the \"List\"). "
+    },
+    "confidence": 0.95
+  },
+  {
+    "id": "contractnli-hypothesis-11",
+    "pairId": "contractnli-contradiction-11",
+    "title": "NDA Hypothesis (Contradiction Pair 11)",
+    "content": {
+      "summary": "Confidential Information shall only include technical information.",
+      "facts": [
+        "Confidential Information shall only include technical information"
+      ],
+      "entities": [
+        {
+          "name": "Confidential Information",
+          "type": "clause"
+        }
+      ],
+      "raw": "Confidential Information shall only include technical information."
+    },
+    "confidence": 0.95
+  },
+  {
+    "id": "contractnli-premise-12",
+    "pairId": "contractnli-contradiction-12",
+    "title": "NDA Clause (Contradiction Pair 12)",
+    "content": {
+      "summary": "2.1. Confidential Information means all confidential information relating to the Purpose which the Disclosing Party or any of its Affiliates, discloses or makes available, to the Receiving Party or an...",
+      "facts": [
+        "Confidential Information means all confidential information relating to the Purpose which the Disclosing Party or any of its Affiliates, discloses or makes available, to the Receiving Party or any of its Affiliates, before, on or after the Effective Date",
+        "This includes: a) the fact that discussions and negotiations are taking place concerning the Purpose and the status of those discussions and negotiations; b) the terms of this Agreement; c) all confidential or proprietary information relating to: the business, affairs, customers, clients, suppliers, plans, business opportunities, finances, pricing, operations, processes, product information, techniques, know-how, technical information, design, trade secrets and findings or analysis derived from Confidential Information, whether in tangible or intangible form"
+      ],
+      "entities": [
+        {
+          "name": "Confidential Information",
+          "type": "clause"
+        },
+        {
+          "name": "Receiving Party",
+          "type": "legal"
+        },
+        {
+          "name": "Disclosing Party",
+          "type": "legal"
+        }
+      ],
+      "raw": "2.1. Confidential Information means all confidential information relating to the Purpose which the Disclosing Party or any of its Affiliates, discloses or makes available, to the Receiving Party or any of its Affiliates, before, on or after the Effective Date.  This includes: a) the fact that discussions and negotiations are taking place concerning the Purpose and the status of those discussions and negotiations; b) the terms of this Agreement; c) all confidential or proprietary information relating to: the business, affairs, customers, clients, suppliers, plans, business opportunities, finances, pricing, operations, processes, product information, techniques, know-how, technical information, design, trade secrets and findings or analysis derived from Confidential Information, whether in tangible or intangible form."
+    },
+    "confidence": 0.95
+  },
+  {
+    "id": "contractnli-hypothesis-12",
+    "pairId": "contractnli-contradiction-12",
+    "title": "NDA Hypothesis (Contradiction Pair 12)",
+    "content": {
+      "summary": "Confidential Information shall only include technical information.",
+      "facts": [
+        "Confidential Information shall only include technical information"
+      ],
+      "entities": [
+        {
+          "name": "Confidential Information",
+          "type": "clause"
+        }
+      ],
+      "raw": "Confidential Information shall only include technical information."
+    },
+    "confidence": 0.95
+  },
+  {
+    "id": "contractnli-premise-13",
+    "pairId": "contractnli-contradiction-13",
+    "title": "NDA Clause (Contradiction Pair 13)",
+    "content": {
+      "summary": "1. Disclosure: Recipient agrees not to disclose and the Discloser agrees to let the Recipient have the access to the Confidential Information as identified and reduced in writing or provided verbally ...",
+      "facts": [
+        "Disclosure: Recipient agrees not to disclose and the Discloser agrees to let the Recipient have the access to the Confidential Information as identified and reduced in writing or provided verbally or in any other way not reduced in writing at the time of such disclosure of the information"
+      ],
+      "entities": [
+        {
+          "name": "Confidential Information",
+          "type": "clause"
+        },
+        {
+          "name": "Receiving Party",
+          "type": "legal"
+        },
+        {
+          "name": "Disclosing Party",
+          "type": "legal"
+        }
+      ],
+      "raw": "1. Disclosure: Recipient agrees not to disclose and the Discloser agrees to let the Recipient have the access to the Confidential Information as identified and reduced in writing or provided verbally or in any other way not reduced in writing at the time of such disclosure of the information."
+    },
+    "confidence": 0.95
+  },
+  {
+    "id": "contractnli-hypothesis-13",
+    "pairId": "contractnli-contradiction-13",
+    "title": "NDA Hypothesis (Contradiction Pair 13)",
+    "content": {
+      "summary": "All Confidential Information shall be expressly identified by the Disclosing Party.",
+      "facts": [
+        "All Confidential Information shall be expressly identified by the Disclosing Party"
+      ],
+      "entities": [
+        {
+          "name": "Confidential Information",
+          "type": "clause"
+        },
+        {
+          "name": "Disclosing Party",
+          "type": "legal"
+        }
+      ],
+      "raw": "All Confidential Information shall be expressly identified by the Disclosing Party."
+    },
+    "confidence": 0.95
+  },
+  {
+    "id": "contractnli-premise-14",
+    "pairId": "contractnli-contradiction-14",
+    "title": "NDA Clause (Contradiction Pair 14)",
+    "content": {
+      "summary": "2.1 Confidential Information shall mean: i) all technical, financial and business information disclosed by one Party to the other Party or by another Haldex Group entity to the Supplier including, but...",
+      "facts": [
+        "1 Confidential Information shall mean: i) all technical, financial and business information disclosed by one Party to the other Party or by another Haldex Group entity to the Supplier including, but not limited to, documents, data, information, prototypes or components relating to devices, methods, materials, apparatus, designs, research, yields and specifications; and"
+      ],
+      "entities": [
+        {
+          "name": "Confidential Information",
+          "type": "clause"
+        },
+        {
+          "name": "Disclosing Party",
+          "type": "legal"
+        }
+      ],
+      "raw": "2.1 Confidential Information shall mean: i) all technical, financial and business information disclosed by one Party to the other Party or by another Haldex Group entity to the Supplier including, but not limited to, documents, data, information, prototypes or components relating to devices, methods, materials, apparatus, designs, research, yields and specifications; and"
+    },
+    "confidence": 0.95
+  },
+  {
+    "id": "contractnli-hypothesis-14",
+    "pairId": "contractnli-contradiction-14",
+    "title": "NDA Hypothesis (Contradiction Pair 14)",
+    "content": {
+      "summary": "Confidential Information shall only include technical information.",
+      "facts": [
+        "Confidential Information shall only include technical information"
+      ],
+      "entities": [
+        {
+          "name": "Confidential Information",
+          "type": "clause"
+        }
+      ],
+      "raw": "Confidential Information shall only include technical information."
+    },
+    "confidence": 0.95
+  },
+  {
+    "id": "contractnli-premise-15",
+    "pairId": "contractnli-contradiction-15",
+    "title": "NDA Clause (Contradiction Pair 15)",
+    "content": {
+      "summary": "(iii) either Party will be free to use for any purpose the residuals resulting from access to or work with Confidential Information disclosed hereunder. ",
+      "facts": [
+        "(iii) either Party will be free to use for any purpose the residuals resulting from access to or work with Confidential Information disclosed hereunder"
+      ],
+      "entities": [
+        {
+          "name": "Confidential Information",
+          "type": "clause"
+        },
+        {
+          "name": "Disclosing Party",
+          "type": "legal"
+        }
+      ],
+      "raw": "(iii) either Party will be free to use for any purpose the residuals resulting from access to or work with Confidential Information disclosed hereunder. "
+    },
+    "confidence": 0.95
+  },
+  {
+    "id": "contractnli-hypothesis-15",
+    "pairId": "contractnli-contradiction-15",
+    "title": "NDA Hypothesis (Contradiction Pair 15)",
+    "content": {
+      "summary": "Receiving Party shall not use any Confidential Information for any purpose other than the purposes stated in Agreement.",
+      "facts": [
+        "Receiving Party shall not use any Confidential Information for any purpose other than the purposes stated in Agreement"
+      ],
+      "entities": [
+        {
+          "name": "Confidential Information",
+          "type": "clause"
+        },
+        {
+          "name": "Receiving Party",
+          "type": "legal"
+        }
+      ],
+      "raw": "Receiving Party shall not use any Confidential Information for any purpose other than the purposes stated in Agreement."
+    },
+    "confidence": 0.95
+  },
+  {
+    "id": "contractnli-premise-16",
+    "pairId": "contractnli-contradiction-16",
+    "title": "NDA Clause (Contradiction Pair 16)",
+    "content": {
+      "summary": "1. For purposes of this Agreement, \"Confidential Information\" shall mean any and all non-public information, including, without limitation, technical, developmental, marketing, sales, operating, perfo...",
+      "facts": [
+        "For purposes of this Agreement, \"Confidential Information\" shall mean any and all non-public information, including, without limitation, technical, developmental, marketing, sales, operating, performance, cost, know-how, business plans, business methods, and process information, disclosed to the Recipient"
+      ],
+      "entities": [
+        {
+          "name": "Confidential Information",
+          "type": "clause"
+        },
+        {
+          "name": "Receiving Party",
+          "type": "legal"
+        },
+        {
+          "name": "Disclosing Party",
+          "type": "legal"
+        }
+      ],
+      "raw": "1. For purposes of this Agreement, \"Confidential Information\" shall mean any and all non-public information, including, without limitation, technical, developmental, marketing, sales, operating, performance, cost, know-how, business plans, business methods, and process information, disclosed to the Recipient. "
+    },
+    "confidence": 0.95
+  },
+  {
+    "id": "contractnli-hypothesis-16",
+    "pairId": "contractnli-contradiction-16",
+    "title": "NDA Hypothesis (Contradiction Pair 16)",
+    "content": {
+      "summary": "Confidential Information shall only include technical information.",
+      "facts": [
+        "Confidential Information shall only include technical information"
+      ],
+      "entities": [
+        {
+          "name": "Confidential Information",
+          "type": "clause"
+        }
+      ],
+      "raw": "Confidential Information shall only include technical information."
+    },
+    "confidence": 0.95
+  },
+  {
+    "id": "contractnli-premise-17",
+    "pairId": "contractnli-contradiction-17",
+    "title": "NDA Clause (Contradiction Pair 17)",
+    "content": {
+      "summary": "Failure to mark any of the Confidential Information as confidential or proprietary shall not affect its status as Confidential Information. ",
+      "facts": [
+        "Failure to mark any of the Confidential Information as confidential or proprietary shall not affect its status as Confidential Information"
+      ],
+      "entities": [
+        {
+          "name": "Confidential Information",
+          "type": "clause"
+        }
+      ],
+      "raw": "Failure to mark any of the Confidential Information as confidential or proprietary shall not affect its status as Confidential Information. "
+    },
+    "confidence": 0.95
+  },
+  {
+    "id": "contractnli-hypothesis-17",
+    "pairId": "contractnli-contradiction-17",
+    "title": "NDA Hypothesis (Contradiction Pair 17)",
+    "content": {
+      "summary": "All Confidential Information shall be expressly identified by the Disclosing Party.",
+      "facts": [
+        "All Confidential Information shall be expressly identified by the Disclosing Party"
+      ],
+      "entities": [
+        {
+          "name": "Confidential Information",
+          "type": "clause"
+        },
+        {
+          "name": "Disclosing Party",
+          "type": "legal"
+        }
+      ],
+      "raw": "All Confidential Information shall be expressly identified by the Disclosing Party."
+    },
+    "confidence": 0.95
+  },
+  {
+    "id": "contractnli-premise-18",
+    "pairId": "contractnli-contradiction-18",
+    "title": "NDA Clause (Contradiction Pair 18)",
+    "content": {
+      "summary": "The Receiving Party agrees not to reverse engineer, disassemble, or otherwise restructure and/or copy or in any way recreate in whole or in part any Confidential Information of the Disclosing Party.",
+      "facts": [
+        "The Receiving Party agrees not to reverse engineer, disassemble, or otherwise restructure and/or copy or in any way recreate in whole or in part any Confidential Information of the Disclosing Party"
+      ],
+      "entities": [
+        {
+          "name": "Confidential Information",
+          "type": "clause"
+        },
+        {
+          "name": "Receiving Party",
+          "type": "legal"
+        },
+        {
+          "name": "Disclosing Party",
+          "type": "legal"
+        }
+      ],
+      "raw": "The Receiving Party agrees not to reverse engineer, disassemble, or otherwise restructure and/or copy or in any way recreate in whole or in part any Confidential Information of the Disclosing Party."
+    },
+    "confidence": 0.95
+  },
+  {
+    "id": "contractnli-hypothesis-18",
+    "pairId": "contractnli-contradiction-18",
+    "title": "NDA Hypothesis (Contradiction Pair 18)",
+    "content": {
+      "summary": "Receiving Party may create a copy of some Confidential Information in some circumstances.",
+      "facts": [
+        "Receiving Party may create a copy of some Confidential Information in some circumstances"
+      ],
+      "entities": [
+        {
+          "name": "Confidential Information",
+          "type": "clause"
+        },
+        {
+          "name": "Receiving Party",
+          "type": "legal"
+        }
+      ],
+      "raw": "Receiving Party may create a copy of some Confidential Information in some circumstances."
+    },
+    "confidence": 0.95
+  },
+  {
+    "id": "contractnli-premise-19",
+    "pairId": "contractnli-contradiction-19",
+    "title": "NDA Clause (Contradiction Pair 19)",
+    "content": {
+      "summary": "At the request of Disclosing Party, Recipient shall return to Disclosing Party all Confidential Information of Disclosing Party (including any copies thereof) or certify the destruction thereof.",
+      "facts": [
+        "At the request of Disclosing Party, Recipient shall return to Disclosing Party all Confidential Information of Disclosing Party (including any copies thereof) or certify the destruction thereof"
+      ],
+      "entities": [
+        {
+          "name": "Confidential Information",
+          "type": "clause"
+        },
+        {
+          "name": "Receiving Party",
+          "type": "legal"
+        },
+        {
+          "name": "Disclosing Party",
+          "type": "legal"
+        }
+      ],
+      "raw": "At the request of Disclosing Party, Recipient shall return to Disclosing Party all Confidential Information of Disclosing Party (including any copies thereof) or certify the destruction thereof."
+    },
+    "confidence": 0.95
+  },
+  {
+    "id": "contractnli-hypothesis-19",
+    "pairId": "contractnli-contradiction-19",
+    "title": "NDA Hypothesis (Contradiction Pair 19)",
+    "content": {
+      "summary": "Receiving Party may retain some Confidential Information even after the return or destruction of Confidential Information.",
+      "facts": [
+        "Receiving Party may retain some Confidential Information even after the return or destruction of Confidential Information"
+      ],
+      "entities": [
+        {
+          "name": "Confidential Information",
+          "type": "clause"
+        },
+        {
+          "name": "Receiving Party",
+          "type": "legal"
+        }
+      ],
+      "raw": "Receiving Party may retain some Confidential Information even after the return or destruction of Confidential Information."
+    },
+    "confidence": 0.95
+  },
+  {
+    "id": "contractnli-premise-20",
+    "pairId": "contractnli-contradiction-20",
+    "title": "NDA Clause (Contradiction Pair 20)",
+    "content": {
+      "summary": "2.1. Either party agrees that it shall ensure that it and its associated companies and their respective officers and employees shall keep confidential, both during and after the duration of the agreem...",
+      "facts": [
+        "Either party agrees that it shall ensure that it and its associated companies and their respective officers and employees shall keep confidential, both during and after the duration of the agreement, all information which: 2",
+        "Consists of any of the commercial secrets of the other party; or 2",
+        "3 Consists of any other information of a confidential nature belonging to, or connected with, the other party and its activities and clients, and designated by such party as confidential;"
+      ],
+      "entities": [
+        {
+          "name": "Confidential Information",
+          "type": "clause"
+        }
+      ],
+      "raw": "2.1. Either party agrees that it shall ensure that it and its associated companies and their respective officers and employees shall keep confidential, both during and after the duration of the agreement, all information which: 2.2. Consists of any of the commercial secrets of the other party; or 2.3 Consists of any other information of a confidential nature belonging to, or connected with, the other party and its activities and clients, and designated by such party as confidential;"
+    },
+    "confidence": 0.95
+  },
+  {
+    "id": "contractnli-hypothesis-20",
+    "pairId": "contractnli-contradiction-20",
+    "title": "NDA Hypothesis (Contradiction Pair 20)",
+    "content": {
+      "summary": "All Confidential Information shall be expressly identified by the Disclosing Party.",
+      "facts": [
+        "All Confidential Information shall be expressly identified by the Disclosing Party"
+      ],
+      "entities": [
+        {
+          "name": "Confidential Information",
+          "type": "clause"
+        },
+        {
+          "name": "Disclosing Party",
+          "type": "legal"
+        }
+      ],
+      "raw": "All Confidential Information shall be expressly identified by the Disclosing Party."
+    },
+    "confidence": 0.95
+  },
+  {
+    "id": "contractnli-premise-21",
+    "pairId": "contractnli-contradiction-21",
+    "title": "NDA Clause (Contradiction Pair 21)",
+    "content": {
+      "summary": "The Receiving Party agrees to: (a) Receive and maintain the Confidential Information in confidence; (b) Examine the Confidential Information at its own expense; (c) Not reproduce the Confidential Info...",
+      "facts": [
+        "The Receiving Party agrees to: (a) Receive and maintain the Confidential Information in confidence; (b) Examine the Confidential Information at its own expense; (c) Not reproduce the Confidential Information or any part thereof without the express written consent of Disclosing Party; (d) Not, directly or indirectly, make known, divulge, publish or communicate the Confidential Information to any person, firm or corporation without the express written consent of Disclosing Party;"
+      ],
+      "entities": [
+        {
+          "name": "Confidential Information",
+          "type": "clause"
+        },
+        {
+          "name": "Receiving Party",
+          "type": "legal"
+        },
+        {
+          "name": "Disclosing Party",
+          "type": "legal"
+        }
+      ],
+      "raw": "The Receiving Party agrees to: (a) Receive and maintain the Confidential Information in confidence; (b) Examine the Confidential Information at its own expense; (c) Not reproduce the Confidential Information or any part thereof without the express written consent of Disclosing Party; (d) Not, directly or indirectly, make known, divulge, publish or communicate the Confidential Information to any person, firm or corporation without the express written consent of Disclosing Party;"
+    },
+    "confidence": 0.95
+  },
+  {
+    "id": "contractnli-hypothesis-21",
+    "pairId": "contractnli-contradiction-21",
+    "title": "NDA Hypothesis (Contradiction Pair 21)",
+    "content": {
+      "summary": "Receiving Party may share some Confidential Information with some third-parties (including consultants, agents and professional advisors).",
+      "facts": [
+        "Receiving Party may share some Confidential Information with some third-parties (including consultants, agents and professional advisors)"
+      ],
+      "entities": [
+        {
+          "name": "Confidential Information",
+          "type": "clause"
+        },
+        {
+          "name": "Receiving Party",
+          "type": "legal"
+        }
+      ],
+      "raw": "Receiving Party may share some Confidential Information with some third-parties (including consultants, agents and professional advisors)."
+    },
+    "confidence": 0.95
+  },
+  {
+    "id": "contractnli-premise-22",
+    "pairId": "contractnli-contradiction-22",
+    "title": "NDA Clause (Contradiction Pair 22)",
+    "content": {
+      "summary": "2.1. A Receiving Party agrees: 2.1.1. to keep the Confidential Information of the other strictly confidential and not copy, supply or make the same available to any person other than as permitted in C...",
+      "facts": [
+        "A Receiving Party agrees: 2",
+        "to keep the Confidential Information of the other strictly confidential and not copy, supply or make the same available to any person other than as permitted in Clauses 2",
+        "to use the Confidential Information of the other solely in, and to the extent necessary for the Purpose and not to copy or use any Confidential Information of the other save to the extent necessary for the Purpose; 2"
+      ],
+      "entities": [
+        {
+          "name": "Confidential Information",
+          "type": "clause"
+        },
+        {
+          "name": "Receiving Party",
+          "type": "legal"
+        },
+        {
+          "name": "Disclosing Party",
+          "type": "legal"
+        }
+      ],
+      "raw": "2.1. A Receiving Party agrees: 2.1.1. to keep the Confidential Information of the other strictly confidential and not copy, supply or make the same available to any person other than as permitted in Clauses 2.1.2 and 2.1.3 below; 2.1.2. to use the Confidential Information of the other solely in, and to the extent necessary for the Purpose and not to copy or use any Confidential Information of the other save to the extent necessary for the Purpose; 2.1.3. not to disclose any Confidential Information to any person or entity other than to such of its employees who need to know for the Purpose (“Permitted Disclosees”), provided that the Receiving Party shall ensure that its Permitted Disclosees keep all Confidential Information confidential and only use it on the terms of this Agreement, as if such Permitted Disclosees were party to this Agreement."
+    },
+    "confidence": 0.95
+  },
+  {
+    "id": "contractnli-hypothesis-22",
+    "pairId": "contractnli-contradiction-22",
+    "title": "NDA Hypothesis (Contradiction Pair 22)",
+    "content": {
+      "summary": "Receiving Party may share some Confidential Information with some third-parties (including consultants, agents and professional advisors).",
+      "facts": [
+        "Receiving Party may share some Confidential Information with some third-parties (including consultants, agents and professional advisors)"
+      ],
+      "entities": [
+        {
+          "name": "Confidential Information",
+          "type": "clause"
+        },
+        {
+          "name": "Receiving Party",
+          "type": "legal"
+        }
+      ],
+      "raw": "Receiving Party may share some Confidential Information with some third-parties (including consultants, agents and professional advisors)."
+    },
+    "confidence": 0.95
+  },
+  {
+    "id": "contractnli-premise-23",
+    "pairId": "contractnli-contradiction-23",
+    "title": "NDA Clause (Contradiction Pair 23)",
+    "content": {
+      "summary": "1. For purposes of this Agreement, \"Confidential Information\" shall mean any and all non-public information, including, without limitation, technical, developmental, marketing, sales, operating, perfo...",
+      "facts": [
+        "For purposes of this Agreement, \"Confidential Information\" shall mean any and all non-public information, including, without limitation, technical, developmental, marketing, sales, operating, performance, cost, know-how, business plans, business methods, and process information, disclosed to the Recipient"
+      ],
+      "entities": [
+        {
+          "name": "Confidential Information",
+          "type": "clause"
+        },
+        {
+          "name": "Receiving Party",
+          "type": "legal"
+        },
+        {
+          "name": "Disclosing Party",
+          "type": "legal"
+        }
+      ],
+      "raw": "1. For purposes of this Agreement, \"Confidential Information\" shall mean any and all non-public information, including, without limitation, technical, developmental, marketing, sales, operating, performance, cost, know-how, business plans, business methods, and process information, disclosed to the Recipient. "
+    },
+    "confidence": 0.95
+  },
+  {
+    "id": "contractnli-hypothesis-23",
+    "pairId": "contractnli-contradiction-23",
+    "title": "NDA Hypothesis (Contradiction Pair 23)",
+    "content": {
+      "summary": "Confidential Information shall only include technical information.",
+      "facts": [
+        "Confidential Information shall only include technical information"
+      ],
+      "entities": [
+        {
+          "name": "Confidential Information",
+          "type": "clause"
+        }
+      ],
+      "raw": "Confidential Information shall only include technical information."
+    },
+    "confidence": 0.95
+  },
+  {
+    "id": "contractnli-premise-24",
+    "pairId": "contractnli-contradiction-24",
+    "title": "NDA Clause (Contradiction Pair 24)",
+    "content": {
+      "summary": "Information provided hereunder, or identifiable information derived therefrom, shall not be copied, downloaded or otherwise placed in any format, including working papers, which may become a public re...",
+      "facts": [
+        "Information provided hereunder, or identifiable information derived therefrom, shall not be copied, downloaded or otherwise placed in any format, including working papers, which may become a public record pursuant to the Kansas Open Records Act (KORA)"
+      ],
+      "entities": [
+        {
+          "name": "NDA",
+          "type": "legal"
+        }
+      ],
+      "raw": "Information provided hereunder, or identifiable information derived therefrom, shall not be copied, downloaded or otherwise placed in any format, including working papers, which may become a public record pursuant to the Kansas Open Records Act (KORA). "
+    },
+    "confidence": 0.95
+  },
+  {
+    "id": "contractnli-hypothesis-24",
+    "pairId": "contractnli-contradiction-24",
+    "title": "NDA Hypothesis (Contradiction Pair 24)",
+    "content": {
+      "summary": "Receiving Party may create a copy of some Confidential Information in some circumstances.",
+      "facts": [
+        "Receiving Party may create a copy of some Confidential Information in some circumstances"
+      ],
+      "entities": [
+        {
+          "name": "Confidential Information",
+          "type": "clause"
+        },
+        {
+          "name": "Receiving Party",
+          "type": "legal"
+        }
+      ],
+      "raw": "Receiving Party may create a copy of some Confidential Information in some circumstances."
+    },
+    "confidence": 0.95
+  },
+  {
+    "id": "contractnli-premise-25",
+    "pairId": "contractnli-contradiction-25",
+    "title": "NDA Clause (Contradiction Pair 25)",
+    "content": {
+      "summary": "1. The term “Confidential Information” shall mean any confidential, proprietary, financial or otherwise non-public information, in written or electronic form, relating to the Disclosing Party, or the ...",
+      "facts": [
+        "The term “Confidential Information” shall mean any confidential, proprietary, financial or otherwise non-public information, in written or electronic form, relating to the Disclosing Party, or the Purpose that is disclosed before, on or after the Effective Date, by the Disclosing Party to the Recipient or its affiliates, or to any of such Recipient’s or its affiliates’ employees, officers, directors, partners, shareholders, agents, attorneys, accountants or advisors (collectively, “Representatives”), whether disclosed or accessed in written, electronic or other form, including, without limitation:  (a) information concerning the Disclosing Party’s and its affiliates’ business affairs, finances, forecasts, sales and other financial results, records and budgets, and business, marketing, development, sales and other commercial strategies; and  (b) notes, analyses, compilations, reports, forecasts, data, statistics, summaries, interpretations and other materials prepared by or for Recipient or its Representatives that contain, are based on, or otherwise reflect or are derived, in whole or in part, from any of the foregoing"
+      ],
+      "entities": [
+        {
+          "name": "Confidential Information",
+          "type": "clause"
+        },
+        {
+          "name": "Receiving Party",
+          "type": "legal"
+        },
+        {
+          "name": "Disclosing Party",
+          "type": "legal"
+        }
+      ],
+      "raw": "1. The term “Confidential Information” shall mean any confidential, proprietary, financial or otherwise non-public information, in written or electronic form, relating to the Disclosing Party, or the Purpose that is disclosed before, on or after the Effective Date, by the Disclosing Party to the Recipient or its affiliates, or to any of such Recipient’s or its affiliates’ employees, officers, directors, partners, shareholders, agents, attorneys, accountants or advisors (collectively, “Representatives”), whether disclosed or accessed in written, electronic or other form, including, without limitation:  (a) information concerning the Disclosing Party’s and its affiliates’ business affairs, finances, forecasts, sales and other financial results, records and budgets, and business, marketing, development, sales and other commercial strategies; and  (b) notes, analyses, compilations, reports, forecasts, data, statistics, summaries, interpretations and other materials prepared by or for Recipient or its Representatives that contain, are based on, or otherwise reflect or are derived, in whole or in part, from any of the foregoing. "
+    },
+    "confidence": 0.95
+  },
+  {
+    "id": "contractnli-hypothesis-25",
+    "pairId": "contractnli-contradiction-25",
+    "title": "NDA Hypothesis (Contradiction Pair 25)",
+    "content": {
+      "summary": "Confidential Information shall only include technical information.",
+      "facts": [
+        "Confidential Information shall only include technical information"
+      ],
+      "entities": [
+        {
+          "name": "Confidential Information",
+          "type": "clause"
+        }
+      ],
+      "raw": "Confidential Information shall only include technical information."
+    },
+    "confidence": 0.95
+  },
+  {
+    "id": "contractnli-premise-26",
+    "pairId": "contractnli-contradiction-26",
+    "title": "NDA Clause (Contradiction Pair 26)",
+    "content": {
+      "summary": "The receiving party will not disclose any of the disclosing party's Confidential Information to any employees or to any third parties except to the receiving party's employees, parent company and majo...",
+      "facts": [
+        "The receiving party will not disclose any of the disclosing party's Confidential Information to any employees or to any third parties except to the receiving party's employees, parent company and majority-owned subsidiaries who have a need to know and who agree to abide by nondisclosure terms at least as comprehensive as those set forth herein: provided that the receiving party will be liable for breach by any such entity"
+      ],
+      "entities": [
+        {
+          "name": "Confidential Information",
+          "type": "clause"
+        },
+        {
+          "name": "Receiving Party",
+          "type": "legal"
+        },
+        {
+          "name": "Disclosing Party",
+          "type": "legal"
+        }
+      ],
+      "raw": "The receiving party will not disclose any of the disclosing party's Confidential Information to any employees or to any third parties except to the receiving party's employees, parent company and majority-owned subsidiaries who have a need to know and who agree to abide by nondisclosure terms at least as comprehensive as those set forth herein: provided that the receiving party will be liable for breach by any such entity. "
+    },
+    "confidence": 0.95
+  },
+  {
+    "id": "contractnli-hypothesis-26",
+    "pairId": "contractnli-contradiction-26",
+    "title": "NDA Hypothesis (Contradiction Pair 26)",
+    "content": {
+      "summary": "Receiving Party may share some Confidential Information with some third-parties (including consultants, agents and professional advisors).",
+      "facts": [
+        "Receiving Party may share some Confidential Information with some third-parties (including consultants, agents and professional advisors)"
+      ],
+      "entities": [
+        {
+          "name": "Confidential Information",
+          "type": "clause"
+        },
+        {
+          "name": "Receiving Party",
+          "type": "legal"
+        }
+      ],
+      "raw": "Receiving Party may share some Confidential Information with some third-parties (including consultants, agents and professional advisors)."
+    },
+    "confidence": 0.95
+  },
+  {
+    "id": "contractnli-premise-27",
+    "pairId": "contractnli-contradiction-27",
+    "title": "NDA Clause (Contradiction Pair 27)",
+    "content": {
+      "summary": "In the absence of the Disclosing Party’s prior written consent, the Receiving Party shall not produce nor disclose the Confidential Information, or any part thereof, to any third party.",
+      "facts": [
+        "In the absence of the Disclosing Party’s prior written consent, the Receiving Party shall not produce nor disclose the Confidential Information, or any part thereof, to any third party"
+      ],
+      "entities": [
+        {
+          "name": "Confidential Information",
+          "type": "clause"
+        },
+        {
+          "name": "Receiving Party",
+          "type": "legal"
+        },
+        {
+          "name": "Disclosing Party",
+          "type": "legal"
+        }
+      ],
+      "raw": "In the absence of the Disclosing Party’s prior written consent, the Receiving Party shall not produce nor disclose the Confidential Information, or any part thereof, to any third party."
+    },
+    "confidence": 0.95
+  },
+  {
+    "id": "contractnli-hypothesis-27",
+    "pairId": "contractnli-contradiction-27",
+    "title": "NDA Hypothesis (Contradiction Pair 27)",
+    "content": {
+      "summary": "Receiving Party may share some Confidential Information with some third-parties (including consultants, agents and professional advisors).",
+      "facts": [
+        "Receiving Party may share some Confidential Information with some third-parties (including consultants, agents and professional advisors)"
+      ],
+      "entities": [
+        {
+          "name": "Confidential Information",
+          "type": "clause"
+        },
+        {
+          "name": "Receiving Party",
+          "type": "legal"
+        }
+      ],
+      "raw": "Receiving Party may share some Confidential Information with some third-parties (including consultants, agents and professional advisors)."
+    },
+    "confidence": 0.95
+  },
+  {
+    "id": "contractnli-premise-28",
+    "pairId": "contractnli-contradiction-28",
+    "title": "NDA Clause (Contradiction Pair 28)",
+    "content": {
+      "summary": "(a) “Confidential Information” means any proprietary information that is disclosed in writing by Disclosing Party (defined herein) to Receiving Party (defined herein) and is duly and recognizably mark...",
+      "facts": [
+        "(a) “Confidential Information” means any proprietary information that is disclosed in writing by Disclosing Party (defined herein) to Receiving Party (defined herein) and is duly and recognizably marked “Confidential” on each document / sheet"
+      ],
+      "entities": [
+        {
+          "name": "Confidential Information",
+          "type": "clause"
+        },
+        {
+          "name": "Receiving Party",
+          "type": "legal"
+        },
+        {
+          "name": "Disclosing Party",
+          "type": "legal"
+        }
+      ],
+      "raw": "(a) “Confidential Information” means any proprietary information that is disclosed in writing by Disclosing Party (defined herein) to Receiving Party (defined herein) and is duly and recognizably marked “Confidential” on each document / sheet. "
+    },
+    "confidence": 0.95
+  },
+  {
+    "id": "contractnli-hypothesis-28",
+    "pairId": "contractnli-contradiction-28",
+    "title": "NDA Hypothesis (Contradiction Pair 28)",
+    "content": {
+      "summary": "Confidential Information may include verbally conveyed information.",
+      "facts": [
+        "Confidential Information may include verbally conveyed information"
+      ],
+      "entities": [
+        {
+          "name": "Confidential Information",
+          "type": "clause"
+        }
+      ],
+      "raw": "Confidential Information may include verbally conveyed information."
+    },
+    "confidence": 0.95
+  },
+  {
+    "id": "contractnli-premise-29",
+    "pairId": "contractnli-contradiction-29",
+    "title": "NDA Clause (Contradiction Pair 29)",
+    "content": {
+      "summary": "I acknowledge that The Business Partnership has provided, and/or has agreed to provide in the future, to me information of a confidential or proprietary nature (the Confidential Information) Confident...",
+      "facts": [
+        "I acknowledge that The Business Partnership has provided, and/or has agreed to provide in the future, to me information of a confidential or proprietary nature (the Confidential Information) Confidential Information shall mean any information or data relating to any clients of The Business Partnership business or affairs disclosed whether in writing, orally or by any other means"
+      ],
+      "entities": [
+        {
+          "name": "Confidential Information",
+          "type": "clause"
+        },
+        {
+          "name": "Disclosing Party",
+          "type": "legal"
+        }
+      ],
+      "raw": "I acknowledge that The Business Partnership has provided, and/or has agreed to provide in the future, to me information of a confidential or proprietary nature (the Confidential Information) Confidential Information shall mean any information or data relating to any clients of The Business Partnership business or affairs disclosed whether in writing, orally or by any other means. "
+    },
+    "confidence": 0.95
+  },
+  {
+    "id": "contractnli-hypothesis-29",
+    "pairId": "contractnli-contradiction-29",
+    "title": "NDA Hypothesis (Contradiction Pair 29)",
+    "content": {
+      "summary": "Confidential Information shall only include technical information.",
+      "facts": [
+        "Confidential Information shall only include technical information"
+      ],
+      "entities": [
+        {
+          "name": "Confidential Information",
+          "type": "clause"
+        }
+      ],
+      "raw": "Confidential Information shall only include technical information."
+    },
+    "confidence": 0.95
+  },
+  {
+    "id": "contractnli-premise-30",
+    "pairId": "contractnli-contradiction-30",
+    "title": "NDA Clause (Contradiction Pair 30)",
+    "content": {
+      "summary": "____________________ , agrees that, in consideration for being shown or told about certain trade secrets or property belonging to Navidec, Incorporated, ____________________, shall not disclose or cau...",
+      "facts": [
+        "____________________ , agrees that, in consideration for being shown or told about certain trade secrets or property belonging to Navidec, Incorporated, ____________________, shall not disclose or cause to be disclosed, disseminated or distributed any information concerning said trade secret or property to any person, entity, business or other individual or company without the prior written permission of Navidec, Incorporated"
+      ],
+      "entities": [
+        {
+          "name": "Disclosing Party",
+          "type": "legal"
+        }
+      ],
+      "raw": "____________________ , agrees that, in consideration for being shown or told about certain trade secrets or property belonging to Navidec, Incorporated, ____________________, shall not disclose or cause to be disclosed, disseminated or distributed any information concerning said trade secret or property to any person, entity, business or other individual or company without the prior written permission of Navidec, Incorporated."
+    },
+    "confidence": 0.95
+  },
+  {
+    "id": "contractnli-hypothesis-30",
+    "pairId": "contractnli-contradiction-30",
+    "title": "NDA Hypothesis (Contradiction Pair 30)",
+    "content": {
+      "summary": "Receiving Party may share some Confidential Information with some third-parties (including consultants, agents and professional advisors).",
+      "facts": [
+        "Receiving Party may share some Confidential Information with some third-parties (including consultants, agents and professional advisors)"
+      ],
+      "entities": [
+        {
+          "name": "Confidential Information",
+          "type": "clause"
+        },
+        {
+          "name": "Receiving Party",
+          "type": "legal"
+        }
+      ],
+      "raw": "Receiving Party may share some Confidential Information with some third-parties (including consultants, agents and professional advisors)."
+    },
+    "confidence": 0.95
+  },
+  {
+    "id": "contractnli-ent-premise-01",
+    "pairId": "contractnli-entailment-01",
+    "title": "NDA Clause (Entailment Pair 1)",
+    "content": {
+      "summary": "Recipient shall:  (a) only disclose the Confidential Information to those employees and contractors with a need to know; provided that Recipient binds those employees and contractors to terms at least...",
+      "facts": [
+        "Recipient shall:  (a) only disclose the Confidential Information to those employees and contractors with a need to know; provided that Recipient binds those employees and contractors to terms at least as restrictive as those stated in this Agreement (or, with respect to professional advisors, advises them of its obligations with respect to the Confidential Information);  (b) not disclose any Confidential Information to any third party, without Discloser’s prior written consent;  (c) use such Confidential Information only to the extent required to accomplish the Purpose;  (d) not reproduce Confidential Information in any form except as required to accomplish the Purpose;"
+      ],
+      "entities": [
+        {
+          "name": "Confidential Information",
+          "type": "clause"
+        },
+        {
+          "name": "Receiving Party",
+          "type": "legal"
+        },
+        {
+          "name": "Disclosing Party",
+          "type": "legal"
+        }
+      ],
+      "raw": "Recipient shall:  (a) only disclose the Confidential Information to those employees and contractors with a need to know; provided that Recipient binds those employees and contractors to terms at least as restrictive as those stated in this Agreement (or, with respect to professional advisors, advises them of its obligations with respect to the Confidential Information);  (b) not disclose any Confidential Information to any third party, without Discloser’s prior written consent;  (c) use such Confidential Information only to the extent required to accomplish the Purpose;  (d) not reproduce Confidential Information in any form except as required to accomplish the Purpose; "
+    },
+    "confidence": 0.95
+  },
+  {
+    "id": "contractnli-ent-hypothesis-01",
+    "pairId": "contractnli-entailment-01",
+    "title": "NDA Hypothesis (Entailment Pair 1)",
+    "content": {
+      "summary": "Receiving Party may create a copy of some Confidential Information in some circumstances.",
+      "facts": [
+        "Receiving Party may create a copy of some Confidential Information in some circumstances"
+      ],
+      "entities": [
+        {
+          "name": "Confidential Information",
+          "type": "clause"
+        },
+        {
+          "name": "Receiving Party",
+          "type": "legal"
+        }
+      ],
+      "raw": "Receiving Party may create a copy of some Confidential Information in some circumstances."
+    },
+    "confidence": 0.95
+  },
+  {
+    "id": "contractnli-ent-premise-02",
+    "pairId": "contractnli-entailment-02",
+    "title": "NDA Clause (Entailment Pair 2)",
+    "content": {
+      "summary": "2.3 A Receiving Party’s obligations in respect of Conﬁdential Information made available by the Disclosing Party pursuant to this Agreement shall continue notwithstanding the termination of the Purpos...",
+      "facts": [
+        "3 A Receiving Party’s obligations in respect of Conﬁdential Information made available by the Disclosing Party pursuant to this Agreement shall continue notwithstanding the termination of the Purpose",
+        "1 A Receiving Party shall treat and safeguard as private and conﬁdential all of the Conﬁdential Information and will take all reasonable precautions in dealing with any Conﬁdential Information so as to prevent any third party from having access to the Conﬁdential Information"
+      ],
+      "entities": [
+        {
+          "name": "Receiving Party",
+          "type": "legal"
+        },
+        {
+          "name": "Disclosing Party",
+          "type": "legal"
+        }
+      ],
+      "raw": "2.3 A Receiving Party’s obligations in respect of Conﬁdential Information made available by the Disclosing Party pursuant to this Agreement shall continue notwithstanding the termination of the Purpose. 3 Safekeeping 3.1 A Receiving Party shall treat and safeguard as private and conﬁdential all of the Conﬁdential Information and will take all reasonable precautions in dealing with any Conﬁdential Information so as to prevent any third party from having access to the Conﬁdential Information."
+    },
+    "confidence": 0.95
+  },
+  {
+    "id": "contractnli-ent-hypothesis-02",
+    "pairId": "contractnli-entailment-02",
+    "title": "NDA Hypothesis (Entailment Pair 2)",
+    "content": {
+      "summary": "Some obligations of Agreement may survive termination of Agreement.",
+      "facts": [
+        "Some obligations of Agreement may survive termination of Agreement"
+      ],
+      "entities": [
+        {
+          "name": "NDA",
+          "type": "legal"
+        }
+      ],
+      "raw": "Some obligations of Agreement may survive termination of Agreement."
+    },
+    "confidence": 0.95
+  },
+  {
+    "id": "contractnli-ent-premise-03",
+    "pairId": "contractnli-entailment-03",
+    "title": "NDA Clause (Entailment Pair 3)",
+    "content": {
+      "summary": "Subject to Section 5, each Party agrees that, without the prior written consent of the other Party, such Party will not, and will cause its Representative not to, disclose to any other Person  (i) tha...",
+      "facts": [
+        "Subject to Section 5, each Party agrees that, without the prior written consent of the other Party, such Party will not, and will cause its Representative not to, disclose to any other Person  (i) that Evaluation Material has been exchanged between the Parties,  (ii) that discussions or negotiations are taking place between the Parties concerning a Possible Transaction or any other transaction between the Parties or  (iii) any of the terms, conditions or other facts with respect thereto (including the status thereof) ; provided, however, that nothing contained herein shall be deemed to inhibit, impair or restrict the ability of Recipient or its Representatives from having discussions or negotiations with other persons relating to potential financing in connection with the Possible Transaction so long as each of such Persons agrees in writing to be bound by the terms of this Agreement applicable to Representatives"
+      ],
+      "entities": [
+        {
+          "name": "Receiving Party",
+          "type": "legal"
+        },
+        {
+          "name": "Disclosing Party",
+          "type": "legal"
+        }
+      ],
+      "raw": "Subject to Section 5, each Party agrees that, without the prior written consent of the other Party, such Party will not, and will cause its Representative not to, disclose to any other Person  (i) that Evaluation Material has been exchanged between the Parties,  (ii) that discussions or negotiations are taking place between the Parties concerning a Possible Transaction or any other transaction between the Parties or  (iii) any of the terms, conditions or other facts with respect thereto (including the status thereof) ; provided, however, that nothing contained herein shall be deemed to inhibit, impair or restrict the ability of Recipient or its Representatives from having discussions or negotiations with other persons relating to potential financing in connection with the Possible Transaction so long as each of such Persons agrees in writing to be bound by the terms of this Agreement applicable to Representatives."
+    },
+    "confidence": 0.95
+  },
+  {
+    "id": "contractnli-ent-hypothesis-03",
+    "pairId": "contractnli-entailment-03",
+    "title": "NDA Hypothesis (Entailment Pair 3)",
+    "content": {
+      "summary": "Receiving Party shall not disclose the fact that Agreement was agreed or negotiated.",
+      "facts": [
+        "Receiving Party shall not disclose the fact that Agreement was agreed or negotiated"
+      ],
+      "entities": [
+        {
+          "name": "Receiving Party",
+          "type": "legal"
+        },
+        {
+          "name": "Disclosing Party",
+          "type": "legal"
+        }
+      ],
+      "raw": "Receiving Party shall not disclose the fact that Agreement was agreed or negotiated."
+    },
+    "confidence": 0.95
+  },
+  {
+    "id": "contractnli-ent-premise-04",
+    "pairId": "contractnli-entailment-04",
+    "title": "NDA Clause (Entailment Pair 4)",
+    "content": {
+      "summary": "The term “Confidential Information” as used herein means all nonpublic information relating to the Subject Matter that is disclosed by either party, its Affiliates (as defined below), or their agents ...",
+      "facts": [
+        "The term “Confidential Information” as used herein means all nonpublic information relating to the Subject Matter that is disclosed by either party, its Affiliates (as defined below), or their agents (where applicable, collectively referred to as the “Disclosing Party”), directly or indirectly, in writing, orally or by inspection of premises or tangible objects to the other party (the “Recipient”) that is:"
+      ],
+      "entities": [
+        {
+          "name": "Confidential Information",
+          "type": "clause"
+        },
+        {
+          "name": "Receiving Party",
+          "type": "legal"
+        },
+        {
+          "name": "Disclosing Party",
+          "type": "legal"
+        }
+      ],
+      "raw": "The term “Confidential Information” as used herein means all nonpublic information relating to the Subject Matter that is disclosed by either party, its Affiliates (as defined below), or their agents (where applicable, collectively referred to as the “Disclosing Party”), directly or indirectly, in writing, orally or by inspection of premises or tangible objects to the other party (the “Recipient”) that is: "
+    },
+    "confidence": 0.95
+  },
+  {
+    "id": "contractnli-ent-hypothesis-04",
+    "pairId": "contractnli-entailment-04",
+    "title": "NDA Hypothesis (Entailment Pair 4)",
+    "content": {
+      "summary": "Confidential Information may include verbally conveyed information.",
+      "facts": [
+        "Confidential Information may include verbally conveyed information"
+      ],
+      "entities": [
+        {
+          "name": "Confidential Information",
+          "type": "clause"
+        }
+      ],
+      "raw": "Confidential Information may include verbally conveyed information."
+    },
+    "confidence": 0.95
+  },
+  {
+    "id": "contractnli-ent-premise-05",
+    "pairId": "contractnli-entailment-05",
+    "title": "NDA Clause (Entailment Pair 5)",
+    "content": {
+      "summary": "7. For purposes of this Agreement, “Confidential Information” shall not include any information which  (a) is or becomes publicly available, other than through disclosure by Recipient in violation of ...",
+      "facts": [
+        "For purposes of this Agreement, “Confidential Information” shall not include any information which  (a) is or becomes publicly available, other than through disclosure by Recipient in violation of this Agreement,  (b) was known or available to Recipient prior to disclosure pursuant hereto,  (c) was independently developed by Recipient without reference to the Confidential Information disclosed to it pursuant hereto, or  (d) in the future is received from a third party who, to the knowledge of Recipient at the time of disclosure, is under no obligation of confidentiality with respect thereto"
+      ],
+      "entities": [
+        {
+          "name": "Confidential Information",
+          "type": "clause"
+        },
+        {
+          "name": "Receiving Party",
+          "type": "legal"
+        },
+        {
+          "name": "Disclosing Party",
+          "type": "legal"
+        }
+      ],
+      "raw": "7. For purposes of this Agreement, “Confidential Information” shall not include any information which  (a) is or becomes publicly available, other than through disclosure by Recipient in violation of this Agreement,  (b) was known or available to Recipient prior to disclosure pursuant hereto,  (c) was independently developed by Recipient without reference to the Confidential Information disclosed to it pursuant hereto, or  (d) in the future is received from a third party who, to the knowledge of Recipient at the time of disclosure, is under no obligation of confidentiality with respect thereto."
+    },
+    "confidence": 0.95
+  },
+  {
+    "id": "contractnli-ent-hypothesis-05",
+    "pairId": "contractnli-entailment-05",
+    "title": "NDA Hypothesis (Entailment Pair 5)",
+    "content": {
+      "summary": "Receiving Party may acquire information similar to Confidential Information from a third party.",
+      "facts": [
+        "Receiving Party may acquire information similar to Confidential Information from a third party"
+      ],
+      "entities": [
+        {
+          "name": "Confidential Information",
+          "type": "clause"
+        },
+        {
+          "name": "Receiving Party",
+          "type": "legal"
+        }
+      ],
+      "raw": "Receiving Party may acquire information similar to Confidential Information from a third party."
+    },
+    "confidence": 0.95
+  },
+  {
+    "id": "contractnli-ent-premise-06",
+    "pairId": "contractnli-entailment-06",
+    "title": "NDA Clause (Entailment Pair 6)",
+    "content": {
+      "summary": "The foregoing shall not prevent either party from disclosing Information which is: i) already known by the recipient party prior to the disclosure thereof with no obligation of confidentiality; or ii)...",
+      "facts": [
+        "The foregoing shall not prevent either party from disclosing Information which is: i) already known by the recipient party prior to the disclosure thereof with no obligation of confidentiality; or ii) publicly known or becomes publicly known not due to any unauthorised act of the recipient party; or iii) rightfully received from a third party; or iv) independently developed by the recipient party without use of the other party's Information; or v) disclosed without similar restrictions by the party owning the Information to any third party; or vi) approved by the other party for disclosure; or vii) required to be disclosed pursuant to a governmental or legal requirement provided that the disclosing party gives to the other party written notice of such requirement prior to any such disclosure",
+        "viii) publicly known or becomes publicly known not due to any unauthorised act of the recipient party; or ix) rightfully received from a third party; or x) independently developed by the recipient party without use of the other party's Information; or"
+      ],
+      "entities": [
+        {
+          "name": "Confidential Information",
+          "type": "clause"
+        },
+        {
+          "name": "Receiving Party",
+          "type": "legal"
+        },
+        {
+          "name": "Disclosing Party",
+          "type": "legal"
+        }
+      ],
+      "raw": "The foregoing shall not prevent either party from disclosing Information which is: i) already known by the recipient party prior to the disclosure thereof with no obligation of confidentiality; or ii) publicly known or becomes publicly known not due to any unauthorised act of the recipient party; or iii) rightfully received from a third party; or iv) independently developed by the recipient party without use of the other party's Information; or v) disclosed without similar restrictions by the party owning the Information to any third party; or vi) approved by the other party for disclosure; or vii) required to be disclosed pursuant to a governmental or legal requirement provided that the disclosing party gives to the other party written notice of such requirement prior to any such disclosure. viii) publicly known or becomes publicly known not due to any unauthorised act of the recipient party; or ix) rightfully received from a third party; or x) independently developed by the recipient party without use of the other party's Information; or"
+    },
+    "confidence": 0.95
+  },
+  {
+    "id": "contractnli-ent-hypothesis-06",
+    "pairId": "contractnli-entailment-06",
+    "title": "NDA Hypothesis (Entailment Pair 6)",
+    "content": {
+      "summary": "Receiving Party may independently develop information similar to Confidential Information.",
+      "facts": [
+        "Receiving Party may independently develop information similar to Confidential Information"
+      ],
+      "entities": [
+        {
+          "name": "Confidential Information",
+          "type": "clause"
+        },
+        {
+          "name": "Receiving Party",
+          "type": "legal"
+        }
+      ],
+      "raw": "Receiving Party may independently develop information similar to Confidential Information."
+    },
+    "confidence": 0.95
+  },
+  {
+    "id": "contractnli-ent-premise-07",
+    "pairId": "contractnli-entailment-07",
+    "title": "NDA Clause (Entailment Pair 7)",
+    "content": {
+      "summary": "8. Except as provided under clause 12.2 of the General Purchase Conditions, it is expressly understood and agreed by the Parties hereto that the disclosure and provision of Proprietary Information und...",
+      "facts": [
+        "Except as provided under clause 12",
+        "2 of the General Purchase Conditions, it is expressly understood and agreed by the Parties hereto that the disclosure and provision of Proprietary Information under this Agreement by a Party to the other Party shall not be construed as granting to the receiving Party under the laws of any country any rights whether expressed or implied by licenceor otherwise on the matters, inventions or discoveries to which such Proprietary Information pertains or any copyright, trademark or trade secret rights",
+        "The property in all information and/or data disclosed by the Buyer to the Supplier pursuant to this Agreement shall subject to any right of any other owner, rest with the Buyer"
+      ],
+      "entities": [
+        {
+          "name": "Receiving Party",
+          "type": "legal"
+        },
+        {
+          "name": "Disclosing Party",
+          "type": "legal"
+        }
+      ],
+      "raw": "8. Except as provided under clause 12.2 of the General Purchase Conditions, it is expressly understood and agreed by the Parties hereto that the disclosure and provision of Proprietary Information under this Agreement by a Party to the other Party shall not be construed as granting to the receiving Party under the laws of any country any rights whether expressed or implied by licenceor otherwise on the matters, inventions or discoveries to which such Proprietary Information pertains or any copyright, trademark or trade secret rights. The property in all information and/or data disclosed by the Buyer to the Supplier pursuant to this Agreement shall subject to any right of any other owner, rest with the Buyer."
+    },
+    "confidence": 0.95
+  },
+  {
+    "id": "contractnli-ent-hypothesis-07",
+    "pairId": "contractnli-entailment-07",
+    "title": "NDA Hypothesis (Entailment Pair 7)",
+    "content": {
+      "summary": "Agreement shall not grant Receiving Party any right to Confidential Information.",
+      "facts": [
+        "Agreement shall not grant Receiving Party any right to Confidential Information"
+      ],
+      "entities": [
+        {
+          "name": "Confidential Information",
+          "type": "clause"
+        },
+        {
+          "name": "Receiving Party",
+          "type": "legal"
+        }
+      ],
+      "raw": "Agreement shall not grant Receiving Party any right to Confidential Information."
+    },
+    "confidence": 0.95
+  },
+  {
+    "id": "contractnli-ent-premise-08",
+    "pairId": "contractnli-entailment-08",
+    "title": "NDA Clause (Entailment Pair 8)",
+    "content": {
+      "summary": "11. The end or termination of this Agreement shall not relieve the receiving Party of complying with the obligations imposed by paragraph 4 thereof with respect to the use and protection of the Propri...",
+      "facts": [
+        "The end or termination of this Agreement shall not relieve the receiving Party of complying with the obligations imposed by paragraph 4 thereof with respect to the use and protection of the Proprietary Information received prior to the date of termination or end of this Agreement",
+        "Such obligations shall continue for the period applicable as set forth in said paragraph"
+      ],
+      "entities": [
+        {
+          "name": "Receiving Party",
+          "type": "legal"
+        }
+      ],
+      "raw": "11. The end or termination of this Agreement shall not relieve the receiving Party of complying with the obligations imposed by paragraph 4 thereof with respect to the use and protection of the Proprietary Information received prior to the date of termination or end of this Agreement.  Such obligations shall continue for the period applicable as set forth in said paragraph."
+    },
+    "confidence": 0.95
+  },
+  {
+    "id": "contractnli-ent-hypothesis-08",
+    "pairId": "contractnli-entailment-08",
+    "title": "NDA Hypothesis (Entailment Pair 8)",
+    "content": {
+      "summary": "Some obligations of Agreement may survive termination of Agreement.",
+      "facts": [
+        "Some obligations of Agreement may survive termination of Agreement"
+      ],
+      "entities": [
+        {
+          "name": "NDA",
+          "type": "legal"
+        }
+      ],
+      "raw": "Some obligations of Agreement may survive termination of Agreement."
+    },
+    "confidence": 0.95
+  },
+  {
+    "id": "contractnli-ent-premise-09",
+    "pairId": "contractnli-entailment-09",
+    "title": "NDA Clause (Entailment Pair 9)",
+    "content": {
+      "summary": "Any Business Partner shall maintain the material as confidential and shall not publish, disclose or distribute all or any portion of it (or any copies of it) to any other person or permit any other pe...",
+      "facts": [
+        "Any Business Partner shall maintain the material as confidential and shall not publish, disclose or distribute all or any portion of it (or any copies of it) to any other person or permit any other person access to it, save for employees, consultants or agents of the Business Partner for purposes specifically related to Mandarin’s use of the material"
+      ],
+      "entities": [
+        {
+          "name": "Confidential Information",
+          "type": "clause"
+        },
+        {
+          "name": "Disclosing Party",
+          "type": "legal"
+        }
+      ],
+      "raw": "Any Business Partner shall maintain the material as confidential and shall not publish, disclose or distribute all or any portion of it (or any copies of it) to any other person or permit any other person access to it, save for employees, consultants or agents of the Business Partner for purposes specifically related to Mandarin’s use of the material. "
+    },
+    "confidence": 0.95
+  },
+  {
+    "id": "contractnli-ent-hypothesis-09",
+    "pairId": "contractnli-entailment-09",
+    "title": "NDA Hypothesis (Entailment Pair 9)",
+    "content": {
+      "summary": "Receiving Party may share some Confidential Information with some of Receiving Party's employees.",
+      "facts": [
+        "Receiving Party may share some Confidential Information with some of Receiving Party's employees"
+      ],
+      "entities": [
+        {
+          "name": "Confidential Information",
+          "type": "clause"
+        },
+        {
+          "name": "Receiving Party",
+          "type": "legal"
+        }
+      ],
+      "raw": "Receiving Party may share some Confidential Information with some of Receiving Party's employees."
+    },
+    "confidence": 0.95
+  },
+  {
+    "id": "contractnli-ent-premise-10",
+    "pairId": "contractnli-entailment-10",
+    "title": "NDA Clause (Entailment Pair 10)",
+    "content": {
+      "summary": "2.1. Either party agrees that it shall ensure that it and its associated companies and their respective officers and employees shall keep confidential, both during and after the duration of the agreem...",
+      "facts": [
+        "Either party agrees that it shall ensure that it and its associated companies and their respective officers and employees shall keep confidential, both during and after the duration of the agreement, all information which:"
+      ],
+      "entities": [
+        {
+          "name": "Confidential Information",
+          "type": "clause"
+        }
+      ],
+      "raw": "2.1. Either party agrees that it shall ensure that it and its associated companies and their respective officers and employees shall keep confidential, both during and after the duration of the agreement, all information which:"
+    },
+    "confidence": 0.95
+  },
+  {
+    "id": "contractnli-ent-hypothesis-10",
+    "pairId": "contractnli-entailment-10",
+    "title": "NDA Hypothesis (Entailment Pair 10)",
+    "content": {
+      "summary": "Some obligations of Agreement may survive termination of Agreement.",
+      "facts": [
+        "Some obligations of Agreement may survive termination of Agreement"
+      ],
+      "entities": [
+        {
+          "name": "NDA",
+          "type": "legal"
+        }
+      ],
+      "raw": "Some obligations of Agreement may survive termination of Agreement."
+    },
+    "confidence": 0.95
+  },
+  {
+    "id": "contractnli-ent-premise-11",
+    "pairId": "contractnli-entailment-11",
+    "title": "NDA Clause (Entailment Pair 11)",
+    "content": {
+      "summary": "4. The Receiving Party agrees that the Information will be used solely for giving effect to the Business Under Discussion and further that it will not disclose to any person  (i) the Information and  ...",
+      "facts": [
+        "The Receiving Party agrees that the Information will be used solely for giving effect to the Business Under Discussion and further that it will not disclose to any person  (i) the Information and  (ii) the fact that the Information has been made available to the Receiving Party or that the Receiving Party have inspected any portion of the Information, for any reason or purpose whatsoever, unless the Providing Party has consented in writing to such disclosure or except as stated otherwise herein or as required by law, order, decree, regulation, or governmental agency request"
+      ],
+      "entities": [
+        {
+          "name": "Receiving Party",
+          "type": "legal"
+        },
+        {
+          "name": "Disclosing Party",
+          "type": "legal"
+        }
+      ],
+      "raw": "4. The Receiving Party agrees that the Information will be used solely for giving effect to the Business Under Discussion and further that it will not disclose to any person  (i) the Information and  (ii) the fact that the Information has been made available to the Receiving Party or that the Receiving Party have inspected any portion of the Information, for any reason or purpose whatsoever, unless the Providing Party has consented in writing to such disclosure or except as stated otherwise herein or as required by law, order, decree, regulation, or governmental agency request. "
+    },
+    "confidence": 0.95
+  },
+  {
+    "id": "contractnli-ent-hypothesis-11",
+    "pairId": "contractnli-entailment-11",
+    "title": "NDA Hypothesis (Entailment Pair 11)",
+    "content": {
+      "summary": "Receiving Party shall not disclose the fact that Agreement was agreed or negotiated.",
+      "facts": [
+        "Receiving Party shall not disclose the fact that Agreement was agreed or negotiated"
+      ],
+      "entities": [
+        {
+          "name": "Receiving Party",
+          "type": "legal"
+        },
+        {
+          "name": "Disclosing Party",
+          "type": "legal"
+        }
+      ],
+      "raw": "Receiving Party shall not disclose the fact that Agreement was agreed or negotiated."
+    },
+    "confidence": 0.95
+  },
+  {
+    "id": "contractnli-ent-premise-12",
+    "pairId": "contractnli-entailment-12",
+    "title": "NDA Clause (Entailment Pair 12)",
+    "content": {
+      "summary": "2. The term Confidential Information shall not include information, which is: (a) in the public domain other than by a breach of this Agreement by the Receiving Party; or (b) rightfully received from ...",
+      "facts": [
+        "The term Confidential Information shall not include information, which is: (a) in the public domain other than by a breach of this Agreement by the Receiving Party; or (b) rightfully received from a third party with no duty of confidentiality; or"
+      ],
+      "entities": [
+        {
+          "name": "Confidential Information",
+          "type": "clause"
+        },
+        {
+          "name": "Receiving Party",
+          "type": "legal"
+        }
+      ],
+      "raw": "2. The term Confidential Information shall not include information, which is: (a) in the public domain other than by a breach of this Agreement by the Receiving Party; or (b) rightfully received from a third party with no duty of confidentiality; or"
+    },
+    "confidence": 0.95
+  },
+  {
+    "id": "contractnli-ent-hypothesis-12",
+    "pairId": "contractnli-entailment-12",
+    "title": "NDA Hypothesis (Entailment Pair 12)",
+    "content": {
+      "summary": "Receiving Party may acquire information similar to Confidential Information from a third party.",
+      "facts": [
+        "Receiving Party may acquire information similar to Confidential Information from a third party"
+      ],
+      "entities": [
+        {
+          "name": "Confidential Information",
+          "type": "clause"
+        },
+        {
+          "name": "Receiving Party",
+          "type": "legal"
+        }
+      ],
+      "raw": "Receiving Party may acquire information similar to Confidential Information from a third party."
+    },
+    "confidence": 0.95
+  },
+  {
+    "id": "contractnli-ent-premise-13",
+    "pairId": "contractnli-entailment-13",
+    "title": "NDA Clause (Entailment Pair 13)",
+    "content": {
+      "summary": "The obligations in this agreement survive the termination or purported termination of this agreement.",
+      "facts": [
+        "The obligations in this agreement survive the termination or purported termination of this agreement"
+      ],
+      "entities": [
+        {
+          "name": "NDA",
+          "type": "legal"
+        }
+      ],
+      "raw": "The obligations in this agreement survive the termination or purported termination of this agreement."
+    },
+    "confidence": 0.95
+  },
+  {
+    "id": "contractnli-ent-hypothesis-13",
+    "pairId": "contractnli-entailment-13",
+    "title": "NDA Hypothesis (Entailment Pair 13)",
+    "content": {
+      "summary": "Some obligations of Agreement may survive termination of Agreement.",
+      "facts": [
+        "Some obligations of Agreement may survive termination of Agreement"
+      ],
+      "entities": [
+        {
+          "name": "NDA",
+          "type": "legal"
+        }
+      ],
+      "raw": "Some obligations of Agreement may survive termination of Agreement."
+    },
+    "confidence": 0.95
+  },
+  {
+    "id": "contractnli-ent-premise-14",
+    "pairId": "contractnli-entailment-14",
+    "title": "NDA Clause (Entailment Pair 14)",
+    "content": {
+      "summary": "7. Neither this Agreement nor the supply of any information grants the Recipient any licence, interest or right in respect of any intellectual property rights of the Discloser except the right to copy...",
+      "facts": [
+        "Neither this Agreement nor the supply of any information grants the Recipient any licence, interest or right in respect of any intellectual property rights of the Discloser except the right to copy the Confidential Information solely for the Purpose"
+      ],
+      "entities": [
+        {
+          "name": "Confidential Information",
+          "type": "clause"
+        },
+        {
+          "name": "Receiving Party",
+          "type": "legal"
+        },
+        {
+          "name": "Disclosing Party",
+          "type": "legal"
+        }
+      ],
+      "raw": "7. Neither this Agreement nor the supply of any information grants the Recipient any licence, interest or right in respect of any intellectual property rights of the Discloser except the right to copy the Confidential Information solely for the Purpose."
+    },
+    "confidence": 0.95
+  },
+  {
+    "id": "contractnli-ent-hypothesis-14",
+    "pairId": "contractnli-entailment-14",
+    "title": "NDA Hypothesis (Entailment Pair 14)",
+    "content": {
+      "summary": "Agreement shall not grant Receiving Party any right to Confidential Information.",
+      "facts": [
+        "Agreement shall not grant Receiving Party any right to Confidential Information"
+      ],
+      "entities": [
+        {
+          "name": "Confidential Information",
+          "type": "clause"
+        },
+        {
+          "name": "Receiving Party",
+          "type": "legal"
+        }
+      ],
+      "raw": "Agreement shall not grant Receiving Party any right to Confidential Information."
+    },
+    "confidence": 0.95
+  },
+  {
+    "id": "contractnli-ent-premise-15",
+    "pairId": "contractnli-entailment-15",
+    "title": "NDA Clause (Entailment Pair 15)",
+    "content": {
+      "summary": "Contemplate one or more meetings and various communications that will involve the disclosure by one of the parties [DISCLOSING PARTY] to the other party [RECEIVING PARTY] of technical, business, marke...",
+      "facts": [
+        "Contemplate one or more meetings and various communications that will involve the disclosure by one of the parties [DISCLOSING PARTY] to the other party [RECEIVING PARTY] of technical, business, marketing, planning, pricing and other information and data, in written, oral, electronic, magnetic, photographic and/or other forms, including information and data regarding Internet-based transport solutions  (Collectively CONFIDENTIAL INFORMATION)"
+      ],
+      "entities": [
+        {
+          "name": "Confidential Information",
+          "type": "clause"
+        },
+        {
+          "name": "Receiving Party",
+          "type": "legal"
+        },
+        {
+          "name": "Disclosing Party",
+          "type": "legal"
+        }
+      ],
+      "raw": "Contemplate one or more meetings and various communications that will involve the disclosure by one of the parties [DISCLOSING PARTY] to the other party [RECEIVING PARTY] of technical, business, marketing, planning, pricing and other information and data, in written, oral, electronic, magnetic, photographic and/or other forms, including information and data regarding Internet-based transport solutions  (Collectively CONFIDENTIAL INFORMATION)."
+    },
+    "confidence": 0.95
+  },
+  {
+    "id": "contractnli-ent-hypothesis-15",
+    "pairId": "contractnli-entailment-15",
+    "title": "NDA Hypothesis (Entailment Pair 15)",
+    "content": {
+      "summary": "Confidential Information may include verbally conveyed information.",
+      "facts": [
+        "Confidential Information may include verbally conveyed information"
+      ],
+      "entities": [
+        {
+          "name": "Confidential Information",
+          "type": "clause"
+        }
+      ],
+      "raw": "Confidential Information may include verbally conveyed information."
+    },
+    "confidence": 0.95
+  },
+  {
+    "id": "contractnli-ent-premise-16",
+    "pairId": "contractnli-entailment-16",
+    "title": "NDA Clause (Entailment Pair 16)",
+    "content": {
+      "summary": "Unless a Transaction is consummated, each party agrees that, for a period of eighteen (18) months from the date hereof, it will not hire or directly or indirectly solicit employment of (other than by ...",
+      "facts": [
+        "Unless a Transaction is consummated, each party agrees that, for a period of eighteen (18) months from the date hereof, it will not hire or directly or indirectly solicit employment of (other than by means of a general advertisement) any of the (i) employees of the other party with whom it has had contact during the process contemplated by this Agreement or  (ii) management level personnel or officers of the other party"
+      ],
+      "entities": [
+        {
+          "name": "NDA",
+          "type": "legal"
+        }
+      ],
+      "raw": "Unless a Transaction is consummated, each party agrees that, for a period of eighteen (18) months from the date hereof, it will not hire or directly or indirectly solicit employment of (other than by means of a general advertisement) any of the (i) employees of the other party with whom it has had contact during the process contemplated by this Agreement or  (ii) management level personnel or officers of the other party. "
+    },
+    "confidence": 0.95
+  },
+  {
+    "id": "contractnli-ent-hypothesis-16",
+    "pairId": "contractnli-entailment-16",
+    "title": "NDA Hypothesis (Entailment Pair 16)",
+    "content": {
+      "summary": "Receiving Party shall not solicit some of Disclosing Party's representatives.",
+      "facts": [
+        "Receiving Party shall not solicit some of Disclosing Party's representatives"
+      ],
+      "entities": [
+        {
+          "name": "Receiving Party",
+          "type": "legal"
+        },
+        {
+          "name": "Disclosing Party",
+          "type": "legal"
+        }
+      ],
+      "raw": "Receiving Party shall not solicit some of Disclosing Party's representatives."
+    },
+    "confidence": 0.95
+  },
+  {
+    "id": "contractnli-ent-premise-17",
+    "pairId": "contractnli-entailment-17",
+    "title": "NDA Clause (Entailment Pair 17)",
+    "content": {
+      "summary": "3. The Receiving Party agrees that Confidential Information shall be used only for the purposes of facilitating the business relationship between the Parties. ",
+      "facts": [
+        "The Receiving Party agrees that Confidential Information shall be used only for the purposes of facilitating the business relationship between the Parties"
+      ],
+      "entities": [
+        {
+          "name": "Confidential Information",
+          "type": "clause"
+        },
+        {
+          "name": "Receiving Party",
+          "type": "legal"
+        }
+      ],
+      "raw": "3. The Receiving Party agrees that Confidential Information shall be used only for the purposes of facilitating the business relationship between the Parties. "
+    },
+    "confidence": 0.95
+  },
+  {
+    "id": "contractnli-ent-hypothesis-17",
+    "pairId": "contractnli-entailment-17",
+    "title": "NDA Hypothesis (Entailment Pair 17)",
+    "content": {
+      "summary": "Receiving Party shall not use any Confidential Information for any purpose other than the purposes stated in Agreement.",
+      "facts": [
+        "Receiving Party shall not use any Confidential Information for any purpose other than the purposes stated in Agreement"
+      ],
+      "entities": [
+        {
+          "name": "Confidential Information",
+          "type": "clause"
+        },
+        {
+          "name": "Receiving Party",
+          "type": "legal"
+        }
+      ],
+      "raw": "Receiving Party shall not use any Confidential Information for any purpose other than the purposes stated in Agreement."
+    },
+    "confidence": 0.95
+  },
+  {
+    "id": "contractnli-ent-premise-18",
+    "pairId": "contractnli-entailment-18",
+    "title": "NDA Clause (Entailment Pair 18)",
+    "content": {
+      "summary": "4.1. The provisions of this Agreement shall not apply to information: 4.1.1. publicly available prior to the date of this Agreement or that is made publicly available on or after the date of this Agre...",
+      "facts": [
+        "The provisions of this Agreement shall not apply to information: 4",
+        "publicly available prior to the date of this Agreement or that is made publicly available on or after the date of this Agreement by the Disclosing Party without restriction; 4",
+        "that is independently obtained by the Receiving Party without breach by it of any obligation of confidentiality; 4"
+      ],
+      "entities": [
+        {
+          "name": "Confidential Information",
+          "type": "clause"
+        },
+        {
+          "name": "Receiving Party",
+          "type": "legal"
+        },
+        {
+          "name": "Disclosing Party",
+          "type": "legal"
+        }
+      ],
+      "raw": "4.1. The provisions of this Agreement shall not apply to information: 4.1.1. publicly available prior to the date of this Agreement or that is made publicly available on or after the date of this Agreement by the Disclosing Party without restriction; 4.1.2. that is independently obtained by the Receiving Party without breach by it of any obligation of confidentiality; 4.1.3. already in the Receiving Party's possession and was lawfully received from sources other than the Disclosing Party; 4.1.4. which is required to be disclosed by law, provided that, to the extent the Receiving Party is not prohibited from doing so by law, it undertakes to give the Disclosing Party not less than two business days’ notice of such requirement of disclosure and, to such extent, will make such disclosure in the manner and with the content agreed by the Disclosing Party."
+    },
+    "confidence": 0.95
+  },
+  {
+    "id": "contractnli-ent-hypothesis-18",
+    "pairId": "contractnli-entailment-18",
+    "title": "NDA Hypothesis (Entailment Pair 18)",
+    "content": {
+      "summary": "Receiving Party shall notify Disclosing Party in case Receiving Party is required by law, regulation or judicial process to disclose any Confidential Information.",
+      "facts": [
+        "Receiving Party shall notify Disclosing Party in case Receiving Party is required by law, regulation or judicial process to disclose any Confidential Information"
+      ],
+      "entities": [
+        {
+          "name": "Confidential Information",
+          "type": "clause"
+        },
+        {
+          "name": "Receiving Party",
+          "type": "legal"
+        },
+        {
+          "name": "Disclosing Party",
+          "type": "legal"
+        }
+      ],
+      "raw": "Receiving Party shall notify Disclosing Party in case Receiving Party is required by law, regulation or judicial process to disclose any Confidential Information."
+    },
+    "confidence": 0.95
+  },
+  {
+    "id": "contractnli-ent-premise-19",
+    "pairId": "contractnli-entailment-19",
+    "title": "NDA Clause (Entailment Pair 19)",
+    "content": {
+      "summary": "7. If the recipient is forced to expose the confidential information due to a legal regulation, a legally valid judgement or a non-disputable official decision or decree in part or in whole, it shall ...",
+      "facts": [
+        "If the recipient is forced to expose the confidential information due to a legal regulation, a legally valid judgement or a non-disputable official decision or decree in part or in whole, it shall immediately inform the owner of the confidential information in writing so that the owner can take measures to protect the confidential information"
+      ],
+      "entities": [
+        {
+          "name": "Confidential Information",
+          "type": "clause"
+        },
+        {
+          "name": "Receiving Party",
+          "type": "legal"
+        }
+      ],
+      "raw": "7. If the recipient is forced to expose the confidential information due to a legal regulation, a legally valid judgement or a non-disputable official decision or decree in part or in whole, it shall immediately inform the owner of the confidential information in writing so that the owner can take measures to protect the confidential information."
+    },
+    "confidence": 0.95
+  },
+  {
+    "id": "contractnli-ent-hypothesis-19",
+    "pairId": "contractnli-entailment-19",
+    "title": "NDA Hypothesis (Entailment Pair 19)",
+    "content": {
+      "summary": "Receiving Party shall notify Disclosing Party in case Receiving Party is required by law, regulation or judicial process to disclose any Confidential Information.",
+      "facts": [
+        "Receiving Party shall notify Disclosing Party in case Receiving Party is required by law, regulation or judicial process to disclose any Confidential Information"
+      ],
+      "entities": [
+        {
+          "name": "Confidential Information",
+          "type": "clause"
+        },
+        {
+          "name": "Receiving Party",
+          "type": "legal"
+        },
+        {
+          "name": "Disclosing Party",
+          "type": "legal"
+        }
+      ],
+      "raw": "Receiving Party shall notify Disclosing Party in case Receiving Party is required by law, regulation or judicial process to disclose any Confidential Information."
+    },
+    "confidence": 0.95
+  },
+  {
+    "id": "contractnli-ent-premise-20",
+    "pairId": "contractnli-entailment-20",
+    "title": "NDA Clause (Entailment Pair 20)",
+    "content": {
+      "summary": "Upon written demand by Discloser at any time, Recipient shall return promptly to Discloser or destroy, at Recipient's option, all tangible materials that disclose or embody Confidential Information ex...",
+      "facts": [
+        "Upon written demand by Discloser at any time, Recipient shall return promptly to Discloser or destroy, at Recipient's option, all tangible materials that disclose or embody Confidential Information except that Recipient's counsel may, upon written notice to Disclosure's counsel, retain a single copy of Confidential Information in its records solely for use in dispute resolution or as otherwise required by law"
+      ],
+      "entities": [
+        {
+          "name": "Confidential Information",
+          "type": "clause"
+        },
+        {
+          "name": "Receiving Party",
+          "type": "legal"
+        },
+        {
+          "name": "Disclosing Party",
+          "type": "legal"
+        }
+      ],
+      "raw": "Upon written demand by Discloser at any time, Recipient shall return promptly to Discloser or destroy, at Recipient's option, all tangible materials that disclose or embody Confidential Information except that Recipient's counsel may, upon written notice to Disclosure's counsel, retain a single copy of Confidential Information in its records solely for use in dispute resolution or as otherwise required by law. "
+    },
+    "confidence": 0.95
+  },
+  {
+    "id": "contractnli-ent-hypothesis-20",
+    "pairId": "contractnli-entailment-20",
+    "title": "NDA Hypothesis (Entailment Pair 20)",
+    "content": {
+      "summary": "Receiving Party may retain some Confidential Information even after the return or destruction of Confidential Information.",
+      "facts": [
+        "Receiving Party may retain some Confidential Information even after the return or destruction of Confidential Information"
+      ],
+      "entities": [
+        {
+          "name": "Confidential Information",
+          "type": "clause"
+        },
+        {
+          "name": "Receiving Party",
+          "type": "legal"
+        }
+      ],
+      "raw": "Receiving Party may retain some Confidential Information even after the return or destruction of Confidential Information."
+    },
+    "confidence": 0.95
+  },
+  {
+    "id": "contractnli-ent-premise-21",
+    "pairId": "contractnli-entailment-21",
+    "title": "NDA Clause (Entailment Pair 21)",
+    "content": {
+      "summary": "1. In consideration of the disclosure of Proprietary Information by the Disclosing Party, the Receiving Party hereby agrees:  (i) to hold the Proprietary Information in strict confidence and to take a...",
+      "facts": [
+        "In consideration of the disclosure of Proprietary Information by the Disclosing Party, the Receiving Party hereby agrees:  (i) to hold the Proprietary Information in strict confidence and to take all reasonable precautions to protect such Proprietary Information (including, without limitation, all precautions the Receiving Party employs with respect to its own confidential materials),  (ii) not to disclose any such Proprietary Information or any information derived there from to any third person,  (iii) not to make any use whatsoever at any time of such Proprietary Information except to evaluate internally its relationship with the Disclosing Party, and (iv) not to copy or reverse engineer any such Proprietary Information"
+      ],
+      "entities": [
+        {
+          "name": "Confidential Information",
+          "type": "clause"
+        },
+        {
+          "name": "Receiving Party",
+          "type": "legal"
+        },
+        {
+          "name": "Disclosing Party",
+          "type": "legal"
+        }
+      ],
+      "raw": "1. In consideration of the disclosure of Proprietary Information by the Disclosing Party, the Receiving Party hereby agrees:  (i) to hold the Proprietary Information in strict confidence and to take all reasonable precautions to protect such Proprietary Information (including, without limitation, all precautions the Receiving Party employs with respect to its own confidential materials),  (ii) not to disclose any such Proprietary Information or any information derived there from to any third person,  (iii) not to make any use whatsoever at any time of such Proprietary Information except to evaluate internally its relationship with the Disclosing Party, and (iv) not to copy or reverse engineer any such Proprietary Information. "
+    },
+    "confidence": 0.95
+  },
+  {
+    "id": "contractnli-ent-hypothesis-21",
+    "pairId": "contractnli-entailment-21",
+    "title": "NDA Hypothesis (Entailment Pair 21)",
+    "content": {
+      "summary": "Receiving Party shall not reverse engineer any objects which embody Disclosing Party's Confidential Information.",
+      "facts": [
+        "Receiving Party shall not reverse engineer any objects which embody Disclosing Party's Confidential Information"
+      ],
+      "entities": [
+        {
+          "name": "Confidential Information",
+          "type": "clause"
+        },
+        {
+          "name": "Receiving Party",
+          "type": "legal"
+        },
+        {
+          "name": "Disclosing Party",
+          "type": "legal"
+        }
+      ],
+      "raw": "Receiving Party shall not reverse engineer any objects which embody Disclosing Party's Confidential Information."
+    },
+    "confidence": 0.95
+  },
+  {
+    "id": "contractnli-ent-premise-22",
+    "pairId": "contractnli-entailment-22",
+    "title": "NDA Clause (Entailment Pair 22)",
+    "content": {
+      "summary": "7.1  These terms and conditions will not apply to any Conﬁdential Information which: (a) is in or becomes part of the public domain or is or otherwise becomes public knowledge by any means other than ...",
+      "facts": [
+        "1  These terms and conditions will not apply to any Conﬁdential Information which: (a) is in or becomes part of the public domain or is or otherwise becomes public knowledge by any means other than by breach by a Receiving Party or their Personnel of any obligation contained herein; (b) was previously or is at any time hereafter disclosed to a Receiving Party by any third Party having the right to disclose the same provided that such source is not known to the Receiving Party to be bound by a conﬁdentiality agreement with, or other obligation to secrecy to, the Disclosing Party; (c) is released from the provisions of this undertaking by prior written consent given by a director or authorised representative of the Disclosing Party; or (d) was otherwise independently acquired or developed by the Receiving Party without violating its obligations hereunder"
+      ],
+      "entities": [
+        {
+          "name": "Receiving Party",
+          "type": "legal"
+        },
+        {
+          "name": "Disclosing Party",
+          "type": "legal"
+        }
+      ],
+      "raw": "7.1  These terms and conditions will not apply to any Conﬁdential Information which: (a) is in or becomes part of the public domain or is or otherwise becomes public knowledge by any means other than by breach by a Receiving Party or their Personnel of any obligation contained herein; (b) was previously or is at any time hereafter disclosed to a Receiving Party by any third Party having the right to disclose the same provided that such source is not known to the Receiving Party to be bound by a conﬁdentiality agreement with, or other obligation to secrecy to, the Disclosing Party; (c) is released from the provisions of this undertaking by prior written consent given by a director or authorised representative of the Disclosing Party; or (d) was otherwise independently acquired or developed by the Receiving Party without violating its obligations hereunder."
+    },
+    "confidence": 0.95
+  },
+  {
+    "id": "contractnli-ent-hypothesis-22",
+    "pairId": "contractnli-entailment-22",
+    "title": "NDA Hypothesis (Entailment Pair 22)",
+    "content": {
+      "summary": "Receiving Party may acquire information similar to Confidential Information from a third party.",
+      "facts": [
+        "Receiving Party may acquire information similar to Confidential Information from a third party"
+      ],
+      "entities": [
+        {
+          "name": "Confidential Information",
+          "type": "clause"
+        },
+        {
+          "name": "Receiving Party",
+          "type": "legal"
+        }
+      ],
+      "raw": "Receiving Party may acquire information similar to Confidential Information from a third party."
+    },
+    "confidence": 0.95
+  },
+  {
+    "id": "contractnli-ent-premise-23",
+    "pairId": "contractnli-entailment-23",
+    "title": "NDA Clause (Entailment Pair 23)",
+    "content": {
+      "summary": "In consideration of each Party agreeing to supply the other Party with Conﬁdential Information for the Purpose, and in consideration of the mutual undertakings set out herein the Parties each hereby s...",
+      "facts": [
+        "In consideration of each Party agreeing to supply the other Party with Conﬁdential Information for the Purpose, and in consideration of the mutual undertakings set out herein the Parties each hereby separately agree and irrevocably undertake to each other that they will only use Conﬁdential Information for the Purpose and otherwise to act in accordance with the terms and conditions hereinafter contained"
+      ],
+      "entities": [
+        {
+          "name": "NDA",
+          "type": "legal"
+        }
+      ],
+      "raw": "In consideration of each Party agreeing to supply the other Party with Conﬁdential Information for the Purpose, and in consideration of the mutual undertakings set out herein the Parties each hereby separately agree and irrevocably undertake to each other that they will only use Conﬁdential Information for the Purpose and otherwise to act in accordance with the terms and conditions hereinafter contained."
+    },
+    "confidence": 0.95
+  },
+  {
+    "id": "contractnli-ent-hypothesis-23",
+    "pairId": "contractnli-entailment-23",
+    "title": "NDA Hypothesis (Entailment Pair 23)",
+    "content": {
+      "summary": "Receiving Party shall not use any Confidential Information for any purpose other than the purposes stated in Agreement.",
+      "facts": [
+        "Receiving Party shall not use any Confidential Information for any purpose other than the purposes stated in Agreement"
+      ],
+      "entities": [
+        {
+          "name": "Confidential Information",
+          "type": "clause"
+        },
+        {
+          "name": "Receiving Party",
+          "type": "legal"
+        }
+      ],
+      "raw": "Receiving Party shall not use any Confidential Information for any purpose other than the purposes stated in Agreement."
+    },
+    "confidence": 0.95
+  },
+  {
+    "id": "contractnli-ent-premise-24",
+    "pairId": "contractnli-entailment-24",
+    "title": "NDA Clause (Entailment Pair 24)",
+    "content": {
+      "summary": "5. Upon termination or expiration of the Agreement, or upon written request of the other party, each party shall promptly destroy or return to the other all documents and other tangible materials repr...",
+      "facts": [
+        "Upon termination or expiration of the Agreement, or upon written request of the other party, each party shall promptly destroy or return to the other all documents and other tangible materials representing the other's Confidential Information and all copies thereof"
+      ],
+      "entities": [
+        {
+          "name": "Confidential Information",
+          "type": "clause"
+        }
+      ],
+      "raw": "5. Upon termination or expiration of the Agreement, or upon written request of the other party, each party shall promptly destroy or return to the other all documents and other tangible materials representing the other's Confidential Information and all copies thereof. "
+    },
+    "confidence": 0.95
+  },
+  {
+    "id": "contractnli-ent-hypothesis-24",
+    "pairId": "contractnli-entailment-24",
+    "title": "NDA Hypothesis (Entailment Pair 24)",
+    "content": {
+      "summary": "Receiving Party shall destroy or return some Confidential Information upon the termination of Agreement.",
+      "facts": [
+        "Receiving Party shall destroy or return some Confidential Information upon the termination of Agreement"
+      ],
+      "entities": [
+        {
+          "name": "Confidential Information",
+          "type": "clause"
+        },
+        {
+          "name": "Receiving Party",
+          "type": "legal"
+        }
+      ],
+      "raw": "Receiving Party shall destroy or return some Confidential Information upon the termination of Agreement."
+    },
+    "confidence": 0.95
+  },
+  {
+    "id": "contractnli-ent-premise-25",
+    "pairId": "contractnli-entailment-25",
+    "title": "NDA Clause (Entailment Pair 25)",
+    "content": {
+      "summary": "The term “Confidential Information” means any and all tangible and intangible information disclosed to Receiver in oral, written, graphic, recorded, photographic, any machine-readable or in any other ...",
+      "facts": [
+        "The term “Confidential Information” means any and all tangible and intangible information disclosed to Receiver in oral, written, graphic, recorded, photographic, any machine-readable or in any other medium or form relating to the intellectual property, management, operations, products, inventions, suppliers, customers, financials of VIDAR or any present or contemplated project, contract or relationship between VIDAR and Receiver, including without limitation, any and all plans, Intellectual Property (defined below), know-how, computer programs, software (source and object code), algorithms, computer processing systems, techniques, methodologies, formulae, compilations of information, designs, drawings, schematics, analyses, evaluations, formulations, ingredients, samples, processes, machines, prototypes, mock-ups, product performance data, proposals, job notes, reports, records, specifications, manuals, supplier and customer lists and information, licenses, the prices it obtains or has obtained for the licensing of its software products and services, purchase and sales records, marketing information or any other information concerning the business and goodwill of VIDAR and any information which is identified as being of a confidential or proprietary nature or should be considered confidential under the circumstances"
+      ],
+      "entities": [
+        {
+          "name": "Confidential Information",
+          "type": "clause"
+        },
+        {
+          "name": "Disclosing Party",
+          "type": "legal"
+        }
+      ],
+      "raw": "The term “Confidential Information” means any and all tangible and intangible information disclosed to Receiver in oral, written, graphic, recorded, photographic, any machine-readable or in any other medium or form relating to the intellectual property, management, operations, products, inventions, suppliers, customers, financials of VIDAR or any present or contemplated project, contract or relationship between VIDAR and Receiver, including without limitation, any and all plans, Intellectual Property (defined below), know-how, computer programs, software (source and object code), algorithms, computer processing systems, techniques, methodologies, formulae, compilations of information, designs, drawings, schematics, analyses, evaluations, formulations, ingredients, samples, processes, machines, prototypes, mock-ups, product performance data, proposals, job notes, reports, records, specifications, manuals, supplier and customer lists and information, licenses, the prices it obtains or has obtained for the licensing of its software products and services, purchase and sales records, marketing information or any other information concerning the business and goodwill of VIDAR and any information which is identified as being of a confidential or proprietary nature or should be considered confidential under the circumstances."
+    },
+    "confidence": 0.95
+  },
+  {
+    "id": "contractnli-ent-hypothesis-25",
+    "pairId": "contractnli-entailment-25",
+    "title": "NDA Hypothesis (Entailment Pair 25)",
+    "content": {
+      "summary": "Confidential Information may include verbally conveyed information.",
+      "facts": [
+        "Confidential Information may include verbally conveyed information"
+      ],
+      "entities": [
+        {
+          "name": "Confidential Information",
+          "type": "clause"
+        }
+      ],
+      "raw": "Confidential Information may include verbally conveyed information."
+    },
+    "confidence": 0.95
+  },
+  {
+    "id": "contractnli-ent-premise-26",
+    "pairId": "contractnli-entailment-26",
+    "title": "NDA Clause (Entailment Pair 26)",
+    "content": {
+      "summary": "The foregoing shall not prevent either party from disclosing Information which is: i) already known by the recipient party prior to the disclosure thereof with no obligation of confidentiality; or ii)...",
+      "facts": [
+        "The foregoing shall not prevent either party from disclosing Information which is: i) already known by the recipient party prior to the disclosure thereof with no obligation of confidentiality; or ii) publicly known or becomes publicly known not due to any unauthorised act of the recipient party; or iii) rightfully received from a third party; or iv) independently developed by the recipient party without use of the other party's Information; or v) disclosed without similar restrictions by the party owning the Information to any third party; or vi) approved by the other party for disclosure; or vii) required to be disclosed pursuant to a governmental or legal requirement provided that the disclosing party gives to the other party written notice of such requirement prior to any such disclosure",
+        "viii) publicly known or becomes publicly known not due to any unauthorised act of the recipient party; or ix) rightfully received from a third party; or"
+      ],
+      "entities": [
+        {
+          "name": "Confidential Information",
+          "type": "clause"
+        },
+        {
+          "name": "Receiving Party",
+          "type": "legal"
+        },
+        {
+          "name": "Disclosing Party",
+          "type": "legal"
+        }
+      ],
+      "raw": "The foregoing shall not prevent either party from disclosing Information which is: i) already known by the recipient party prior to the disclosure thereof with no obligation of confidentiality; or ii) publicly known or becomes publicly known not due to any unauthorised act of the recipient party; or iii) rightfully received from a third party; or iv) independently developed by the recipient party without use of the other party's Information; or v) disclosed without similar restrictions by the party owning the Information to any third party; or vi) approved by the other party for disclosure; or vii) required to be disclosed pursuant to a governmental or legal requirement provided that the disclosing party gives to the other party written notice of such requirement prior to any such disclosure. viii) publicly known or becomes publicly known not due to any unauthorised act of the recipient party; or ix) rightfully received from a third party; or"
+    },
+    "confidence": 0.95
+  },
+  {
+    "id": "contractnli-ent-hypothesis-26",
+    "pairId": "contractnli-entailment-26",
+    "title": "NDA Hypothesis (Entailment Pair 26)",
+    "content": {
+      "summary": "Receiving Party may acquire information similar to Confidential Information from a third party.",
+      "facts": [
+        "Receiving Party may acquire information similar to Confidential Information from a third party"
+      ],
+      "entities": [
+        {
+          "name": "Confidential Information",
+          "type": "clause"
+        },
+        {
+          "name": "Receiving Party",
+          "type": "legal"
+        }
+      ],
+      "raw": "Receiving Party may acquire information similar to Confidential Information from a third party."
+    },
+    "confidence": 0.95
+  },
+  {
+    "id": "contractnli-ent-premise-27",
+    "pairId": "contractnli-entailment-27",
+    "title": "NDA Clause (Entailment Pair 27)",
+    "content": {
+      "summary": "The Receiving Party: (a) shall take all reasonable steps (defined below) to keep all Confidential Information strictly confidential;  (b) shall not disclose or reveal any Confidential Information to a...",
+      "facts": [
+        "The Receiving Party: (a) shall take all reasonable steps (defined below) to keep all Confidential Information strictly confidential;  (b) shall not disclose or reveal any Confidential Information to any person other than its Representatives who are actively and directly participating in the Evaluation or who otherwise need to know the Confidential Information for the purpose of the Evaluation;  (c) shall not use Confidential Information for any purpose other than in connection with the Evaluation",
+        "and  (d) shall not disclose to any person (other than those of its Representatives who are actively and directly participating in the Evaluation or who otherwise need to know for the purpose of the Evaluation) any information about the Evaluation, or the terms or conditions or any other facts relating thereto, including, without limitation, the fact that discussions are taking place with respect thereto or the status thereof, or the fact that Confidential Information has been made available to the Receiving Party or its Representatives"
+      ],
+      "entities": [
+        {
+          "name": "Confidential Information",
+          "type": "clause"
+        },
+        {
+          "name": "Receiving Party",
+          "type": "legal"
+        },
+        {
+          "name": "Disclosing Party",
+          "type": "legal"
+        }
+      ],
+      "raw": "The Receiving Party: (a) shall take all reasonable steps (defined below) to keep all Confidential Information strictly confidential;  (b) shall not disclose or reveal any Confidential Information to any person other than its Representatives who are actively and directly participating in the Evaluation or who otherwise need to know the Confidential Information for the purpose of the Evaluation;  (c) shall not use Confidential Information for any purpose other than in connection with the Evaluation.  and  (d) shall not disclose to any person (other than those of its Representatives who are actively and directly participating in the Evaluation or who otherwise need to know for the purpose of the Evaluation) any information about the Evaluation, or the terms or conditions or any other facts relating thereto, including, without limitation, the fact that discussions are taking place with respect thereto or the status thereof, or the fact that Confidential Information has been made available to the Receiving Party or its Representatives. "
+    },
+    "confidence": 0.95
+  },
+  {
+    "id": "contractnli-ent-hypothesis-27",
+    "pairId": "contractnli-entailment-27",
+    "title": "NDA Hypothesis (Entailment Pair 27)",
+    "content": {
+      "summary": "Receiving Party shall not disclose the fact that Agreement was agreed or negotiated.",
+      "facts": [
+        "Receiving Party shall not disclose the fact that Agreement was agreed or negotiated"
+      ],
+      "entities": [
+        {
+          "name": "Receiving Party",
+          "type": "legal"
+        },
+        {
+          "name": "Disclosing Party",
+          "type": "legal"
+        }
+      ],
+      "raw": "Receiving Party shall not disclose the fact that Agreement was agreed or negotiated."
+    },
+    "confidence": 0.95
+  },
+  {
+    "id": "contractnli-ent-premise-28",
+    "pairId": "contractnli-entailment-28",
+    "title": "NDA Clause (Entailment Pair 28)",
+    "content": {
+      "summary": "5. Neither party may use the other's Conﬁdential Information for any purpose but the Business Purpose stated above.",
+      "facts": [
+        "Neither party may use the other's Conﬁdential Information for any purpose but the Business Purpose stated above"
+      ],
+      "entities": [
+        {
+          "name": "NDA",
+          "type": "legal"
+        }
+      ],
+      "raw": "5. Neither party may use the other's Conﬁdential Information for any purpose but the Business Purpose stated above."
+    },
+    "confidence": 0.95
+  },
+  {
+    "id": "contractnli-ent-hypothesis-28",
+    "pairId": "contractnli-entailment-28",
+    "title": "NDA Hypothesis (Entailment Pair 28)",
+    "content": {
+      "summary": "Receiving Party shall not use any Confidential Information for any purpose other than the purposes stated in Agreement.",
+      "facts": [
+        "Receiving Party shall not use any Confidential Information for any purpose other than the purposes stated in Agreement"
+      ],
+      "entities": [
+        {
+          "name": "Confidential Information",
+          "type": "clause"
+        },
+        {
+          "name": "Receiving Party",
+          "type": "legal"
+        }
+      ],
+      "raw": "Receiving Party shall not use any Confidential Information for any purpose other than the purposes stated in Agreement."
+    },
+    "confidence": 0.95
+  },
+  {
+    "id": "contractnli-ent-premise-29",
+    "pairId": "contractnli-entailment-29",
+    "title": "NDA Clause (Entailment Pair 29)",
+    "content": {
+      "summary": "7. Each Respondent shall be entitled to disclose or make available any Information it receives from the ETI or any other Respondent to such of its employees, officers, consultants, sub-contractors, pr...",
+      "facts": [
+        "Each Respondent shall be entitled to disclose or make available any Information it receives from the ETI or any other Respondent to such of its employees, officers, consultants, sub-contractors, proposed sub-contractors, proposed funders, proposed owners or lessors of sites for the Project, owners or licensors of Third Party IP and professional advisers where such disclosure is necessary for the Purpose provided that all such persons to whom any Information is disclosed are bound by written obligations that are no less restrictive than those in this Agreement"
+      ],
+      "entities": [
+        {
+          "name": "Disclosing Party",
+          "type": "legal"
+        }
+      ],
+      "raw": "7. Each Respondent shall be entitled to disclose or make available any Information it receives from the ETI or any other Respondent to such of its employees, officers, consultants, sub-contractors, proposed sub-contractors, proposed funders, proposed owners or lessors of sites for the Project, owners or licensors of Third Party IP and professional advisers where such disclosure is necessary for the Purpose provided that all such persons to whom any Information is disclosed are bound by written obligations that are no less restrictive than those in this Agreement. "
+    },
+    "confidence": 0.95
+  },
+  {
+    "id": "contractnli-ent-hypothesis-29",
+    "pairId": "contractnli-entailment-29",
+    "title": "NDA Hypothesis (Entailment Pair 29)",
+    "content": {
+      "summary": "Receiving Party may share some Confidential Information with some third-parties (including consultants, agents and professional advisors).",
+      "facts": [
+        "Receiving Party may share some Confidential Information with some third-parties (including consultants, agents and professional advisors)"
+      ],
+      "entities": [
+        {
+          "name": "Confidential Information",
+          "type": "clause"
+        },
+        {
+          "name": "Receiving Party",
+          "type": "legal"
+        }
+      ],
+      "raw": "Receiving Party may share some Confidential Information with some third-parties (including consultants, agents and professional advisors)."
+    },
+    "confidence": 0.95
+  },
+  {
+    "id": "contractnli-ent-premise-30",
+    "pairId": "contractnli-entailment-30",
+    "title": "NDA Clause (Entailment Pair 30)",
+    "content": {
+      "summary": "2. The Receiving Party shall with regard to any Information disclosed pursuant to this Agreement by or on behalf of a Disclosing Party on or after the Effective Date: a. hold the Information in confid...",
+      "facts": [
+        "The Receiving Party shall with regard to any Information disclosed pursuant to this Agreement by or on behalf of a Disclosing Party on or after the Effective Date: a",
+        "hold the Information in confidence and, except as is otherwise stated herein or agreed in writing by the Disclosing Party, shall not disclose or make available the Information by publication or otherwise to any third party (including for the avoidance of doubt, disclosure in any patent application or to any patent office) and shall use any Information disclosed to it pursuant to this Agreement only for carrying out the Purpose; b",
+        "make copies of the Information (or any further information derived from the Information) in whatever form or medium only to the extent that the copies are reasonably necessary for the Purpose and clearly mark all such copies as confidential;"
+      ],
+      "entities": [
+        {
+          "name": "Confidential Information",
+          "type": "clause"
+        },
+        {
+          "name": "Receiving Party",
+          "type": "legal"
+        },
+        {
+          "name": "Disclosing Party",
+          "type": "legal"
+        }
+      ],
+      "raw": "2. The Receiving Party shall with regard to any Information disclosed pursuant to this Agreement by or on behalf of a Disclosing Party on or after the Effective Date: a. hold the Information in confidence and, except as is otherwise stated herein or agreed in writing by the Disclosing Party, shall not disclose or make available the Information by publication or otherwise to any third party (including for the avoidance of doubt, disclosure in any patent application or to any patent office) and shall use any Information disclosed to it pursuant to this Agreement only for carrying out the Purpose; b. make copies of the Information (or any further information derived from the Information) in whatever form or medium only to the extent that the copies are reasonably necessary for the Purpose and clearly mark all such copies as confidential;"
+    },
+    "confidence": 0.95
+  },
+  {
+    "id": "contractnli-ent-hypothesis-30",
+    "pairId": "contractnli-entailment-30",
+    "title": "NDA Hypothesis (Entailment Pair 30)",
+    "content": {
+      "summary": "Receiving Party may create a copy of some Confidential Information in some circumstances.",
+      "facts": [
+        "Receiving Party may create a copy of some Confidential Information in some circumstances"
+      ],
+      "entities": [
+        {
+          "name": "Confidential Information",
+          "type": "clause"
+        },
+        {
+          "name": "Receiving Party",
+          "type": "legal"
+        }
+      ],
+      "raw": "Receiving Party may create a copy of some Confidential Information in some circumstances."
+    },
+    "confidence": 0.95
+  }
+]

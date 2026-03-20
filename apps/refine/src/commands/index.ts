@@ -1,0 +1,19 @@
+/**
+ * CLI commands barrel export.
+ * @module commands
+ */
+export { createIngestCommand } from './ingest.js';
+export { createDetectCommand } from './detect.js';
+export { createResolveCommand } from './resolve.js';
+export { createExportCommand } from './export.js';
+export { createReportCommand } from './report.js';
+export { createStatusCommand } from './status.js';
+export { createConfigCommand } from './config-cmd.js';
+export { createCiCommand } from './ci.js';
+export { createScanCommand } from './scan.js';
+export { createOptimizeCommand } from './optimize.js';
+export { createDiffCommand } from './diff.js';
+export { createBadgeCommand } from './badge.js';
+export { createConnectCommand } from './connect.js';
+export { createAuditCommand } from './audit.js';
+export { createTelemetryCommand } from './telemetry.js';

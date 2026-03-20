@@ -1,0 +1,14 @@
+name: Docs Health
+
+# Disabled: ody-refine is not yet published to npm.
+# Re-enable push/pull_request triggers once the package is live.
+on:
+  workflow_dispatch: {}
+
+jobs:
+  knowledge-check:
+    uses: ./.github/workflows/ody-refine.yml
+    with:
+      path: '.'
+      fail-on: 'critical'
+      min-health: '70'

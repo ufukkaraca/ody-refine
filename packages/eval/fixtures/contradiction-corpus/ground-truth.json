@@ -1,0 +1,814 @@
+{
+  "corpus": "contradiction-detection-v2",
+  "description": "101 document pairs for testing contradiction detection accuracy. 75 with known contradictions across 5 categories (numerical, temporal, policy, implicit, scope), 26 hard negatives (no contradiction).",
+  "pairs": [
+    {
+      "id": "numerical-revenue-conflict-01",
+      "category": "numerical",
+      "hasContradiction": true,
+      "docA": "quarterly-revenue-report",
+      "docB": "investor-update-q4",
+      "expectedFinding": { "type": "contradiction", "minSeverity": "high", "description": "Q4 revenue: $4.2M vs $3.8M" }
+    },
+    {
+      "id": "numerical-headcount-conflict-01",
+      "category": "numerical",
+      "hasContradiction": true,
+      "docA": "engineering-capacity",
+      "docB": "hiring-plan-q1",
+      "expectedFinding": { "type": "contradiction", "minSeverity": "high", "description": "Engineering team size: 12 engineers vs 8 engineers" }
+    },
+    {
+      "id": "numerical-sla-conflict-01",
+      "category": "numerical",
+      "hasContradiction": true,
+      "docA": "api-sla-doc",
+      "docB": "ops-runbook-doc",
+      "expectedFinding": { "type": "contradiction", "minSeverity": "high", "description": "Uptime SLA: 99.99% vs 99.9%" }
+    },
+    {
+      "id": "numerical-rate-limit-conflict-01",
+      "category": "numerical",
+      "hasContradiction": true,
+      "docA": "sales-proposal-enterprise",
+      "docB": "engineering-constraints-api",
+      "expectedFinding": { "type": "contradiction", "minSeverity": "high", "description": "API rate limit: 10,000 req/min vs 1,000 req/min" }
+    },
+    {
+      "id": "numerical-budget-conflict-01",
+      "category": "numerical",
+      "hasContradiction": true,
+      "docA": "marketing-budget-2026",
+      "docB": "finance-approved-budgets",
+      "expectedFinding": { "type": "contradiction", "minSeverity": "high", "description": "Marketing budget: $2.5M vs $1.8M" }
+    },
+    {
+      "id": "numerical-latency-conflict-01",
+      "category": "numerical",
+      "hasContradiction": true,
+      "docA": "performance-requirements",
+      "docB": "architecture-review-doc",
+      "expectedFinding": { "type": "contradiction", "minSeverity": "medium", "description": "P99 latency target: 100ms vs 250ms" }
+    },
+    {
+      "id": "numerical-storage-conflict-01",
+      "category": "numerical",
+      "hasContradiction": true,
+      "docA": "pricing-page-copy",
+      "docB": "product-spec-storage",
+      "expectedFinding": { "type": "contradiction", "minSeverity": "high", "description": "Free tier storage: 10GB vs 5GB" }
+    },
+    {
+      "id": "numerical-retention-conflict-01",
+      "category": "numerical",
+      "hasContradiction": true,
+      "docA": "data-retention-policy",
+      "docB": "compliance-handbook",
+      "expectedFinding": { "type": "contradiction", "minSeverity": "high", "description": "Log retention period: 90 days vs 365 days" }
+    },
+    {
+      "id": "numerical-discount-conflict-01",
+      "category": "numerical",
+      "hasContradiction": true,
+      "docA": "partner-program-terms",
+      "docB": "sales-playbook",
+      "expectedFinding": { "type": "contradiction", "minSeverity": "medium", "description": "Partner discount: 20% vs 30%" }
+    },
+    {
+      "id": "numerical-capacity-conflict-01",
+      "category": "numerical",
+      "hasContradiction": true,
+      "docA": "event-venue-booking",
+      "docB": "event-planning-doc",
+      "expectedFinding": { "type": "contradiction", "minSeverity": "medium", "description": "Event capacity: 200 people vs 150 people" }
+    },
+    {
+      "id": "numerical-response-time-conflict-01",
+      "category": "numerical",
+      "hasContradiction": true,
+      "docA": "customer-contract-support",
+      "docB": "internal-support-capacity",
+      "expectedFinding": { "type": "contradiction", "minSeverity": "high", "description": "P0 support response time: 1 hour vs 4 hours" }
+    },
+    {
+      "id": "numerical-conversion-conflict-01",
+      "category": "numerical",
+      "hasContradiction": true,
+      "docA": "growth-metrics-dashboard",
+      "docB": "board-deck-metrics",
+      "expectedFinding": { "type": "contradiction", "minSeverity": "medium", "description": "Trial conversion rate: 12% vs 18%" }
+    },
+    {
+      "id": "numerical-salary-band-conflict-01",
+      "category": "numerical",
+      "hasContradiction": true,
+      "docA": "compensation-framework",
+      "docB": "recruiter-offer-guidelines",
+      "expectedFinding": { "type": "contradiction", "minSeverity": "high", "description": "Senior engineer salary band max: $220K vs $195K" }
+    },
+    {
+      "id": "numerical-uptime-conflict-01",
+      "category": "numerical",
+      "hasContradiction": true,
+      "docA": "status-page-sla",
+      "docB": "internal-ops-targets",
+      "expectedFinding": { "type": "contradiction", "minSeverity": "medium", "description": "Monthly uptime target: 99.95% vs 99.5%" }
+    },
+    {
+      "id": "numerical-sprint-velocity-conflict-01",
+      "category": "numerical",
+      "hasContradiction": true,
+      "docA": "sprint-planning-doc",
+      "docB": "eng-manager-report",
+      "expectedFinding": { "type": "contradiction", "minSeverity": "low", "description": "Sprint velocity: 45 points vs 32 points" }
+    },
+    {
+      "id": "temporal-launch-conflict-01",
+      "category": "temporal",
+      "hasContradiction": true,
+      "docA": "product-roadmap-2026",
+      "docB": "board-update-march",
+      "expectedFinding": { "type": "contradiction", "minSeverity": "high", "description": "V2 platform launch: Q2 2026 vs Q4 2026" }
+    },
+    {
+      "id": "temporal-migration-conflict-01",
+      "category": "temporal",
+      "hasContradiction": true,
+      "docA": "sprint-retro-feb",
+      "docB": "project-status-db",
+      "expectedFinding": { "type": "contradiction", "minSeverity": "high", "description": "Database migration deadline: March 2026 vs June 2026" }
+    },
+    {
+      "id": "temporal-deprecation-conflict-01",
+      "category": "temporal",
+      "hasContradiction": true,
+      "docA": "api-v1-deprecation-notice",
+      "docB": "developer-portal-faq",
+      "expectedFinding": { "type": "contradiction", "minSeverity": "high", "description": "API v1 sunset date: June 2026 vs December 2026" }
+    },
+    {
+      "id": "temporal-onboarding-conflict-01",
+      "category": "temporal",
+      "hasContradiction": true,
+      "docA": "hr-onboarding-timeline",
+      "docB": "it-setup-checklist",
+      "expectedFinding": { "type": "contradiction", "minSeverity": "medium", "description": "Laptop provisioning: before day 1 vs within first week" }
+    },
+    {
+      "id": "temporal-release-conflict-01",
+      "category": "temporal",
+      "hasContradiction": true,
+      "docA": "release-schedule-2026",
+      "docB": "eng-standup-notes-mar",
+      "expectedFinding": { "type": "contradiction", "minSeverity": "high", "description": "Feature freeze date: March 15 vs March 31" }
+    },
+    {
+      "id": "temporal-contract-conflict-01",
+      "category": "temporal",
+      "hasContradiction": true,
+      "docA": "vendor-contract-renewal",
+      "docB": "procurement-tracker",
+      "expectedFinding": { "type": "contradiction", "minSeverity": "high", "description": "Contract renewal date: April 1 vs July 1" }
+    },
+    {
+      "id": "temporal-review-cycle-conflict-01",
+      "category": "temporal",
+      "hasContradiction": true,
+      "docA": "performance-review-policy",
+      "docB": "manager-handbook-reviews",
+      "expectedFinding": { "type": "contradiction", "minSeverity": "medium", "description": "Performance review cycle: quarterly vs biannually" }
+    },
+    {
+      "id": "temporal-beta-conflict-01",
+      "category": "temporal",
+      "hasContradiction": true,
+      "docA": "beta-launch-plan",
+      "docB": "customer-comms-draft",
+      "expectedFinding": { "type": "contradiction", "minSeverity": "high", "description": "Beta program start: March 2026 vs May 2026" }
+    },
+    {
+      "id": "temporal-audit-conflict-01",
+      "category": "temporal",
+      "hasContradiction": true,
+      "docA": "security-audit-schedule",
+      "docB": "compliance-calendar",
+      "expectedFinding": { "type": "contradiction", "minSeverity": "medium", "description": "Annual security audit: Q1 vs Q3" }
+    },
+    {
+      "id": "temporal-hiring-freeze-conflict-01",
+      "category": "temporal",
+      "hasContradiction": true,
+      "docA": "ceo-all-hands-notes",
+      "docB": "recruiting-pipeline-doc",
+      "expectedFinding": { "type": "contradiction", "minSeverity": "high", "description": "Hiring freeze ends: February 2026 vs April 2026" }
+    },
+    {
+      "id": "temporal-data-migration-conflict-01",
+      "category": "temporal",
+      "hasContradiction": true,
+      "docA": "data-platform-roadmap",
+      "docB": "analytics-team-plan",
+      "expectedFinding": { "type": "contradiction", "minSeverity": "medium", "description": "Warehouse migration: complete by Q2 vs starting Q3" }
+    },
+    {
+      "id": "temporal-policy-effective-conflict-01",
+      "category": "temporal",
+      "hasContradiction": true,
+      "docA": "new-pto-policy",
+      "docB": "hr-announcement-email",
+      "expectedFinding": { "type": "contradiction", "minSeverity": "medium", "description": "New PTO policy effective: January 1 vs April 1" }
+    },
+    {
+      "id": "temporal-soc2-conflict-01",
+      "category": "temporal",
+      "hasContradiction": true,
+      "docA": "soc2-readiness-plan",
+      "docB": "investor-update-security",
+      "expectedFinding": { "type": "contradiction", "minSeverity": "high", "description": "SOC2 certification target: Q2 2026 vs Q4 2026" }
+    },
+    {
+      "id": "temporal-office-move-conflict-01",
+      "category": "temporal",
+      "hasContradiction": true,
+      "docA": "facilities-move-plan",
+      "docB": "office-comms-announcement",
+      "expectedFinding": { "type": "contradiction", "minSeverity": "medium", "description": "Office move date: May 15 vs August 1" }
+    },
+    {
+      "id": "temporal-training-conflict-01",
+      "category": "temporal",
+      "hasContradiction": true,
+      "docA": "security-training-schedule",
+      "docB": "compliance-requirements",
+      "expectedFinding": { "type": "contradiction", "minSeverity": "medium", "description": "Mandatory training completion deadline: 30 days vs 90 days from start" }
+    },
+    {
+      "id": "policy-remote-conflict-01",
+      "category": "policy",
+      "hasContradiction": true,
+      "docA": "remote-work-policy-doc",
+      "docB": "office-attendance-guidelines",
+      "expectedFinding": { "type": "contradiction", "minSeverity": "high", "description": "Remote-first with no mandatory office days vs mandatory in-office 3 days per week" }
+    },
+    {
+      "id": "policy-expense-conflict-01",
+      "category": "policy",
+      "hasContradiction": true,
+      "docA": "expense-policy-v2-doc",
+      "docB": "employee-handbook-expenses",
+      "expectedFinding": { "type": "contradiction", "minSeverity": "high", "description": "Travel pre-approval threshold: $500 vs $1,000" }
+    },
+    {
+      "id": "policy-approval-conflict-01",
+      "category": "policy",
+      "hasContradiction": true,
+      "docA": "code-review-policy",
+      "docB": "eng-team-norms",
+      "expectedFinding": { "type": "contradiction", "minSeverity": "medium", "description": "PR approval requirement: 2 approvals vs 1 approval" }
+    },
+    {
+      "id": "policy-access-conflict-01",
+      "category": "policy",
+      "hasContradiction": true,
+      "docA": "data-access-policy",
+      "docB": "analyst-onboarding-guide",
+      "expectedFinding": { "type": "contradiction", "minSeverity": "high", "description": "Production database access: requires VP approval vs any manager can grant" }
+    },
+    {
+      "id": "policy-vacation-conflict-01",
+      "category": "policy",
+      "hasContradiction": true,
+      "docA": "pto-policy-2026",
+      "docB": "manager-hr-guide",
+      "expectedFinding": { "type": "contradiction", "minSeverity": "medium", "description": "Vacation approval: minimum 2 weeks notice vs 1 week notice" }
+    },
+    {
+      "id": "policy-deployment-conflict-01",
+      "category": "policy",
+      "hasContradiction": true,
+      "docA": "deployment-runbook",
+      "docB": "sre-practices-doc",
+      "expectedFinding": { "type": "contradiction", "minSeverity": "high", "description": "Friday deployments: prohibited vs allowed until 2pm" }
+    },
+    {
+      "id": "policy-incident-conflict-01",
+      "category": "policy",
+      "hasContradiction": true,
+      "docA": "incident-response-plan",
+      "docB": "oncall-handbook",
+      "expectedFinding": { "type": "contradiction", "minSeverity": "high", "description": "P0 escalation: page VP immediately vs page VP after 30 minutes" }
+    },
+    {
+      "id": "policy-byod-conflict-01",
+      "category": "policy",
+      "hasContradiction": true,
+      "docA": "it-security-policy",
+      "docB": "employee-device-faq",
+      "expectedFinding": { "type": "contradiction", "minSeverity": "high", "description": "Personal devices: prohibited on corporate network vs allowed with MDM" }
+    },
+    {
+      "id": "policy-hiring-conflict-01",
+      "category": "policy",
+      "hasContradiction": true,
+      "docA": "hiring-process-doc",
+      "docB": "recruiting-team-playbook",
+      "expectedFinding": { "type": "contradiction", "minSeverity": "medium", "description": "Interview stages: 4 rounds required vs 3 rounds standard" }
+    },
+    {
+      "id": "policy-data-handling-conflict-01",
+      "category": "policy",
+      "hasContradiction": true,
+      "docA": "data-classification-policy",
+      "docB": "engineering-data-guide",
+      "expectedFinding": { "type": "contradiction", "minSeverity": "high", "description": "PII handling: must be encrypted at rest and in transit vs encryption at rest only" }
+    },
+    {
+      "id": "policy-overtime-conflict-01",
+      "category": "policy",
+      "hasContradiction": true,
+      "docA": "employee-handbook-hours",
+      "docB": "payroll-processing-guide",
+      "expectedFinding": { "type": "contradiction", "minSeverity": "medium", "description": "Overtime approval: manager approval required vs auto-approved under 10 hours" }
+    },
+    {
+      "id": "policy-vendor-conflict-01",
+      "category": "policy",
+      "hasContradiction": true,
+      "docA": "vendor-management-policy",
+      "docB": "procurement-quick-guide",
+      "expectedFinding": { "type": "contradiction", "minSeverity": "high", "description": "Vendor security review: required for all vendors vs only for vendors handling data" }
+    },
+    {
+      "id": "policy-password-conflict-01",
+      "category": "policy",
+      "hasContradiction": true,
+      "docA": "password-policy-2026",
+      "docB": "it-setup-instructions",
+      "expectedFinding": { "type": "contradiction", "minSeverity": "medium", "description": "Password rotation: every 90 days vs every 180 days" }
+    },
+    {
+      "id": "policy-ownership-conflict-01",
+      "category": "policy",
+      "hasContradiction": true,
+      "docA": "team-roster-ownership",
+      "docB": "oncall-schedule-q1",
+      "expectedFinding": { "type": "contradiction", "minSeverity": "high", "description": "Payment service owner: Platform team vs Billing team" }
+    },
+    {
+      "id": "policy-db-ownership-conflict-01",
+      "category": "policy",
+      "hasContradiction": true,
+      "docA": "raci-matrix-infra",
+      "docB": "incident-postmortem-jan",
+      "expectedFinding": { "type": "contradiction", "minSeverity": "high", "description": "Database on-call responsible: SRE team vs Backend team" }
+    },
+    {
+      "id": "implicit-remote-onboarding-01",
+      "category": "implicit",
+      "hasContradiction": true,
+      "docA": "company-culture-page",
+      "docB": "onboarding-week1-schedule",
+      "expectedFinding": { "type": "contradiction", "minSeverity": "medium", "description": "Company says fully remote but onboarding requires in-office presence for first two weeks" }
+    },
+    {
+      "id": "implicit-flat-hierarchy-01",
+      "category": "implicit",
+      "hasContradiction": true,
+      "docA": "careers-page-copy",
+      "docB": "promotion-ladder-doc",
+      "expectedFinding": { "type": "contradiction", "minSeverity": "medium", "description": "Claims flat hierarchy with no titles but has 8-level promotion ladder" }
+    },
+    {
+      "id": "implicit-self-serve-01",
+      "category": "implicit",
+      "hasContradiction": true,
+      "docA": "product-positioning-doc",
+      "docB": "implementation-guide",
+      "expectedFinding": { "type": "contradiction", "minSeverity": "medium", "description": "Product marketed as self-serve but implementation guide requires dedicated solutions engineer" }
+    },
+    {
+      "id": "implicit-startup-speed-01",
+      "category": "implicit",
+      "hasContradiction": true,
+      "docA": "ceo-vision-memo",
+      "docB": "change-management-process",
+      "expectedFinding": { "type": "contradiction", "minSeverity": "medium", "description": "CEO emphasizes speed and bias for action but change process requires 5-step approval chain" }
+    },
+    {
+      "id": "implicit-open-source-01",
+      "category": "implicit",
+      "hasContradiction": true,
+      "docA": "open-source-philosophy",
+      "docB": "legal-contribution-policy",
+      "expectedFinding": { "type": "contradiction", "minSeverity": "medium", "description": "Promotes open source contributions but legal policy requires 3-week review for any OSS contribution" }
+    },
+    {
+      "id": "implicit-customer-first-01",
+      "category": "implicit",
+      "hasContradiction": true,
+      "docA": "company-values-doc",
+      "docB": "support-escalation-policy",
+      "expectedFinding": { "type": "contradiction", "minSeverity": "medium", "description": "Values state 'customer obsessed' but support has no weekend coverage and 48h response SLA" }
+    },
+    {
+      "id": "implicit-transparency-01",
+      "category": "implicit",
+      "hasContradiction": true,
+      "docA": "transparency-commitment",
+      "docB": "internal-comms-policy",
+      "expectedFinding": { "type": "contradiction", "minSeverity": "medium", "description": "Commitment to radical transparency but comms policy restricts sharing financials with most employees" }
+    },
+    {
+      "id": "implicit-async-first-01",
+      "category": "implicit",
+      "hasContradiction": true,
+      "docA": "remote-collaboration-guide",
+      "docB": "team-meeting-requirements",
+      "expectedFinding": { "type": "contradiction", "minSeverity": "medium", "description": "Async-first culture promoted but mandatory daily standups and 3 weekly syncs required" }
+    },
+    {
+      "id": "implicit-no-micromanagement-01",
+      "category": "implicit",
+      "hasContradiction": true,
+      "docA": "leadership-principles",
+      "docB": "time-tracking-policy",
+      "expectedFinding": { "type": "contradiction", "minSeverity": "medium", "description": "No micromanagement principle but requires detailed hourly time tracking for all engineers" }
+    },
+    {
+      "id": "implicit-innovation-time-01",
+      "category": "implicit",
+      "hasContradiction": true,
+      "docA": "innovation-policy-doc",
+      "docB": "sprint-planning-rules",
+      "expectedFinding": { "type": "contradiction", "minSeverity": "medium", "description": "20% innovation time policy but sprint planning fills 100% capacity with committed work" }
+    },
+    {
+      "id": "implicit-work-life-balance-01",
+      "category": "implicit",
+      "hasContradiction": true,
+      "docA": "wellness-program-doc",
+      "docB": "oncall-rotation-rules",
+      "expectedFinding": { "type": "contradiction", "minSeverity": "medium", "description": "Wellness program promotes work-life balance but on-call rotation has no compensation and covers weekends" }
+    },
+    {
+      "id": "implicit-data-driven-01",
+      "category": "implicit",
+      "hasContradiction": true,
+      "docA": "decision-framework-doc",
+      "docB": "product-launch-process",
+      "expectedFinding": { "type": "contradiction", "minSeverity": "medium", "description": "Decision framework requires data-driven decisions but product launches skip A/B testing by default" }
+    },
+    {
+      "id": "implicit-empowerment-01",
+      "category": "implicit",
+      "hasContradiction": true,
+      "docA": "eng-empowerment-charter",
+      "docB": "architecture-review-process",
+      "expectedFinding": { "type": "contradiction", "minSeverity": "medium", "description": "Engineers empowered to choose tools but architecture board must approve all technology choices" }
+    },
+    {
+      "id": "implicit-minimal-process-01",
+      "category": "implicit",
+      "hasContradiction": true,
+      "docA": "startup-operating-principles",
+      "docB": "feature-request-workflow",
+      "expectedFinding": { "type": "contradiction", "minSeverity": "medium", "description": "Minimal process principle but feature requests go through 7-step approval workflow" }
+    },
+    {
+      "id": "implicit-diversity-01",
+      "category": "implicit",
+      "hasContradiction": true,
+      "docA": "diversity-statement",
+      "docB": "referral-bonus-policy",
+      "expectedFinding": { "type": "contradiction", "minSeverity": "medium", "description": "Diversity commitment but referral bonus is the only active recruiting channel" }
+    },
+    {
+      "id": "scope-tier-conflict-01",
+      "category": "scope",
+      "hasContradiction": true,
+      "docA": "pricing-page-features",
+      "docB": "product-spec-features",
+      "expectedFinding": { "type": "contradiction", "minSeverity": "high", "description": "SSO listed as included in Pro tier on pricing page but spec says Enterprise only" }
+    },
+    {
+      "id": "scope-region-conflict-01",
+      "category": "scope",
+      "hasContradiction": true,
+      "docA": "gdpr-compliance-doc",
+      "docB": "infrastructure-architecture",
+      "expectedFinding": { "type": "contradiction", "minSeverity": "high", "description": "Claims EU data residency but architecture shows all data stored in us-east-1" }
+    },
+    {
+      "id": "scope-api-availability-conflict-01",
+      "category": "scope",
+      "hasContradiction": true,
+      "docA": "api-docs-webhooks",
+      "docB": "webhook-implementation-status",
+      "expectedFinding": { "type": "contradiction", "minSeverity": "high", "description": "API docs show webhooks available but implementation status shows not yet built" }
+    },
+    {
+      "id": "scope-integration-conflict-01",
+      "category": "scope",
+      "hasContradiction": true,
+      "docA": "integration-marketplace-listing",
+      "docB": "integration-status-tracker",
+      "expectedFinding": { "type": "contradiction", "minSeverity": "high", "description": "Marketplace lists Salesforce integration as live but tracker shows it as in-progress" }
+    },
+    {
+      "id": "scope-mobile-conflict-01",
+      "category": "scope",
+      "hasContradiction": true,
+      "docA": "mobile-app-announcement",
+      "docB": "mobile-product-brief",
+      "expectedFinding": { "type": "contradiction", "minSeverity": "high", "description": "Announcement says iOS and Android available but product brief says Android delayed to Q4" }
+    },
+    {
+      "id": "scope-export-conflict-01",
+      "category": "scope",
+      "hasContradiction": true,
+      "docA": "help-center-export-docs",
+      "docB": "export-feature-limitations",
+      "expectedFinding": { "type": "contradiction", "minSeverity": "medium", "description": "Help center says CSV export available for all reports but feature spec limits to 3 report types" }
+    },
+    {
+      "id": "scope-language-conflict-01",
+      "category": "scope",
+      "hasContradiction": true,
+      "docA": "localization-roadmap",
+      "docB": "current-language-support",
+      "expectedFinding": { "type": "contradiction", "minSeverity": "medium", "description": "Roadmap lists Japanese support as shipped but support doc shows only English, Spanish, German" }
+    },
+    {
+      "id": "scope-compliance-conflict-01",
+      "category": "scope",
+      "hasContradiction": true,
+      "docA": "sales-deck-compliance",
+      "docB": "compliance-status-internal",
+      "expectedFinding": { "type": "contradiction", "minSeverity": "high", "description": "Sales deck claims HIPAA compliance but internal status shows certification pending" }
+    },
+    {
+      "id": "scope-sso-provider-conflict-01",
+      "category": "scope",
+      "hasContradiction": true,
+      "docA": "sso-integration-docs",
+      "docB": "sso-implementation-notes",
+      "expectedFinding": { "type": "contradiction", "minSeverity": "medium", "description": "Docs list Okta, Azure AD, OneLogin support but implementation only covers Okta and Azure AD" }
+    },
+    {
+      "id": "scope-analytics-conflict-01",
+      "category": "scope",
+      "hasContradiction": true,
+      "docA": "analytics-feature-overview",
+      "docB": "analytics-eng-limitations",
+      "expectedFinding": { "type": "contradiction", "minSeverity": "medium", "description": "Feature overview promises real-time analytics but eng doc says data refreshes hourly" }
+    },
+    {
+      "id": "scope-backup-conflict-01",
+      "category": "scope",
+      "hasContradiction": true,
+      "docA": "disaster-recovery-plan",
+      "docB": "actual-backup-config",
+      "expectedFinding": { "type": "contradiction", "minSeverity": "high", "description": "DR plan states 15-minute RPO but actual backup runs every 24 hours" }
+    },
+    {
+      "id": "scope-user-limit-conflict-01",
+      "category": "scope",
+      "hasContradiction": true,
+      "docA": "pricing-team-plan",
+      "docB": "billing-system-config",
+      "expectedFinding": { "type": "contradiction", "minSeverity": "high", "description": "Team plan advertises unlimited users but billing system caps at 50 seats" }
+    },
+    {
+      "id": "scope-audit-log-conflict-01",
+      "category": "scope",
+      "hasContradiction": true,
+      "docA": "security-features-page",
+      "docB": "audit-log-spec",
+      "expectedFinding": { "type": "contradiction", "minSeverity": "medium", "description": "Security page says audit logs available for all plans but spec restricts to Enterprise" }
+    },
+    {
+      "id": "scope-api-versioning-conflict-01",
+      "category": "scope",
+      "hasContradiction": true,
+      "docA": "api-versioning-policy",
+      "docB": "api-implementation-reality",
+      "expectedFinding": { "type": "contradiction", "minSeverity": "medium", "description": "Policy promises 24-month deprecation window but implementation shows 6-month window" }
+    },
+    {
+      "id": "scope-custom-domain-conflict-01",
+      "category": "scope",
+      "hasContradiction": true,
+      "docA": "white-label-feature-doc",
+      "docB": "infrastructure-dns-setup",
+      "expectedFinding": { "type": "contradiction", "minSeverity": "medium", "description": "White label feature doc says custom domains supported but DNS setup shows only subdomain mapping" }
+    },
+    {
+      "id": "hard-neg-time-growth-01",
+      "category": "hard_negative",
+      "hasContradiction": false,
+      "docA": "team-size-2023",
+      "docB": "team-size-2024",
+      "expectedFinding": null
+    },
+    {
+      "id": "hard-neg-dept-scope-01",
+      "category": "hard_negative",
+      "hasContradiction": false,
+      "docA": "eng-remote-policy",
+      "docB": "sales-office-policy",
+      "expectedFinding": null
+    },
+    {
+      "id": "hard-neg-tier-diff-01",
+      "category": "hard_negative",
+      "hasContradiction": false,
+      "docA": "free-tier-limits",
+      "docB": "pro-tier-limits",
+      "expectedFinding": null
+    },
+    {
+      "id": "hard-neg-version-update-01",
+      "category": "hard_negative",
+      "hasContradiction": false,
+      "docA": "api-docs-v1",
+      "docB": "api-docs-v2-upgrade",
+      "expectedFinding": null
+    },
+    {
+      "id": "hard-neg-region-diff-01",
+      "category": "hard_negative",
+      "hasContradiction": false,
+      "docA": "us-data-center-spec",
+      "docB": "eu-data-center-spec",
+      "expectedFinding": null
+    },
+    {
+      "id": "hard-neg-planned-vs-current-01",
+      "category": "hard_negative",
+      "hasContradiction": false,
+      "docA": "current-architecture-doc",
+      "docB": "future-architecture-rfc",
+      "expectedFinding": null
+    },
+    {
+      "id": "hard-neg-role-scope-01",
+      "category": "hard_negative",
+      "hasContradiction": false,
+      "docA": "ic-expectations-doc",
+      "docB": "manager-expectations-doc",
+      "expectedFinding": null
+    },
+    {
+      "id": "hard-neg-environment-diff-01",
+      "category": "hard_negative",
+      "hasContradiction": false,
+      "docA": "staging-env-config",
+      "docB": "production-env-config",
+      "expectedFinding": null
+    },
+    {
+      "id": "hard-neg-audience-diff-01",
+      "category": "hard_negative",
+      "hasContradiction": false,
+      "docA": "customer-facing-sla",
+      "docB": "internal-eng-targets",
+      "expectedFinding": null
+    },
+    {
+      "id": "hard-neg-seasonal-01",
+      "category": "hard_negative",
+      "hasContradiction": false,
+      "docA": "summer-hours-policy",
+      "docB": "standard-hours-policy",
+      "expectedFinding": null
+    },
+    {
+      "id": "hard-neg-exception-process-01",
+      "category": "hard_negative",
+      "hasContradiction": false,
+      "docA": "general-travel-policy",
+      "docB": "exec-travel-exception",
+      "expectedFinding": null
+    },
+    {
+      "id": "hard-neg-progressive-rollout-01",
+      "category": "hard_negative",
+      "hasContradiction": false,
+      "docA": "feature-flag-config-old",
+      "docB": "feature-flag-config-new",
+      "expectedFinding": null
+    },
+    {
+      "id": "hard-neg-draft-vs-final-01",
+      "category": "hard_negative",
+      "hasContradiction": false,
+      "docA": "rfc-draft-auth-redesign",
+      "docB": "auth-system-prod-docs",
+      "expectedFinding": null
+    },
+    {
+      "id": "hard-neg-internal-external-01",
+      "category": "hard_negative",
+      "hasContradiction": false,
+      "docA": "public-api-docs",
+      "docB": "internal-api-docs",
+      "expectedFinding": null
+    },
+    {
+      "id": "hard-neg-onboarding-types-01",
+      "category": "hard_negative",
+      "hasContradiction": false,
+      "docA": "onboarding-checklist-eng",
+      "docB": "onboarding-checklist-sales",
+      "expectedFinding": null
+    },
+    {
+      "id": "hard-neg-pilot-vs-ga-01",
+      "category": "hard_negative",
+      "hasContradiction": false,
+      "docA": "pilot-program-terms",
+      "docB": "ga-terms-of-service",
+      "expectedFinding": null
+    },
+    {
+      "id": "hard-neg-platform-diff-01",
+      "category": "hard_negative",
+      "hasContradiction": false,
+      "docA": "ios-release-notes",
+      "docB": "android-release-notes",
+      "expectedFinding": null
+    },
+    {
+      "id": "hard-neg-budget-periods-01",
+      "category": "hard_negative",
+      "hasContradiction": false,
+      "docA": "h1-budget-plan",
+      "docB": "h2-budget-plan",
+      "expectedFinding": null
+    },
+    {
+      "id": "hard-neg-tech-stack-layers-01",
+      "category": "hard_negative",
+      "hasContradiction": false,
+      "docA": "frontend-tech-standards",
+      "docB": "backend-tech-standards",
+      "expectedFinding": null
+    },
+    {
+      "id": "hard-neg-team-specific-process-01",
+      "category": "hard_negative",
+      "hasContradiction": false,
+      "docA": "infra-team-oncall-process",
+      "docB": "product-team-oncall-process",
+      "expectedFinding": null
+    },
+    {
+      "id": "hard-neg-customer-segment-01",
+      "category": "hard_negative",
+      "hasContradiction": false,
+      "docA": "smb-pricing-doc",
+      "docB": "enterprise-pricing-doc",
+      "expectedFinding": null
+    },
+    {
+      "id": "hard-neg-deprecated-current-01",
+      "category": "hard_negative",
+      "hasContradiction": false,
+      "docA": "deprecated-auth-flow",
+      "docB": "current-auth-flow",
+      "expectedFinding": null
+    },
+    {
+      "id": "hard-neg-geo-compliance-01",
+      "category": "hard_negative",
+      "hasContradiction": false,
+      "docA": "us-employment-law-guide",
+      "docB": "de-employment-law-guide",
+      "expectedFinding": null
+    },
+    {
+      "id": "hard-neg-project-phase-01",
+      "category": "hard_negative",
+      "hasContradiction": false,
+      "docA": "project-alpha-requirements",
+      "docB": "project-beta-requirements",
+      "expectedFinding": null
+    },
+    {
+      "id": "hard-neg-meeting-types-01",
+      "category": "hard_negative",
+      "hasContradiction": false,
+      "docA": "standup-format-guide",
+      "docB": "retro-format-guide",
+      "expectedFinding": null
+    },
+    {
+      "id": "hard-neg-conditional-policy-01",
+      "category": "hard_negative",
+      "hasContradiction": false,
+      "docA": "standard-deploy-process",
+      "docB": "hotfix-deploy-process",
+      "expectedFinding": null
+    }
+  ]
+}

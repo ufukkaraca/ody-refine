@@ -1,0 +1,36 @@
+{
+  "name": "ody-platform",
+  "description": "Open source knowledge integrity platform — find contradictions, staleness, and drift in your docs",
+  "private": true,
+  "type": "module",
+  "packageManager": "pnpm@9.15.4",
+  "engines": {
+    "node": ">=20.0.0"
+  },
+  "scripts": {
+    "build": "turbo run build",
+    "test": "turbo run test",
+    "test:ci": "turbo run test -- --reporter=verbose",
+    "lint": "turbo run lint",
+    "typecheck": "turbo run typecheck",
+    "verify": "turbo run lint typecheck test",
+    "clean": "turbo run clean",
+    "benchmark": "tsx scripts/run-benchmark.ts",
+    "demo": "bash examples/demo.sh",
+    "prepare": "husky"
+  },
+  "lint-staged": {
+    "*.{ts,tsx}": "eslint --max-warnings 0"
+  },
+  "devDependencies": {
+    "@typescript-eslint/eslint-plugin": "^8.0.0",
+    "@typescript-eslint/parser": "^8.0.0",
+    "eslint": "^9.0.0",
+    "husky": "^9.1.7",
+    "lint-staged": "^16.4.0",
+    "tsx": "^4.21.0",
+    "turbo": "^2.4.0",
+    "typescript": "^5.7.0",
+    "vitest": "^3.0.0"
+  }
+}
