@@ -1,0 +1,99 @@
+# Dependencies
+node_modules/
+.pnpm-store/
+
+# Build outputs
+dist/
+.next/
+.turbo/
+*.tsbuildinfo
+
+# Environment files
+.env
+.env.local
+.env.*.local
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Logs
+*.log
+npm-debug.log*
+pnpm-debug.log*
+
+# Test
+coverage/
+
+# Database
+*.sqlite
+*.db
+
+# Backups
+*.bak
+
+# Agent instructions (contains internal conventions)
+CLAUDE.md
+
+# Tool configs (may contain API keys)
+.claude/
+.codex/
+.agents/skills/
+.gstack/
+skills-lock.json
+
+# Ody Refine local data
+.ody-refine/
+*.db-journal
+*.db-shm
+*.db-wal
+
+# Python training artifacts
+__pycache__/
+*.pyc
+.venv/
+/output/
+wandb/
+
+# Modal test results (local proof artifacts)
+.modal-test-results/
+
+# Internal strategy & pitch docs (moved to workspace /docs/)
+docs/PITCH_*
+docs/OUTREACH_*
+docs/one-pager*
+docs/DEMO_*
+docs/SHOW_HN_*
+docs/TWITTER_*
+docs/VIDEO_*
+docs/DESIGN_PARTNER_*
+docs/FOUNDER_*
+docs/ARCHITECTURE_REVIEW*
+docs/ACTION_PLAN*
+docs/*modal*
+export.jsonl
+*.sqlite-shm
+*.sqlite-wal
+
+# IDE agent/skill configs
+.agent/
+.agents/
+.gemini/
+.windsurf/
+apps/forge/ # Forge CLI is proprietary — lives in ody/forge/ repo
+TODOS.md
+.claudeignore
+.mcp.json
+.dockerignore
+test-results/
+feature_list.json
+
+# Credentials file (workspace root)
+CREDENTIALS.local
+../CREDENTIALS.local

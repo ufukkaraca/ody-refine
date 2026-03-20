@@ -1,0 +1,26 @@
+name: Refine Dogfood
+
+# Disabled: ody-refine is not yet published to npm.
+# Re-enable schedule trigger once the package is live.
+on:
+  workflow_dispatch: {}
+
+jobs:
+  dogfood:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: ./.github/actions/refine
+        id: refine
+        with:
+          path: './docs'
+          fail-on: none
+          min-health: '0'
+          format: markdown
+
+      - name: Print results
+        run: |
+          echo "Score: ${{ steps.refine.outputs.score }}"
+          echo "Findings: ${{ steps.refine.outputs.findings-count }}"
+          echo "Pass: ${{ steps.refine.outputs.pass }}"

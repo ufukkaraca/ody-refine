@@ -1,0 +1,98 @@
+[
+  {
+    "prompt": "How many engineers are on the engineering team?",
+    "chosen": "The engineering team has 12 engineers across 3 squads, each with a tech lead and 3 individual contributors.",
+    "rejected": "The engineering team currently has 8 engineers total.",
+    "metadata": {
+      "conflictType": "contradiction",
+      "resolvedBy": "test-evaluator",
+      "resolvedAt": "2026-03-01T00:00:00.000Z",
+      "confidence": 1.0,
+      "sourceNodeIds": ["eng-cap-01", "hire-plan-01"]
+    }
+  },
+  {
+    "prompt": "What is the API uptime SLA?",
+    "chosen": "The API availability target is 99.99% uptime per month, as stated in our customer-facing SLA.",
+    "rejected": "The target uptime for the API is 99.9% monthly.",
+    "metadata": {
+      "conflictType": "contradiction",
+      "resolvedBy": "test-evaluator",
+      "resolvedAt": "2026-03-01T00:00:00.000Z",
+      "confidence": 0.95,
+      "sourceNodeIds": ["api-sla-01", "ops-run-01"]
+    }
+  },
+  {
+    "prompt": "What is the remote work policy?",
+    "chosen": "The company is remote-first with no mandatory office days. All meetings must have a video call option.",
+    "rejected": "All employees must be in office Monday, Wednesday, and Friday. Remote work allowed on Tuesday and Thursday only.",
+    "metadata": {
+      "conflictType": "contradiction",
+      "resolvedBy": "test-evaluator",
+      "resolvedAt": "2026-03-01T00:00:00.000Z",
+      "confidence": 0.9,
+      "sourceNodeIds": ["remote-pol-01", "office-att-01"]
+    }
+  },
+  {
+    "prompt": "What is the expense pre-approval threshold for travel?",
+    "chosen": "Travel expenses over $500 require manager pre-approval before booking.",
+    "rejected": "Travel expenses over $1000 need pre-approval from your manager.",
+    "metadata": {
+      "conflictType": "contradiction",
+      "resolvedBy": "test-evaluator",
+      "resolvedAt": "2026-03-01T00:00:00.000Z",
+      "confidence": 0.85,
+      "sourceNodeIds": ["expense-pol-01", "emp-hand-01"]
+    }
+  },
+  {
+    "prompt": "When is the V2 platform launching?",
+    "chosen": "V2 platform launch has been moved to Q4 2026 due to technical debt and hiring delays.",
+    "rejected": "V2 platform launch is planned for Q2 2026.",
+    "metadata": {
+      "conflictType": "contradiction",
+      "resolvedBy": "test-evaluator",
+      "resolvedAt": "2026-03-01T00:00:00.000Z",
+      "confidence": 0.95,
+      "sourceNodeIds": ["roadmap-01", "board-upd-01"]
+    }
+  },
+  {
+    "prompt": "Who owns the payment service?",
+    "chosen": "The payment service on-call is handled by the Billing team.",
+    "rejected": "The payment service is owned by the Platform team.",
+    "metadata": {
+      "conflictType": "contradiction",
+      "resolvedBy": "test-evaluator",
+      "resolvedAt": "2026-03-01T00:00:00.000Z",
+      "confidence": 0.8,
+      "sourceNodeIds": ["roster-01", "oncall-01"]
+    }
+  },
+  {
+    "prompt": "What is the API rate limit for enterprise customers?",
+    "chosen": "Maximum API rate limit is 1000 requests per minute per tenant. Any increase requires architecture redesign.",
+    "rejected": "API rate limit is 10000 requests per minute for enterprise tier customers.",
+    "metadata": {
+      "conflictType": "contradiction",
+      "resolvedBy": "test-evaluator",
+      "resolvedAt": "2026-03-01T00:00:00.000Z",
+      "confidence": 1.0,
+      "sourceNodeIds": ["sales-prop-01", "eng-const-01"]
+    }
+  },
+  {
+    "prompt": "What is the support response time for P0 issues?",
+    "chosen": "Current support response time target is 4 hours for P0 issues with a team of 3 engineers.",
+    "rejected": "Support response time is 1 hour for P0 issues per the customer contract.",
+    "metadata": {
+      "conflictType": "contradiction",
+      "resolvedBy": "test-evaluator",
+      "resolvedAt": "2026-03-01T00:00:00.000Z",
+      "confidence": 0.9,
+      "sourceNodeIds": ["contract-01", "capacity-01"]
+    }
+  }
+]

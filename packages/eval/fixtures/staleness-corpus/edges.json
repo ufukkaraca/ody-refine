@@ -1,0 +1,20 @@
+[
+  {
+    "id": "edge-supersede-01",
+    "sourceId": "stale-02-newer",
+    "targetId": "stale-02",
+    "type": "supersedes",
+    "reason": "Deployment Guide v2 replaces v1 with GitHub Actions workflow",
+    "confidence": 0.95,
+    "createdAt": "2026-02-01T00:00:00.000Z"
+  },
+  {
+    "id": "edge-supersede-02",
+    "sourceId": "stale-06-newer",
+    "targetId": "stale-06",
+    "type": "supersedes",
+    "reason": "Monitoring Setup v2 replaces v1 with Grafana stack",
+    "confidence": 0.9,
+    "createdAt": "2026-01-15T00:00:00.000Z"
+  }
+]

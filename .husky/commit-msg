@@ -1,0 +1,10 @@
+#!/usr/bin/env sh
+
+# Block Co-Authored-By and AI attribution in commit messages
+if grep -qiE 'co-authored-by|claude|anthropic|noreply@anthropic' "$1"; then
+  echo "❌ Blocked: commit message contains AI co-author attribution."
+  echo ""
+  echo "Remove the Co-Authored-By line from your commit message."
+  echo "If intentional, use git commit --no-verify."
+  exit 1
+fi

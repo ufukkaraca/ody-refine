@@ -1,0 +1,82 @@
+[
+  {
+    "id": "q-01",
+    "question": "How many engineers are on the team?",
+    "correctAnswer": "The engineering team has 12 engineers across 3 squads.",
+    "incorrectAnswer": "The engineering team has 8 engineers.",
+    "domain": "headcount",
+    "source": "eng-cap-01"
+  },
+  {
+    "id": "q-02",
+    "question": "What is our API uptime commitment?",
+    "correctAnswer": "99.99% uptime per month as per the customer SLA.",
+    "incorrectAnswer": "99.9% uptime monthly.",
+    "domain": "sla",
+    "source": "api-sla-01"
+  },
+  {
+    "id": "q-03",
+    "question": "Can employees work remotely?",
+    "correctAnswer": "Yes, the company is remote-first with no mandatory office days.",
+    "incorrectAnswer": "Employees must be in office Monday, Wednesday, and Friday.",
+    "domain": "policy",
+    "source": "remote-pol-01"
+  },
+  {
+    "id": "q-04",
+    "question": "When does the V2 platform launch?",
+    "correctAnswer": "Q4 2026, pushed back from the original Q2 target due to tech debt.",
+    "incorrectAnswer": "Q2 2026 as originally planned.",
+    "domain": "roadmap",
+    "source": "board-upd-01"
+  },
+  {
+    "id": "q-05",
+    "question": "Who is responsible for database operations?",
+    "correctAnswer": "The Backend team owns all database operations going forward.",
+    "incorrectAnswer": "The SRE team is responsible for database operations.",
+    "domain": "ownership",
+    "source": "postmortem-01"
+  },
+  {
+    "id": "q-06",
+    "question": "What is the max API rate limit per tenant?",
+    "correctAnswer": "1000 requests per minute per tenant. Increase requires architecture redesign.",
+    "incorrectAnswer": "10000 requests per minute for enterprise tier.",
+    "domain": "technical",
+    "source": "eng-const-01"
+  },
+  {
+    "id": "q-07",
+    "question": "How do we deploy to production?",
+    "correctAnswer": "Via GitHub Actions CI/CD with automated canary deployments.",
+    "incorrectAnswer": "Using Jenkins pipeline with manual approval.",
+    "domain": "operations",
+    "source": "stale-02-newer"
+  },
+  {
+    "id": "q-08",
+    "question": "What monitoring tool do we use?",
+    "correctAnswer": "Grafana Cloud, migrated from Datadog for cost savings.",
+    "incorrectAnswer": "Datadog for all monitoring.",
+    "domain": "operations",
+    "source": "stale-06-newer"
+  },
+  {
+    "id": "q-09",
+    "question": "What is the expense pre-approval threshold?",
+    "correctAnswer": "$500 for travel expenses requiring manager pre-approval.",
+    "incorrectAnswer": "$1000 is the threshold for travel pre-approval.",
+    "domain": "policy",
+    "source": "expense-pol-01"
+  },
+  {
+    "id": "q-10",
+    "question": "When is the database migration deadline?",
+    "correctAnswer": "Extended to June 2026 with additional budget for contractor support.",
+    "incorrectAnswer": "Must be completed by March 2026.",
+    "domain": "project",
+    "source": "status-01"
+  }
+]

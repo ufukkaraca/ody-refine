@@ -1,0 +1,15 @@
+# Example .ody-refine-ignore file
+# Place in your project root to suppress known false positives.
+
+# Ignore all time bomb detections for completed milestones
+type:time_bomb text:Q4 2025
+
+# Ignore contradictions about a known discrepancy
+type:contradiction text:rate limit
+
+# Ignore a specific node by ID prefix
+# node:abc123
+
+# Bare words are treated as text patterns
+# This would suppress any detection mentioning "deprecated api"
+# deprecated api

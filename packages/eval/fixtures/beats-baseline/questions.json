@@ -1,0 +1,65 @@
+{
+  "description": "10 domain questions to compare Ody-trained model vs raw GPT-4 with all docs. The trained model should get these RIGHT because it has resolved contradictions.",
+  "questions": [
+    {
+      "id": "bl-01",
+      "question": "How many engineers are on the engineering team?",
+      "correctAnswer": "12 engineers across 3 squads",
+      "whyBaselineFails": "Raw LLM sees both 12 and 8, cannot determine which is current"
+    },
+    {
+      "id": "bl-02",
+      "question": "What is our API uptime SLA?",
+      "correctAnswer": "99.99% per month",
+      "whyBaselineFails": "Both 99.99% and 99.9% appear in docs, no resolution context"
+    },
+    {
+      "id": "bl-03",
+      "question": "Is our company remote-first or office-required?",
+      "correctAnswer": "Remote-first with no mandatory office days",
+      "whyBaselineFails": "Contradictory policies exist, baseline hedges or picks wrong one"
+    },
+    {
+      "id": "bl-04",
+      "question": "What is the travel expense pre-approval threshold?",
+      "correctAnswer": "$500",
+      "whyBaselineFails": "Two different thresholds in different docs ($500 vs $1000)"
+    },
+    {
+      "id": "bl-05",
+      "question": "When does V2 launch?",
+      "correctAnswer": "Q4 2026",
+      "whyBaselineFails": "Original roadmap says Q2, board update says Q4, no recency signal"
+    },
+    {
+      "id": "bl-06",
+      "question": "Who owns the payment service?",
+      "correctAnswer": "Billing team handles payment service on-call",
+      "whyBaselineFails": "Team roster says Platform, on-call says Billing — conflicting ownership"
+    },
+    {
+      "id": "bl-07",
+      "question": "What is the max API rate limit per tenant?",
+      "correctAnswer": "1000 requests per minute",
+      "whyBaselineFails": "Sales proposal says 10000, engineering says 1000 — baseline may pick the wrong number"
+    },
+    {
+      "id": "bl-08",
+      "question": "What deployment tool do we use?",
+      "correctAnswer": "GitHub Actions CI/CD",
+      "whyBaselineFails": "Old guide says Jenkins, new says GitHub Actions — no versioning context"
+    },
+    {
+      "id": "bl-09",
+      "question": "What monitoring platform do we use?",
+      "correctAnswer": "Grafana Cloud",
+      "whyBaselineFails": "Old doc says Datadog, new says Grafana — both present in context"
+    },
+    {
+      "id": "bl-10",
+      "question": "When is the database migration deadline?",
+      "correctAnswer": "June 2026",
+      "whyBaselineFails": "Sprint retro says March, project status says June — conflicting deadlines"
+    }
+  ]
+}

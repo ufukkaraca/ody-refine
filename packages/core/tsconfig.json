@@ -1,0 +1,16 @@
+{
+  "extends": "../../tsconfig.json",
+  "compilerOptions": {
+    "outDir": "dist",
+    "rootDir": "src"
+  },
+  "include": [
+    "src/types.ts",
+    "src/parse-llm-json.ts",
+    "src/index.ts",
+    "src/loader.ts",
+    "src/sqlite/**/*.ts",
+    "src/providers/**/*.ts"
+  ],
+  "exclude": ["node_modules", "dist", "__tests__"]
+}
