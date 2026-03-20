@@ -1,0 +1,61 @@
+{
+  "description": "End-to-end flywheel test: contradictory docs -> Refine audit -> resolve -> Forge pairs -> Colleague answers",
+  "stages": {
+    "ingest": {
+      "description": "Start with 4 documents that contain 2 known contradictions",
+      "nodeIds": ["remote-pol-01", "office-att-01", "api-sla-01", "ops-run-01"]
+    },
+    "detect": {
+      "description": "Refine should find exactly 2 contradictions",
+      "expectedFindings": [
+        {
+          "type": "contradiction",
+          "nodeIds": ["remote-pol-01", "office-att-01"],
+          "topic": "remote work policy"
+        },
+        {
+          "type": "contradiction",
+          "nodeIds": ["api-sla-01", "ops-run-01"],
+          "topic": "API uptime target"
+        }
+      ]
+    },
+    "resolve": {
+      "description": "User resolves both contradictions, creating preference pairs",
+      "resolutions": [
+        {
+          "prompt": "What is the remote work policy?",
+          "chosen": "The company is remote-first with no mandatory office days.",
+          "rejected": "All employees must be in office Monday, Wednesday, and Friday.",
+          "chosenNodeId": "remote-pol-01"
+        },
+        {
+          "prompt": "What is the API uptime SLA?",
+          "chosen": "API availability target is 99.99% uptime per month.",
+          "rejected": "Target uptime for the API is 99.9% monthly.",
+          "chosenNodeId": "api-sla-01"
+        }
+      ]
+    },
+    "train": {
+      "description": "Forge converts resolutions to DPO training pairs",
+      "expectedPairCount": 2,
+      "expectedFormat": "trl-dpo"
+    },
+    "answer": {
+      "description": "Colleague should answer using resolved truth",
+      "questions": [
+        {
+          "question": "Can I work from home?",
+          "expectedAnswer": "remote-first with no mandatory office days",
+          "mustCite": "remote-pol-01"
+        },
+        {
+          "question": "What uptime do we guarantee?",
+          "expectedAnswer": "99.99%",
+          "mustCite": "api-sla-01"
+        }
+      ]
+    }
+  }
+}

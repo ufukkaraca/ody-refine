@@ -1,0 +1,9 @@
+packages:
+  - "packages/core"
+  - "packages/detectors"
+  - "packages/export"
+  - "packages/training"
+  - "packages/eval"
+  - "packages/feedback"
+  - "apps/refine"
+  - "apps/forge"

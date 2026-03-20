@@ -1,0 +1,62 @@
+{
+  "corpus": "staleness-detection-v1",
+  "description": "10 documents for staleness detection. 6 with known stale content, 4 that are current.",
+  "documents": [
+    {
+      "id": "stale-01",
+      "isStale": true,
+      "reason": "References 'last updated January 2025' which is over a year old",
+      "expectedSeverity": "info"
+    },
+    {
+      "id": "stale-02",
+      "isStale": true,
+      "reason": "Superseded by a newer document with conflicting information",
+      "expectedSeverity": "warning"
+    },
+    {
+      "id": "stale-03",
+      "isStale": true,
+      "reason": "Contains commitment 'as of March 2025' that was never followed up",
+      "expectedSeverity": "info"
+    },
+    {
+      "id": "stale-04",
+      "isStale": true,
+      "reason": "References deprecated API version with no update",
+      "expectedSeverity": "info"
+    },
+    {
+      "id": "stale-05",
+      "isStale": true,
+      "reason": "Contains date reference 'updated 2024-06' which is very old",
+      "expectedSeverity": "info"
+    },
+    {
+      "id": "stale-06",
+      "isStale": true,
+      "reason": "Superseded by newer version with different facts",
+      "expectedSeverity": "warning"
+    },
+    {
+      "id": "current-01",
+      "isStale": false,
+      "reason": "Recently created document with current information"
+    },
+    {
+      "id": "current-02",
+      "isStale": false,
+      "reason": "No date references, evergreen content"
+    },
+    {
+      "id": "current-03",
+      "isStale": false,
+      "reason": "References recent date within last month"
+    },
+    {
+      "id": "current-04",
+      "isStale": false,
+      "reason": "Process document without temporal dependencies"
+    }
+  ]
+}

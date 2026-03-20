@@ -1,0 +1,11 @@
+# Default owner for everything
+* @ufukkaraca
+
+# Core packages
+packages/core/ @ufukkaraca
+packages/detectors/ @ufukkaraca
+packages/export/ @ufukkaraca
+
+# CLI
+apps/refine/ @ufukkaraca
+apps/forge/ @ufukkaraca

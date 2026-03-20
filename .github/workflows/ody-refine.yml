@@ -1,0 +1,122 @@
+name: Knowledge Health Check
+
+on:
+  workflow_call:
+    inputs:
+      path:
+        description: 'Path to documentation directory'
+        type: string
+        default: './docs'
+      fail-on:
+        description: 'Severity level to fail on (critical, warning, info, none)'
+        type: string
+        default: 'critical'
+      min-health:
+        description: 'Minimum health score (0-100)'
+        type: string
+        default: '70'
+      fail-on-regression:
+        description: 'Fail if score decreased since last run'
+        type: boolean
+        default: false
+    outputs:
+      score:
+        description: 'The computed health score (0-100)'
+        value: ${{ jobs.refine.outputs.score }}
+      pass:
+        description: 'Whether the check passed (true/false)'
+        value: ${{ jobs.refine.outputs.pass }}
+
+jobs:
+  refine:
+    runs-on: ubuntu-latest
+    outputs:
+      score: ${{ steps.run.outputs.score }}
+      pass: ${{ steps.run.outputs.pass }}
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 20
+
+      - name: Run Ody Refine
+        id: run
+        run: |
+          npx ody-refine ci "${{ inputs.path }}" \
+            --fail-on "${{ inputs.fail-on }}" \
+            --min-health "${{ inputs.min-health }}" \
+            ${{ inputs.fail-on-regression && '--fail-on-regression' || '' }} \
+            --format json \
+            --output refine-report.json || true
+
+          if [ -f refine-report.json ]; then
+            SCORE=$(node -e "console.log(JSON.parse(require('fs').readFileSync('refine-report.json','utf8')).score)")
+            PASS=$(node -e "console.log(JSON.parse(require('fs').readFileSync('refine-report.json','utf8')).pass)")
+            echo "score=$SCORE" >> "$GITHUB_OUTPUT"
+            echo "pass=$PASS" >> "$GITHUB_OUTPUT"
+          else
+            echo "score=0" >> "$GITHUB_OUTPUT"
+            echo "pass=false" >> "$GITHUB_OUTPUT"
+          fi
+
+      - name: Generate markdown report
+        run: |
+          npx ody-refine ci "${{ inputs.path }}" \
+            --fail-on "${{ inputs.fail-on }}" \
+            --min-health "${{ inputs.min-health }}" \
+            ${{ inputs.fail-on-regression && '--fail-on-regression' || '' }} \
+            --format markdown \
+            --output refine-report.md || true
+
+      - name: Comment on PR
+        if: github.event_name == 'pull_request'
+        uses: actions/github-script@v7
+        with:
+          script: |
+            const fs = require('fs');
+            const reportPath = 'refine-report.md';
+            if (!fs.existsSync(reportPath)) {
+              core.warning('No markdown report found');
+              return;
+            }
+            const body = fs.readFileSync(reportPath, 'utf8');
+            const { data: comments } = await github.rest.issues.listComments({
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              issue_number: context.issue.number,
+            });
+            const botComment = comments.find(
+              c => c.user?.type === 'Bot' && c.body?.includes('Ody Refine Health Report'),
+            );
+            if (botComment) {
+              await github.rest.issues.updateComment({
+                owner: context.repo.owner,
+                repo: context.repo.repo,
+                comment_id: botComment.id,
+                body,
+              });
+            } else {
+              await github.rest.issues.createComment({
+                owner: context.repo.owner,
+                repo: context.repo.repo,
+                issue_number: context.issue.number,
+                body,
+              });
+            }
+
+      - name: Upload report artifact
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: refine-report
+          path: |
+            refine-report.json
+            refine-report.md
+          if-no-files-found: ignore
+
+      - name: Fail if check did not pass
+        if: steps.run.outputs.pass == 'false'
+        run: |
+          echo "::error::Ody Refine health check failed (score: ${{ steps.run.outputs.score }})"
+          exit 1

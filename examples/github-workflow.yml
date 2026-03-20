@@ -1,0 +1,22 @@
+# Example: Run Ody Refine on every pull request to check docs health.
+# Copy this file to .github/workflows/knowledge-health.yml in your repo.
+
+name: Knowledge Health
+on:
+  pull_request:
+    paths:
+      - 'docs/**'
+      - '*.md'
+
+jobs:
+  refine:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 20
+
+      - name: Run Ody Refine
+        run: npx ody-refine ci --min-health 70 --fail-on-regression ./docs/

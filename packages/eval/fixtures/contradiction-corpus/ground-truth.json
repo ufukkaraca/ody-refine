@@ -1,0 +1,166 @@
+{
+  "corpus": "contradiction-detection-v1",
+  "description": "15 document pairs for testing contradiction detection accuracy. 10 with known contradictions, 5 with no contradictions (negative cases).",
+  "pairs": [
+    {
+      "id": "num-01",
+      "category": "numerical_conflict",
+      "hasContradiction": true,
+      "docA": "engineering-capacity.md",
+      "docB": "hiring-plan.md",
+      "expectedFinding": {
+        "type": "contradiction",
+        "minSeverity": "warning",
+        "description": "Team size: 12 engineers vs 8 engineers"
+      }
+    },
+    {
+      "id": "num-02",
+      "category": "numerical_conflict",
+      "hasContradiction": true,
+      "docA": "api-sla.md",
+      "docB": "ops-runbook.md",
+      "expectedFinding": {
+        "type": "contradiction",
+        "minSeverity": "warning",
+        "description": "Uptime SLA: 99.99% vs 99.9%"
+      }
+    },
+    {
+      "id": "pol-01",
+      "category": "policy_disagreement",
+      "hasContradiction": true,
+      "docA": "remote-work-policy.md",
+      "docB": "office-attendance.md",
+      "expectedFinding": {
+        "type": "contradiction",
+        "minSeverity": "warning",
+        "description": "Remote-first vs mandatory in-office 3 days"
+      }
+    },
+    {
+      "id": "pol-02",
+      "category": "policy_disagreement",
+      "hasContradiction": true,
+      "docA": "expense-policy-v2.md",
+      "docB": "employee-handbook.md",
+      "expectedFinding": {
+        "type": "contradiction",
+        "minSeverity": "warning",
+        "description": "Travel pre-approval threshold: $500 vs $1000"
+      }
+    },
+    {
+      "id": "time-01",
+      "category": "timeline_conflict",
+      "hasContradiction": true,
+      "docA": "product-roadmap.md",
+      "docB": "board-update.md",
+      "expectedFinding": {
+        "type": "contradiction",
+        "minSeverity": "warning",
+        "description": "Launch date: Q2 2026 vs Q4 2026"
+      }
+    },
+    {
+      "id": "time-02",
+      "category": "timeline_conflict",
+      "hasContradiction": true,
+      "docA": "sprint-retro.md",
+      "docB": "project-status.md",
+      "expectedFinding": {
+        "type": "contradiction",
+        "minSeverity": "warning",
+        "description": "Migration deadline: March 2026 vs June 2026"
+      }
+    },
+    {
+      "id": "own-01",
+      "category": "ownership_conflict",
+      "hasContradiction": true,
+      "docA": "team-roster.md",
+      "docB": "oncall-schedule.md",
+      "expectedFinding": {
+        "type": "contradiction",
+        "minSeverity": "warning",
+        "description": "Payment service owner: Platform team vs Billing team"
+      }
+    },
+    {
+      "id": "own-02",
+      "category": "ownership_conflict",
+      "hasContradiction": true,
+      "docA": "raci-matrix.md",
+      "docB": "incident-postmortem.md",
+      "expectedFinding": {
+        "type": "contradiction",
+        "minSeverity": "warning",
+        "description": "Database on-call responsible: SRE vs Backend team"
+      }
+    },
+    {
+      "id": "commit-01",
+      "category": "commitment_conflict",
+      "hasContradiction": true,
+      "docA": "customer-contract.md",
+      "docB": "internal-capacity.md",
+      "expectedFinding": {
+        "type": "contradiction",
+        "minSeverity": "warning",
+        "description": "Support response time: 1 hour vs 4 hours"
+      }
+    },
+    {
+      "id": "commit-02",
+      "category": "commitment_conflict",
+      "hasContradiction": true,
+      "docA": "sales-proposal.md",
+      "docB": "engineering-constraints.md",
+      "expectedFinding": {
+        "type": "contradiction",
+        "minSeverity": "warning",
+        "description": "API rate limit: 10000 requests/min vs 1000 requests/min"
+      }
+    },
+    {
+      "id": "neg-01",
+      "category": "no_contradiction",
+      "hasContradiction": false,
+      "docA": "api-docs-v2.md",
+      "docB": "api-changelog.md",
+      "expectedFinding": null
+    },
+    {
+      "id": "neg-02",
+      "category": "no_contradiction",
+      "hasContradiction": false,
+      "docA": "frontend-guidelines.md",
+      "docB": "backend-guidelines.md",
+      "expectedFinding": null
+    },
+    {
+      "id": "neg-03",
+      "category": "no_contradiction",
+      "hasContradiction": false,
+      "docA": "onboarding-checklist.md",
+      "docB": "onboarding-faq.md",
+      "expectedFinding": null
+    },
+    {
+      "id": "neg-04",
+      "category": "no_contradiction",
+      "hasContradiction": false,
+      "docA": "security-audit-2025.md",
+      "docB": "security-roadmap.md",
+      "expectedFinding": null
+    },
+    {
+      "id": "neg-05",
+      "category": "no_contradiction",
+      "hasContradiction": false,
+      "docA": "meeting-notes-standup.md",
+      "docB": "meeting-notes-retro.md",
+      "expectedFinding": null
+    }
+  ]
+}

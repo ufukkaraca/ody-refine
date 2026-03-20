@@ -1,0 +1,30 @@
+{
+  "name": "@useody/training",
+  "description": "Training pipeline orchestration with dataset management, SFT/DPO support, and eval gating",
+  "version": "0.1.0",
+  "type": "module",
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
+  "exports": {
+    ".": { "types": "./dist/index.d.ts", "import": "./dist/index.js" }
+  },
+  "scripts": {
+    "build": "tsc",
+    "test": "vitest run",
+    "typecheck": "tsc --noEmit",
+    "lint": "eslint src/",
+    "clean": "rm -rf dist"
+  },
+  "dependencies": {
+    "@useody/platform-core": "workspace:*",
+    "better-sqlite3": "^11.8.0"
+  },
+  "devDependencies": {
+    "@types/better-sqlite3": "^7.6.0",
+    "vitest": "^3.0.0",
+    "typescript": "^5.7.0"
+  },
+  "engines": { "node": ">=20.0.0" },
+  "license": "Apache-2.0",
+  "private": true
+}

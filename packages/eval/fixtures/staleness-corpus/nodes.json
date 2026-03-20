@@ -1,0 +1,182 @@
+[
+  {
+    "id": "stale-01",
+    "title": "Infrastructure Cost Report",
+    "content": {
+      "summary": "Monthly cloud infrastructure cost breakdown.",
+      "facts": [
+        "AWS monthly spend is $45,000",
+        "Last updated January 2025",
+        "Largest cost driver is EC2 instances"
+      ],
+      "entities": [{ "name": "Infrastructure", "type": "domain" }],
+      "raw": "# Infrastructure Cost Report\n\nLast updated: January 2025\n\nAWS monthly spend is $45,000. Largest cost driver is EC2 instances at 60% of total spend."
+    },
+    "confidence": 0.9
+  },
+  {
+    "id": "stale-02",
+    "title": "Deployment Guide v1",
+    "content": {
+      "summary": "How to deploy services to production.",
+      "facts": [
+        "Deploy using Jenkins pipeline",
+        "Manual approval required for production",
+        "Rollback via previous Docker image tag"
+      ],
+      "entities": [{ "name": "Deployment", "type": "process" }],
+      "raw": "# Deployment Guide v1\n\nDeploy using the Jenkins pipeline. Manual approval is required for production deployments. Rollback by reverting to the previous Docker image tag."
+    },
+    "confidence": 0.85
+  },
+  {
+    "id": "stale-02-newer",
+    "title": "Deployment Guide v2",
+    "content": {
+      "summary": "Updated deployment process using GitHub Actions.",
+      "facts": [
+        "Deploy using GitHub Actions CI/CD",
+        "Automated canary deployments for production",
+        "Rollback is automated via health check failures"
+      ],
+      "entities": [{ "name": "Deployment", "type": "process" }],
+      "raw": "# Deployment Guide v2\n\nDeploy using GitHub Actions CI/CD pipeline. Automated canary deployments for production. Rollback is automated when health checks fail."
+    },
+    "confidence": 0.95
+  },
+  {
+    "id": "stale-03",
+    "title": "Vendor Evaluation - CRM Tools",
+    "content": {
+      "summary": "Evaluation of CRM tools for sales team.",
+      "facts": [
+        "As of March 2025 evaluating Salesforce and HubSpot",
+        "Decision expected by end of Q2 2025",
+        "Budget allocated: $50,000 annually"
+      ],
+      "entities": [{ "name": "CRM", "type": "tool" }],
+      "raw": "# Vendor Evaluation\n\nAs of March 2025, we are evaluating Salesforce and HubSpot for our CRM needs. Decision expected by end of Q2 2025. Budget allocated: $50,000 annually."
+    },
+    "confidence": 0.85
+  },
+  {
+    "id": "stale-04",
+    "title": "API Integration Guide",
+    "content": {
+      "summary": "Guide for integrating with our v1 API.",
+      "facts": [
+        "Use API v1 endpoint at api.example.com/v1",
+        "Authentication via API key in header",
+        "Rate limit: 100 requests per minute"
+      ],
+      "entities": [{ "name": "API v1", "type": "service" }],
+      "raw": "# API Integration Guide\n\nLast updated: 2024-06\n\nUse API v1 endpoint at api.example.com/v1. Authentication via API key in the X-API-Key header. Rate limit is 100 requests per minute."
+    },
+    "confidence": 0.8
+  },
+  {
+    "id": "stale-05",
+    "title": "Team Structure Overview",
+    "content": {
+      "summary": "Organization chart and team responsibilities.",
+      "facts": [
+        "Updated 2024-06 to reflect reorg",
+        "CTO reports to CEO directly",
+        "5 engineering teams total"
+      ],
+      "entities": [{ "name": "Organization", "type": "structure" }],
+      "raw": "# Team Structure\n\nUpdated: 2024-06\n\nThis document was updated to reflect the June 2024 reorganization. CTO reports directly to CEO. There are 5 engineering teams total."
+    },
+    "confidence": 0.85
+  },
+  {
+    "id": "stale-06",
+    "title": "Monitoring Setup v1",
+    "content": {
+      "summary": "Monitoring and alerting configuration.",
+      "facts": [
+        "Use Datadog for monitoring",
+        "Alert on 5xx error rate above 1%",
+        "PagerDuty for on-call notifications"
+      ],
+      "entities": [{ "name": "Monitoring", "type": "system" }],
+      "raw": "# Monitoring Setup v1\n\nUse Datadog for all monitoring. Alert when 5xx error rate exceeds 1%. PagerDuty handles on-call notifications."
+    },
+    "confidence": 0.85
+  },
+  {
+    "id": "stale-06-newer",
+    "title": "Monitoring Setup v2",
+    "content": {
+      "summary": "Updated monitoring with Grafana stack.",
+      "facts": [
+        "Migrated from Datadog to Grafana Cloud",
+        "Alert on 5xx error rate above 0.5%",
+        "OpsGenie replaced PagerDuty for on-call"
+      ],
+      "entities": [{ "name": "Monitoring", "type": "system" }],
+      "raw": "# Monitoring Setup v2\n\nMigrated from Datadog to Grafana Cloud for cost savings. Alert threshold lowered to 0.5% 5xx error rate. OpsGenie has replaced PagerDuty for on-call notifications."
+    },
+    "confidence": 0.95
+  },
+  {
+    "id": "current-01",
+    "title": "Sprint Planning Process",
+    "content": {
+      "summary": "How we run sprint planning meetings.",
+      "facts": [
+        "Sprint planning every other Monday",
+        "Product owner presents prioritized backlog",
+        "Team commits to sprint goal"
+      ],
+      "entities": [{ "name": "Agile", "type": "process" }],
+      "raw": "# Sprint Planning\n\nSprint planning is held every other Monday. Product owner presents the prioritized backlog. Team commits to a sprint goal based on capacity."
+    },
+    "confidence": 0.9
+  },
+  {
+    "id": "current-02",
+    "title": "Code Review Standards",
+    "content": {
+      "summary": "Standards and expectations for code reviews.",
+      "facts": [
+        "All PRs require at least one approval",
+        "Reviews should be completed within 24 hours",
+        "Use conventional comments for feedback"
+      ],
+      "entities": [{ "name": "Engineering", "type": "process" }],
+      "raw": "# Code Review Standards\n\nAll PRs require at least one approval before merging. Reviews should be completed within 24 hours. Use conventional comments for structured feedback."
+    },
+    "confidence": 0.95
+  },
+  {
+    "id": "current-03",
+    "title": "Recent Architecture Decision",
+    "content": {
+      "summary": "ADR for switching to event-driven architecture.",
+      "facts": [
+        "As of February 2026 adopting event-driven patterns",
+        "Using RabbitMQ as message broker",
+        "Migration plan approved by architecture board"
+      ],
+      "entities": [{ "name": "Architecture", "type": "domain" }],
+      "raw": "# ADR: Event-Driven Architecture\n\nAs of February 2026, we are adopting event-driven patterns. Using RabbitMQ as our message broker. Migration plan has been approved by the architecture board."
+    },
+    "confidence": 0.9
+  },
+  {
+    "id": "current-04",
+    "title": "Incident Response Playbook",
+    "content": {
+      "summary": "Step-by-step incident response procedures.",
+      "facts": [
+        "P0: all hands on deck within 15 minutes",
+        "P1: primary on-call responds within 30 minutes",
+        "Post-incident review within 48 hours"
+      ],
+      "entities": [{ "name": "Incident Response", "type": "process" }],
+      "raw": "# Incident Response Playbook\n\nP0: all hands on deck within 15 minutes of alert. P1: primary on-call engineer responds within 30 minutes. Post-incident review scheduled within 48 hours."
+    },
+    "confidence": 0.95
+  }
+]

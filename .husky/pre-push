@@ -1,0 +1,10 @@
+#!/usr/bin/env sh
+
+echo "Running tests before push..."
+pnpm test
+
+if [ $? -ne 0 ]; then
+  echo ""
+  echo "❌ Tests failed — push blocked. Run \`pnpm test\` to see failures."
+  exit 1
+fi
