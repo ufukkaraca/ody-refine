@@ -294,7 +294,8 @@ describe('processCorrection (integration)', () => {
     expect(pairStore.countUnexported()).toBe(0);
 
     // Clean up
-    const { unlinkSync, existsSync } = await import('node:fs');
+    // eslint-disable-next-line @typescript-eslint/no-require-imports
+    const { unlinkSync, existsSync } = require('node:fs') as typeof import('node:fs');
     if (existsSync(tmpFile)) unlinkSync(tmpFile);
   });
 });

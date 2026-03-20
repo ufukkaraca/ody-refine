@@ -39,3 +39,11 @@ pnpm typecheck     # TypeScript check
 pnpm lint          # ESLint
 pnpm verify        # lint + typecheck + test
 ```
+
+## Commit message rules
+
+- **Technical only.** No business context, strategy, pricing, investor references, or internal team names.
+- **No proper nouns** except tool/library names (e.g., "Notion connector" is OK, "Incari" is not).
+- **Format:** `type: short description` — types: feat, fix, refactor, test, chore, docs, perf.
+- **Never reference** private repos, internal documents, fundraising, or competitive analysis.
+- Examples of what NOT to write: "port from ody_px", "YC application", "board memo", "fix for Ferhat's feedback".
