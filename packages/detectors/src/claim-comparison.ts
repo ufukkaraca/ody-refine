@@ -11,9 +11,11 @@ import type {
 } from '@useody/platform-core';
 import { parseLlmJsonResponse } from '@useody/platform-core';
 import { completeWithTimeout } from './helpers/llm-timeout.js';
-
-const MAX_LLM_CALLS = 30;
-const LLM_TIMEOUT_MS = 8_000;
+import {
+  CLAIM_COMPARISON_TIMEOUT_MS,
+  MAX_CLAIM_COMPARISON_CALLS,
+  pairKey,
+} from './prompts.js';
 
 interface ClaimResult {
   isContradiction: boolean;
@@ -80,11 +82,6 @@ function buildUserPrompt(
   ].join('\n');
 }
 
-/** Canonical pair key for deduplication. */
-function pairKey(id1: string, id2: string): string {
-  return id1 < id2 ? `${id1}:${id2}` : `${id2}:${id1}`;
-}
-
 /**
  * Detect contradictions by sending extracted facts to an LLM for comparison.
  * Only processes nodes that have extracted facts.
@@ -103,8 +100,8 @@ export async function detectClaimContradictions(
   let callCount = 0;
   const systemMsg = buildSystemPrompt();
 
-  for (let i = 0; i < nodesWithFacts.length && callCount < MAX_LLM_CALLS; i++) {
-    for (let j = i + 1; j < nodesWithFacts.length && callCount < MAX_LLM_CALLS; j++) {
+  for (let i = 0; i < nodesWithFacts.length && callCount < MAX_CLAIM_COMPARISON_CALLS; i++) {
+    for (let j = i + 1; j < nodesWithFacts.length && callCount < MAX_CLAIM_COMPARISON_CALLS; j++) {
       const a = nodesWithFacts[i]!;
       const b = nodesWithFacts[j]!;
       const key = pairKey(a.id, b.id);
@@ -122,7 +119,7 @@ export async function detectClaimContradictions(
         llm,
         messages,
         { temperature: 0, maxTokens: 300 },
-        LLM_TIMEOUT_MS,
+        CLAIM_COMPARISON_TIMEOUT_MS,
       );
       callCount++;
 

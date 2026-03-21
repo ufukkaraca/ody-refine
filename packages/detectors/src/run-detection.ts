@@ -16,6 +16,8 @@ import { detectDuplicates } from './duplicates.js';
 import { detectStaleness } from './staleness.js';
 import { detectUndocumented } from './undocumented.js';
 import { detectTimeBombs } from './time-bombs.js';
+import { detectAugmented } from './llm-augmented.js';
+import { pairKey } from './prompts.js';
 
 export interface RunDetectionInput {
   nodes: KnowledgeNode[];
@@ -76,6 +78,37 @@ export async function runDetection(
       // Transient error — continue with remaining detectors
     }
     onProgress?.(name, 'completed');
+  }
+
+  // LLM-augmented layer: runs after heuristic detectors when LLM is available
+  if (llm) {
+    onProgress?.('llm-augmented', 'started');
+    const augStart = Date.now();
+    try {
+      // Build seen set from existing detections for deduplication
+      const seenPairs = new Set<string>();
+      for (const det of allDetections) {
+        if (det.nodeIds.length >= 2) {
+          seenPairs.add(pairKey(det.nodeIds[0]!, det.nodeIds[1]!));
+        }
+      }
+      const augmented = await detectAugmented(nodes, edges, llm, seenPairs);
+      const augDuration = Date.now() - augStart;
+      allDetections.push(...augmented);
+      stats.push({
+        name: 'llm-augmented',
+        detectionCount: augmented.length,
+        durationMs: augDuration,
+      });
+    } catch (err: unknown) {
+      const augDuration = Date.now() - augStart;
+      stats.push({ name: 'llm-augmented', detectionCount: 0, durationMs: augDuration });
+      if (err instanceof Error && (err.name === 'LLMAuthError'
+        || err.message.includes('authentication/quota error'))) {
+        throw err;
+      }
+    }
+    onProgress?.('llm-augmented', 'completed');
   }
 
   return { detections: allDetections, stats };

@@ -23,6 +23,8 @@ export interface EvalRunner {
 export interface RetrainingPolicy {
   /** Minimum new preference pairs before retraining. */
   minNewPairs: number;
+  /** Pair count threshold: below this → SFT-only, at or above → SFT+DPO. Default: 50. */
+  sftOnlyThreshold: number;
   /** How often to check for retraining (ms). Default: 6 hours. */
   checkIntervalMs: number;
   /** Minimum time between training runs (ms). Default: 24 hours. */
@@ -49,6 +51,7 @@ export interface RetrainingResult {
 /** Default retraining policy values. */
 export const DEFAULT_POLICY: RetrainingPolicy = {
   minNewPairs: 100,
+  sftOnlyThreshold: 50,
   checkIntervalMs: 6 * 60 * 60 * 1000,
   cooldownMs: 24 * 60 * 60 * 1000,
   replayBufferRatio: 0.2,
@@ -82,6 +85,17 @@ export class RetrainingOrchestrator {
     this.evalRunner = evalRunner;
     this.policy = { ...DEFAULT_POLICY, ...policy };
     this.history = history ?? null;
+  }
+
+  /**
+   * Resolve training method based on pair count and policy threshold.
+   * Below sftOnlyThreshold → SFT-only. At or above → use requested method.
+   */
+  resolveMethod(requestedMethod: TrainingConfig['method'], pairCount: number): TrainingConfig['method'] {
+    if (pairCount < this.policy.sftOnlyThreshold) {
+      return 'sft';
+    }
+    return requestedMethod;
   }
 
   /** Check whether retraining should be triggered based on pair count and cooldown. */
@@ -149,9 +163,24 @@ export class RetrainingOrchestrator {
       };
     }
 
+    // Guard: need at least 1 pair to train
+    if (pairCount < 1 && latestDataset.sftEntryCount < 1) {
+      return {
+        triggered: true,
+        trained: false,
+        passed: false,
+        reason: 'No training data available (0 pairs, 0 SFT entries)',
+        decision,
+      };
+    }
+
+    // Auto-select method based on pair count threshold
+    const resolvedMethod = this.resolveMethod(config.method, pairCount);
+    const resolvedConfig: TrainingConfig = { ...config, method: resolvedMethod };
+
     let artifact;
     try {
-      artifact = await this.trainer.train(config, latestDataset.dataPath);
+      artifact = await this.trainer.train(resolvedConfig, latestDataset.dataPath);
     } catch (err: unknown) {
       const msg = err instanceof Error ? err.message : String(err);
       this.recordHistory(null, config.baseModel, pairCount, null, false, `Training failed: ${msg}`, triggeredBy);
@@ -166,7 +195,7 @@ export class RetrainingOrchestrator {
 
     let evalResult;
     try {
-      evalResult = await this.evalRunner.runAndGate(config, artifact.path);
+      evalResult = await this.evalRunner.runAndGate(resolvedConfig, artifact.path);
     } catch (err: unknown) {
       const msg = err instanceof Error ? err.message : String(err);
       this.recordHistory(null, config.baseModel, pairCount, null, false, `Eval failed: ${msg}`, triggeredBy);

@@ -82,10 +82,8 @@ export function rawKeywords(node: KnowledgeNode): Set<string> {
   );
 }
 
-/** Canonical pair key for deduplication. */
-export function pairKey(id1: string, id2: string): string {
-  return id1 < id2 ? `${id1}:${id2}` : `${id2}:${id1}`;
-}
+// pairKey re-exported from prompts.ts for backward compat
+export { pairKey } from './prompts.js';
 
 /** Return true if two nodes plausibly discuss the same topic. */
 export function areSameTopic(a: KnowledgeNode, b: KnowledgeNode): boolean {

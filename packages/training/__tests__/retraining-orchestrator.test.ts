@@ -369,9 +369,88 @@ describe('RetrainingOrchestrator', () => {
   describe('DEFAULT_POLICY', () => {
     it('should have sensible defaults', () => {
       expect(DEFAULT_POLICY.minNewPairs).toBe(100);
+      expect(DEFAULT_POLICY.sftOnlyThreshold).toBe(50);
       expect(DEFAULT_POLICY.cooldownMs).toBe(24 * 60 * 60 * 1000);
       expect(DEFAULT_POLICY.replayBufferRatio).toBe(0.2);
       expect(DEFAULT_POLICY.maxTrainingTimeMs).toBe(5 * 60 * 1000);
+    });
+  });
+
+  describe('resolveMethod', () => {
+    it('forces SFT when pairs below threshold', () => {
+      const mocks = createMocks();
+      const orch = new RetrainingOrchestrator(
+        mocks.registry, mocks.modelRegistry, mocks.trainer, mocks.evalRunner,
+        { sftOnlyThreshold: 50 },
+      );
+      expect(orch.resolveMethod('dpo', 30)).toBe('sft');
+    });
+
+    it('keeps requested method when pairs at or above threshold', () => {
+      const mocks = createMocks();
+      const orch = new RetrainingOrchestrator(
+        mocks.registry, mocks.modelRegistry, mocks.trainer, mocks.evalRunner,
+        { sftOnlyThreshold: 50 },
+      );
+      expect(orch.resolveMethod('dpo', 50)).toBe('dpo');
+      expect(orch.resolveMethod('dpo', 200)).toBe('dpo');
+    });
+
+    it('keeps SFT when requested regardless of pair count', () => {
+      const mocks = createMocks();
+      const orch = new RetrainingOrchestrator(
+        mocks.registry, mocks.modelRegistry, mocks.trainer, mocks.evalRunner,
+        { sftOnlyThreshold: 50 },
+      );
+      expect(orch.resolveMethod('sft', 200)).toBe('sft');
+    });
+  });
+
+  describe('retrain with SFT threshold', () => {
+    it('auto-selects SFT when pairs below threshold', async () => {
+      const mocks = createMocks();
+      (mocks.registry.list as ReturnType<typeof vi.fn>).mockReturnValue([
+        makeDataset({ preferencePairCount: 30 }),
+      ]);
+      // No deployed model → no cooldown check
+      (mocks.modelRegistry.getDeployed as ReturnType<typeof vi.fn>).mockReturnValue(null);
+
+      const orch = new RetrainingOrchestrator(
+        mocks.registry, mocks.modelRegistry, mocks.trainer, mocks.evalRunner,
+        { minNewPairs: 10, sftOnlyThreshold: 50 },
+      );
+
+      await orch.retrain(
+        { datasetId: 'ds-1', baseModel: 'test', method: 'dpo', provider: 'local' },
+        { force: true },
+      );
+
+      // Trainer should have been called with SFT, not DPO
+      expect(mocks.trainer.train).toHaveBeenCalledWith(
+        expect.objectContaining({ method: 'sft' }),
+        expect.any(String),
+      );
+    });
+
+    it('rejects training with zero pairs and zero SFT entries', async () => {
+      const mocks = createMocks();
+      (mocks.registry.list as ReturnType<typeof vi.fn>).mockReturnValue([
+        makeDataset({ preferencePairCount: 0, sftEntryCount: 0 }),
+      ]);
+      (mocks.modelRegistry.getDeployed as ReturnType<typeof vi.fn>).mockReturnValue(null);
+
+      const orch = new RetrainingOrchestrator(
+        mocks.registry, mocks.modelRegistry, mocks.trainer, mocks.evalRunner,
+        { minNewPairs: 0 },
+      );
+
+      const result = await orch.retrain(
+        { datasetId: 'ds-1', baseModel: 'test', method: 'sft', provider: 'local' },
+        { force: true },
+      );
+
+      expect(result.trained).toBe(false);
+      expect(result.reason).toContain('No training data');
     });
   });
 });

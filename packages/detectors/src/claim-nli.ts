@@ -11,9 +11,11 @@ import type {
 } from '@useody/platform-core';
 import { parseLlmJsonResponse } from '@useody/platform-core';
 import { completeWithTimeout } from './helpers/llm-timeout.js';
-
-const LLM_TIMEOUT_MS = 15_000;
-const BATCH_SIZE = 5;
+import {
+  NLI_TIMEOUT_MS,
+  LLM_BATCH_SIZE,
+  MAX_NLI_CALLS,
+} from './prompts.js';
 
 /** An atomic claim extracted from a knowledge node. */
 interface AtomicClaim {
@@ -78,7 +80,7 @@ async function extractAtomicClaims(
     llm,
     [{ role: 'user', content: EXTRACT_CLAIMS_PROMPT + text }],
     { temperature: 0, maxTokens: 1024 },
-    LLM_TIMEOUT_MS,
+    NLI_TIMEOUT_MS,
   );
   if (!response) return [];
 
@@ -115,7 +117,7 @@ async function compareClaims(
     llm,
     [{ role: 'user', content: prompt }],
     { temperature: 0, maxTokens: 200 },
-    LLM_TIMEOUT_MS,
+    NLI_TIMEOUT_MS,
   );
   if (!response) return null;
 
@@ -193,8 +195,8 @@ export async function detectClaimNliContradictions(
 ): Promise<void> {
   // Stage 1: Extract atomic claims from all nodes
   const allClaims: AtomicClaim[] = [];
-  for (let i = 0; i < nodes.length; i += BATCH_SIZE) {
-    const batch = nodes.slice(i, i + BATCH_SIZE);
+  for (let i = 0; i < nodes.length; i += LLM_BATCH_SIZE) {
+    const batch = nodes.slice(i, i + LLM_BATCH_SIZE);
     const results = await Promise.all(
       batch.map((n) => extractAtomicClaims(n, llm)),
     );
@@ -208,13 +210,11 @@ export async function detectClaimNliContradictions(
   // Stage 2: Find related claim pairs
   const pairs = findRelatedClaimPairs(allClaims);
 
-  // Cap at 100 LLM calls for NLI comparison
-  const MAX_NLI_CALLS = 100;
   const pairsToCheck = pairs.slice(0, MAX_NLI_CALLS);
 
   // Stage 3: NLI comparison
-  for (let i = 0; i < pairsToCheck.length; i += BATCH_SIZE) {
-    const batch = pairsToCheck.slice(i, i + BATCH_SIZE);
+  for (let i = 0; i < pairsToCheck.length; i += LLM_BATCH_SIZE) {
+    const batch = pairsToCheck.slice(i, i + LLM_BATCH_SIZE);
     const results = await Promise.all(
       batch.map(([a, b]) => compareClaims(a, b, llm)),
     );

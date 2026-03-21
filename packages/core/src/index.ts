@@ -10,3 +10,8 @@ export { runDetection } from './loader.js';
 export type { RunDetectionOptions, DetectionResult, DetectorStats } from './loader.js';
 export * from './providers/index.js';
 export * from './policies/index.js';
+export type {
+  ContextPackage,
+  SourceMeta,
+  ContextProvider,
+} from './context-provider.js';
