@@ -38,6 +38,9 @@ coverage/
 # Backups
 *.bak
 
+# Agent instructions (contains internal conventions)
+CLAUDE.md
+
 # Tool configs (may contain API keys)
 .claude/
 .codex/
