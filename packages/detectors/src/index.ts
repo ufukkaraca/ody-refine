@@ -25,3 +25,12 @@ export type {
   AnalysisResult,
   AnalysisInput,
 } from './consultant-analysis.js';
+export { buildContextPackages } from './context-packager.js';
+export {
+  computeAuthority,
+  adjustSeverity,
+  DEFAULT_AUTHORITY_CONFIG,
+} from './source-authority.js';
+export type { AuthorityConfig } from './source-authority.js';
+export { detectAugmented } from './llm-augmented.js';
+export { pairKey } from './prompts.js';
