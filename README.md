@@ -45,7 +45,6 @@ open .ody-refine/report.html
 ```
 
 <!-- TODO: Add screenshot of the HTML consulting report -->
-<!-- ![HTML Report](docs/assets/report-screenshot.png) -->
 
 **Requires an LLM** -- either [Ollama](https://ollama.com) running locally (free) or an API key from OpenRouter, OpenAI, Anthropic, etc. No cloud account with *us* -- you bring your own model.
 
@@ -220,7 +219,7 @@ ody-platform/
 │   ├── export/             HTML consulting report, JSONL, TRL adapter
 │   ├── feedback/           Signal collector, reputation, reward derivation
 │   └── training/           Dataset registry, model registry, orchestrator
-└── docs/                   Architecture docs and benchmarks
+└── examples/               Sample docs, demo scripts, CI workflow
 ```
 
 | Package | What it does |

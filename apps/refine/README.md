@@ -45,7 +45,6 @@ open .ody-refine/report.html
 ```
 
 <!-- TODO: Add screenshot of the HTML consulting report -->
-<!-- ![HTML Report](https://github.com/ufukkaraca/ody-platform/raw/main/docs/assets/report-screenshot.png) -->
 
 ## How it works
 

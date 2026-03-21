@@ -8,7 +8,7 @@
 # Prerequisites:
 #   - pip install modal
 #   - MODAL_TOKEN_ID and MODAL_TOKEN_SECRET set in environment
-#     (see docs/MODAL_SETUP.md for instructions)
+#     (see setup steps printed when tokens are missing)
 #
 # Usage:
 #   ./scripts/test-modal-training.sh
@@ -75,7 +75,7 @@ if [[ -z "${MODAL_TOKEN_ID:-}" || -z "${MODAL_TOKEN_SECRET:-}" ]]; then
   echo "  5. Re-run this script:"
   echo "       ./scripts/test-modal-training.sh"
   echo ""
-  echo "  See docs/MODAL_SETUP.md for full details."
+  echo "  See https://modal.com/docs/guide for full details."
   echo ""
   exit 1
 fi

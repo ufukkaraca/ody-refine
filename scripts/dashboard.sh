@@ -98,7 +98,7 @@ check "packages/core/src/providers/custom-model-provider.ts" "fine-tuned model s
 check "packages/core/src/providers/fallback-provider.ts"     "fallback provider chain"
 check "packages/training/src/model-loader.ts"                "model loader from registry"
 check "packages/training/src/retrain-trigger.ts"             "retraining trigger (shouldRetrain)"
-echo -e "    ${Y}[next]${N} wire into private repo (see docs/colleague-integration-guide.md)"
+echo -e "    ${Y}[next]${N} wire into private colleague/ repo"
 echo ""
 
 # Eval
@@ -121,7 +121,7 @@ for f in NORTH_STAR.md PLAN.md IMPLEMENTATION.md CLAUDE.md; do
     fi
 done
 doc_count=$(find "$ROOT/docs" -name "*.md" 2>/dev/null | wc -l | tr -d ' ')
-echo -e "  ${D}$doc_count docs in docs/${N}"
+[ "$doc_count" -gt 0 ] 2>/dev/null && echo -e "  ${D}$doc_count docs in docs/${N}"
 echo ""
 
 # Summary
@@ -131,7 +131,7 @@ echo -e "  ${G}FLYWHEEL CLOSED${N} — full pipeline: scan → detect → resolv
 echo -e ""
 echo -e "${W}  NEXT ACTIONS${N}"
 echo -e "  ${Y}1.${N} npm publish @ody/refine (ready, not published)"
-echo -e "  ${Y}2.${N} Wire Colleague integration in private repo (guide at docs/colleague-integration-guide.md)"
+echo -e "  ${Y}2.${N} Wire Colleague integration in private colleague/ repo"
 echo -e "  ${Y}3.${N} Landing page for launch"
 echo -e "  ${Y}4.${N} Real model training test (requires Ollama + GPU)"
 echo -e "  ${Y}5.${N} Audit --deep multi-source mode"
