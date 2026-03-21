@@ -72,7 +72,7 @@ function loadCorpus(): BenchmarkCorpus {
       summary: rn.content.summary,
       facts: rn.content.facts,
       entities: rn.content.entities,
-      source: { sourceType: 'fixture', sourceId: rn.pairId },
+      source: { sourceType: 'fixture', sourceId: rn.id },
       raw: rn.content.raw,
     },
     embedding: [],

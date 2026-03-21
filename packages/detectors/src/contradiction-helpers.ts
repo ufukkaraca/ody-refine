@@ -145,6 +145,58 @@ export const BOOLEAN_PAIRS: [RegExp, RegExp, string, string][] = [
 /** Words near enabled/disabled or required/optional that indicate a spec, not a policy. */
 export const CONFIG_CONTEXT = /\b(toggle|setting|flag|config|checkbox|option|parameter|property|attribute|button|switch|mode|state|default|value|field|prerequisite|dependency|component|install|version|package|library|sdk|module)\b/i;
 
+/** Regex matching ownership/responsibility assignment verbs. */
+const OWNERSHIP_RE = /(?:owned|managed|handled|responsible|maintained|operated)\s+by\s+(?:the\s+)?(\w[\w\s]*?)\s*(?:team|group|squad|dept|department)?(?:\.|,|$)/gi;
+
+/**
+ * Find the owner assigned to a specific entity within text.
+ * Scans sentences that mention the entity for ownership verbs.
+ */
+function findOwnerForEntity(text: string, entity: string): string | undefined {
+  const lower = text.toLowerCase();
+  const sentences = lower.split(/[.!?\n]+/).filter((s) => s.includes(entity));
+  for (const sent of sentences) {
+    const re = new RegExp(OWNERSHIP_RE.source, OWNERSHIP_RE.flags);
+    const m = re.exec(sent);
+    if (m?.[1] && m[1].trim().length > 1) return m[1].trim();
+  }
+  return undefined;
+}
+
+/**
+ * Detect contradictions where two nodes assign different teams/owners
+ * to the same shared entity (service, system, function).
+ */
+export function detectOwnershipContradiction(
+  a: KnowledgeNode, b: KnowledgeNode, out: Detection[],
+): void {
+  const entA = new Set((a.content.entities ?? []).map((e) => e.name.toLowerCase()));
+  const entB = new Set((b.content.entities ?? []).map((e) => e.name.toLowerCase()));
+  const shared = [...entA].filter((e) => entB.has(e) && e.length > 3);
+  if (shared.length === 0) return;
+
+  const textA = getNodeText(a);
+  const textB = getNodeText(b);
+
+  for (const entity of shared) {
+    const ownerA = findOwnerForEntity(textA, entity);
+    const ownerB = findOwnerForEntity(textB, entity);
+    if (!ownerA || !ownerB) continue;
+    if (ownerA.toLowerCase() === ownerB.toLowerCase()) continue;
+
+    out.push({
+      type: 'contradiction', severity: 'warning', nodeIds: [a.id, b.id],
+      description: `Ownership conflict for ${entity}: "${a.title}" assigns "${ownerA}" — but "${b.title}" assigns "${ownerB}"`,
+      suggestedAction: `Clarify who owns/handles "${entity}": ${ownerA} or ${ownerB}.`,
+      metadata: {
+        claimA: ownerA, claimB: ownerB,
+        topic: `${entity} ownership`,
+      },
+    });
+    return;
+  }
+}
+
 /** Detect contradictions from shared entities with different facts. */
 export function detectFactContradiction(
   a: KnowledgeNode, b: KnowledgeNode, out: Detection[],

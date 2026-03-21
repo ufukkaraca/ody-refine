@@ -26,6 +26,7 @@ import {
   shareExactSentence,
   buildHighFreqEntities,
   detectFactContradiction,
+  detectOwnershipContradiction,
   BOOLEAN_PAIRS,
   CONFIG_CONTEXT,
 } from './contradiction-helpers.js';
@@ -81,6 +82,7 @@ function detectHeuristicContradictions(
       }
       if (pairDets.length === 0) detectNumberContradiction(a, b, pairDets);
       if (pairDets.length === 0) detectBooleanContradiction(a, b, pairDets);
+      if (pairDets.length === 0) detectOwnershipContradiction(a, b, pairDets);
       if (pairDets.length > 0) {
         seen.add(key);
         out.push(...pairDets);
