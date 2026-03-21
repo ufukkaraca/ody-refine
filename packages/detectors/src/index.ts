@@ -34,3 +34,19 @@ export {
 export type { AuthorityConfig } from './source-authority.js';
 export { detectAugmented } from './llm-augmented.js';
 export { pairKey } from './prompts.js';
+export {
+  computeMetrics,
+  evaluateGate,
+  runBenchmark,
+  runCurrentPipeline,
+  runRawLlm,
+  runAugmented,
+  DEFAULT_APPROACHES,
+} from './benchmark.js';
+export type {
+  GroundTruthEntry,
+  BenchmarkCorpus,
+  BenchmarkResult,
+  BenchmarkReport,
+  BenchmarkApproach,
+} from './benchmark.js';
