@@ -17,7 +17,7 @@
   },
   "dependencies": {
     "@useody/platform-core": "workspace:*",
-    "better-sqlite3": "^11.8.0"
+    "better-sqlite3": "^12.8.0"
   },
   "devDependencies": {
     "@types/better-sqlite3": "^7.6.0",
