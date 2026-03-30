@@ -24,21 +24,21 @@
     "@useody/feedback": "0.0.2",
     "@useody/platform-core": "0.0.1",
     "chalk": "^5.4.0",
-    "commander": "^13.0.0",
-    "glob": "^11.0.0",
+    "commander": "^14.0.3",
+    "glob": "^13.0.6",
     "gray-matter": "^4.0.3",
-    "open": "^10.1.0",
-    "ora": "^8.2.0"
+    "open": "^11.0.0",
+    "ora": "^9.3.0"
   },
   "optionalDependencies": {
-    "@mendable/firecrawl-js": "^1.15.0",
-    "ink": "^5.1.0",
+    "@mendable/firecrawl-js": "^4.18.0",
+    "ink": "^6.8.0",
     "ink-select-input": "^6.0.0",
-    "pdf-parse": "^1.1.1",
-    "react": "^18.3.0"
+    "pdf-parse": "^2.4.5",
+    "react": "^19.2.4"
   },
   "devDependencies": {
-    "@notionhq/client": "^5.13.0",
+    "@notionhq/client": "^5.15.0",
     "@types/pdf-parse": "^1.1.0",
     "@types/react": "^19.2.14",
     "typescript": "^5.7.0",
